@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="index.css">
     <title>TP Pokedex</title>
 
+//vverreb
     <style>
         .nav {
             z-index: 1000;
