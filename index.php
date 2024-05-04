@@ -119,7 +119,7 @@
                                 if(isset($_COOKIE["usuario_cookie"])){
                                     print "
                                         <td>
-                                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='agregar.php'>Agregar</a>
+                                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php'>Agregar</a>
                                             <form method='post' action='editar.php'> 
                                                 <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                                 <button style='cursor: pointer' type='submit'>Editar</button>
@@ -170,7 +170,7 @@
                                 if(isset($_COOKIE["usuario_cookie"])){
                                     print "
                                         <td>
-                                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='agregar.php'>Agregar</a>
+                                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php'>Agregar</a>
                                             <form method='post' action='editar.php'> 
                                                 <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                                 <button style='cursor: pointer' type='submit'>Editar</button>
@@ -221,11 +221,8 @@
                             if(isset($_COOKIE["usuario_cookie"])){
                                 print "
                                     <td>
-                                        <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='agregar.php'>Agregar</a>
-                                        <form method='post' action='editar.php'> 
-                                            <input value='{$pokemon['id']}' hidden='hidden' name='id'>
-                                            <button style='cursor: pointer' type='submit'>Editar</button>
-                                        </form>
+                                        <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php'>Agregar</a>
+                                        <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php?numero={$pokemon['id']}'>Editar</a>
                                         <form method='post' action='eliminar.php'> 
                                             <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                             <button style='cursor: pointer' type='submit'>Eliminar</button>
