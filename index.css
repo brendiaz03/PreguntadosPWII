@@ -19,7 +19,6 @@ body {
 
 .nav {
     width: 100%;
-    position: fixed;
     top: 0;
     height: 4rem;
     display: flex;
@@ -38,7 +37,7 @@ body {
     color: rgba(0,0,0, .9);
     font-weight: 700;
     font-style: italic;
-    margin-left: 4rem;
+    margin-left: 15rem;
 }
 
 .login-form {
@@ -106,4 +105,17 @@ body {
 .buscador-input, .login-input, .login-btn {
     border-radius: 5px;
 }
-
+footer{
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+}
+.logout-btn {
+    right: 0;
+    background: rgba(30,30,30);
+    padding: 12px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .4s;
+    border-radius: 5px;
+}
