@@ -29,6 +29,10 @@
     </style>
 </head>
 <body>
+    <?php
+    session_start();
+    include_once 'header.php';
+    ?>
     <main class="agregar-container">
         <h2 style='margin-bottom: .7rem'>Introduce los datos del nuevo pokemon!</h2>
         <form class="agregar-form" method="post" enctype="multipart/form-data" action="<?php echo "$action" ?>">
@@ -63,5 +67,8 @@
             <button class="login-btn" type="submit">Agregar</button>
         </form>
     </main>
+    <?php
+    include_once 'footer.php';
+    ?>
 </body>
 </html>

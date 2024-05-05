@@ -4,14 +4,8 @@
         $contraseña = $_POST['contraseña'];
         setcookie("usuario_cookie", $usuario, time() + (8640 * 30), "/");
 
-        print "
-                <div style='padding: .5rem 1rem'>
-                    <p style='padding: 1rem; font-size: 1.3rem; color: #fff; width: 30%; background: rgba(0,120,0,.7); font-family: Roboto, sans-serif'>
-                        Te has logueado correctamente!
-                    </p>
-                    <a href='index.php'>Volver a la pagina principal</a>
-                </div> 
-               ";
+        echo '<script>alert("Inicio de sesión exitoso");</script>';
+        echo '<script>window.location = "index.php";</script>';
         exit();
     }else {
         print "
