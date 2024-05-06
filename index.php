@@ -17,10 +17,6 @@
     <title>TP Pokedex</title>
 
     <style>
-        .nav {
-            z-index: 1000;
-            background: white;
-        }
         .tabla {
             width: 90%;
             margin: 1.5rem auto;
@@ -40,12 +36,12 @@
 </head>
 
 <body>
-<?php
-session_start();
-include_once 'header.php';
-?>
+    <?php
+        session_start();
+        include_once 'header.php';
+    ?>
 
-    <?php print "<main style='height=auto; min-height:100vh; padding: 2rem 3.5rem 3rem 3.5rem;'>"?>
+    <?php print "<main style='height=auto; min-height:100vh; padding: 5.2rem 3.5rem 3rem 3.5rem;'>"?>
         <form method="post" class="buscador">
             <input class="buscador-input" type="text" placeholder="Ingrese el nombre, tipo o numero del pokemon..." name="busqueda">
             <button class="buscador-btn" type="submit">Buscar</button>
@@ -54,10 +50,10 @@ include_once 'header.php';
         <table class="tabla">
             <thead>
                 <tr>
-                    <th>Numero</th>
-                    <th>Nombre</th>
-                    <th>Imagen</th>
-                    <th>Tipo</th>
+                    <th style="text-align: center">Numero</th>
+                    <th style="text-align: center">Nombre</th>
+                    <th style="text-align: center">Imagen</th>
+                    <th style="text-align: center">Tipo</th>
                     <?php
                         if(isset($_COOKIE["usuario_cookie"])){
                             print "<th>Acciones</th>";

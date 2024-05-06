@@ -14,7 +14,7 @@
     <style>
         .agregar-container {
             height: auto;
-            padding: 1rem 0 2rem 0;
+            padding: 5rem 0 2rem 0;
             display: flex;
             flex-direction: column;
             align-items: center;

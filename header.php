@@ -1,4 +1,12 @@
 <header>
+    <style>
+        .nav {
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            background: #fff;
+        }
+    </style>
     <nav class="nav">
         <a href="index.php"><img class="nav-logo" src="imagenes/logo.png"></a>
         <h1 class="nav-titulo">Pokedex!</h1>
