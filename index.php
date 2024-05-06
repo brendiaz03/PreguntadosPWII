@@ -44,24 +44,8 @@
 session_start();
 include_once 'header.php';
 ?>
-<!--    <nav class="nav">-->
-<!--        <a href="index.php"><img class="nav-logo" src="imagenes/logo.png"></a>-->
-<!--        <h1 class="nav-titulo">Pokedex!</h1>-->
-<!---->
-<!--        <form class="login-form" method="post" action="login.php">-->
-<!--            <input class="login-input" type="text" name="usuario" placeholder="Usuario" >-->
-<!--            <input class="login-input" type="password" name="contraseña" placeholder="Contraseña" >-->
-<!--            <button class="login-btn" type="submit" >Ingresar</button>-->
-<!--        </form>-->
-<!--        --><?php
-//            if(isset($_COOKIE["usuario_cookie"])){
-//                $nombre = $_COOKIE["usuario_cookie"];
-//                echo "Hola! $nombre, como has estado?";
-//            }
-//        ?>
-<!--    </nav>-->
 
-    <?php print "<main style='height=auto; min-height:100vh; padding: 5.7rem 3.5rem 3rem 3.5rem;'>"?>
+    <?php print "<main style='height=auto; min-height:100vh; padding: 2rem 3.5rem 3rem 3.5rem;'>"?>
         <form method="post" class="buscador">
             <input class="buscador-input" type="text" placeholder="Ingrese el nombre, tipo o numero del pokemon..." name="busqueda">
             <button class="buscador-btn" type="submit">Buscar</button>
