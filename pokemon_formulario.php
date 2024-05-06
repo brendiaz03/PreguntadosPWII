@@ -60,6 +60,10 @@
                 <option value="Agua">Agua</option>
                 <option value="Planta">Planta</option>
                 <option value="Tierra">Tierra</option>
+                <option value="Bicho">Bicho</option>
+                <option value="Normal">Normal</option>
+                <option value="Veneno">Veneno</option>
+                <option value="Volador">Volador</option>
             </select>
             <textarea class="login-input" cols="32" rows="8" style="padding: 1rem" placeholder="Introduzca una descripcion.." name="descripcion"></textarea>
             <label for="imagen">Agregar imagen:</label>
