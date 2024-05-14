@@ -17,10 +17,6 @@
     <title>TP Pokedex</title>
 
     <style>
-        .nav {
-            z-index: 1000;
-            background: white;
-        }
         .tabla {
             width: 90%;
             margin: 1.5rem auto;
@@ -40,28 +36,12 @@
 </head>
 
 <body>
-<?php
-session_start();
-include_once 'header.php';
-?>
-<!--    <nav class="nav">-->
-<!--        <a href="index.php"><img class="nav-logo" src="imagenes/logo.png"></a>-->
-<!--        <h1 class="nav-titulo">Pokedex!</h1>-->
-<!---->
-<!--        <form class="login-form" method="post" action="login.php">-->
-<!--            <input class="login-input" type="text" name="usuario" placeholder="Usuario" >-->
-<!--            <input class="login-input" type="password" name="contraseña" placeholder="Contraseña" >-->
-<!--            <button class="login-btn" type="submit" >Ingresar</button>-->
-<!--        </form>-->
-<!--        --><?php
-//            if(isset($_COOKIE["usuario_cookie"])){
-//                $nombre = $_COOKIE["usuario_cookie"];
-//                echo "Hola! $nombre, como has estado?";
-//            }
-//        ?>
-<!--    </nav>-->
+    <?php
+        session_start();
+        include_once 'header.php';
+    ?>
 
-    <?php print "<main style='height=auto; min-height:100vh; padding: 5.7rem 3.5rem 3rem 3.5rem;'>"?>
+    <?php print "<main style='height=auto; min-height:100vh; padding: 5.2rem 3.5rem 3rem 3.5rem;'>"?>
         <form method="post" class="buscador">
             <input class="buscador-input" type="text" placeholder="Ingrese el nombre, tipo o numero del pokemon..." name="busqueda">
             <button class="buscador-btn" type="submit">Buscar</button>
@@ -70,10 +50,10 @@ include_once 'header.php';
         <table class="tabla">
             <thead>
                 <tr>
-                    <th>Numero</th>
-                    <th>Nombre</th>
-                    <th>Imagen</th>
-                    <th>Tipo</th>
+                    <th style="text-align: center">Numero</th>
+                    <th style="text-align: center">Nombre</th>
+                    <th style="text-align: center">Imagen</th>
+                    <th style="text-align: center">Tipo</th>
                     <?php
                         if(isset($_COOKIE["usuario_cookie"])){
                             print "<th>Acciones</th>";
@@ -123,7 +103,7 @@ include_once 'header.php';
                                 if(isset($_COOKIE["usuario_cookie"])){
                                     print "
                                         <td>
-                                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php'>Agregar</a>
+                                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='../pokemon_formulario.php'>Agregar</a>
                                             <form method='post' action='editar.php'> 
                                                 <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                                 <button style='cursor: pointer' type='submit'>Editar</button>
@@ -179,7 +159,7 @@ include_once 'header.php';
                                                 <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                                 <button style='cursor: pointer' type='submit'>Editar</button>
                                             </form>
-                                            <form method='post' action='eliminar.php'> 
+                                            <form method='post' action='view/eliminar.php'> 
                                                 <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                                 <button style='cursor: pointer' type='submit'>Eliminar</button>
                                             </form>
@@ -227,7 +207,7 @@ include_once 'header.php';
                                     <td>
                                         <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php'>Agregar</a>
                                         <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='pokemon_formulario.php?numero={$pokemon['id']}'>Editar</a>
-                                        <form method='post' action='eliminar.php'> 
+                                        <form method='post' action='view/eliminar.php'> 
                                             <input value='{$pokemon['id']}' hidden='hidden' name='id'>
                                             <button style='cursor: pointer' type='submit'>Eliminar</button>
                                         </form>
