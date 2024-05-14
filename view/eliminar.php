@@ -1,5 +1,6 @@
 <?php
     require_once('Conexion_db.php');
+    require_once('conexion_db.php');
     global $conexion;
 
     if(isset($_POST["id"])){

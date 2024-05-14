@@ -1,6 +1,4 @@
 <?php
-    require_once("Conexion_db.php");
-    global $conexion;
     if(isset($_POST['numero']) && isset($_POST['nombre']) && isset($_POST['tipo'])  && isset($_POST['descripcion']) && isset($_FILES['imagen'])){
         $id = $_POST["numero"];
         $nombre = $_POST["nombre"];

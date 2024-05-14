@@ -1,3 +1,4 @@
+
 <?php
     include_once ("Configuration.php");
     $router = Configuration::getRouter();
@@ -8,6 +9,16 @@
     $router->route($controller, $action);
 
 /*<!doctype html>
+
+<?php
+    include 'conexion_db.php';
+    include 'busqueda.php';
+    include 'eliminar.php';
+    global $conexion;
+    global $busqueda_query;
+?>
+
+<!doctype html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -39,7 +50,11 @@
 <body>
     <?php
         session_start();
+
         include_once 'header.mustache';
+
+        include_once 'header.php';
+
     ?>
 
     <?php print "<main style='height=auto; min-height:100vh; padding: 5.2rem 3.5rem 3rem 3.5rem;'>"?>
@@ -227,5 +242,4 @@ include_once 'footer.mustache';
 ?>
 </body>
 </html>*/
-
 
