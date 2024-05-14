@@ -1,0 +1,61 @@
+<table class="tabla">
+    <thead>
+        <tr>
+            <th style="text-align: center">Numero</th>
+            <th style="text-align: center">Nombre</th>
+            <th style="text-align: center">Imagen</th>
+            <th style="text-align: center">Tipo</th>
+            <?php
+                if(isset($_COOKIE["usuario_cookie"])){
+                    print "<th>Acciones</th>";
+                }
+            ?>
+        </tr>
+    </thead>
+    <tbody>
+        {{#pokemones}}
+            <tr style='cursor: pointer;'>
+                <td style='font-size: 1.1rem;'>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href='detalle_pokemon.php?id={$pokemon['id']}&nombre={$pokemon['nombre']}&tipo={$pokemon['tipo']}&descripcion={$pokemon['descripcion']}'
+                    >
+                        {{id}}
+                    </a>
+                </td>
+                <td style='font-size: 1.1rem'>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href='detalle_pokemon.php?id={$pokemon['id']}&nombre={$pokemon['nombre']}&tipo={$pokemon['tipo']}&descripcion={$pokemon['descripcion']}'
+                    >
+                        {{nombre}}
+                    </a>
+                </td>
+                <td>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href='detalle_pokemon.php?id={$pokemon['id']}&nombre={$pokemon['nombre']}&tipo={$pokemon['tipo']}&descripcion={$pokemon['descripcion']}'
+                    >
+                        <img width='70px' src='imagenes/{{nombre}}.webp'>
+                    </a>
+                </td>
+                <td>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href='detalle_pokemon.php?id={$pokemon['id']}&nombre={$pokemon['nombre']}&tipo={$pokemon['tipo']}&descripcion={$pokemon['descripcion']}'
+                    >
+                        <img width='37px'src='imagenes/{{tipo}}.png'>
+                    </a>
+                </td>
+                <td>
+                    <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='../pokemon_formulario.php'>Agregar</a>
+                    <form method='post' action='editar.php'>
+                        <input value='{$pokemon['id']}' hidden='hidden' name='id'>
+                        <button style='cursor: pointer' type='submit'>Editar</button>
+                    </form>
+                    <form method='post' action='eliminar.php'>
+                        <input value='{$pokemon['id']}' hidden='hidden' name='id'>
+                        <button style='cursor: pointer' type='submit'>Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        {{/pokemones}}
+    <tbody>
+</table>
+
