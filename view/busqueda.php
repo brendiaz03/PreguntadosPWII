@@ -1,4 +1,6 @@
 <?php
+    include 'Conexion_db.php';
+
     include 'conexion_db.php';
     global $conexion;
 

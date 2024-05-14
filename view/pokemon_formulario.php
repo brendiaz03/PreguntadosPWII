@@ -1,4 +1,4 @@
-<<<<<<< HEAD:view/pokemon_formulario.php
+
 <?php
    $action = isset($_GET['numero']) ? "editar.php" : "agregar.php";
 ?>
@@ -33,6 +33,9 @@
 <body>
     <?php
     session_start();
+
+    include_once 'header.mustache';
+
     include_once 'header.php';
     ?>
     <main class="agregar-container">
@@ -70,11 +73,14 @@
         </form>
     </main>
     <?php
+        include_once 'footer.mustache';
+    ?>
+</body>
+</html>
         include_once 'footer.php';
     ?>
 </body>
 </html>
-=======
 <?php
    $action = isset($_GET['numero']) ? "editar.php" : "agregar.php";
 ?>
@@ -150,4 +156,3 @@
     ?>
 </body>
 </html>
->>>>>>> 5b1f5862cfa8aba6bf42de46a784597662af098a:pokemon_formulario.php

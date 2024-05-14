@@ -1,6 +1,5 @@
 <?php
-    class Pokemon {
-
+    class PokemonModel {
         private $database;
 
         public function __construct($database)
