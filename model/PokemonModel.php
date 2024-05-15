@@ -6,12 +6,10 @@
         {
             $this -> database = $database;
         }
-
         public function getAllPokemon()
         {
             return $this -> database -> query("SELECT * FROM Pokemon");
         }
-
         public function getPokemon($id)
         {
             return $this -> database -> query("SELECT * FROM Pokemon WHERE id = $id");
