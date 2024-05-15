@@ -5,27 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/helper/conexion_db.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/imagenes/png-transparent-pokemon-ash-illustration-ash-ketchum-pokxe9mon-go-pokxe9mon-x-and-y-pikachu-pokxe9mon-adventures-pokemon-ash-hd-child-hand-human.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/imagenes/png-transparent-pokemon-pikachu-illustration-icon-pikachu-background-mammal-food-vertebrate-thumbnail.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/detallePokemonView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PokemonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PokemonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/MustachePresenter.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/MustachePresenter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PokemonModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PokemonModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pokemon_formulario.php" beforeDir="false" afterPath="$PROJECT_DIR$/pokemon_formulario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/mustache/src/Mustache/Parser.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/mustache/src/Mustache/Parser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/agregar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/agregarPokemonView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/agregarPokemonView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/busqueda.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/detalle_pokemon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/editarPokemonView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/editarPokemonView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/pokemonListView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/pokemonListView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +34,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging agustinD",
+    "git-widget-placeholder": "agustinD",
     "last_opened_file_path": "C:/xampp/htdocs/PokedexRepo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
