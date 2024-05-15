@@ -9,5 +9,3 @@
 
 // index.php?controller=tours&action=get
 // tours/get
-
-

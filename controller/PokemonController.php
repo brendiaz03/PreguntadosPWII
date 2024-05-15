@@ -21,13 +21,13 @@
             header("location:/pokedex/index.php");
             exit();
         }
+
         public function add(){
             $pokemonId = $_POST["id"];
             $pokemonNombre = $_POST["nombre"];
             $pokemonTipo = $_POST["tipo"];
             $pokemonDescripcion = $_POST["descripcion"];
             $imagenTmp = $_FILES['imagen']['tmp_name'];
-
             $this -> model -> addPokemon($pokemonId, $pokemonNombre, $pokemonTipo, $pokemonDescripcion, $imagenTmp);
             header("location:/pokedex/index.php");
             exit();
