@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,11 +14,18 @@
             display: flex;
             justify-content: space-between;
             width: 100%;
+=======
+<header>
+    <style>
+        .nav {
+            position: fixed;
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
             top: 0;
             z-index: 1000;
             background: #fff;
         }
     </style>
+<<<<<<< HEAD
     <title>Document</title>
 </head>
 <body>
@@ -26,11 +34,25 @@
             <a href="../../index.php"><img class="nav-logo" src="public/imagenes/logo.png"></a>
             <h1 class="nav-titulo">Pokedex!</h1>
             <div style="display: flex; column-gap: 1rem">
+=======
+    <nav class="nav">
+        <a href="../../index.php"><img class="nav-logo" src="imagenes/logo.png"></a>
+        <h1 class="nav-titulo">Pokedex!</h1>
+        <div>
+            <?php if(isset($_COOKIE["usuario_cookie"])): ?>
+                <?php
+                $nombre = $_COOKIE["usuario_cookie"];
+                echo "Hola! $nombre, como has estado?";
+                ?>
+                <a href="../logout.php" class="logout-btn">Salir</a>
+            <?php else: ?>
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
                 <form class="login-form" method="post" action="../login.php">
                     <input class="login-input" type="text" name="usuario" placeholder="Usuario" >
                     <input class="login-input" type="password" name="contraseña" placeholder="Contraseña" >
                     <button class="login-btn" type="submit" >Ingresar</button>
                 </form>
+<<<<<<< HEAD
 
                 <a href="../logout.php" class="logout-btn">Salir</a>
             </div>
@@ -39,4 +61,10 @@
 </body>
 </html>
 
+=======
+            <?php endif; ?>
+        </div>
+    </nav>
+</header>
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
 

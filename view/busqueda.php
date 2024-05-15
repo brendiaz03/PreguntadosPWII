@@ -1,5 +1,10 @@
 <?php
     include 'Conexion_db.php';
+<<<<<<< HEAD
+=======
+
+    include 'conexion_db.php';
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
     global $conexion;
 
     if (isset($_POST["busqueda"])) {

@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+    require_once('Conexion_db.php');
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
     require_once('conexion_db.php');
     global $conexion;
 
