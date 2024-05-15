@@ -12,7 +12,6 @@
 
         public function get()
         {
-<<<<<<< HEAD
             $pokemones = $this -> model -> getAllPokemon();
             $this -> presenter -> render("view/pokemonList.mustache", ["pokemones" => $pokemones]);
         }
@@ -33,10 +32,8 @@
 
         public function addView(){
             $this->presenter->render("view/pokemonFormulario.mustache");
-=======
             $pokemones = $this->model->getAllPokemon();
             $this->presenter->render("view/pokemonList.mustache", ["pokemones" => $pokemones]);
->>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
         }
     }
 ?>
