@@ -36,7 +36,6 @@ body {
     color: rgba(0,0,0, .9);
     font-weight: 700;
     font-style: italic;
-    margin-left: 15rem;
 }
 
 .login-form {
@@ -54,7 +53,7 @@ body {
     border: 1px solid rgb(0,0,0);
 }
 
-.login-btn {
+.login-btn, .logout-btn {
     background: rgb(30,30,30);
     color: #fff;
     font-size: 1rem;
@@ -63,8 +62,10 @@ body {
     transition: .4s;
 }
 
-.login-btn:hover, .buscador-btn:hover {
+.login-btn:hover, .buscador-btn:hover, .logout-btn:hover {
     background: rgb(75,75,75);
+    text-decoration: none;
+    border: none;
 }
 
 .container {
@@ -107,14 +108,4 @@ body {
 footer{
     background: rgba(0, 0, 0, 0.85);
     color: white;
-}
-.logout-btn {
-    right: 0;
-    background: rgba(30,30,30);
-    padding: 12px;
-    color: #fff;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: .4s;
-    border-radius: 5px;
 }

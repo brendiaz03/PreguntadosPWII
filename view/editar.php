@@ -1,9 +1,13 @@
 <?php
+<<<<<<< HEAD
+    require_once("Conexion_db.php");
+=======
 
     require_once("Conexion_db.php");
 
     require_once("conexion_db.php");
 
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
     global $conexion;
 
     if(isset($_POST['numero']) && isset($_POST['nombre']) && isset($_POST['tipo'])  && isset($_POST['descripcion']) && isset($_FILES['imagen'])){

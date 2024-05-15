@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
 <?php
     include_once ("Configuration.php");
     $router = Configuration::getRouter();
@@ -8,6 +11,11 @@
 
     $router->route($controller, $action);
 
+<<<<<<< HEAD
+// index.php?controller=tours&action=get
+// tours/get
+
+=======
 /*<!doctype html>
 
 <?php
@@ -242,4 +250,5 @@ include_once 'footer.mustache';
 ?>
 </body>
 </html>*/
+>>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
 
