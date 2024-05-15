@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD:view/pokemon_formulario.php
-=======
-
->>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
 <?php
    $action = isset($_GET['numero']) ? "editar.php" : "agregar.php";
 ?>
@@ -37,12 +32,7 @@
 <body>
     <?php
     session_start();
-<<<<<<< HEAD
-=======
-
     include_once 'header.mustache';
-
->>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
     include_once 'header.php';
     ?>
     <main class="agregar-container">
@@ -80,21 +70,14 @@
         </form>
     </main>
     <?php
-<<<<<<< HEAD
-=======
         include_once 'footer.mustache';
     ?>
 </body>
 </html>
->>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
         include_once 'footer.php';
     ?>
 </body>
 </html>
-<<<<<<< HEAD
-=======
-=======
->>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
 <?php
    $action = isset($_GET['numero']) ? "editar.php" : "agregar.php";
 ?>
@@ -170,7 +153,3 @@
     ?>
 </body>
 </html>
-<<<<<<< HEAD
->>>>>>> 5b1f5862cfa8aba6bf42de46a784597662af098a:pokemon_formulario.php
-=======
->>>>>>> a9beca70fcbbf31bb29d6f78988ec00bc3f86d61
