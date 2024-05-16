@@ -14,11 +14,8 @@
             if(isset($_POST["usuario"]) && isset($_POST["password"])){
                 $username = $_POST['usuario'];
                 $password = $_POST['password'];
-
-                $this -> model -> logearse($username, $password);
-                $usuario = $this -> model -> getUsuario($username);
-
-                $this -> presenter -> render("view/pokemonListView.mustache", ["usuario" => $usuario]);
+                //cookies, etc
+                header("location:/pokedex/index.php");
                 exit();
             }
 
