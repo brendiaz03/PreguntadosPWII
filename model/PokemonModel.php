@@ -14,6 +14,16 @@
         {
             return $this -> database -> query("SELECT * FROM Pokemon WHERE id = $id");
         }
+        public function searchPokemon($busqueda){
+            $queryBusqueda = $this -> database -> query("SELECT * FROM pokemon WHERE id = '$busqueda' 
+                         OR nombre LIKE '%$busqueda%' OR tipo LIKE '%$busqueda%'");
+            $queryTodos = $this -> database -> query("SELECT * FROM Pokemon");
+            if(count($queryBusqueda) == 0){
+                return $queryTodos;
+            }
+
+            return $queryBusqueda;
+        }
         public function addPokemon($id, $nombre, $tipo, $descripcion, $imagen_tmp){
             $carpeta = "public/imagenes/";
             $imagen_nombre = "$nombre.webp";

@@ -33,6 +33,12 @@
             exit();
         }
 
+        public function search(){
+            $busqueda = $_POST["busqueda"];
+            $pokemones = $this -> model -> searchPokemon($busqueda);
+            $this -> presenter -> render("view/pokemonListView.mustache", ["pokemones" => $pokemones]);
+        }
+
         public function addView(){
             $this -> presenter -> render("view/agregarPokemonView.mustache");
         }

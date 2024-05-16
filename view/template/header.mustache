@@ -89,9 +89,9 @@
             <a href="index.php"><img class="nav-logo" src="public/imagenes/logo.png"></a>
             <h1 class="nav-titulo">Pokedex!</h1>
             <div style="display: flex; column-gap: 1rem">
-                <form class="login-form" method="post" action="../login.php">
+                <form class="login-form" method="post" action="index.php?controller=usuario&action=login">
                     <input class="login-input" type="text" name="usuario" placeholder="Usuario" >
-                    <input class="login-input" type="password" name="contraseña" placeholder="Contraseña" >
+                    <input class="login-input" type="password" name="password" placeholder="Contraseña" >
                     <button class="login-btn" type="submit" >Ingresar</button>
                 </form>
                 <a href="../logout.php" class="logout-btn">Salir</a>

@@ -1,6 +1,8 @@
 <?php
     include_once ("controller/PokemonController.php");
     include_once ("model/PokemonModel.php");
+    include_once ("controller/UsuarioController.php");
+    include_once ("model/UsuarioModel.php");
     include_once("helper/Conexion_db.php");
     include_once ("helper/Presenter.php");
     include_once ("helper/MustachePresenter.php");
@@ -9,6 +11,15 @@
     include_once('vendor/mustache/src/Mustache/Autoloader.php');
     class Configuration
     {
+        public static function getUsuarioController()
+        {
+            return new UsuarioController(self::getUsuarioModel(), self::getPresenter());
+
+        }
+        private static function getUsuarioModel()
+        {
+            return new UsuarioModel(self::getDatabase());
+        }
         public static function getPokemonController()
         {
             return new PokemonController(self::getPokemonModel(), self::getPresenter());
