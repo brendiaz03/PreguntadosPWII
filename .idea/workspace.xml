@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/view/loginInvalidoView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PokemonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PokemonController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PokemonModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PokemonModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/pokemonListView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/pokemonListView.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/config/datos.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +78,7 @@
       <workItem from="1715787547545" duration="1025000" />
       <workItem from="1715794945441" duration="407000" />
       <workItem from="1715795363483" duration="3864000" />
-      <workItem from="1715881962263" duration="3168000" />
+      <workItem from="1715881962263" duration="3334000" />
     </task>
     <servers />
   </component>
