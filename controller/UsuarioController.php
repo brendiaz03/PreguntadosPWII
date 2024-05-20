@@ -11,15 +11,19 @@
         }
 
         public function login(){
-            if(isset($_POST["usuario"]) && isset($_POST["password"])){
+            if($_POST["usuario"] != null && $_POST["password"] != null){
                 $username = $_POST['usuario'];
                 $password = $_POST['password'];
-                //cookies, etc
+                $this -> model -> logearse($username, $password);
                 header("location:/pokedex/index.php");
                 exit();
             }
-
             $this -> presenter -> render("view/loginInvalidoView.mustache");
+        }
 
+        public function logout(){
+            $this -> model -> logout();
+            header("location:/pokedex/index.php");
+            exit();
         }
     }

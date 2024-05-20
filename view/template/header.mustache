@@ -74,7 +74,6 @@
             background: rgb(75,75,75);
             color: #fff;
             text-decoration: none;
-
         }
 
          .login-input, .login-btn, .logout-btn {
@@ -88,14 +87,21 @@
         <nav class="nav">
             <a href="index.php"><img class="nav-logo" src="public/imagenes/logo.png"></a>
             <h1 class="nav-titulo">Pokedex!</h1>
-            <div style="display: flex; column-gap: 1rem">
-                <form class="login-form" method="post" action="index.php?controller=usuario&action=login">
-                    <input class="login-input" type="text" name="usuario" placeholder="Usuario" >
-                    <input class="login-input" type="password" name="password" placeholder="Contraseña" >
-                    <button class="login-btn" type="submit" >Ingresar</button>
-                </form>
-                <a href="../logout.php" class="logout-btn">Salir</a>
-            </div>
+            {{^user}}
+                <div style="display: flex; column-gap: 1rem">
+                    <form class="login-form" method="post" action="index.php?controller=usuario&action=login">
+                        <input class="login-input" type="text" name="usuario" placeholder="Usuario" >
+                        <input class="login-input" type="password" name="password" placeholder="Contraseña" >
+                        <button class="login-btn" type="submit" >Ingresar</button>
+                    </form>
+                </div>
+            {{/user}}
+            {{#user}}
+                <div style="display: flex; column-gap: 1rem">
+                    <h5 style="padding-top: .3rem">Hola! {{user}}, como has estado?</h5>
+                    <a href="index.php?controller=usuario&action=logout" class="logout-btn">Salir</a>
+                </div>
+            {{/user}}
         </nav>
     </header>
 </body>

@@ -6,10 +6,44 @@
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/config/datos.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/PokemonController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PokemonController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/Conexion_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Conexion_db.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/Dragonite.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/Sandslash.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/arbok.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/beedrill.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/bicho.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/blastoise.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/butterfree.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/caterpie.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/charizard.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/charmeleon.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/ekans.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/fearow.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/ivysaur.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/kakuna.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/metapod.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/pidgeot.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/pidgeotto.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/pidgey.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/png-transparent-pokemon-ash-illustration-ash-ketchum-pokxe9mon-go-pokxe9mon-x-and-y-pikachu-pokxe9mon-adventures-pokemon-ash-hd-child-hand-human.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/png-transparent-pokemon-pikachu-illustration-icon-pikachu-background-mammal-food-vertebrate-thumbnail.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/raichu.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/raticate.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/rattata.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/spearow.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/veneno.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/venusaur.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/volador.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/wartortle.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/imagenes/weedle.webp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/detallePokemonView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/detallePokemonView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/pokemonListView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/pokemonListView.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
