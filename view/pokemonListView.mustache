@@ -19,18 +19,22 @@
             text-decoration: none;
             background: none;
         }
+
         .tabla {
             width: 90%;
             margin: 1.5rem auto;
-            box-shadow: 0px 0px 3px 0px rgba(0,0,0, .3);
+            box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, .3);
         }
-        th,td {
+
+        th, td {
             text-align: center;
-            border-bottom: 1px solid rgba(0,0,0, .1);
+            border-bottom: 1px solid rgba(0, 0, 0, .1);
         }
+
         th:not(:last-child), td:not(:last-child) {
-            border-right: 1px solid rgba(0,0,0, .1);
+            border-right: 1px solid rgba(0, 0, 0, .1);
         }
+
         th {
             padding: 1rem 0;
         }
@@ -45,19 +49,20 @@
 
         .buscador-input {
             font-size: .9rem;
-            border: 1px solid rgba(0,0,0, .3);
+            border: 1px solid rgba(0, 0, 0, .3);
             padding: 12px 20px;
             border-radius: 5px;
             width: 100%;
             transition: .4s;
             position: relative;
         }
+
         .buscador-input:focus {
             border: 1px solid rgb(0, 0, 0);
         }
 
         .buscador-btn:hover {
-            background: rgb(75,75,75);
+            background: rgb(75, 75, 75);
             text-decoration: none;
             border: none;
         }
@@ -65,7 +70,7 @@
         .buscador-btn {
             position: absolute;
             right: 0;
-            background: rgba(30,30,30);
+            background: rgba(30, 30, 30);
             padding: 12px;
             color: #fff;
             font-size: 1rem;
@@ -77,67 +82,71 @@
     </style>
 </head>
 <body>
-    <main style='height: auto; min-height:100vh; width: 100%; padding: 5.2rem 3.5rem 3rem 3.5rem;'>
-        <form method="post" class="buscador" action="index.php?controller=pokemones&action=search">
-            <input class="buscador-input" type="text" placeholder="Ingrese el nombre, tipo o numero del pokemon..." name="busqueda">
-            <button class="buscador-btn" type="submit">Buscar</button>
-        </form>
-        <table class="tabla">
-            <thead>
-                <tr>
-                    <th style="text-align: center">Numero</th>
-                    <th style="text-align: center">Nombre</th>
-                    <th style="text-align: center">Imagen</th>
-                    <th style="text-align: center">Tipo</th>
-                    <th style="text-align: center">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#pokemones}}
-                    <tr style='cursor: pointer;'>
-                        <td style='font-size: 1.1rem;'>
-                            <a style='text-decoration: none; color: rgba(0,0,0)'
-                               href='{{id}}{{nombre}}{{tipo}}{{descripcion}}'
-                            >
-                                {{id}}
-                            </a>
-                        </td>
-                        <td style='font-size: 1.1rem'>
-                            <a style='text-decoration: none; color: rgba(0,0,0)'
-                               href='{{id}}{{nombre}}{{tipo}}{{descripcion}}'
-                            >
-                                {{nombre}}
-                            </a>
-                        </td>
-                        <td>
-                            <a style='text-decoration: none; color: rgba(0,0,0)'
-                               href="detallePokemonView.mustache?id={{id}}&nombre={{nombre}}&tipo={{tipo}}&descripcion={{descripcion}}"
-                            >
-                                <img width='70px' src='public/imagenes/{{nombre}}.webp'>
-                            </a>
-                        </td>
-                        <td>
-                            <a style='text-decoration: none; color: rgba(0,0,0)'
-                               href='{{id}}{{nombre}}{{tipo}}{{descripcion}}'
-                            >
-                                <img width='37px' src='public/imagenes/{{tipo}}.png'>
-                            </a>
-                        </td>
-                        <td>
-                            <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' href='index.php?controller=pokemones&action=addview'>Agregar</a>
-                            <form method='post' action='index.php?controller=pokemones&action=editView'>
-                                <input value='{{id}}' hidden='hidden' name='id'>
-                                <button style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' type="submit">Editar</button>
-                            </form>
-                            <form method='post' action='index.php?controller=pokemones&action=delete'>
-                                <input value='{{id}}' hidden='hidden' name='id'>
-                                <button style='cursor: pointer' type='submit'>Eliminar</button>
-                            </form>
-                        </td>
-                    </tr>
-                {{/pokemones}}
-            <tbody>
-        </table>
-    </main>
+<main style='height: auto; min-height:100vh; width: 100%; padding: 5.2rem 3.5rem 3rem 3.5rem;'>
+    <form method="post" class="buscador" action="index.php?controller=pokemones&action=search">
+        <input class="buscador-input" type="text" placeholder="Ingrese el nombre, tipo o numero del pokemon..."
+               name="busqueda">
+        <button class="buscador-btn" type="submit">Buscar</button>
+    </form>
+    <table class="tabla">
+        <thead>
+        <tr>
+            <th style="text-align: center">Numero</th>
+            <th style="text-align: center">Nombre</th>
+            <th style="text-align: center">Imagen</th>
+            <th style="text-align: center">Tipo</th>
+            <th style="text-align: center">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#pokemones}}
+            <tr style='cursor: pointer;'>
+                <td style='font-size: 1.1rem;'>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href="index.php?controller=pokemones&action=detallePokemonView&id={{id}}"
+                    >
+                    {{id}}
+                    </a>
+                </td>
+                <td style='font-size: 1.1rem'>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href="index.php?controller=pokemones&action=detallePokemonView&id={{id}}"
+                    >
+                    {{nombre}}
+                    </a>
+                </td>
+                <td>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href="index.php?controller=pokemones&action=detallePokemonView&id={{id}}"
+                    >
+                    <img width='70px' src='public/imagenes/{{nombre}}.webp'>
+                    </a>
+                </td>
+                <td>
+                    <a style='text-decoration: none; color: rgba(0,0,0)'
+                       href="index.php?controller=pokemones&action=detallePokemonView&id={{id}}"
+                    >
+                    <img width='37px' src='public/imagenes/{{tipo}}.png'>
+                    </a>
+                </td>
+                <td>
+                    <a style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem'
+                       href='index.php?controller=pokemones&action=addview'>Agregar</a>
+                    <form method='post' action='index.php?controller=pokemones&action=editView'>
+                        <input value='{{id}}' hidden='hidden' name='id'>
+                        <button style='text-decoration: none; color: rgb(0,0,0); font-size: .9rem' type="submit">
+                            Editar
+                        </button>
+                    </form>
+                    <form method='post' action='index.php?controller=pokemones&action=delete'>
+                        <input value='{{id}}' hidden='hidden' name='id'>
+                        <button style='cursor: pointer' type='submit'>Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        {{/pokemones}}
+        <tbody>
+    </table>
+</main>
 </body>
 
