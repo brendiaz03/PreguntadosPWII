@@ -21,14 +21,14 @@
             setcookie("passwordCookie", null, -1, '/');
         }
 
-        public function registro($nombreCompleto,$añoNacimiento,$sexo,$pais,$ciudad,$mail,$contraseña,$nombreUsuario,$tipoUsuario,$foto,$puntaje)
+        public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$foto,$puntaje)
         {
             $carpeta = "public/imagenes/";
             $imagen_nombre = "$nombreUsuario.webp";
             move_uploaded_file($foto, $carpeta . $imagen_nombre);
             return $this->database->execute(
-                "INSERT INTO `pokemon`(`nombreCompleto`, `añoNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `añoNacimiento` , `contraseña` , `nombreUsuario` , `tipoUsuario` , `foto`, , `puntaje`) 
-                VALUES ('$nombreCompleto', '$añoNacimiento', '$sexo', '$pais','$ciudad','$mail','$añoNacimiento','$contraseña','$nombreUsuario','$tipoUsuario','$foto','$puntaje')");
+                "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `foto`, `puntaje`) 
+                VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$foto',$puntaje)");
                 }
 
     }

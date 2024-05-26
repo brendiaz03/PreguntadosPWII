@@ -21,6 +21,13 @@ class PreguntaController
         $this->presenter->render("view/home.mustache", ["user" => $user]);
     }
 
+    public function vistaregistrar()
+    {
+
+        $this->presenter->render("view/registro.mustache");
+    }
+
+
 //    public function delete()
 //    {
 //        $id = $_POST["id"];
