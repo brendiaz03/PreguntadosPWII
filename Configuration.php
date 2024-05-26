@@ -20,12 +20,12 @@
         {
             return new UsuarioModel(self::getDatabase());
         }
-        public static function getPokemonController()
+        public static function getPreguntaController()
         {
-            return new PreguntaController(self::getPokemonModel(), self::getPresenter());
+            return new PreguntaController(self::getPreguntaModel(), self::getPresenter());
 
         }
-        private static function getPokemonModel()
+        private static function getPreguntaModel()
         {
             return new PreguntaModel(self::getDatabase());
         }
@@ -40,7 +40,7 @@
         }
         public static function getRouter()
         {
-            return new Router("getPokemonController", "get");
+            return new Router("getPreguntaController", "get");
         }
         private static function getPresenter()
         {

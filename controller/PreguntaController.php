@@ -18,7 +18,7 @@ class PreguntaController
             $user = $_COOKIE['usernameCookie'];
         }
 
-        $this->presenter->render("view/login.mustache", ["user" => $user]);
+        $this->presenter->render("view/home.mustache", ["user" => $user]);
     }
 
 //    public function delete()

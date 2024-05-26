@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/imagenes/logo-preguntados.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/imagenes/profile-user.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/home.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +54,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "rama__bren",
-    "last_opened_file_path": "C:/xampp/htdocs/Preguntados",
+    "last_opened_file_path": "C:/xampp/htdocs/Preguntados/public/imagenes",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,14 +66,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Preguntados\public\imagenes" />
       <recent name="C:\xampp\htdocs\Pokedex" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Preguntados\public\imagenes" />
       <recent name="C:\xampp\htdocs\Pokedex\helper" />
       <recent name="C:\xampp\htdocs\Pokedex\config" />
       <recent name="C:\xampp\htdocs\Pokedex\view" />
       <recent name="C:\xampp\htdocs\Pokedex" />
-      <recent name="C:\xampp\htdocs\Pokedex\view\template" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -96,7 +103,7 @@
       <workItem from="1715795363483" duration="3864000" />
       <workItem from="1715881962263" duration="4242000" />
       <workItem from="1716749651605" duration="2260000" />
-      <workItem from="1716753282900" duration="3675000" />
+      <workItem from="1716753282900" duration="5799000" />
     </task>
     <servers />
   </component>
