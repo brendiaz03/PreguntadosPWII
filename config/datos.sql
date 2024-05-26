@@ -1,20 +1,35 @@
-CREATE DATABASE pokedex;
-USE pokedex;
-CREATE TABLE pokemon( id bigint not null primary key, nombre varchar(100), tipo varchar(30), descripcion varchar(400));
-INSERT INTO Pokemon (id, nombre, tipo, descripcion)
-VALUES
-    (1, 'Squirtle', 'Agua', 'Squirtle Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (2, 'Psyduck', 'Agua', 'Psyduck Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (3, 'Magikarp', 'Agua', 'Magikarp Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (4, 'Charmander', 'Fuego', 'Charmander Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (5, 'Growlithe', 'Fuego', 'Growlithe Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (6, 'Pikachu', 'Eléctrico', 'Pikachu Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (7, 'Electabuzz', 'Eléctrico', 'Electabuzz Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (8, 'Geodude', 'Tierra', 'Geodude Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (9, 'Sandshrew', 'Tierra', 'Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (10, 'Bulbasaur', 'Planta', 'Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (11, 'Oddish', 'Planta', 'Oddish Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (12, 'Exeggcute', 'Planta', 'Exeggcute Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (13, 'Chikorita', 'Planta', 'Chikorita Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (14, 'Treecko', 'Planta', 'Treecko Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es'),
-    (15, 'Lotad', 'Planta', 'Lotad Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit es');
+CREATE DATABASE preguntados;
+USE preguntados;
+CREATE TABLE Usuario(
+                        id int PRIMARY KEY AUTO_INCREMENT,
+                        nombreCompleto varchar(50),
+                        añoNacimiento int,
+                        sexo varchar(20),
+                        pais varchar(30),
+                        ciudad varchar(30),
+                        mail varchar(30),
+                        contraseña varchar(30),
+                        nombreUsuario varchar(30),
+                        foto BIT,
+                        tipoUsuario varchar(20),
+                        puntaje int
+);
+INSERT into Usuario(nombreCompleto,añoNacimiento,sexo,pais,ciudad,mail,contraseña,nombreUsuario,foto,tipoUsuario,puntaje)
+values ('Pepito',1996,'M','Argentina','Buenos Aires','pepito@hotmail.com','123','Pepe',null,'ADMIN',10);
+
+
+
+
+CREATE TABLE Pregunta(
+                         id int PRIMARY KEY AUTO_INCREMENT,,
+                         pregunta varchar(200),
+                         categoria varchar(50),
+                         respuestaCorrecta varchar(100),
+                         respuesIncorrectaUno varchar(100),
+                         respuestaIncorrectaDos varchar(100),
+                         respuestaIncorrectaTres varchar(100),
+                         estado varchar(30),
+                         fechaRealizado DATE,
+);
+INSERT into Pregunta(pregunta,categoria,respuestaCorrecta,respuesIncorrectaUno,respuestaIncorrectaDos,respuestaIncorrectaTres,estado)
+values ('Usamos PHP y Mustache en este proyecto','Ingenieria','Si','NO','No','no','aprobada',);
