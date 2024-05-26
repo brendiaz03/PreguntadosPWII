@@ -1,6 +1,6 @@
 <?php
 
-class PokemonController
+class PreguntaController
 {
     private $model;
     private $presenter;

@@ -3,25 +3,25 @@ USE preguntados;
 CREATE TABLE Usuario(
                         id int PRIMARY KEY AUTO_INCREMENT,
                         nombreCompleto varchar(50),
-                        añoNacimiento int,
+                        anioNacimiento int,
                         sexo varchar(20),
                         pais varchar(30),
                         ciudad varchar(30),
                         mail varchar(30),
-                        contraseña varchar(30),
+                        password varchar(30),
                         nombreUsuario varchar(30),
-                        foto BIT,
+                        foto LONGBLOB,
                         tipoUsuario varchar(20),
                         puntaje int
 );
-INSERT into Usuario(nombreCompleto,añoNacimiento,sexo,pais,ciudad,mail,contraseña,nombreUsuario,foto,tipoUsuario,puntaje)
-values ('Pepito',1996,'M','Argentina','Buenos Aires','pepito@hotmail.com','123','Pepe',null,'ADMIN',10);
+INSERT into Usuario(nombreCompleto,anioNacimiento,sexo,pais,ciudad,mail,password,nombreUsuario,tipoUsuario,puntaje)
+values ('Pepito',1996,'M','Argentina','Buenos Aires','pepito@hotmail.com','123','Pepe','ADMIN',10);
 
 
 
 
 CREATE TABLE Pregunta(
-                         id int PRIMARY KEY AUTO_INCREMENT,,
+                         id int PRIMARY KEY AUTO_INCREMENT,
                          pregunta varchar(200),
                          categoria varchar(50),
                          respuestaCorrecta varchar(100),
@@ -29,7 +29,7 @@ CREATE TABLE Pregunta(
                          respuestaIncorrectaDos varchar(100),
                          respuestaIncorrectaTres varchar(100),
                          estado varchar(30),
-                         fechaRealizado DATE,
+                         fechaRealizado DATE
 );
 INSERT into Pregunta(pregunta,categoria,respuestaCorrecta,respuesIncorrectaUno,respuestaIncorrectaDos,respuestaIncorrectaTres,estado)
-values ('Usamos PHP y Mustache en este proyecto','Ingenieria','Si','NO','No','no','aprobada',);
+values ('Usamos PHP y Mustache en este proyecto','Ingenieria','Si','NO','No','no','aprobada');

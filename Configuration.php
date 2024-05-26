@@ -1,6 +1,6 @@
 <?php
-    include_once ("controller/PokemonController.php");
-    include_once ("model/PokemonModel.php");
+    include_once("controller/PreguntaController.php");
+    include_once("model/PreguntaModel.php");
     include_once ("controller/UsuarioController.php");
     include_once ("model/UsuarioModel.php");
     include_once("helper/Conexion_db.php");
@@ -22,12 +22,12 @@
         }
         public static function getPokemonController()
         {
-            return new PokemonController(self::getPokemonModel(), self::getPresenter());
+            return new PreguntaController(self::getPokemonModel(), self::getPresenter());
 
         }
         private static function getPokemonModel()
         {
-            return new PokemonModel(self::getDatabase());
+            return new PreguntaModel(self::getDatabase());
         }
         public static function getDatabase()
         {
