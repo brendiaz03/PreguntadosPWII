@@ -1,7 +1,8 @@
 <?php
     class UsuarioModel {
-
-        public function __construct(){
+        private $database;
+        public function __construct($database){
+            $this -> database = $database;
         }
 
         public function logearse($username, $password)
@@ -19,5 +20,16 @@
             setcookie("usernameCookie", null, -1, '/');
             setcookie("passwordCookie", null, -1, '/');
         }
+
+        public function registro($nombreCompleto,$añoNacimiento,$sexo,$pais,$ciudad,$mail,$contraseña,$nombreUsuario,$tipoUsuario,$foto,$puntaje)
+        {
+            $carpeta = "public/imagenes/";
+            $imagen_nombre = "$nombreUsuario.webp";
+            move_uploaded_file($foto, $carpeta . $imagen_nombre);
+            return $this->database->execute(
+                "INSERT INTO `pokemon`(`nombreCompleto`, `añoNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `añoNacimiento` , `contraseña` , `nombreUsuario` , `tipoUsuario` , `foto`, , `puntaje`) 
+                VALUES ('$nombreCompleto', '$añoNacimiento', '$sexo', '$pais','$ciudad','$mail','$añoNacimiento','$contraseña','$nombreUsuario','$tipoUsuario','$foto','$puntaje')");
+                }
+
     }
 ?>

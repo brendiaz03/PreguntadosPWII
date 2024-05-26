@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/imagenes/logo-preguntados.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/imagenes/profile-user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/registro.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/home.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +19,11 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="rama_bren" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -53,7 +54,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "rama__bren",
+    "git-widget-placeholder": "joa",
     "last_opened_file_path": "C:/xampp/htdocs/Preguntados/public/imagenes",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
