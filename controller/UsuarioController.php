@@ -18,7 +18,7 @@
                 header("location:/pokedex/index.php");
                 exit();
             }
-            $this -> presenter -> render("view/loginInvalidoView.mustache");
+            $this -> presenter -> render("view/home.mustache");
         }
 
         public function logout(){

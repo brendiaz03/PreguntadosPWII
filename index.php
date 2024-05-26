@@ -7,5 +7,3 @@
 
     $router->route($controller, $action);
 
-// index.php?controller=tours&action=get
-// tours/get
