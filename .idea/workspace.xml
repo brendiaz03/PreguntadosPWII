@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/imagenes/preguntados-home.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/home.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/pokemonListView.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobby.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registro.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registro.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,21 +48,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "rama__bren",
-    "last_opened_file_path": "C:/xampp/htdocs/Preguntados/public/imagenes",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;rama__bren&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/Preguntados/public/imagenes&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Preguntados\public\imagenes" />
