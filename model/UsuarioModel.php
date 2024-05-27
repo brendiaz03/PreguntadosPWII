@@ -14,11 +14,7 @@
 
             if ($result && count($result) > 0) {
                 session_start();
-                $_SESSION['id'] = $result[0]['id'];
-                $_SESSION['foto'] = $result[0]['foto'];
-                $_SESSION['nombreCompleto'] = $result[0]['id'];
-                $_SESSION['tipoUsuario'] = $result[0]['tipoUsuario'];
-                $_SESSION['puntaje'] = $result[0]['puntaje'];
+                $_SESSION['usuario'] = $result[0];
                 return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
             } else {
                 return ['success' => false, 'message' => 'Nombre de usuario o contraseña incorrectos'];

@@ -17,8 +17,8 @@
                 $resultado = $this->model->logearse($nombreUsuario, $password);
 
                 if ($resultado['success']) {
-                    $isLogueado = true;
-                    $this -> presenter -> render("view/lobby.mustache", ["isLogueado" => $isLogueado]);
+                    $usuario = $_SESSION['usuario'];
+                    $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario]);
                     exit();
                 } else {
                     header("Location: /preguntados/index.php");
@@ -27,7 +27,6 @@
 
         public function logout(){
             $this -> model -> logout();
-            $isLogueado = false;
             header("location:/preguntados/index.php");
             exit();
         }
@@ -40,4 +39,5 @@
             }
             $this -> presenter -> render("view/home.mustache");
         }
+
     }
