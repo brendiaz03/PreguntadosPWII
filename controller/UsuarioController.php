@@ -11,19 +11,24 @@
         }
 
         public function login(){
-            if($_POST["usuario"] != null && $_POST["password"] != null){
-                $username = $_POST['usuario'];
+                $nombreUsuario = $_POST['nombreUsuario'];
                 $password = $_POST['password'];
-                $this -> model -> logearse($username, $password);
-                header("location:/Preguntados/index.php");
-                exit();
-            }
-            $this -> presenter -> render("view/home.mustache");
+
+                $resultado = $this->model->logearse($nombreUsuario, $password);
+
+                if ($resultado['success']) {
+                    $isLogueado = true;
+                    $this -> presenter -> render("view/lobby.mustache", ["isLogueado" => $isLogueado]);
+                    exit();
+                } else {
+                    header("Location: /preguntados/index.php");
+                }
         }
 
         public function logout(){
             $this -> model -> logout();
-            header("location:/Preguntados/index.php");
+            $isLogueado = false;
+            header("location:/preguntados/index.php");
             exit();
         }
         public function registro(){
