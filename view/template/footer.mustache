@@ -5,30 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        footer{
-            background: rgba(191, 145, 237, 1);
-            color: white;
-        }
-    </style>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+{{#isLogueado}}
     <footer class="py-4">
-        <div style="height: 32vh;">
+        <div style="height: 28vh;">
             <div style="display: flex">
-                <div class="col-md-6">
-                    <div class="row">
+                <div class="container">
+                    <div class="row ">
                         <div class="col-md-12 text-center">
                             <h5>Grupo 9:</h5>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center">
                             <ul class="list-unstyled text-center">
                                 <li>Cardelli, Agustin</li>
                                 <li>Diaz, Brenda</li>
@@ -42,4 +31,5 @@
             </div>
         </div>
     </footer>
+    {{/isLogueado}}
 </body>

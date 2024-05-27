@@ -13,12 +13,9 @@ class PreguntaController
 
     public function get()
     {
-        $user = false;
-        if($_COOKIE['usernameCookie'] != null){
-            $user = $_COOKIE['usernameCookie'];
-        }
+        $isLogueado = false;
 
-        $this->presenter->render("view/home.mustache", ["user" => $user]);
+        $this->presenter->render("view/home.mustache", ["isLogueado" => $isLogueado]);
     }
 
 //    public function delete()
@@ -49,7 +46,7 @@ class PreguntaController
 //        if($_COOKIE['usernameCookie'] != null){
 //            $user = $_COOKIE['usernameCookie'];
 //        }
-//        $this->presenter->render("view/pokemonListView.mustache", ["pokemones" => $pokemones, "user" => $user]);
+//        $this->presenter->render("view/lobby.mustache", ["pokemones" => $pokemones, "user" => $user]);
 //    }
 //
 //    public function addView()
