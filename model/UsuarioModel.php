@@ -29,5 +29,16 @@
         {
             session_destroy();
         }
+
+        public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$foto,$puntaje)
+        {
+            $carpeta = "public/imagenes/";
+            $imagen_nombre = "$nombreUsuario.webp";
+            move_uploaded_file($foto, $carpeta . $imagen_nombre);
+            return $this->database->execute(
+                "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `foto`, `puntaje`) 
+                VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$foto',$puntaje)");
+                }
+
     }
 ?>
