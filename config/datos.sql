@@ -1,34 +1,42 @@
 CREATE DATABASE preguntados;
 USE preguntados;
 CREATE TABLE Usuario(
-                        id int PRIMARY KEY AUTO_INCREMENT,
-                        nombreCompleto varchar(50),
-                        anioNacimiento int,
-                        sexo varchar(20),
-                        pais varchar(30),
-                        ciudad varchar(30),
-                        mail varchar(30),
-                        password varchar(30),
-                        nombreUsuario varchar(30),
-                        tipoUsuario varchar(20),
-                        puntaje int
+    id int PRIMARY KEY AUTO_INCREMENT,
+    nombreCompleto varchar(50),
+    anioNacimiento int,
+    sexo varchar(20),
+    pais varchar(30),
+    ciudad varchar(30),
+    mail varchar(30),
+    password varchar(30),
+    nombreUsuario varchar(30),
+    tipoUsuario varchar(20),
+    puntaje int
 );
-INSERT into Usuario(nombreCompleto,anioNacimiento,sexo,pais,ciudad,mail,password,nombreUsuario,tipoUsuario,puntaje)
-values ('Pepito',1996,'M','Argentina','Buenos Aires','pepito@hotmail.com','123','Pepe','ADMIN',10);
 
-
-
-
-CREATE TABLE Pregunta(
-                         id int PRIMARY KEY AUTO_INCREMENT,
-                         pregunta varchar(200),
-                         categoria varchar(50),
-                         respuestaCorrecta varchar(100),
-                         respuesIncorrectaUno varchar(100),
-                         respuestaIncorrectaDos varchar(100),
-                         respuestaIncorrectaTres varchar(100),
-                         estado varchar(30),
-                         fechaRealizado DATE
+CREATE TABLE pregunta(
+     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+     categoria VARCHAR(50),
+     pregunta VARCHAR(200),
+     estado VARCHAR(50),
+     fechaRealizado datetime
 );
-INSERT into Pregunta(pregunta,categoria,respuestaCorrecta,respuesIncorrectaUno,respuestaIncorrectaDos,respuestaIncorrectaTres,estado)
-values ('Usamos PHP y Mustache en este proyecto','Ingenieria','Si','NO','No','no','aprobada');
+
+CREATE TABLE respuesta(
+      id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+      respuestaCorrecta VARCHAR(200),
+      respuestaIncorrecta1 VARCHAR(200),
+      respuestaIncorrecta2 VARCHAR(200),
+      respuestaIncorrecta3 VARCHAR(200),
+      pregunta INTEGER,
+      FOREIGN KEY(pregunta) REFERENCES pregunta(id)
+);
+
+CREATE TABLE partida(
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idPregunta INTEGER,
+    idUsuario INTEGER,
+    fechaRealizado DATETIME,
+    FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
+    FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+);
