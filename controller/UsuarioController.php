@@ -102,7 +102,7 @@
                 // Contenido del correo
                 $mail->isHTML(true);
                 $mail->Subject = 'Confirma tu cuenta';
-                $mail->Body    = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>";
+                $mail->Body    = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>"; // aca iria el link que confirma la cuenta del usuario
                 $mail->AltBody = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>";
 
                 $mail->send();
