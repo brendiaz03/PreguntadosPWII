@@ -57,11 +57,11 @@
                 $usuarioExistente = $this -> model -> buscarUsuario($nombreUsuario, $mail);
                 if($usuarioExistente == null){
                     /*
-                       --- LOGICA PHP MAIL ---
-                        $to = 'fweigel24@gmail.com';
-                        $subject = 'Confirmacion de tu cuenta de Preguntados';
+                     --- LOGICA PHP MAIL ---
+                        $to = 'user@gmail.com';
+                        $subject = 'Confirmacion tu cuenta de Preguntados';
                         $message = 'Ingresa al siguiente link para confirmar tu cuenta: http://localhost/preguntados/index.php?controller=usuario&action=confirmarusuario';
-                        $headers = 'From: felicarp50@gmail.com';
+                        $headers = 'From: admin@gmail.com';
                         mail($to, $subject, $message, $headers);
                     */
 
