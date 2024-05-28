@@ -10,7 +10,6 @@ CREATE TABLE Usuario(
                         mail varchar(30),
                         password varchar(30),
                         nombreUsuario varchar(30),
-                        foto LONGBLOB,
                         tipoUsuario varchar(20),
                         puntaje int
 );
