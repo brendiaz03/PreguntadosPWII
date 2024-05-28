@@ -21,7 +21,7 @@
                     $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario]);
                     exit();
                 } else {
-                    header("Location: /preguntados/index.php");
+                    $this -> presenter -> render("view/home.mustache", ['error' => true, 'message' => 'Usuario o password incorrecta.']);
                 }
         }
 
@@ -30,14 +30,41 @@
             header("location:/preguntados/index.php");
             exit();
         }
-        public function registro(){
-            if($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null&& $_POST["sexo"] != null&& $_POST["pais"] != null&& $_POST["ciudad"] != null&& $_POST["mail"] != null&& $_POST["password"] != null&& $_POST["nombreUsuario"] !=null && $_POST["tipoUsuario"] != null && $_POST["foto"] != null){
 
-                $this -> model -> registro($_POST["nombreCompleto"],$_POST["anioNacimiento"],$_POST["sexo"],$_POST["pais"],$_POST["ciudad"],$_POST["mail"],$_POST["password"],$_POST["nombreUsuario"],$_POST["tipoUsuario"],$_POST["foto"],0);
-                header("location:/Preguntados/index.php");
-                exit();
-            }
+        public function vistaRegistro(){
+            $this -> presenter -> render("view/registro.mustache");
+        }
+
+        public function vistaLogin(){
             $this -> presenter -> render("view/home.mustache");
+        }
+        public function registro(){
+            if($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null&& $_POST["sexo"]
+                != null&& $_POST["pais"] != null&& $_POST["ciudad"] != null&& $_POST["mail"] != null&& $_POST["password"]
+                != null&& $_POST["nombreUsuario"] !=null && $_POST["tipoUsuario"] != null
+            ){
+                $nombre = $_POST["nombreCompleto"];
+                $nacimiento = $_POST["anioNacimiento"];
+                $sexo = $_POST["sexo"];
+                $pais = $_POST["pais"];
+                $ciudad = $_POST["ciudad"];
+                $mail = $_POST["mail"];
+                $password = $_POST["password"];
+                $nombreUsuario = $_POST["nombreUsuario"];
+                $tipoUsuario = $_POST["tipoUsuario"];
+                $fotoTmp = $_FILES['foto']['tmp_name'];
+
+                $usuarioExistente = $this -> model -> buscarUsuario($nombreUsuario, $mail);
+                if($usuarioExistente == null){
+                    $this -> model -> registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp,);
+                    header("location:/preguntados/index.php");
+                    exit();
+                }else {
+                    $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
+                }
+            }else {
+                $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'Debe completar todos los campos del formulario para poder continuar.']);
+            }
         }
 
     }

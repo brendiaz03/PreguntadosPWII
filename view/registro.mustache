@@ -18,7 +18,7 @@
             <div class="col-md-6 d-flex justify-content-center">
                 <div>
                     <h1 class="mt-3">Registro de Usuario</h1>
-                    <form action="index.php?controller=usuario&action=registro" method="post">
+                    <form action="index.php?controller=usuario&action=registro" method="post" enctype="multipart/form-data">
                         <div class="mb-2">
                             <label for="nombreCompleto" class="form-label">Nombre Completo:</label>
                             <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" required>
@@ -75,13 +75,15 @@
                                 <option value="Premium">Premium</option>
                             </select>
                         </div>
-
+                        {{#error}}
+                            <p style="font-size: .9rem; color: red">{{message}}</p>
+                        {{/error}}
 
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
                     <div class="d-flex gap-2">
                         <p>¿Ya sos miembro?</p>
-                        <a href="index.php?controller=pregunta&action=vistaregistrar">Logueate</a>
+                        <a href="index.php?controller=pregunta&action=vistaLogin">Logueate</a>
                     </div>
                 </div>
             </div>

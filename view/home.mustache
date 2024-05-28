@@ -25,10 +25,13 @@
                         <div class="form-group">
                             <input class="form-control" type="password" name="password" placeholder="password">
                         </div>
+                        {{#error}}
+                            <p style="color: red; font-size: .9rem">{{message}}</p>
+                        {{/error}}
                         <button class="btn btn-primary" type="submit">INICIAR SESIÓN</button>
                     </form>
                     <p>¿No sos miembro?</p>
-                    <a href="index.php?controller=pregunta&action=vistaregistrar">Registrate</a>
+                    <a href="index.php?controller=usuario&action=vistaRegistro">Registrate</a>
                 </div>
             </div>
         </div>
