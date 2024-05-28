@@ -16,3 +16,9 @@ footer{
     background: rgba(191, 145, 237, 1);
     color: white;
 }
+
+.container {
+    height: auto;
+    min-height: 100vh;
+    padding: 2rem;
+}
