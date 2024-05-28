@@ -1,4 +1,11 @@
 <?php
+    require 'libs/PHPMailer/src/Exception.php';
+    require 'libs/PHPMailer/src/PHPMailer.php';
+    require 'libs/PHPMailer/src/SMTP.php';
+    require 'config/config.php';
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
     class UsuarioController{
         private $model;
@@ -56,23 +63,52 @@
 
                 $usuarioExistente = $this -> model -> buscarUsuario($nombreUsuario, $mail);
                 if($usuarioExistente == null){
-                    /*
-                     --- LOGICA PHP MAIL ---
-                        $to = 'user@gmail.com';
-                        $subject = 'Confirmacion tu cuenta de Preguntados';
-                        $message = 'Ingresa al siguiente link para confirmar tu cuenta: http://localhost/preguntados/index.php?controller=usuario&action=confirmarusuario';
-                        $headers = 'From: admin@gmail.com';
-                        mail($to, $subject, $message, $headers);
-                    */
-
-                    $this -> model -> registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp,);
-                    header("location:/preguntados/index.php");
-                    exit();
+                    $this -> model -> registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp);
+                    $this -> enviarConfirmacionDeCuenta($mail);
+                    //header("location:/preguntados/index.php");
+                    //exit();
                 }else {
                     $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
                 }
             }else {
                 $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'Debe completar todos los campos del formulario para poder continuar.']);
+            }
+        }
+        private function enviarConfirmacionDeCuenta($email) {
+            $mail = new PHPMailer(true);
+
+            try {
+                // Configuraciones del servidor SMTP
+                $mail->isSMTP();
+                $mail->Host       = SMTP_HOST;
+                $mail->SMTPAuth   = true;
+                $mail->Username   = SMTP_USER;
+                $mail->Password   = SMTP_PASS;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port       = SMTP_PORT;
+
+                $mail->SMTPOptions = array(
+                    'ssl' => array(
+                        'verify_peer' => false,
+                        'verify_peer_name' => false,
+                        'allow_self_signed' => true
+                    )
+                );
+
+                // Remitente y destinatario
+                $mail->setFrom(FROM_EMAIL, FROM_NAME);
+                $mail->addAddress($email);
+
+                // Contenido del correo
+                $mail->isHTML(true);
+                $mail->Subject = 'Confirma tu cuenta';
+                $mail->Body    = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>";
+                $mail->AltBody = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>";
+
+                $mail->send();
+                echo "Correo enviado exitosamente";
+            } catch (Exception $e) {
+                echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
             }
         }
 
