@@ -26,15 +26,20 @@
             session_destroy();
         }
 
-        public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$foto,$puntaje)
-        {
-            $carpeta = "public/imagenes/";
-            $imagen_nombre = "$nombreUsuario.webp";
-            move_uploaded_file($foto, $carpeta . $imagen_nombre);
-            return $this->database->execute(
-                "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `foto`, `puntaje`) 
-                VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$foto',$puntaje)");
+        public function buscarUsuario($nombreUsuario, $mail){
+            $usuarioExistenteSQL = "SELECT 1 FROM usuario WHERE nombreUsuario = '$nombreUsuario' OR mail = '$mail'";
+            return $this -> database -> query($usuarioExistenteSQL);
         }
-        
+
+        public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$fotoTmp)
+        {
+            $carpeta = "public/imagenes/usuarios/";
+            $imagen_nombre = "$nombreUsuario.webp";
+            move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
+            return $this -> database -> execute(
+                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `puntaje`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','0')");
+        }
+
     }
 ?>
