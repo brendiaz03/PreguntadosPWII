@@ -48,7 +48,7 @@
         public function registro(){
             if($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null&& $_POST["sexo"]
                 != null&& $_POST["pais"] != null&& $_POST["ciudad"] != null&& $_POST["mail"] != null&& $_POST["password"]
-                != null&& $_POST["nombreUsuario"] !=null && $_POST["tipoUsuario"] != null
+                != null&& $_POST["nombreUsuario"] !=null && $_POST["tipoUsuario"] != null && $_FILES['foto'] != null
             ){
                 $nombre = $_POST["nombreCompleto"];
                 $nacimiento = $_POST["anioNacimiento"];
