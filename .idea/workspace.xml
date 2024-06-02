@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../preguntados/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../preguntados/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preguntados/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../preguntados/config/db.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preguntados/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../preguntados/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preguntados/view/home.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/../preguntados/view/home.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../preguntados/view/registro.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/../preguntados/view/registro.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/registro.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registro.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +55,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "<unknown>",
+    "git-widget-placeholder": "rama__bren",
     "last_opened_file_path": "C:/xampp/htdocs/main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
