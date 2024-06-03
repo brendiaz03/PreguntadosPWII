@@ -13,9 +13,7 @@ class PreguntaController
 
     public function get()
     {
-        $isLogueado = false;
-
-        $this->presenter->render("view/home.mustache", ["isLogueado" => $isLogueado]);
+        $this->presenter->render("view/home.mustache");
     }
 
     public function vistaregistrar()
