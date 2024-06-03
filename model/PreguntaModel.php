@@ -6,39 +6,53 @@
         {
             $this -> database = $database;
         }
-//        public function getAllPokemon()
-//        {
-//            return $this -> database -> query("SELECT * FROM Pokemon");
-//        }
-//        public function getPokemon($id)
-//        {
-//            return $this -> database -> query("SELECT * FROM Pokemon WHERE id = $id");
-//        }
-//        public function searchPokemon($busqueda){
-//            $queryBusqueda = $this -> database -> query("SELECT * FROM pokemon WHERE id = '$busqueda'
-//                         OR nombre LIKE '%$busqueda%' OR tipo LIKE '%$busqueda%'");
-//            $queryTodos = $this -> database -> query("SELECT * FROM Pokemon");
-//            if(count($queryBusqueda) == 0){
-//                return $queryTodos;
-//            }
-//
-//            return $queryBusqueda;
-//        }
-//        public function addPokemon($id, $nombre, $tipo, $descripcion, $imagen_tmp){
-//            $carpeta = "public/imagenes/";
-//            $imagen_nombre = "$nombre.webp";
-//            move_uploaded_file($imagen_tmp, $carpeta.$imagen_nombre);
-//            return $this -> database -> execute("INSERT INTO `pokemon`(`id`, `nombre`, `tipo`, `descripcion`) VALUES ('$id', '$nombre', '$tipo', '$descripcion')");
-//        }
-//        public function deletePokemon($id){
-//            return $this -> database -> execute("DELETE FROM pokemon WHERE id = $id");
-//        }
-//        public function editPokemon($id, $nombre, $tipo, $descripcion, $imagen_tmp){
-//            $carpeta = "public/imagenes/";
-//            $imagen_nombre = "$nombre.webp";
-//            move_uploaded_file($imagen_tmp, $carpeta.$imagen_nombre);
-//
-//            return $this -> database -> execute("UPDATE pokemon SET nombre = '$nombre', tipo = '$tipo', descripcion = '$descripcion' WHERE id = $id");
-//        }
+
+
+        public function getPreguntaByNivel($nivel){
+            $sql = "SELECT *
+FROM pregunta AS p
+WHERE p.nivel = '$nivel'
+LIMIT 1";
+            $pregunta = $this->database->query($sql);
+            $_SESSION['pregunta'] = $pregunta[0];
+            $preguntaID = $_SESSION['pregunta']['id'];
+            $sqlDos = "SELECT *
+FROM respuesta AS r
+WHERE r.pregunta = '$preguntaID'
+LIMIT 1";
+            $respuestas = $this->database->query($sqlDos);
+            $_SESSION['respuestas'] = $respuestas[0];
+        }
+
+        public function getUsuarioById($idUsuario){
+            $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
+            $result = $this->database->query($sql);
+            $_SESSION['usuario'] = $result[0];
+        }
+
+    public function getRespuestaCorrectaById($idRespuesta){
+        $sql = "SELECT respuestaCorrecta FROM respuesta WHERE id = '$idRespuesta' LIMIT 1";
+        $result = $this->database->query($sql);
+
+        $_SESSION['respuestaCorrecta'] = $result[0]; ;
+    }
+
+        public function getPartida($idUsuario, $nivel){
+            $this->getUsuarioById($idUsuario);
+            $this->getPreguntaByNivel($nivel);
+        }
+
+        public function sumarPuntajeAUsuario($idUsuario){
+            return $this -> database -> execute("UPDATE Usuario
+SET puntaje = puntaje + 1
+WHERE id = '$idUsuario'");
+        }
+        public function guardarPartida($idUsuario, $idPregunta, $correcto){
+            if($correcto){
+                $this->sumarPuntajeAUsuario($_SESSION['usuario']['id']);
+            }
+            $fecha_actual = date('Y-m-d H:i:s');
+            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, correcta, fechaRealizado) VALUES ($idPregunta, $idUsuario, $correcto, '$fecha_actual')");
+        }
     }
 ?>

@@ -12,6 +12,7 @@ CREATE TABLE Usuario(
     password varchar(30),
     nombreUsuario varchar(30),
     tipoUsuario varchar(20),
+    nivel VARCHAR(50),
     puntaje int
 );
 
@@ -20,6 +21,7 @@ CREATE TABLE pregunta(
      categoria VARCHAR(50),
      pregunta VARCHAR(200),
      estado VARCHAR(50),
+    nivel VARCHAR(50),
      fechaRealizado datetime
 );
 
@@ -37,6 +39,7 @@ CREATE TABLE partida(
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idPregunta INTEGER,
     idUsuario INTEGER,
+    correcta BOOLEAN,
     fechaRealizado DATETIME,
     FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
     FOREIGN KEY(idUsuario) REFERENCES usuario(id)

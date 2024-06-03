@@ -10,7 +10,11 @@
     {{#usuario}}
         <h1>{{nombreCompleto}}</h1>
         <p>Puntos: {{puntaje}}</p>
-        <button>JUGAR</button>
+        <form method="post" action="index.php?controller=pregunta&action=partida">
+            <input value='{{id}}' hidden='hidden' name='id'>
+            <input value='{{nivel}}' hidden='hidden' name='nivel'>
+            <button class="nav-link" type="submit">JUGAR PARTIDA</button>
+        </form>
         <button>RANKIG</button>
     {{/usuario}}
 </main>
