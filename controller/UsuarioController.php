@@ -25,7 +25,8 @@
 
                 if ($resultado['success']) {
                     $usuario = $_SESSION['usuario'];
-                    $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario]);
+                    $textoNav = "PREGUNTADOS";
+                    $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav]);
                     exit();
                 } else {
                     $this -> presenter -> render("view/home.mustache", ['error' => true, 'message' => 'Usuario o password incorrecta.']);
@@ -110,6 +111,12 @@
             } catch (Exception $e) {
                 echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
             }
+        }
+
+        public function perfil(){
+            $textoNav = "PERFIL";
+            $this -> model -> getUsuarioById($_POST["id"]);
+            $this -> presenter -> render("view/perfil.mustache", ["textoNav" => $textoNav, "usuario" => $_SESSION['usuario']]);
         }
 
     }
