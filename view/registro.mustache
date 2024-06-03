@@ -26,7 +26,6 @@
 
                         <div class="mb-2">
                             <label for="anioNacimiento" class="form-label">Año de Nacimiento:</label>
-<!--                            <input type="date" class="form-control" id="anioNacimiento" name="anioNacimiento" required>-->
                             <input type="number" class="form-control" id="anioNacimiento" name="anioNacimiento" required>
                         </div>
 
@@ -72,8 +71,9 @@
                         <div class="mb-2">
                             <label for="tipoUsuario" class="form-label">Tipo de Usuario:</label>
                             <select class="form-select" id="tipoUsuario" name="tipoUsuario" required>
-                                <option value="Regular">Regular</option>
-                                <option value="Premium">Premium</option>
+                                <option value="Jugador">JUGADOR</option>
+                                <option value="Admin">ADMINISTRADOR</option>
+                                <option value="Editor">EDITOR</option>
                             </select>
                         </div>
                         {{#error}}
