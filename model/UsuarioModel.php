@@ -33,12 +33,12 @@
 
         public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$fotoTmp)
         {
-//            $carpeta = "public/imagenes/usuarios/";
-//            $imagen_nombre = "$nombreUsuario.webp";
-//            move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
+            $carpeta = "public/imagenes/usuarios/";
+            $imagen_nombre = "$nombreUsuario.jpg";
+            move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
             return $this -> database -> execute(
                     "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$fotoTmp','0')");
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0')");
         }
 
         public function getUsuarioById($idUsuario)

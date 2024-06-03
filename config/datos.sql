@@ -8,12 +8,11 @@ CREATE TABLE Usuario(
     pais varchar(30),
     ciudad varchar(30),
     mail varchar(30),
-    foto BIT,
+    foto varchar(100),
     password varchar(30),
     nombreUsuario varchar(30),
     tipoUsuario varchar(20),
     puntaje int
-
 );
 
 CREATE TABLE pregunta(
