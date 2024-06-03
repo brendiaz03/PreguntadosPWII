@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="foto" />
+    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,11 +16,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="651e68a5600b6a4ac5b448223460bfde0e15dd5b" />
+        <entry key="$PROJECT_DIR$" value="rama_bren" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -50,9 +49,8 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;joa&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/Preguntados&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;rama__bren&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -103,20 +101,7 @@
       <workItem from="1716749651605" duration="2260000" />
       <workItem from="1716753282900" duration="5799000" />
       <workItem from="1716912511797" duration="2448000" />
-      <workItem from="1717373162678" duration="362000" />
-      <workItem from="1717373526640" duration="275000" />
-      <workItem from="1717373802275" duration="272000" />
-      <workItem from="1717374403017" duration="805000" />
     </task>
-    <task id="LOCAL-00001" summary="foto">
-      <option name="closed" value="true" />
-      <created>1717374471576</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1717374471576</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -127,33 +112,10 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="joa" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-              <option name="HIGHLIGHTERS">
-                <map>
-                  <entry key="CURRENT_BRANCH" value="true" />
-                  <entry key="MERGE_COMMITS" value="true" />
-                  <entry key="MY_COMMITS" value="true" />
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="foto" />
-    <option name="LAST_COMMIT_MESSAGE" value="foto" />
   </component>
 </project>

@@ -41,5 +41,12 @@
                         VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$fotoTmp','0')");
         }
 
+        public function getUsuarioById($idUsuario)
+        {
+            $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
+            $result = $this->database->query($sql);
+            session_start();
+            $_SESSION['usuario'] = $result[0];
+        }
     }
 ?>
