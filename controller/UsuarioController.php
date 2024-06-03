@@ -66,8 +66,7 @@
                 if($usuarioExistente == null){
                     $this -> model -> registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp);
                     $this -> enviarConfirmacionDeCuenta($mail);
-                    //header("location:/preguntados/index.php");
-                    //exit();
+
                 }else {
                     $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
                 }
@@ -117,6 +116,12 @@
             $textoNav = "PERFIL";
             $this -> model -> getUsuarioById($_POST["id"]);
             $this -> presenter -> render("view/perfil.mustache", ["textoNav" => $textoNav, "usuario" => $_SESSION['usuario']]);
+        }
+
+        public function lobby(){
+            $textoNav = "PERFIL";
+            $this -> model -> getUsuarioById($_POST["id"]);
+            $this -> presenter -> render("view/lobby.mustache", ["usuario" => $_SESSION['usuario'], "textoNav" => $textoNav]);
         }
 
     }
