@@ -8,10 +8,14 @@
         }
 
 
-        public function getPreguntaByNivel($nivel){
+        public function getPreguntaByNivel($nivel, $idUsuario){
             $sql = "SELECT *
 FROM pregunta AS p
 WHERE p.nivel = '$nivel'
+AND p.id NOT IN (
+    SELECT idPregunta
+    FROM partida
+    WHERE idUsuario = $idUsuario)
 LIMIT 1";
             $pregunta = $this->database->query($sql);
             $_SESSION['pregunta'] = $pregunta[0];
@@ -37,9 +41,10 @@ LIMIT 1";
         $_SESSION['respuestaCorrecta'] = $result[0]; ;
     }
 
+
         public function getPartida($idUsuario, $nivel){
             $this->getUsuarioById($idUsuario);
-            $this->getPreguntaByNivel($nivel);
+            $this->getPreguntaByNivel($nivel, $idUsuario);
         }
 
         public function sumarPuntajeAUsuario($idUsuario){
