@@ -37,8 +37,8 @@
 //            $imagen_nombre = "$nombreUsuario.webp";
 //            move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
             return $this -> database -> execute(
-                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `puntaje`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','0')");
+                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$fotoTmp','0')");
         }
 
         public function getUsuarioById($idUsuario)
