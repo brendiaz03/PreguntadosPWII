@@ -21,9 +21,10 @@
                 $nombreUsuario = $_POST['nombreUsuario'];
                 $password = $_POST['password'];
 
-                $resultado = $this->model->logearse($nombreUsuario, $password);
+            $resultado = $this->model->logearse($nombreUsuario, $password);
 
                 if ($resultado['success']) {
+                    session_start();
                     $usuario = $_SESSION['usuario'];
                     $textoNav = "PREGUNTADOS";
                     $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav]);
@@ -114,14 +115,14 @@
 
         public function perfil(){
             $textoNav = "PERFIL";
-            $this -> model -> getUsuarioById($_POST["id"]);
-            $this -> presenter -> render("view/perfil.mustache", ["textoNav" => $textoNav, "usuario" => $_SESSION['usuario']]);
+            $usuario = $this -> model -> getUsuarioById($_POST["id"]);
+            $this -> presenter -> render("view/perfil.mustache", ["textoNav" => $textoNav, "usuario" => $usuario]);
         }
 
         public function lobby(){
             $textoNav = "PERFIL";
-            $this -> model -> getUsuarioById($_POST["id"]);
-            $this -> presenter -> render("view/lobby.mustache", ["usuario" => $_SESSION['usuario'], "textoNav" => $textoNav]);
+            $usuario = $this -> model -> getUsuarioById($_POST["id"]);
+            $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav]);
         }
 
     }

@@ -13,7 +13,6 @@
             $result = $this->database->query($sql);
 
             if ($result && count($result) > 0) {
-                session_start();
                 $_SESSION['usuario'] = $result[0];
                 return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
             } else {
@@ -44,9 +43,7 @@
         public function getUsuarioById($idUsuario)
         {
             $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
-            $result = $this->database->query($sql);
-            session_start();
-            $_SESSION['usuario'] = $result[0];
+            return $this->database->query($sql);
         }
     }
 ?>

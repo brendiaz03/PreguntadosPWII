@@ -8,6 +8,7 @@
 <body>
 <main>
     {{#usuario}}
+<!--        me tuve que ellevar el usuario otra vez porque no me tomaba la session-->
     <form method="post" action="index.php?controller=usuario&action=lobby">
         <input value='{{id}}' hidden='hidden' name='id'>
         <h1>{{resultado}}</h1>
