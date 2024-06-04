@@ -23,15 +23,15 @@ CREATE TABLE pregunta(
      id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
      categoria VARCHAR(50),
      pregunta VARCHAR(200),
-     estado VARCHAR(50),
-    nivel VARCHAR(50),
+     estado VARCHAR(50), -- activa, reportada, sugerida
+     nivel VARCHAR(50),
      fechaRealizado datetime
 );
 
 CREATE TABLE respuesta(
       idrespuesta INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
       respuesta VARCHAR(200),
-        corrdecta bool,
+      correcta bool,
       pregunta INTEGER,
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );

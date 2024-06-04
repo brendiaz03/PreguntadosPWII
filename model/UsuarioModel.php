@@ -14,10 +14,11 @@
 
             if ($result && count($result) > 0) {
                 $_SESSION['usuario'] = $result[0];
-                if($_SESSION['usuario']['activo'] == 1 && $_SESSION['usuario']['hash'] == null){
+                if($_SESSION['usuario']['activo'] == 1){
                     return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
+                }else {
+                    return ['success' => false, 'message' => 'Debe activar su cuenta para iniciar sesion!'];
                 }
-                return ['success' => false, 'message' => 'Debe activar su cuenta para poder loguearse'];
             } else {
                 return ['success' => false, 'message' => 'Nombre de usuario o contraseña incorrectos'];
             }

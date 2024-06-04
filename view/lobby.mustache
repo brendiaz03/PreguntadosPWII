@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main>
+<main style="height: 80vh; padding: 2rem">
     {{#usuario}}
         <h1>{{nombreCompleto}}</h1>
         <p>Puntos: {{puntaje}}</p>
@@ -15,7 +15,7 @@
             <input value='{{nivel}}' hidden='hidden' name='nivel'>
             <button class="nav-link" type="submit">JUGAR PARTIDA</button>
         </form>
-        <button>RANKIG</button>
+        <button>RANKING</button>
     {{/usuario}}
 </main>
 </body>

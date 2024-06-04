@@ -37,7 +37,7 @@
 
         public function logout(){
             $this -> model -> logout();
-            header("location:/preguntados/index.php");
+            header("location:/");
             exit();
         }
 
@@ -112,7 +112,13 @@
                                     <button type='submit'>Confirmar cuenta</button>
                                 </form>
                             ";
-                $mail -> AltBody = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/$hash'>Confirmar cuenta</a>";
+                $mail -> AltBody = "
+                                Haz click en el siguiente enlace para confirmar tu cuenta: 
+                                <form method='post' action='http://localhost/usuario/confirmarcuenta'>
+                                    <input name='hash' value='$hash' type='hidden'>
+                                    <button type='submit'>Confirmar cuenta</button>
+                                </form>
+                            ";
 
                 $mail->send();
                 echo "<p style='padding: 1rem; font-size: 1.3rem'>Hemos enviado un correo a su direccion de email para confirmar su cuenta.</p>";
@@ -138,14 +144,25 @@
 
         public function perfil(){
             $textoNav = "PERFIL";
-            $usuario = $this -> model -> getUsuarioById($_SESSION['usuario']['id']);
-            $this -> presenter -> render("view/perfil.mustache", ["textoNav" => $textoNav, "usuario" => $usuario]);
+            $nombreUsuario = $_SESSION['usuario']['nombreUsuario'];
+            $nombreCompleto = $_SESSION['usuario']['nombreCompleto'];
+            $anioNacimiento = $_SESSION['usuario']['anioNacimiento'];
+            $mail = $_SESSION['usuario']['mail'];
+            $puntaje = $_SESSION['usuario']['puntaje'];
+            $this -> presenter -> render(
+                "view/perfil.mustache",
+                ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
+                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje
+                ]
+            );
         }
 
         public function lobby(){
-            $textoNav = "PERFIL";
-            $usuario = $this -> model -> getUsuarioById($_SESSION['usuario']['id']);
-            $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav]);
+            $idUsuario = $_SESSION['usuario']["id"];
+            $usuario = $_SESSION['usuario']["nombreUsuario"];
+            $puntajeUsuario = $_SESSION['usuario']["puntaje"];
+            $textoNav = "PREGUNTADOS";
+            $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav, "puntaje" => $puntajeUsuario, "id" => $idUsuario]);
         }
 
     }
