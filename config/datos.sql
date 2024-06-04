@@ -26,11 +26,9 @@ CREATE TABLE pregunta(
 );
 
 CREATE TABLE respuesta(
-      id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-      respuestaCorrecta VARCHAR(200),
-      respuestaIncorrecta1 VARCHAR(200),
-      respuestaIncorrecta2 VARCHAR(200),
-      respuestaIncorrecta3 VARCHAR(200),
+      idrespuesta INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+      respuesta VARCHAR(200),
+        corrdecta bool,
       pregunta INTEGER,
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );

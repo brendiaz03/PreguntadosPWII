@@ -24,8 +24,9 @@
             $resultado = $this->model->logearse($nombreUsuario, $password);
 
                 if ($resultado['success']) {
-                    session_start();
-                    $usuario = $_SESSION['usuario'];
+
+                    $usuario = $_SESSION['usuario']["nombreUsuario"];
+                    $puntajeUsuario = $_SESSION['usuario']["puntaje"];
                     $textoNav = "PREGUNTADOS";
                     $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav]);
                     exit();
@@ -103,6 +104,7 @@
                 // Contenido del correo
                 $mail->isHTML(true);
                 $mail->Subject = 'Confirma tu cuenta';
+
                 $mail->Body    = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>"; // aca iria el link que confirma la cuenta del usuario
                 $mail->AltBody = "Haz click en el siguiente enlace para confirmar tu cuenta: <a href='http://localhost/preguntados/index.php'>Confirmar cuenta</a>";
 

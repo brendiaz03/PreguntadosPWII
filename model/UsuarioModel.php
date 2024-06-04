@@ -13,6 +13,7 @@
             $result = $this->database->query($sql);
 
             if ($result && count($result) > 0) {
+
                 $_SESSION['usuario'] = $result[0];
                 return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
             } else {
