@@ -1,5 +1,6 @@
 CREATE DATABASE preguntados;
 USE preguntados;
+
 CREATE TABLE Usuario(
     id int PRIMARY KEY AUTO_INCREMENT,
     nombreCompleto varchar(50),
@@ -13,7 +14,9 @@ CREATE TABLE Usuario(
     nombreUsuario varchar(30),
     tipoUsuario varchar(20),
     nivel VARCHAR(50),
-    puntaje int
+    puntaje int,
+    activo bool,
+    hash VARCHAR(250)
 );
 
 CREATE TABLE pregunta(
