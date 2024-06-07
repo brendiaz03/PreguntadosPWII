@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/config/datos.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/UsuarioModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/UsuarioModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/home.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -55,6 +53,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;PHP Script.PreguntaController.php.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;rama__bren&quot;,
@@ -75,11 +74,11 @@
       <recent name="C:\xampp\htdocs\Pokedex" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Preguntados\public\css" />
+      <recent name="C:\xampp\htdocs\Preguntados\public" />
       <recent name="C:\xampp\htdocs\Preguntados\public\imagenes" />
       <recent name="C:\xampp\htdocs\Pokedex\helper" />
       <recent name="C:\xampp\htdocs\Pokedex\config" />
-      <recent name="C:\xampp\htdocs\Pokedex\view" />
-      <recent name="C:\xampp\htdocs\Pokedex" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -114,6 +113,9 @@
       <workItem from="1717443479241" duration="629000" />
       <workItem from="1717452732917" duration="4711000" />
       <workItem from="1717457623896" duration="2356000" />
+      <workItem from="1717538385072" duration="605000" />
+      <workItem from="1717729597739" duration="4086000" />
+      <workItem from="1717733814209" duration="3293000" />
     </task>
     <servers />
   </component>

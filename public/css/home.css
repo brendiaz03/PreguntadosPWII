@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,700&display=swap');
+
+.cont-home {
+    display: flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items: center;
+}
+
+.imagenCont{
+    width: 50%;
+    height: auto;
+}
+main img {
+    width: 100%;
+    height: auto;
+}
+
+.cont-form-login {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+}
+
+.button-gen {
+    cursor: pointer;
+    background-color: #bf91ed;
+    color: white;
+    padding: 1rem;
+    border: none;
+}
+
+a {
+    color: blue;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
