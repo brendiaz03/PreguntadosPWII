@@ -50,12 +50,12 @@
         public function guardarPartida($idUsuario, $idPregunta, $respondioBien){
             if($respondioBien == 1){
                 $this -> sumarPuntajeAUsuario($idUsuario);
-                $nuevoPuntaje = $this->obtenerPuntajeUsuario($idUsuario);
-
-                $_SESSION['usuario']["puntaje"] = $nuevoPuntaje;
+//                $nuevoPuntaje = $this->obtenerPuntajeUsuario($idUsuario);
+//
+//                $_SESSION['usuario']["puntaje"] = $nuevoPuntaje;
             }
             $fecha_actual = date('Y-m-d H:i:s');
-            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, respondioBien) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
+            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, correcta) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
         }
     }
 ?>

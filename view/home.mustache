@@ -5,17 +5,14 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-<main style="padding-bottom: 2rem">
-    <div class="container">
-        <div class="row pt-4">
-            <div class="col-md-6">
-                <img src="../public/imagenes/preguntados-home.jpg" alt="Imagen de bienvenida" width="100%" style="object-fit: contain">
+<main>
+    <div class="cont-home">
+            <div class="imgagen">
+                <img clase="img" src="../public/imagenes/preguntados-home.jpg" alt="Imagen de bienvenida" width="100%" style="object-fit: contain">
             </div>
-            <div class="col-md-5 d-flex justify-content-center align-items-center">
-                <div>
+            <div class="cont-form-login">
                     <h1>HOLA!</h1>
                     <p>Bienvenido de Nuevo a Preguntados</p>
                     <form class="login-form" method="post" action="/usuario/login">
@@ -28,13 +25,11 @@
                         {{#error}}
                             <p style="color: red; font-size: .9rem">{{message}}</p>
                         {{/error}}
-                        <button class="btn btn-primary" type="submit">INICIAR SESIÓN</button>
+                        <button class="button-gen" type="submit">INICIAR SESIÓN</button>
                     </form>
                     <p>¿No sos miembro?</p>
                     <a href="/usuario/vistaRegistro">Registrate</a>
-                </div>
             </div>
-        </div>
     </div>
 </main>
 </body>
