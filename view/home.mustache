@@ -12,16 +12,13 @@
     <div class="container">
         <div class="row pt-4">
             <div class="col-md-6">
-                <img src="public/imagenes/preguntados-home.jpg" alt="Imagen de bienvenida" width="100%" style="object-fit: contain">
+                <img src="../public/imagenes/preguntados-home.jpg" alt="Imagen de bienvenida" width="100%" style="object-fit: contain">
             </div>
             <div class="col-md-5 d-flex justify-content-center align-items-center">
                 <div>
                     <h1>HOLA!</h1>
                     <p>Bienvenido de Nuevo a Preguntados</p>
                     <form class="login-form" method="post" action="/usuario/login">
-
-
-                        <a href="/usuario/borrar?id=>{{message}}">borrar</a>
                         <div class="form-group">
                             <input class="form-control" type="text" name="nombreUsuario" placeholder="nombreUsuario">
                         </div>
@@ -34,7 +31,7 @@
                         <button class="btn btn-primary" type="submit">INICIAR SESIÓN</button>
                     </form>
                     <p>¿No sos miembro?</p>
-                    <a href="index.php?controller=usuario&action=vistaRegistro">Registrate</a>
+                    <a href="/usuario/vistaRegistro">Registrate</a>
                 </div>
             </div>
         </div>

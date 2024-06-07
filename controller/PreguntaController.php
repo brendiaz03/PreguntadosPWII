@@ -18,31 +18,31 @@ class PreguntaController
 
     public function vistaregistrar()
     {
-
         $this->presenter->render("view/registro.mustache");
     }
 
     public function partida(){
         $textoNav = "PARTIDA";
-        $usuario = $this -> model -> getUsuarioById($_POST["id"]);
-        $pregunta = $this -> model -> getPreguntaByNivel($_POST["id"], $_POST["nivel"]);
-        $respuesta = $this -> model -> getRespuestaByIdPregunta($pregunta[0]['id']);
-        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "usuario" => $usuario, "pregunta"=> $pregunta, "respuestas"=> $respuesta]);
+        $usuario = $_SESSION['usuario']["id"];
+        $pregunta = $this -> model -> getPreguntas($_SESSION['usuario']["id"], $_SESSION['usuario']["nivel"]);
+        $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
+
+        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "usuario" => $usuario, "pregunta"=> $pregunta, "respuestas"=> $respuestas]);
     }
 
     public function terminarPartida(){
         $textoNav = "PARTIDA";
-       $respuestaCorrecta = $this -> model -> getRespuestaCorrectaById($_POST["idRespuesta"]);
-        if($_POST["respuesta"] ==  $respuestaCorrecta[0]['respuestaCorrecta']){
+        $respuestaCorrecta = $this -> model -> verificarRespuestaCorrecta($_POST["idPregunta"], $_POST['idRespuesta']);
+        if($respuestaCorrecta){
             $resultado = "Respuesta correcta";
-            $correcta = 1;
-            }else{
+            $respondioBien = 1;
+        }else{
             $resultado = "Respuesta incorrecta";
-            $correcta = 0;
+            $respondioBien = 0;
         }
-        $usuario = $this -> model -> getUsuarioById($_POST["idUsuario"]);
-        $this -> model-> guardarPartida($_POST["idUsuario"],$_POST["idPregunta"], $correcta);
-        $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuario" => $usuario, "resultado"=> $resultado]);
+        $usuarioId = $_SESSION['usuario']['id'];
+        $this -> model-> guardarPartida($usuarioId, $_POST["idPregunta"], $respondioBien);
+        $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado]);
     }
 
 }

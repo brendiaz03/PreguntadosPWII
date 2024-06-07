@@ -13,9 +13,12 @@
             $result = $this->database->query($sql);
 
             if ($result && count($result) > 0) {
-
                 $_SESSION['usuario'] = $result[0];
-                return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
+                if($_SESSION['usuario']['activo'] == 1){
+                    return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
+                }else {
+                    return ['success' => false, 'message' => 'Debe activar su cuenta para iniciar sesion!'];
+                }
             } else {
                 return ['success' => false, 'message' => 'Nombre de usuario o contraseña incorrectos'];
             }
@@ -31,14 +34,26 @@
             return $this -> database -> query($usuarioExistenteSQL);
         }
 
-        public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$fotoTmp)
+        public function registro($nombreCompleto,$anioNacimiento,$sexo,$pais,$ciudad,$mail,$password,$nombreUsuario,$tipoUsuario,$fotoTmp, $hash)
         {
             $carpeta = "public/imagenes/usuarios/";
             $imagen_nombre = "$nombreUsuario.jpg";
             move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
             return $this -> database -> execute(
-                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0')");
+                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0', '0', '$hash')");
+        }
+
+        public function confirmacionCuenta($hashUsuario){
+            $query = "SELECT 1 FROM usuario WHERE hash = '$hashUsuario' LIMIT 1";
+            $result = $this->database->query($query);
+            if(count($result) == 1){
+                $queryConfirmacion = "UPDATE usuario SET activo = TRUE, hash = NULL WHERE hash = '$hashUsuario'";
+                $this -> database -> execute($queryConfirmacion);
+                return true;
+            }
+
+            return false;
         }
 
         public function getUsuarioById($idUsuario)

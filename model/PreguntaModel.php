@@ -7,47 +7,55 @@
             $this -> database = $database;
         }
 
-        public function getRespuestaByIdPregunta($preguntaID){
-            $sqlDos = "SELECT *
-FROM respuesta AS r
-WHERE r.pregunta = '$preguntaID'
-LIMIT 1";
-            return $this->database->query($sqlDos);
+        public function getRespuestasByPregunta($preguntaID){
+            $sql = "SELECT * FROM respuesta AS r WHERE r.pregunta = '$preguntaID'";
+            return $this->database->query($sql);
+        }
+
+        public function getPreguntas($idUsuario){
+            $sql = "SELECT * FROM pregunta WHERE estado = 'Activa' AND id NOT IN (
+                            SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario) 
+                            LIMIT 1";
+            return $this -> database -> query($sql);
         }
 
         public function getPreguntaByNivel($idUsuario, $nivel){
-            $sql = "SELECT *
-FROM pregunta AS p
-WHERE p.nivel = '$nivel'
-AND p.id NOT IN (
-    SELECT idPregunta
-    FROM partida
-    WHERE idUsuario = $idUsuario)
-LIMIT 1";
+            $sql = "SELECT * FROM pregunta AS p  p.nivel = '$nivel' AND p.id NOT IN (
+                            SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario)
+                        LIMIT 1";
             return $this->database->query($sql);
         }
 
-        public function getUsuarioById($idUsuario){
-            $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
-            return $this->database->query($sql);
+        public function verificarRespuestaCorrecta($idPregunta, $idRespuesta){
+            $idPregunta = intval($idPregunta);
+            $idRespuesta = intval($idRespuesta);
+            $sql = "SELECT correcta FROM respuesta WHERE idrespuesta = '$idRespuesta' AND pregunta = '$idPregunta'";
+            $result = $this -> database -> queryNotAll($sql);
+            $row = mysqli_fetch_assoc($result);
+            if(!$row){
+                return false;
+            }
+            return intval($row['correcta']) === 1;
         }
 
-    public function getRespuestaCorrectaById($idRespuesta){
-        $sql = "SELECT respuestaCorrecta FROM respuesta WHERE id = '$idRespuesta' LIMIT 1";
-        return $this->database->query($sql);
-    }
-
-        public function sumarPuntajeAUsuario($idUsuario){
-            return $this -> database -> execute("UPDATE Usuario
-SET puntaje = puntaje + 1
-WHERE id = '$idUsuario'");
+        private function sumarPuntajeAUsuario($idUsuario){
+            return $this -> database -> execute("UPDATE Usuario SET puntaje = puntaje + 1 WHERE id = '$idUsuario'");
         }
-        public function guardarPartida($idUsuario, $idPregunta, $correcto){
-            if($correcto){
-                $this->sumarPuntajeAUsuario($idUsuario);
+
+        private function obtenerPuntajeUsuario($idUsuario){
+            $result = $this -> database -> queryNotAll("SELECT puntaje FROM usuario WHERE id = $idUsuario");
+            return intval(mysqli_fetch_assoc($result));
+        }
+
+        public function guardarPartida($idUsuario, $idPregunta, $respondioBien){
+            if($respondioBien == 1){
+                $this -> sumarPuntajeAUsuario($idUsuario);
+                $nuevoPuntaje = $this->obtenerPuntajeUsuario($idUsuario);
+
+                $_SESSION['usuario']["puntaje"] = $nuevoPuntaje;
             }
             $fecha_actual = date('Y-m-d H:i:s');
-            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, correcta, fechaRealizado) VALUES ($idPregunta, $idUsuario, $correcto, '$fecha_actual')");
+            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, respondioBien) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
         }
     }
 ?>

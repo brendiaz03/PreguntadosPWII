@@ -24,6 +24,7 @@
             height: 200px;
             border-radius: 50%;
             margin-bottom: 20px;
+            object-fit: cover;
         }
 
         .user-data {
@@ -65,9 +66,8 @@
     <div class="row">
         <div class="col-md-6">
             <div class="profile-container">
-                {{#usuario}}
                     <h1 style="text-align: center;">{{nombreUsuario}}</h1>
-                    <img class="profile-picture" src="public/imagenes/usuarios/{{foto}}" alt="Foto de perfil">
+                    <img class="profile-picture" src="../../public/imagenes/usuarios/{{nombreUsuario}}.jpg" alt="Foto de perfil">
                     <div class="user-data">
                         <div>
                             <p>Nombre completo: {{nombreCompleto}}</p>
@@ -76,10 +76,10 @@
                         </div>
                     </div>
                     <div class="user-stats" style="margin-top: auto;">
-                        <p>PARTIDAS TOTALES: {{partidasTotales}}</p>
+                        <p>PARTIDAS TOTALES: 0</p>
                         <p class="score">PUNTAJE: {{puntaje}}</p>
                     </div>
-                {{/usuario}}
+
             </div>
         </div>
         <div class="col-md-6">

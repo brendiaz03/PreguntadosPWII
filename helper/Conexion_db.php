@@ -18,6 +18,10 @@ class Database
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
+    public function queryNotAll($sql){
+        return mysqli_query($this -> conn, $sql);
+    }
+
     public function execute($sql)
     {
         mysqli_query($this -> conn, $sql);

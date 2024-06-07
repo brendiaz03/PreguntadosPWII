@@ -6,44 +6,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<main>
-    {{#usuario}}
-        <form method="post" action="index.php?controller=pregunta&action=terminarPartida">
-            <input value='{{id}}' hidden='hidden' name='idUsuario'>
-    {{#pregunta}}
-        <h1>{{categoria}}</h1>
-        <h4>{{pregunta}}</h4>
-        <input value='{{id}}' hidden='hidden' name='idPregunta'>
-    {{/pregunta}}
-            {{#respuestas}}
-                <input value='{{id}}' hidden='hidden' name='idRespuesta'>
-                {{#respuestaCorrecta}}
-                    <div>
-                        <input type="radio" id="respuestaCorrecta" name="respuesta" value="{{respuestaCorrecta}}">
-                        <label for="respuestaCorrecta">{{respuestaCorrecta}}</label>
-                    </div>
-                {{/respuestaCorrecta}}
-                {{#respuestaIncorrecta1}}
-                    <div>
-                        <input type="radio" id="respuestaIncorrecta1" name="respuesta" value="{{respuestaIncorrecta1}}">
-                        <label for="respuestaIncorrecta1">{{respuestaIncorrecta1}}</label>
-                    </div>
-                {{/respuestaIncorrecta1}}
-                {{#respuestaIncorrecta2}}
-                    <div>
-                        <input type="radio" id="respuestaIncorrecta2" name="respuesta" value="{{respuestaIncorrecta2}}">
-                        <label for="respuestaIncorrecta2">{{respuestaIncorrecta2}}</label>
-                    </div>
-                {{/respuestaIncorrecta2}}
-                {{#respuestaIncorrecta3}}
-                    <div>
-                        <input type="radio" id="respuestaIncorrecta3" name="respuesta" value="{{respuestaIncorrecta3}}">
-                        <label for="respuestaIncorrecta3">{{respuestaIncorrecta3}}</label>
-                    </div>
-                {{/respuestaIncorrecta3}}
-{{/respuestas}}
-            <button type="submit">Enviar respuesta</button>
+<main style="height:80vh; padding: 2rem">
+    <form method="post" action="/pregunta/terminarpartida">
+        {{#pregunta}}
+            <h1>{{categoria}}</h1>
+            <h4>{{pregunta}}</h4>
+            <input value='{{id}}' type="number" hidden='hidden' name='idPregunta'>
+        {{/pregunta}}
+        {{#respuestas}}
+            <div>
+                <input type="radio" id="respuestaCorrecta" name="idRespuesta" value="{{idrespuesta}}">
+                <label for="respuestaCorrecta">{{respuesta}}</label>
+            </div>
+        {{/respuestas}}
+        <button type="submit">Enviar respuesta</button>
     </form>
-    {{/usuario}}
 </main>
 </body>
