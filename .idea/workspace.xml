@@ -5,20 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/PreguntaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PreguntaModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/imagenes/usuarios/bren.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/imagenes/usuarios/bren.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/home.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/home.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/lobby.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobby.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/resultado.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/resultado.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/footer.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/footer.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/template/header.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/template/header.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +115,7 @@
       <workItem from="1717457623896" duration="2356000" />
       <workItem from="1717538385072" duration="605000" />
       <workItem from="1717729597739" duration="4086000" />
-      <workItem from="1717733814209" duration="2404000" />
+      <workItem from="1717733814209" duration="3293000" />
     </task>
     <servers />
   </component>

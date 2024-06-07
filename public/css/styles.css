@@ -33,7 +33,7 @@ nav{
 }
 .textoNav{
     margin: 0rem;
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 0rem;
 }
 .navUsuario{
     display: flex;
