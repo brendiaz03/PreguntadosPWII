@@ -1,0 +1,63 @@
+main {
+    margin-top: 10px;
+    height: 80vh;
+}
+
+
+.cont-partida {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b499ec;
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+
+.cont-partida h1 {
+    margin: 0;
+    padding: 10px;
+    background-color: #8e7cc3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.cont-partida h4 {
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+
+.cont-partida div {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    margin: 5px 0;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.cont-partida button {
+    background-color: #8e7cc3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.cont-partida button:hover {
+    background-color: #63507d;
+}

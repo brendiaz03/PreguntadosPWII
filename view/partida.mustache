@@ -3,23 +3,26 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../public/css/partida.css">
 </head>
 <body>
-<main style="height:80vh; padding: 2rem">
-    <form method="post" action="/pregunta/terminarpartida">
-        {{#pregunta}}
-            <h1>{{categoria}}</h1>
-            <h4>{{pregunta}}</h4>
-            <input value='{{id}}' type="number" hidden='hidden' name='idPregunta'>
-        {{/pregunta}}
-        {{#respuestas}}
-            <div>
-                <input type="radio" id="respuestaCorrecta" name="idRespuesta" value="{{idrespuesta}}">
-                <label for="respuestaCorrecta">{{respuesta}}</label>
-            </div>
-        {{/respuestas}}
-        <button type="submit">Enviar respuesta</button>
-    </form>
+<main>
+    <div class="cont-partida">
+        <form method="post" action="/pregunta/terminarpartida">
+            {{#pregunta}}
+                <h1>{{categoria}}</h1>
+                <h4>{{pregunta}}</h4>
+                <input value='{{id}}' type="number" hidden='hidden' name='idPregunta'>
+            {{/pregunta}}
+            {{#respuestas}}
+                <div>
+                    <input type="radio" id="respuestaCorrecta" name="idRespuesta" value="{{idrespuesta}}">
+                    <label for="respuestaCorrecta">{{respuesta}}</label>
+                </div>
+            {{/respuestas}}
+            <button type="submit">Enviar respuesta</button>
+        </form>
+    </div>
+
 </main>
 </body>
