@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+<main>
+        <table class="tabla">
+            <thead>
+            <tr>
+                <th>Nombre Completo</th>
+                <th>Partidas Totales</th>
+                <th>Partidas Ganadas</th>
+                <th>Partidas Perdidas</th>
+                <th>Puntaje Total</th>
+                <th>Ver perfil</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#jugadores}}
+                <tr>
+                    <td>{{nombreUsuario}}</td>
+                    <td>{{totalPartidas}}</td>
+                    <td>{{partidasCorrectas}}</td>
+                    <td>{{partidasIncorrectas}}</td>
+                    <td>{{puntaje}}</td>
+                    <td><a href="/usuario/perfil/id={{id}}">Poner Icono</a></td>
+                </tr>
+            {{/jugadores}}
+            </tbody>
+        </table>
+</main>
+</body>
+</html>

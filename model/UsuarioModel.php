@@ -12,9 +12,9 @@
             $sql = "SELECT * FROM usuario WHERE nombreUsuario = '$nombreUsuario' AND password = '$password' LIMIT 1";
             $result = $this->database->query($sql);
 
-            if ($result && count($result) > 0) {
-                $_SESSION['usuario'] = $result[0];
-                if($_SESSION['usuario']['activo'] == 1){
+            if (count($result) > 0) {
+                $_SESSION["id"] = $result[0]['id'];
+                if($result[0]['activo'] == 1){
                     return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
                 }else {
                     return ['success' => false, 'message' => 'Debe activar su cuenta para iniciar sesion!'];
@@ -59,7 +59,32 @@
         public function getUsuarioById($idUsuario)
         {
             $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
+            $result = $this->database->query($sql);
+            return $result[0];
+        }
+
+        public function getJugadoresConPuntajeYPartidasJugadas(){
+            $sql = "SELECT
+                u.nombreUsuario, u.puntaje, u.id,
+                COUNT(p.id) AS totalPartidas,
+                SUM(CASE WHEN p.correcta = 1 THEN 1 ELSE 0 END) AS partidasCorrectas,
+                SUM(CASE WHEN p.correcta = 0 THEN 1 ELSE 0 END) AS partidasIncorrectas
+            FROM
+                usuario u
+            LEFT JOIN
+                partida p ON u.id = p.idUsuario
+            GROUP BY
+                u.id
+            ORDER BY
+                u.puntaje DESC"; // Ordenar por cantidad total de partidas
+
             return $this->database->query($sql);
         }
+
+        public function getPartidasTotalesPorUsuario($idUsuario){
+            $sql = "SELECT COUNT(*) AS partidasTotales FROM partida WHERE idUsuario = '$idUsuario'";
+            return $this->database->query($sql);
+        }
+
     }
 ?>

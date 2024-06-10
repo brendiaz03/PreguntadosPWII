@@ -24,12 +24,7 @@
             $resultado = $this->model->logearse($nombreUsuario, $password);
 
             if ($resultado['success']) {
-                $idUsuario = $_SESSION['usuario']["id"];
-                $usuario = $_SESSION['usuario']["nombreUsuario"];
-                $puntajeUsuario = $_SESSION['usuario']["puntaje"];
-                $textoNav = "PREGUNTADOS";
-                $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav, "puntaje" => $puntajeUsuario, "id" => $idUsuario]);
-                exit();
+                $this->lobby();
             } else {
                 $this -> presenter -> render("view/home.mustache", ['error' => true, 'message' => $resultado['message']]);
             }
@@ -144,25 +139,36 @@
 
         public function perfil(){
             $textoNav = "PERFIL";
-            $nombreUsuario = $_SESSION['usuario']['nombreUsuario'];
-            $nombreCompleto = $_SESSION['usuario']['nombreCompleto'];
-            $anioNacimiento = $_SESSION['usuario']['anioNacimiento'];
-            $mail = $_SESSION['usuario']['mail'];
-            $puntaje = $_SESSION['usuario']['puntaje'];
+            $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
+            $usuario = $this -> model -> getUsuarioById($idUsuario);
+            $nombreUsuario = $usuario['nombreUsuario'];
+            $nombreCompleto = $usuario['nombreCompleto'];
+            $anioNacimiento = $usuario['anioNacimiento'];
+            $mail = $usuario['mail'];
+            $puntaje = $usuario['puntaje'];
             $this -> presenter -> render(
                 "view/perfil.mustache",
                 ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje
+                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true
                 ]
             );
         }
 
         public function lobby(){
-            $idUsuario = $_SESSION['usuario']["id"];
-            $usuario = $_SESSION['usuario']["nombreUsuario"];
-            $puntajeUsuario = $_SESSION['usuario']["puntaje"];
+            $usuario = $this -> model -> getUsuarioById($_SESSION["id"]);
             $textoNav = "PREGUNTADOS";
-            $this -> presenter -> render("view/lobby.mustache", ["usuario" => $usuario, "textoNav" => $textoNav, "puntaje" => $puntajeUsuario, "id" => $idUsuario]);
+            $this -> presenter -> render("view/lobby.mustache", ["textoNav" => $textoNav,
+            "nombreCompleto"=> $usuario['nombreCompleto'],
+                "puntaje"=>$usuario['puntaje'],
+                "nivel"=>$usuario['nivel'],
+                "id"=>$usuario['id'],
+                "logeado"=>true]);
+        }
+
+        public function ranking(){
+            $textoNav = "RANKING";
+            $jugadores = $this -> model -> getJugadoresConPuntajeYPartidasJugadas();
+            $this -> presenter -> render("view/ranking.mustache", ["textoNav" => $textoNav,"logeado"=>true,"jugadores"=>$jugadores]);
         }
 
     }

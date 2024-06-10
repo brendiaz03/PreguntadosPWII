@@ -42,20 +42,19 @@
             return $this -> database -> execute("UPDATE Usuario SET puntaje = puntaje + 1 WHERE id = '$idUsuario'");
         }
 
-        private function obtenerPuntajeUsuario($idUsuario){
-            $result = $this -> database -> queryNotAll("SELECT puntaje FROM usuario WHERE id = $idUsuario");
-            return intval(mysqli_fetch_assoc($result));
-        }
-
         public function guardarPartida($idUsuario, $idPregunta, $respondioBien){
-            if($respondioBien == 1){
+            if($respondioBien){
                 $this -> sumarPuntajeAUsuario($idUsuario);
-//                $nuevoPuntaje = $this->obtenerPuntajeUsuario($idUsuario);
-//
-//                $_SESSION['usuario']["puntaje"] = $nuevoPuntaje;
             }
             $fecha_actual = date('Y-m-d H:i:s');
             return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, correcta) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
+        }
+
+        public function getUsuarioById($idUsuario)
+        {
+            $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
+            $result = $this->database->query($sql);
+            return $result[0];
         }
     }
 ?>

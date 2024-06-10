@@ -4,69 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f5f5f5; /* Fondo claro */
-            color: #6c757d; /* Color de texto */
-        }
-
-        .profile-container {
-            background-color: #7a6fa0; /* Violeta */
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 50px;
-        }
-
-        .profile-picture {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-        }
-
-        .user-data {
-            margin-left: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .map-container,
-        .qr-code-container {
-            border: 2px solid #7a6fa0; /* Violeta */
-            padding: 10px;
-            border-radius: 5px;
-            height: 200px;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .map,
-        .qr-code {
-            /* Aquí puedes agregar estilos específicos si es necesario */
-        }
-
-        .user-stats {
-            margin-top: 20px;
-        }
-
-        .score {
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-    </style>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="profile-container">
-                    <h1 style="text-align: center;">{{nombreUsuario}}</h1>
+<div>
+    <div>
+        <div>
+            <div>
+                    <h1>{{nombreUsuario}}</h1>
                     <img class="profile-picture" src="../../public/imagenes/usuarios/{{nombreUsuario}}.jpg" alt="Foto de perfil">
                     <div class="user-data">
                         <div>
@@ -75,15 +20,15 @@
                             <p>Correo electrónico: {{mail}}</p>
                         </div>
                     </div>
-                    <div class="user-stats" style="margin-top: auto;">
+                    <div class="user-stats">
                         <p>PARTIDAS TOTALES: 0</p>
                         <p class="score">PUNTAJE: {{puntaje}}</p>
                     </div>
 
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="user-data" style="display: flex; align-items: flex-start;">
+        <div>
+            <div class="user-data">
                 <div class="map-container">
                     <div class="map">
                         <!-- Aquí puedes agregar el mapa si es necesario -->
@@ -91,7 +36,7 @@
                     </div>
                 </div>
             </div>
-            <div class="user-data" style="display: flex; align-items: center;">
+            <div class="user-data">
                 <div class="qr-code-container">
                     <div class="qr-code">
                         <!-- Aquí puedes agregar el código QR si es necesario -->

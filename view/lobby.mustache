@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 </head>
 <body>
-<main style="height: 80vh; padding: 2rem">
-    {{#usuario}}
+<main>
         <h1>{{nombreCompleto}}</h1>
         <p>Puntos: {{puntaje}}</p>
         <form method="post" action="/pregunta/partida">
@@ -14,8 +13,7 @@
             <input value='{{nivel}}' hidden='hidden' name='nivel'>
             <button class="nav-link" type="submit">JUGAR PARTIDA</button>
         </form>
-        <button>RANKING</button>
-    {{/usuario}}
+        <a href="/usuario/ranking/">RANKING</a>
 </main>
 </body>
 
