@@ -23,15 +23,15 @@ class PreguntaController
 
     public function partida(){
         $textoNav = "PARTIDA";
-        $usuario = $_SESSION['usuario']["id"];
-        $pregunta = $this -> model -> getPreguntas($_SESSION['usuario']["id"], $_SESSION['usuario']["nivel"]);
+        $usuario = $this -> model -> getUsuarioById($_SESSION["id"]);
+        $pregunta = $this -> model -> getPreguntas($usuario['id'], $usuario['nivel']);
         $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
 
-        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "usuario" => $usuario, "pregunta"=> $pregunta, "respuestas"=> $respuestas]);
+        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=> $pregunta, "respuestas"=> $respuestas, "logeado"=>true]);
     }
 
     public function terminarPartida(){
-        $textoNav = "PARTIDA";
+        $textoNav = "RESULTADO";
         $respuestaCorrecta = $this -> model -> verificarRespuestaCorrecta($_POST["idPregunta"], $_POST['idRespuesta']);
         if($respuestaCorrecta){
             $resultado = "Respuesta correcta";
@@ -40,10 +40,11 @@ class PreguntaController
             $resultado = "Respuesta incorrecta";
             $respondioBien = 0;
         }
-        $usuarioId = $_SESSION['usuario']['id'];
+        $usuarioId = $_SESSION["id"];
         $this -> model-> guardarPartida($usuarioId, $_POST["idPregunta"], $respondioBien);
-        $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado]);
+        $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado, "logeado"=>true]);
     }
+
 
 }
 

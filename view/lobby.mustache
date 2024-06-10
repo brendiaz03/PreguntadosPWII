@@ -3,22 +3,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../public/css/lobby.css">
 </head>
 <body>
 <main>
-    <div class="contenedor-lobby">
-        {{#usuario}}
-            <h1>Usuario: {{nombreCompleto}}</h1>
-            <p>Puntos: {{puntaje}}</p>
-            <form method="post" action="/pregunta/partida">
-                <input value='{{id}}' hidden='hidden' name='id'>
-                <input value='{{nivel}}' hidden='hidden' name='nivel'>
-                <button class="nav-link" type="submit">JUGAR PARTIDA</button>
-            </form>
-            <button class="ranking-btn">RANKING</button>
-        {{/usuario}}
-    </div>
+        <h1>{{nombreCompleto}}</h1>
+        <p>Puntos: {{puntaje}}</p>
+        <form method="post" action="/pregunta/partida">
+            <input value='{{id}}' hidden='hidden' name='id'>
+            <input value='{{nivel}}' hidden='hidden' name='nivel'>
+            <button class="nav-link" type="submit">JUGAR PARTIDA</button>
+        </form>
+        <a href="/usuario/ranking/">RANKING</a>
 </main>
 </body>
 
