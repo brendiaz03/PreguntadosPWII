@@ -145,11 +145,12 @@
             $nombreCompleto = $usuario['nombreCompleto'];
             $anioNacimiento = $usuario['anioNacimiento'];
             $mail = $usuario['mail'];
+            $foto = $usuario['foto'];
             $puntaje = $usuario['puntaje'];
             $this -> presenter -> render(
                 "view/perfil.mustache",
                 ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true
+                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true, "foto" => $foto
                 ]
             );
         }
@@ -162,6 +163,7 @@
                 "puntaje"=>$usuario['puntaje'],
                 "nivel"=>$usuario['nivel'],
                 "id"=>$usuario['id'],
+                "foto" => $usuario['foto'],
                 "logeado"=>true]);
         }
 

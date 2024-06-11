@@ -27,7 +27,7 @@ class PreguntaController
         $pregunta = $this -> model -> getPreguntas($usuario['id'], $usuario['nivel']);
         $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
 
-        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=> $pregunta, "respuestas"=> $respuestas, "logeado"=>true]);
+        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=> $pregunta, "respuestas"=> $respuestas, "logeado"=>true, "foto" => $usuario['foto']]);
     }
 
     public function terminarPartida(){
@@ -41,9 +41,16 @@ class PreguntaController
             $respondioBien = 0;
         }
         $usuarioId = $_SESSION["id"];
+        $partidasTotales = $this -> model -> partidasTotalesPorUsuario($usuarioId);
+
         $this -> model-> guardarPartida($usuarioId, $_POST["idPregunta"], $respondioBien);
+
+        if($partidasTotales[0]['partidasTotales'] == 10){
+            $this -> model -> nivelarUsuario($usuarioId);
+        }
         $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado, "logeado"=>true]);
     }
+
 
 
 }

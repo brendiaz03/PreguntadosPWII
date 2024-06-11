@@ -56,5 +56,30 @@
             $result = $this->database->query($sql);
             return $result[0];
         }
+
+        public function nivelarUsuario($idUsuario){
+            $sql = "SELECT SUM(CASE WHEN correcta = 1 THEN 1 ELSE 0 END) AS correctas
+                    FROM partida WHERE idUsuario = '$idUsuario' ORDER BY id ASC LIMIT 10";
+
+            $result = $this -> database -> query($sql);
+            if(count($result) > 0){
+                $correctas = $result[0]['correctas'];
+                $nivel = 'facil';
+
+                if($correctas >= 7){
+                    $nivel = 'dificil';
+                }else if($correctas >= 4){
+                    $nivel = 'intermedio';
+                }
+
+                $sqlUpdate = "UPDATE usuario SET nivel = '$nivel' WHERE id = '$idUsuario'";
+                $this -> database -> execute($sqlUpdate);
+            }
+        }
+
+        public function partidasTotalesPorUsuario($idUsuario){
+            $sql = "SELECT COUNT(*) AS partidasTotales FROM partida WHERE idUsuario = '$idUsuario'";
+            return $this->database->query($sql);
+        }
     }
 ?>
