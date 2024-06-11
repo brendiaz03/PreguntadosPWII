@@ -8,7 +8,7 @@
         }
 
         public function getRespuestasByPregunta($preguntaID){
-            $sql = "SELECT * FROM respuesta AS r WHERE r.pregunta = '$preguntaID'";
+            $sql = "SELECT * FROM respuesta AS r WHERE r.pregunta = '$preguntaID' ORDER BY RAND()";
             return $this->database->query($sql);
         }
 
@@ -47,7 +47,7 @@
                 $this -> sumarPuntajeAUsuario($idUsuario);
             }
             $fecha_actual = date('Y-m-d H:i:s');
-            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, respondioBien) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
+            return $this -> database -> execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, correcta) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
         }
 
         public function getUsuarioById($idUsuario)
