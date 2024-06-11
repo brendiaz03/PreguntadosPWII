@@ -22,13 +22,13 @@
             </thead>
             <tbody>
             {{#jugadores}}
-                <a>
+                <tr>
                     <td>{{nombreUsuario}}</td>
                     <td>{{totalPartidas}}</td>
                     <td>{{partidasCorrectas}}</td>
                     <td>{{partidasIncorrectas}}</td>
                     <td>{{puntaje}}</td>
-                    <a href="/usuario/perfil/id={{id}}"><td>Poner Icono</td></a>
+                    <td><a href="/usuario/perfil/id={{id}}"><img src="../public/images/icono-perfil.png" alt="Ver perfil"></a></td>
                 </tr>
             {{/jugadores}}
             </tbody>
