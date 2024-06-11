@@ -47,12 +47,12 @@ CREATE TABLE partida(
 );
 
 -- Preguntas con dificultad baja
-INSERT INTO pregunta (categoria, pregunta, estado, nivel, fechaRealizado)
-VALUES ('Historia', '¿En qué año fue la independencia de Argentina?', 'Activa', 'Baja', NOW()),
-       ('Geografía', '¿Cuál es la capital de Francia?', 'Activa', 'Baja', NOW()),
-       ('Ciencia', '¿Cuál es el símbolo químico del agua?', 'Activa', 'Baja', NOW()),
-       ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Baja', NOW()),
-       ('Entretenimiento', '¿En qué película aparece el personaje de Harry Potter?', 'Activa', 'Baja', NOW());
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits fechaRealizado)
+VALUES ('Historia', '¿En qué año fue la independencia de Argentina?', 'Activa', 'Facil',0 , 0, NOW()),
+       ('Geografía', '¿Cuál es la capital de Francia?', 'Activa', 'Facil',0 , 0, NOW()),
+       ('Ciencia', '¿Cuál es el símbolo químico del agua?', 'Activa', 'Facil',0 , 0, NOW()),
+       ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Facil',0 , 0, NOW()),
+       ('Entretenimiento', '¿En qué película aparece el personaje de Harry Potter?', 'Activa', 'Facil',0 , 0, NOW());
 
 -- Respuestas para las preguntas con dificultad baja
 INSERT INTO respuesta (respuesta, correcta, pregunta)
@@ -73,24 +73,24 @@ VALUES ('1816', true, 1),
        ('El cáliz de fuego', false, 5);
 
 -- Preguntas con dificultad media
-INSERT INTO pregunta (categoria, pregunta, estado, nivel, fechaRealizado)
-VALUES ('Historia', '¿En qué año comenzó la Segunda Guerra Mundial?', 'Activa', 'Media', NOW()),
-       ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Media', NOW()),
-       ('Ciencia', '¿Qué planeta es conocido como "el planeta rojo"?', 'Activa', 'Media', NOW()),
-       ('Arte', '¿Quién escribió la obra "Romeo y Julieta"?', 'Activa', 'Media', NOW()),
-       ('Entretenimiento', '¿Cuál es el nombre del actor que interpretó a Batman en "El caballero de la noche"?', 'Activa', 'Media', NOW()),
-       ('Entretenimiento', '¿Cuál es el nombre del hijo mayor de la familia simpson?', 'Activa', null, NOW()),
-        ('Ciencia', '¿Cuál es el simbolo del Litio en la tabla periodica?', 'Activa', null, NOW()),
-        ('Arte', '¿Quién pintó la Mona Lisa?', 'activa', 'intermedio', NOW()),
-        ('Arte', '¿En qué país nació el pintor Vincent van Gogh?', 'activa', 'intermedio', NOW()),
-        ('Ciencia', '¿Cuál es el elemento químico más abundante en el universo?', 'activa', 'intermedio', NOW()),
-        ('Ciencia', '¿Qué teoría explica el origen del universo?', 'activa', 'intermedio', NOW()),
-        ('Entretenimiento', '¿Quién es el creador de la serie animada "Los Simpson"?', 'activa', 'intermedio', NOW()),
-        ('Entretenimiento', '¿En qué año se estrenó la primera película de "Harry Potter"?', 'activa', 'intermedio', NOW()),
-        ('Geografía', '¿Cuál es el río más largo del mundo?', 'activa', 'intermedio', NOW()),
-        ('Geografía', '¿Cuál es la capital de Australia?', 'activa', 'intermedio', NOW()),
-        ('Arte', '¿Quién esculpió la estatua de David?', 'activa', 'intermedio', NOW()),
-        ('Ciencia', '¿Qué tipo de sangre es conocido como el donante universal?', 'activa', 'intermedio', NOW());
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits fechaRealizado)
+VALUES ('Historia', '¿En qué año comenzó la Segunda Guerra Mundial?', 'Activa', 'Intermedio',0 , 0, NOW()),
+       ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Intermedio',0 , 0, NOW()),
+       ('Ciencia', '¿Qué planeta es conocido como "el planeta rojo"?', 'Activa', 'Intermedio',0 , 0, NOW()),
+       ('Arte', '¿Quién escribió la obra "Romeo y Julieta"?', 'Activa', 'Intermedio',0 , 0, NOW()),
+       ('Entretenimiento', '¿Cuál es el nombre del actor que interpretó a Batman en "El caballero de la noche"?', 'Activa', 'Intermedio',0 , 0, NOW()),
+       ('Entretenimiento', '¿Cuál es el nombre del hijo mayor de la familia simpson?', 'Activa', null,0 , 0, NOW()),
+        ('Ciencia', '¿Cuál es el simbolo del Litio en la tabla periodica?', 'Activa', null,0 , 0, NOW()),
+        ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Intermedio', NOW()),
+        ('Arte', '¿En qué país nació el pintor Vincent van Gogh?', 'Activa', 'Intermedio', NOW()),
+        ('Ciencia', '¿Cuál es el elemento químico más abundante en el universo?', 'Activa', 'Intermedio',0 , 0, NOW()),
+        ('Ciencia', '¿Qué teoría explica el origen del universo?', 'Activa', 'Intermedio', NOW()),
+        ('Entretenimiento', '¿Quién es el creador de la serie animada "Los Simpson"?', 'Activa', 'Intermedio',0 , 0, NOW()),
+        ('Entretenimiento', '¿En qué año se estrenó la primera película de "Harry Potter"?', 'Activa', 'Intermedio',0 , 0, NOW()),
+        ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Intermedio',0 , 0, NOW()),
+        ('Geografía', '¿Cuál es la capital de Australia?', 'Activa', 'Intermedio',0 , 0, NOW()),
+        ('Arte', '¿Quién esculpió la estatua de David?', 'Activa', 'Intermedio',0 , 0, NOW()),
+        ('Ciencia', '¿Qué tipo de sangre es conocido como el donante universal?', 'Activa', 'Intermedio',0 , 0, NOW());
 
 -- Respuestas para las preguntas con dificultad media
 INSERT INTO respuesta (respuesta, correcta, pregunta)
@@ -141,12 +141,12 @@ VALUES ('1939', true, 6),
         ('B negativo', 0, 34);
 
 -- Preguntas con dificultad alta
-INSERT INTO pregunta (categoria, pregunta, estado, nivel, fechaRealizado)
-VALUES ('Historia', '¿Quién fue el primer presidente de Estados Unidos?', 'Activa', 'Alta', NOW()),
-       ('Geografía', '¿En qué país se encuentra el desierto del Sahara?', 'Activa', 'Alta', NOW()),
-       ('Ciencia', '¿Cuál es la velocidad de la luz en el vacío?', 'Activa', 'Alta', NOW()),
-       ('Arte', '¿En qué período artístico se desarrolló el Renacimiento?', 'Activa', 'Alta', NOW()),
-       ('Entretenimiento', '¿Cuál es el título de la primera película de la saga "Star Wars"?', 'Activa', 'Alta', NOW());
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES ('Historia', '¿Quién fue el primer presidente de Estados Unidos?', 'Activa', 'Dificil', 0 , 0, NOW()),
+       ('Geografía', '¿En qué país se encuentra el desierto del Sahara?', 'Activa', 'Dificil',0 , 0, NOW()),
+       ('Ciencia', '¿Cuál es la velocidad de la luz en el vacío?', 'Activa', 'Dificil',0 , 0, NOW()),
+       ('Arte', '¿En qué período artístico se desarrolló el Renacimiento?', 'Activa', 'Dificil',0 , 0, NOW()),
+       ('Entretenimiento', '¿Cuál es el título de la primera película de la saga "Star Wars"?', 'Activa', 'Dificil',0 , 0, NOW());
 
 -- Respuestas para las preguntas con dificultad alta
 INSERT INTO respuesta (respuesta, correcta, pregunta)
