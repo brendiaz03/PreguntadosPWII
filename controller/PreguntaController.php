@@ -40,6 +40,7 @@ class PreguntaController
         $textoNav = "RESULTADO";
         $usuarioId = $_SESSION["id"];
         $preguntaId = $_POST['idPregunta'];
+        $usuario = $this -> model -> getUsuarioById($usuarioId);
         $respuestaCorrecta = $this -> model -> verificarRespuestaCorrecta($preguntaId, $_POST['idRespuesta']);
 
         if($respuestaCorrecta){
@@ -63,7 +64,7 @@ class PreguntaController
         if($partidasTotalesPregunta[0]['partidasTotales'] >= 10){
             $this -> model -> nivelarPregunta($preguntaId);
         }
-        $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado, "logeado"=>true]);
+        $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado, "logeado"=>true, "foto" => $usuario['foto']]);
     }
 }
 

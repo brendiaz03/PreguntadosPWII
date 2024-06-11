@@ -169,8 +169,10 @@
 
         public function ranking(){
             $textoNav = "RANKING";
+            $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
+            $usuario = $this -> model -> getUsuarioById($idUsuario);
             $jugadores = $this -> model -> getJugadoresConPuntajeYPartidasJugadas();
-            $this -> presenter -> render("view/ranking.mustache", ["textoNav" => $textoNav,"logeado"=>true,"jugadores"=>$jugadores]);
+            $this -> presenter -> render("view/ranking.mustache", ["textoNav" => $textoNav,"logeado"=>true,"jugadores"=>$jugadores, "foto" => $usuario['foto']]);
         }
 
     }
