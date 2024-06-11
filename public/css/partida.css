@@ -45,6 +45,13 @@ main {
     padding: 10px;
     width: 100%;
     cursor: pointer;
+    gap: .5rem;
+}
+
+.cont-partida form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cont-partida button {
@@ -56,6 +63,7 @@ main {
     font-size: 1em;
     cursor: pointer;
     margin-top: 20px;
+    transition: .3s;
 }
 
 .cont-partida button:hover {

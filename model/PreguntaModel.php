@@ -8,7 +8,7 @@
         }
 
         public function getRespuestasByPregunta($preguntaID){
-            $sql = "SELECT * FROM respuesta AS r WHERE r.pregunta = '$preguntaID'";
+            $sql = "SELECT * FROM respuesta AS r WHERE r.pregunta = '$preguntaID' ORDER BY RAND()";
             return $this->database->query($sql);
         }
 

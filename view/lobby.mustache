@@ -3,17 +3,24 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/lobby.css">
 </head>
 <body>
-<main>
-        <h1>{{nombreCompleto}}</h1>
-        <p>Puntos: {{puntaje}}</p>
+<main class="lobby-container">
+    <div class="bg-overlay"></div>
+    <img class="lobby-bg" src="../public/imagenes/preguntados-home.jpg"/>
+    <div class="lobby-content">
+        <h1 class="lobby-nombre">Hola! {{nombreCompleto}}</h1>
+        <p class="lobby-puntos">Puntaje actual: {{puntaje}}</p>
+        <p class="lobby-puntos">Mejor puntaje: {{puntaje}}</p>
         <form method="post" action="/pregunta/partida">
             <input value='{{id}}' hidden='hidden' name='id'>
             <input value='{{nivel}}' hidden='hidden' name='nivel'>
-            <button class="nav-link" type="submit">JUGAR PARTIDA</button>
+            <button class="lobby-jugar-btn" type="submit">Jugar Partida</button>
         </form>
-        <a href="/usuario/ranking/">RANKING</a>
+        <a class="lobby-ranking-btn" href="/usuario/ranking/">RANKING</a>
+    </div>
 </main>
 </body>
 
