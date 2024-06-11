@@ -53,12 +53,12 @@ class PreguntaController
             $respondioBien = 0;
             $this -> model -> marcarEntregaEnLaPregunta($preguntaId);
         }
-        $partidasTotales = $this -> model -> partidasTotalesPorUsuario($usuarioId);
+        $partidasTotalesUsuario = $this -> model -> partidasTotalesPorUsuario($usuarioId);
         $partidasTotalesPregunta = $this -> model -> partidasTotalesPorPregunta($preguntaId);
 
         $this -> model-> guardarPartida($usuarioId, $preguntaId, $respondioBien);
 
-        if($partidasTotales[0]['partidasTotales'] == 10){
+        if($partidasTotalesUsuario[0]['partidasTotales'] == 10){
             $this -> model -> nivelarUsuario($usuarioId);
         }
         if($partidasTotalesPregunta[0]['partidasTotales'] >= 10){
