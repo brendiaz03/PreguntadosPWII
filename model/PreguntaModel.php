@@ -27,15 +27,13 @@
         }
 
         public function verificarRespuestaCorrecta($idPregunta, $idRespuesta){
-            $idPregunta = intval($idPregunta);
-            $idRespuesta = intval($idRespuesta);
             $sql = "SELECT correcta FROM respuesta WHERE idrespuesta = '$idRespuesta' AND pregunta = '$idPregunta'";
-            $result = $this -> database -> queryNotAll($sql);
-            $row = mysqli_fetch_assoc($result);
-            if(!$row){
-                return false;
+            $result = $this -> database -> query($sql);
+            if ($result[0]['correcta'] == 1) {
+                return 1;
+            } else {
+                return 0;
             }
-            return intval($row['correcta']) === 1;
         }
 
         private function sumarPuntajeAUsuario($idUsuario){

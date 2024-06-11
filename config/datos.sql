@@ -29,13 +29,12 @@ CREATE TABLE pregunta(
 );
 
 CREATE TABLE respuesta(
-      idrespuesta INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+      id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
       respuesta VARCHAR(200),
       correcta bool,
       pregunta INTEGER,
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );
-
 CREATE TABLE partida(
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idPregunta INTEGER,
