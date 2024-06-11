@@ -30,6 +30,7 @@ class PreguntaController
         }else {
             $pregunta = $this -> model -> getPreguntas($usuario['id']);
         }
+
         $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
 
         $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=> $pregunta, "respuestas"=> $respuestas, "logeado"=>true, "foto" => $usuario['foto']]);
@@ -52,7 +53,7 @@ class PreguntaController
             $this -> model -> marcarEntregaEnLaPregunta($preguntaId);
         }
         $partidasTotales = $this -> model -> partidasTotalesPorUsuario($usuarioId);
-        $partidasTotalesPregunta = $this -> model -> partidasTotalesPorPregunta( $preguntaId);
+        $partidasTotalesPregunta = $this -> model -> partidasTotalesPorPregunta($preguntaId);
 
         $this -> model-> guardarPartida($usuarioId, $preguntaId, $respondioBien);
 
