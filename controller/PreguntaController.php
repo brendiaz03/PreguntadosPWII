@@ -60,7 +60,7 @@ class PreguntaController
         if($partidasTotales[0]['partidasTotales'] == 10){
             $this -> model -> nivelarUsuario($usuarioId);
         }
-        if($partidasTotalesPregunta[0]['partidasTotales'] == 10){
+        if($partidasTotalesPregunta[0]['partidasTotales'] >= 10){
             $this -> model -> nivelarPregunta($preguntaId);
         }
         $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado, "logeado"=>true]);

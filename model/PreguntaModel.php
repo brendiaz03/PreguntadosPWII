@@ -79,19 +79,17 @@
 
         public function nivelarPregunta($idPregunta){
             $porcentajeHits = $this -> obtenerPorcentajeDeHits($idPregunta);
-            if($porcentajeHits && $porcentajeHits[0]['porcentaje_hits'] > 0){
-                $porcentajeFinal = $porcentajeHits[0]['porcentaje_hits'];
-                $nivel = 'Dificil';
+            $porcentajeFinal = $porcentajeHits[0]['porcentaje_hits'];
+            $nivel = 'Dificil';
 
-                if($porcentajeFinal > 66.6){
-                    $nivel = 'Facil';
-                }else if($porcentajeFinal > 33.3){
-                    $nivel = 'Intermedio';
-                }
-
-                $sqlUpdate = "UPDATE pregunta SET nivel = '$nivel' WHERE id = '$idPregunta'";
-                $this -> database -> execute($sqlUpdate);
+            if($porcentajeFinal > 66.6){
+                $nivel = 'Facil';
+            }else if($porcentajeFinal > 33.3 AND $porcentajeFinal <= 66.6){
+                $nivel = 'Intermedio';
             }
+
+            $sqlUpdate = "UPDATE pregunta SET nivel = '$nivel' WHERE id = '$idPregunta'";
+            $this -> database -> execute($sqlUpdate);
         }
 
         private function obtenerPorcentajeDeHits($idPregunta){
