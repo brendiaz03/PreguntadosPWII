@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Perfil de Usuario</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/perfil.css">
 </head>
-<body>
-<div>
-    <div>
-        <div>
-            <div>
-                    <h1>{{nombreUsuario}}</h1>
-                    <img class="profile-picture" src="../../public/imagenes/usuarios/{{nombreUsuario}}.jpg" alt="Foto de perfil">
+<main>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="profile-container">
+                    <h1>Usuario: {{nombreUsuario}}</h1>
+                    <img class="profile-picture" src="../../public/imagenes/usuarios/{{nombreUsuario}}.jpg"
+                         alt="Foto de perfil">
                     <div class="user-data">
                         <div>
                             <p>Nombre completo: {{nombreCompleto}}</p>
@@ -21,31 +27,34 @@
                         </div>
                     </div>
                     <div class="user-stats">
-                        <p>PARTIDAS TOTALES: 0</p>
+                        <p>PARTIDAS TOTALES: {{totalPartidas}} </p>
                         <p class="score">PUNTAJE: {{puntaje}}</p>
                     </div>
 
-            </div>
-        </div>
-        <div>
-            <div class="user-data">
-                <div class="map-container">
-                    <div class="map">
-                        <!-- Aquí puedes agregar el mapa si es necesario -->
-                        Mapa
-                    </div>
                 </div>
             </div>
-            <div class="user-data">
-                <div class="qr-code-container">
-                    <div class="qr-code">
-                        <!-- Aquí puedes agregar el código QR si es necesario -->
-                        Código QR
+            <div class="col-md-6">
+                <div class="user-data">
+                    <div class="map-container">
+                        <div class="map">
+                            <iframe width="400" height="200"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52520.454475369486!2d-58.4388462241145!3d-34.64135604146497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccadb57fd1e5f%3A0xcc737c4eb0a8614b!2sPlaza%20de%20Mayo!5e0!3m2!1ses!2sar!4v1717982192270!5m2!1ses!2sar"
+                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-data">
+                    <div class="qr-code-container">
+                        <div class="qr-code">
+                            <!-- Aquí puedes agregar el código QR si es necesario -->
+                            Código QR
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</body>
+    </body>
+</main>
 </html>
