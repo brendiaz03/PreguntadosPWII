@@ -13,14 +13,14 @@
         }
 
         public function getPreguntas($idUsuario){
-            $sql = "SELECT * FROM pregunta WHERE estado = 'Activa' AND id NOT IN (
+            $sql = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = 'Intermedio' AND id NOT IN (
                             SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario) 
                             LIMIT 1";
             return $this -> database -> query($sql);
         }
 
         public function getPreguntaByNivel($idUsuario, $nivel){
-            $sql = "SELECT * FROM pregunta AS p WHERE  p.nivel = '$nivel' AND p.id NOT IN (
+            $sql = "SELECT * FROM pregunta AS p WHERE  (p.nivel = '$nivel' OR p.nivel IS NULL) AND p.id NOT IN (
                             SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario)
                         LIMIT 1";
             return $this->database->query($sql);
@@ -78,12 +78,47 @@
         }
 
         public function nivelarPregunta($idPregunta){
+            $porcentajeHits = $this -> obtenerPorcentajeDeHits($idPregunta);
+            if($porcentajeHits[0]['porcentaje_hits'] > 0){
+                $porcentajeFinal = $porcentajeHits[0]['porcentaje_hits'];
+                $nivel = 'Dificil';
 
+                if($porcentajeFinal > 66.6){
+                    $nivel = 'Facil';
+                }else if($porcentajeFinal > 33.3){
+                    $nivel = 'Intermedio';
+                }
+
+                $sqlUpdate = "UPDATE pregunta SET nivel = '$nivel' WHERE id = 'idPregunta'";
+                $this -> database -> execute($sqlUpdate);
+            }
+        }
+
+        private function obtenerPorcentajeDeHits($idPregunta){
+            $sql = "SELECT (hits / veces_entregada) * 100 AS porcentaje_hits FROM pregunta 
+                            WHERE id = '$idPregunta' AND veces_entregada >= 10";
+
+            return $this -> database -> query($sql);
         }
 
         public function partidasTotalesPorUsuario($idUsuario){
             $sql = "SELECT COUNT(*) AS partidasTotales FROM partida WHERE idUsuario = '$idUsuario'";
             return $this->database->query($sql);
+        }
+
+        public function partidasTotalesPorPregunta($idPregunta){
+            $sql = "SELECT COUNT(*) AS partidasTotales FROM partida WHERE idPregunta = '$idPregunta'";
+            return $this->database->query($sql);
+        }
+
+        public function marcarHitEnLaPregunta($idPregunta){
+            $sql = "UPDATE pregunta SET hits = hits + 1 WHERE id = '$idPregunta'";
+            $this -> database -> execute($sql);
+        }
+
+        public function marcarEntregaEnLaPregunta($idPregunta){
+            $sql = "UPDATE pregunta SET veces_entregada = veces_entregada + 1 WHERE id = '$idPregunta'";
+            $this -> database -> execute($sql);
         }
     }
 ?>

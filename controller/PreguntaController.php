@@ -28,7 +28,7 @@ class PreguntaController
         if($usuario['nivel'] != null){
             $pregunta = $this -> model -> getPreguntaByNivel($usuario['id'], $usuario['nivel']);
         }else {
-            $pregunta = $this -> model -> getPreguntas($usuario['id'], $usuario['nivel']);
+            $pregunta = $this -> model -> getPreguntas($usuario['id']);
         }
         $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
 
@@ -37,27 +37,33 @@ class PreguntaController
 
     public function terminarPartida(){
         $textoNav = "RESULTADO";
-        $respuestaCorrecta = $this -> model -> verificarRespuestaCorrecta($_POST["idPregunta"], $_POST['idRespuesta']);
+        $usuarioId = $_SESSION["id"];
+        $preguntaId = $_POST['idPregunta'];
+        $respuestaCorrecta = $this -> model -> verificarRespuestaCorrecta($preguntaId, $_POST['idRespuesta']);
+
         if($respuestaCorrecta){
             $resultado = "Respuesta correcta";
             $respondioBien = 1;
+            $this -> model -> marcarHitEnLaPregunta($preguntaId);
+            $this -> model -> marcarEntregaEnLaPregunta($preguntaId);
         }else{
             $resultado = "Respuesta incorrecta";
             $respondioBien = 0;
+            $this -> model -> marcarEntregaEnLaPregunta($preguntaId);
         }
-        $usuarioId = $_SESSION["id"];
         $partidasTotales = $this -> model -> partidasTotalesPorUsuario($usuarioId);
+        $partidasTotalesPregunta = $this -> model -> partidasTotalesPorPregunta( $preguntaId);
 
-        $this -> model-> guardarPartida($usuarioId, $_POST["idPregunta"], $respondioBien);
+        $this -> model-> guardarPartida($usuarioId, $preguntaId, $respondioBien);
 
         if($partidasTotales[0]['partidasTotales'] == 10){
             $this -> model -> nivelarUsuario($usuarioId);
         }
+        if($partidasTotalesPregunta[0]['partidasTotales'] == 10){
+            $this -> model -> nivelarPregunta($preguntaId);
+        }
         $this -> presenter -> render("view/resultado.mustache", ["textoNav" => $textoNav, "usuarioId" => $usuarioId, "resultado"=> $resultado, "logeado"=>true]);
     }
-
-
-
 }
 
 ?>

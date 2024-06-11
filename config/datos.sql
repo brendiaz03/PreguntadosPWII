@@ -78,7 +78,19 @@ VALUES ('Historia', '¿En qué año comenzó la Segunda Guerra Mundial?', 'Activ
        ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Media', NOW()),
        ('Ciencia', '¿Qué planeta es conocido como "el planeta rojo"?', 'Activa', 'Media', NOW()),
        ('Arte', '¿Quién escribió la obra "Romeo y Julieta"?', 'Activa', 'Media', NOW()),
-       ('Entretenimiento', '¿Cuál es el nombre del actor que interpretó a Batman en "El caballero de la noche"?', 'Activa', 'Media', NOW());
+       ('Entretenimiento', '¿Cuál es el nombre del actor que interpretó a Batman en "El caballero de la noche"?', 'Activa', 'Media', NOW()),
+       ('Entretenimiento', '¿Cuál es el nombre del hijo mayor de la familia simpson?', 'Activa', null, NOW()),
+        ('Ciencia', '¿Cuál es el simbolo del Litio en la tabla periodica?', 'Activa', null, NOW()),
+        ('Arte', '¿Quién pintó la Mona Lisa?', 'activa', 'intermedio', NOW()),
+        ('Arte', '¿En qué país nació el pintor Vincent van Gogh?', 'activa', 'intermedio', NOW()),
+        ('Ciencia', '¿Cuál es el elemento químico más abundante en el universo?', 'activa', 'intermedio', NOW()),
+        ('Ciencia', '¿Qué teoría explica el origen del universo?', 'activa', 'intermedio', NOW()),
+        ('Entretenimiento', '¿Quién es el creador de la serie animada "Los Simpson"?', 'activa', 'intermedio', NOW()),
+        ('Entretenimiento', '¿En qué año se estrenó la primera película de "Harry Potter"?', 'activa', 'intermedio', NOW()),
+        ('Geografía', '¿Cuál es el río más largo del mundo?', 'activa', 'intermedio', NOW()),
+        ('Geografía', '¿Cuál es la capital de Australia?', 'activa', 'intermedio', NOW()),
+        ('Arte', '¿Quién esculpió la estatua de David?', 'activa', 'intermedio', NOW()),
+        ('Ciencia', '¿Qué tipo de sangre es conocido como el donante universal?', 'activa', 'intermedio', NOW());
 
 -- Respuestas para las preguntas con dificultad media
 INSERT INTO respuesta (respuesta, correcta, pregunta)
@@ -97,6 +109,36 @@ VALUES ('1939', true, 6),
        ('Christian Bale', true, 10),
        ('Robert Downey Jr.', false, 10),
        ('Hugh Jackman', false, 10);
+        ('Leonardo da Vinci', 1, 25),
+        ('Pablo Picasso', 0, 25),
+        ('Vincent van Gogh', 0, 25),
+        ('Países Bajos', 1, 26),
+        ('Francia', 0, 26),
+        ('España', 0, 26),
+        ('Hidrógeno', 1, 27),
+        ('Oxígeno', 0, 27),
+        ('Carbono', 0, 27),
+        ('Big Bang', 1, 28),
+        ('Teoría de la Relatividad', 0, 28),
+        ('Evolución', 0, 28),
+        ('Matt Groening', 1, 29),
+        ('Seth MacFarlane', 0, 29),
+        ('Trey Parker', 0, 29),
+        ('2001', 1, 30),
+        ('2005', 0, 30),
+        ('1997', 0, 30),
+        ('Nilo', 1, 31),
+        ('Amazonas', 0, 31),
+        ('Yangtsé', 0, 31),
+        ('Canberra', 1, 32),
+        ('Sydney', 0, 32),
+        ('Melbourne', 0, 32),
+        ('Miguel Ángel', 1, 33),
+        ('Leonardo da Vinci', 0, 33),
+        ('Donatello', 0, 33),
+        ('O negativo', 1, 34),
+        ('A positivo', 0, 34),
+        ('B negativo', 0, 34);
 
 -- Preguntas con dificultad alta
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, fechaRealizado)
@@ -123,3 +165,12 @@ VALUES ('George Washington', true, 11),
        ('Una nueva esperanza', true, 15),
        ('El imperio contraataca', false, 15),
        ('El retorno del Jedi', false, 15);
+
+-- otras respuestas
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES ('Nelson', false, 16),
+VALUES ('Bart', true, 16),
+VALUES ('Milhouse', false, 16),
+VALUES ('Li', true, 17),
+VALUES ('Ag', false, 17),
+VALUES ('Ti', false, 17);
