@@ -23,10 +23,34 @@ footer{
     padding: 1rem;
 }
 
+footer {
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+}
+
 footer p{
     margin: 0rem;
-    padding: 0rem 0rem 1rem 0rem;
+    padding: 0rem 0rem 0.2rem 0rem;
 }
+
+
+
+footer div div {
+    margin: 0 0px;
+}
+
+footer h2 {
+    margin-bottom: 5px;
+}
+
+footer p {
+    margin: 0px 0;
+}
+
 nav{
     background-color: #bf91ed;
     color: rgb(255, 255, 255);
