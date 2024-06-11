@@ -24,7 +24,12 @@ class PreguntaController
     public function partida(){
         $textoNav = "PARTIDA";
         $usuario = $this -> model -> getUsuarioById($_SESSION["id"]);
-        $pregunta = $this -> model -> getPreguntas($usuario['id'], $usuario['nivel']);
+
+        if($usuario['nivel'] != null){
+            $pregunta = $this -> model -> getPreguntaByNivel($usuario['id'], $usuario['nivel']);
+        }else {
+            $pregunta = $this -> model -> getPreguntas($usuario['id'], $usuario['nivel']);
+        }
         $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
 
         $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=> $pregunta, "respuestas"=> $respuestas, "logeado"=>true, "foto" => $usuario['foto']]);

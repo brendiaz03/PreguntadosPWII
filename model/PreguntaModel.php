@@ -64,17 +64,21 @@
             $result = $this -> database -> query($sql);
             if(count($result) > 0){
                 $correctas = $result[0]['correctas'];
-                $nivel = 'facil';
+                $nivel = 'Facil';
 
                 if($correctas >= 7){
-                    $nivel = 'dificil';
+                    $nivel = 'Dificil';
                 }else if($correctas >= 4){
-                    $nivel = 'intermedio';
+                    $nivel = 'Intermedio';
                 }
 
                 $sqlUpdate = "UPDATE usuario SET nivel = '$nivel' WHERE id = '$idUsuario'";
                 $this -> database -> execute($sqlUpdate);
             }
+        }
+
+        public function nivelarPregunta($idPregunta){
+
         }
 
         public function partidasTotalesPorUsuario($idUsuario){
