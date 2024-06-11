@@ -81,12 +81,11 @@
             $porcentajeHits = $this -> obtenerPorcentajeDeHits($idPregunta);
             if($porcentajeHits && $porcentajeHits[0]['porcentaje_hits'] > 0){
                 $porcentajeFinal = $porcentajeHits[0]['porcentaje_hits'];
-                echo $porcentajeFinal;
                 $nivel = 'Dificil';
 
                 if($porcentajeFinal > 66.6){
                     $nivel = 'Facil';
-                }else if($porcentajeFinal > 33.3 AND $porcentajeFinal <= 66.6){
+                }else if($porcentajeFinal > 33.3){
                     $nivel = 'Intermedio';
                 }
 
