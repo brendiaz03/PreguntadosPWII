@@ -26,12 +26,12 @@
             <tbody>
             {{#jugadores}}
                 <tr>
-                    <td>{{nombreUsuario}}</td>
-                    <td>{{totalPartidas}}</td>
-                    <td>{{partidasCorrectas}}</td>
-                    <td>{{partidasIncorrectas}}</td>
-                    <td>{{puntaje}}</td>
-                    <td><a href="/usuario/perfil/id={{id}}"><img src="../public/images/icono-perfil.png" alt="Ver perfil"></a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{nombreUsuario}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{totalPartidas}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{partidasCorrectas}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{partidasIncorrectas}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{puntaje}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/icono-perfil.png" alt="Ver perfil" width="30px"></a></td>
                 </tr>
             {{/jugadores}}
             </tbody>
