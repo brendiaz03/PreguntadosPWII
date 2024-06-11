@@ -20,7 +20,7 @@
         }
 
         public function getPreguntaByNivel($idUsuario, $nivel){
-            $sql = "SELECT * FROM pregunta AS p  p.nivel = '$nivel' AND p.id NOT IN (
+            $sql = "SELECT * FROM pregunta AS p WHERE  p.nivel = '$nivel' AND p.id NOT IN (
                             SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario)
                         LIMIT 1";
             return $this->database->query($sql);
