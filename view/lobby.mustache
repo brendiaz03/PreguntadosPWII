@@ -12,8 +12,7 @@
     <img class="lobby-bg" src="../public/imagenes/preguntados-home.jpg"/>
     <div class="lobby-content">
         <h1 class="lobby-nombre">Hola! {{nombreCompleto}}</h1>
-        <p class="lobby-puntos">Puntaje actual: {{puntaje}}</p>
-        <p class="lobby-puntos">Mejor puntaje: {{puntaje}}</p>
+        <p class="lobby-puntos">Puntaje total: {{puntaje}}</p>
         <form method="post" action="/pregunta/partida">
             <input value='{{id}}' hidden='hidden' name='id'>
             <input value='{{nivel}}' hidden='hidden' name='nivel'>

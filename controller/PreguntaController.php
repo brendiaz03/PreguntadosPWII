@@ -22,6 +22,7 @@ class PreguntaController
     }
 
     public function partida(){
+        date_default_timezone_set('America/Buenos_Aires');
         $textoNav = "PARTIDA";
         if(!isset($_SESSION["pregunta"]) || $_SESSION["pregunta"] === null || !isset($_SESSION["respuestas"]) || $_SESSION["respuestas"] === null){
             $usuario = $this -> model -> getUsuarioById($_SESSION["id"]);
@@ -29,8 +30,10 @@ class PreguntaController
             $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
             $_SESSION["pregunta"] = $pregunta[0];
             $_SESSION["respuestas"] = $respuestas;
+            $_SESSION["tiempoInicio"] = time();
+            $tiempoInicio = $_SESSION["tiempoInicio"];
         }
-        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=>  $_SESSION["pregunta"], "respuestas"=> $_SESSION["respuestas"], "logeado"=>true]);
+        $this -> presenter -> render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta"=>  $_SESSION["pregunta"], "respuestas"=> $_SESSION["respuestas"], "logeado"=>true, "tiempoInicio" => $tiempoInicio]);
     }
 
     public function terminarPartida(){
