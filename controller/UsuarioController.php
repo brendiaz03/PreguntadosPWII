@@ -145,11 +145,32 @@
             $nombreCompleto = $usuario['nombreCompleto'];
             $anioNacimiento = $usuario['anioNacimiento'];
             $mail = $usuario['mail'];
+            $foto = $usuario['foto'];
             $puntaje = $usuario['puntaje'];
+
+
+            include_once('libs/qr/phpqrcode/qrlib.php');
+
+            // Función para generar el código QR y guardarlo como una imagen
+            function generateAndSaveQR($data) {
+                $filename = 'public/imagenes/'. 'qr'. '.png'; // Generar un nombre de archivo único
+                QRcode::png($data, $filename, QR_ECLEVEL_L, 8); // Generar el código QR y guardarlo en el archivo
+                return $filename; // Devolver el nombre del archivo
+            }
+
+            // Datos para el código QR
+            $qrData = "http://localhost/usuario/perfil/".$usuario['id'];
+
+            // Generar el código QR y obtener el nombre del archivo
+            $qrImagen = generateAndSaveQR($qrData);
+
+            // Ahora, $qrImageFilename contiene el nombre del archivo donde se guarda el código QR como una imagen
+
+
             $this -> presenter -> render(
                 "view/perfil.mustache",
                 ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true
+                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true, "foto" => $foto , "qrImagen" => $qrImagen
                 ]
             );
         }
@@ -162,13 +183,16 @@
                 "puntaje"=>$usuario['puntaje'],
                 "nivel"=>$usuario['nivel'],
                 "id"=>$usuario['id'],
+                "foto" => $usuario['foto'],
                 "logeado"=>true]);
         }
 
         public function ranking(){
             $textoNav = "RANKING";
+            $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
+            $usuario = $this -> model -> getUsuarioById($idUsuario);
             $jugadores = $this -> model -> getJugadoresConPuntajeYPartidasJugadas();
-            $this -> presenter -> render("view/ranking.mustache", ["textoNav" => $textoNav,"logeado"=>true,"jugadores"=>$jugadores]);
+            $this -> presenter -> render("view/ranking.mustache", ["textoNav" => $textoNav,"logeado"=>true,"jugadores"=>$jugadores, "foto" => $usuario['foto']]);
         }
 
     }

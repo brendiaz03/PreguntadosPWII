@@ -23,6 +23,8 @@ body {
 
 .table {
     margin-top: 50px;
+    text-align: center;
+
 }
 
 .table thead th {
@@ -38,4 +40,12 @@ body {
     background-color: #f8f9fa; /* Color de fondo del contenedor */
     border-radius: 100px;
     min-height: 100vh; /* Asegura que el contenedor tenga al menos el 100% de la altura de la ventana */
+}
+.table a {
+    color: #bf91ed; /* Cambia el color del enlace a azul (#007bff), puedes cambiarlo por cualquier color que desees */
+    text-decoration: none; /* Elimina el subrayado predeterminado */
+}
+
+.table a:hover {
+    color: #bf91ed; /* Cambia el color del enlace al pasar el cursor por encima */
 }

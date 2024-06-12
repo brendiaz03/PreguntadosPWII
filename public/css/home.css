@@ -19,7 +19,6 @@ body {
 }
 
 .imagenCont img {
-    padding: auto;
     width: 500px;
     height: auto;
     border-radius: 10px;
@@ -58,6 +57,7 @@ h1 {
     width: 240px;
     height: 40px;
     margin: 5px 0;
+    padding: .5rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
