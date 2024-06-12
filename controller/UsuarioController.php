@@ -159,7 +159,7 @@
             }
 
             // Datos para el código QR
-            $qrData = "http://localhost/usuario/perfil/";
+            $qrData = "http://localhost/usuario/perfil/".$usuario['id'];
 
             // Generar el código QR y obtener el nombre del archivo
             $qrImagen = generateAndSaveQR($qrData);

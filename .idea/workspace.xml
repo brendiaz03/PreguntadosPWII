@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilos ranking">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="qr">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/perfil.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/perfil.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/imagenes/icono-perfil.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/perfil.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/perfil.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +136,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718126432935</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="qr">
+      <option name="closed" value="true" />
+      <created>1718151331971</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718151331971</updated>
+    </task>
+    <task id="LOCAL-00003" summary="qr">
+      <option name="closed" value="true" />
+      <created>1718151371681</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718151371681</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,7 +183,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="estilos ranking" />
-    <option name="LAST_COMMIT_MESSAGE" value="estilos ranking" />
+    <MESSAGE value="qr" />
+    <option name="LAST_COMMIT_MESSAGE" value="qr" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
