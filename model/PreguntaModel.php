@@ -79,10 +79,10 @@
 
         public function nivelarPregunta($idPregunta){
             $porcentajeHits = $this -> obtenerPorcentajeDeHits($idPregunta);
-            $porcentajeFinal = $porcentajeHits[0]['porcentaje_hits'];
+            $porcentajeFinal = $porcentajeHits[0]['porcentajeHits'];
             $nivel = 'Dificil';
 
-            if($porcentajeFinal > 66.6){
+            if($porcentajeFinal > '66.6'){
                 $nivel = 'Facil';
             }else if($porcentajeFinal > 33.3 AND $porcentajeFinal <= 66.6){
                 $nivel = 'Intermedio';
@@ -93,8 +93,8 @@
         }
 
         private function obtenerPorcentajeDeHits($idPregunta){
-            $sql = "SELECT (hits / veces_entregada) * 100 AS porcentaje_hits FROM pregunta 
-                            WHERE id = '$idPregunta' AND veces_entregada >= 10";
+            $sql = "SELECT (hits / veces_entregada) * 100 AS porcentajeHits FROM pregunta 
+                            WHERE id = '$idPregunta' AND veces_entregada >= '10'";
 
             return $this -> database -> query($sql);
         }
@@ -105,7 +105,7 @@
         }
 
         public function partidasTotalesPorPregunta($idPregunta){
-            $sql = "SELECT COUNT(*) AS partidasTotales FROM partida WHERE idPregunta = '$idPregunta'";
+            $sql = "SELECT veces_entregada FROM pregunta WHERE id = '$idPregunta'";
             return $this->database->query($sql);
         }
 
