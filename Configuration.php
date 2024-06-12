@@ -1,6 +1,6 @@
 <?php
-    include_once("controller/PreguntaController.php");
-    include_once("model/PreguntaModel.php");
+    include_once("controller/PartidaController.php");
+    include_once("model/PartidaModel.php");
     include_once ("controller/UsuarioController.php");
     include_once ("model/UsuarioModel.php");
     include_once("helper/Conexion_db.php");
@@ -20,14 +20,14 @@
         {
             return new UsuarioModel(self::getDatabase());
         }
-        public static function getPreguntaController()
+        public static function getPartidaController()
         {
-            return new PreguntaController(self::getPreguntaModel(), self::getPresenter());
+            return new PartidaController(self::getPartidaModel(), self::getPresenter());
 
         }
-        private static function getPreguntaModel()
+        private static function getPartidaModel()
         {
-            return new PreguntaModel(self::getDatabase());
+            return new PartidaModel(self::getDatabase());
         }
         public static function getDatabase()
         {
@@ -40,7 +40,7 @@
         }
         public static function getRouter()
         {
-            return new Router("getPreguntaController", "get");
+            return new Router("getPartidaController", "get");
         }
         private static function getPresenter()
         {

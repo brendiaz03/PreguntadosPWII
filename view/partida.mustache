@@ -4,10 +4,41 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../public/css/partida.css">
+    <script>
+        console.log({{tiempoInicio}});
+        // Obtener el tiempo de inicio desde PHP
+        var tiempoInicio = {{ tiempoInicio }} * 1000; // Convertir a milisegundos
+        var tiempoLimite = tiempoInicio + 30000; // 30 segundos en milisegundos
+
+        // Función para actualizar el tiempo transcurrido
+        function actualizarTiempo() {
+            var tiempoActual = Date.now(); // Tiempo actual en milisegundos
+            var tiempoTranscurrido = tiempoActual - tiempoInicio; // Calcular el tiempo transcurrido en milisegundos
+
+            // Convertir milisegundos a segundos y redondear
+            var segundosTranscurridos = Math.floor(tiempoTranscurrido / 1000);
+
+            // Mostrar el tiempo transcurrido donde lo necesites en tu HTML
+            document.getElementById("tiempoTranscurrido").innerText = segundosTranscurridos + " segundos";
+
+            // Verificar si han pasado 30 segundos
+            // if (tiempoActual >= tiempoLimite) {
+            //     // Si han pasado 30 segundos, enviar el formulario
+            //     document.getElementById("formulario").submit();
+            // }
+        }
+
+        // Llamar a la función actualizarTiempo cada segundo
+        setInterval(actualizarTiempo, 1000);
+
+        // Llamamos la función una vez al cargar la página para que se actualice inmediatamente
+        actualizarTiempo();
+    </script>
 </head>
 <body>
 <main>
     <div class="cont-partida">
+        <p>Tiempo transcurrido: <span id="tiempoTranscurrido"></span></p>
         <form method="post" action="/pregunta/terminarpartida">
             {{#pregunta}}
                 <h1>{{categoria}}</h1>
