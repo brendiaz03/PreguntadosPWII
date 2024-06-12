@@ -62,4 +62,9 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.2em;
+    border-radius: 10px;
+}
+.qr-code-img{
+    width: 140px;
+    border-radius: 10px;
 }

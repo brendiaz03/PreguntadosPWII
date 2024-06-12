@@ -147,10 +147,30 @@
             $mail = $usuario['mail'];
             $foto = $usuario['foto'];
             $puntaje = $usuario['puntaje'];
+
+
+            include_once('libs/qr/phpqrcode/qrlib.php');
+
+            // Función para generar el código QR y guardarlo como una imagen
+            function generateAndSaveQR($data) {
+                $filename = 'public/imagenes/'. 'qr'. '.png'; // Generar un nombre de archivo único
+                QRcode::png($data, $filename, QR_ECLEVEL_L, 8); // Generar el código QR y guardarlo en el archivo
+                return $filename; // Devolver el nombre del archivo
+            }
+
+            // Datos para el código QR
+            $qrData = "http://localhost/usuario/perfil/";
+
+            // Generar el código QR y obtener el nombre del archivo
+            $qrImagen = generateAndSaveQR($qrData);
+
+            // Ahora, $qrImageFilename contiene el nombre del archivo donde se guarda el código QR como una imagen
+
+
             $this -> presenter -> render(
                 "view/perfil.mustache",
                 ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true, "foto" => $foto
+                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true, "foto" => $foto , "qrImagen" => $qrImagen
                 ]
             );
         }
