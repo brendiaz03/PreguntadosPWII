@@ -25,6 +25,8 @@ CREATE TABLE pregunta(
      pregunta VARCHAR(200),
      estado VARCHAR(50), -- activa, reportada, sugerida
      nivel VARCHAR(50),
+     veces_entregada int,
+     hits int,
      fechaRealizado datetime
 );
 
@@ -36,17 +38,32 @@ CREATE TABLE respuesta(
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );
 CREATE TABLE partida(
-    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    idPregunta INTEGER,
-    idUsuario INTEGER,
-    correcta BOOLEAN,
-    fechaRealizado DATETIME,
-    FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
-    FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+                        id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                        idUsuario INTEGER,
+                        fechaRealizado DATETIME,
+                        FOREIGN KEY (idUsuario) REFERENCES usuario(id)
 );
 
+CREATE TABLE partida_pregunta(
+                                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                                 idPartida INTEGER,
+                                 idPregunta INTEGER,
+                                 correcta BOOLEAN,
+                                 FOREIGN KEY (idPartida) REFERENCES partida(id),
+                                 FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
+);
+# CREATE TABLE partida(
+#     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+#     idPregunta INTEGER,
+#     idUsuario INTEGER,
+#     correcta BOOLEAN,
+#     fechaRealizado DATETIME,
+#     FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
+#     FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+# );
+
 -- Preguntas con dificultad baja
-INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits fechaRealizado)
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
 VALUES ('Historia', '¿En qué año fue la independencia de Argentina?', 'Activa', 'Facil',0 , 0, NOW()),
        ('Geografía', '¿Cuál es la capital de Francia?', 'Activa', 'Facil',0 , 0, NOW()),
        ('Ciencia', '¿Cuál es el símbolo químico del agua?', 'Activa', 'Facil',0 , 0, NOW()),
@@ -72,7 +89,7 @@ VALUES ('1816', true, 1),
        ('El cáliz de fuego', false, 5);
 
 -- Preguntas con dificultad media
-INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits fechaRealizado)
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
 VALUES ('Historia', '¿En qué año comenzó la Segunda Guerra Mundial?', 'Activa', 'Intermedio',0 , 0, NOW()),
        ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Intermedio',0 , 0, NOW()),
        ('Ciencia', '¿Qué planeta es conocido como "el planeta rojo"?', 'Activa', 'Intermedio',0 , 0, NOW()),

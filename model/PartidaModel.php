@@ -1,5 +1,5 @@
 <?php
-    class PreguntaModel {
+    class PartidaModel {
         private $database;
 
         public function __construct($database)

@@ -8,6 +8,7 @@
         console.log({{tiempoInicio}});
         // Obtener el tiempo de inicio desde PHP
         var tiempoInicio = {{ tiempoInicio }} * 1000; // Convertir a milisegundos
+        var tiempoLimite = tiempoInicio + 30000; // 30 segundos en milisegundos
 
         // Función para actualizar el tiempo transcurrido
         function actualizarTiempo() {
@@ -19,6 +20,12 @@
 
             // Mostrar el tiempo transcurrido donde lo necesites en tu HTML
             document.getElementById("tiempoTranscurrido").innerText = segundosTranscurridos + " segundos";
+
+            // Verificar si han pasado 30 segundos
+            // if (tiempoActual >= tiempoLimite) {
+            //     // Si han pasado 30 segundos, enviar el formulario
+            //     document.getElementById("formulario").submit();
+            // }
         }
 
         // Llamar a la función actualizarTiempo cada segundo

@@ -1,6 +1,6 @@
 <?php
 
-class PreguntaController
+class PartidaController
 {
     private $model;
     private $presenter;
@@ -26,7 +26,12 @@ class PreguntaController
         $textoNav = "PARTIDA";
         if(!isset($_SESSION["pregunta"]) || $_SESSION["pregunta"] === null || !isset($_SESSION["respuestas"]) || $_SESSION["respuestas"] === null){
             $usuario = $this -> model -> getUsuarioById($_SESSION["id"]);
-            $pregunta = $this -> model -> getPreguntas($usuario['id'], $usuario['nivel']);
+
+             if($usuario['nivel'] != null){
+                 $pregunta = $this -> model -> getPreguntaByNivel($usuario['id'], $usuario['nivel']);
+             }else{
+                 $pregunta = $this -> model -> getPreguntas($usuario['id']);
+             }
             $respuestas = $this -> model -> getRespuestasByPregunta($pregunta[0]['id']);
             $_SESSION["pregunta"] = $pregunta[0];
             $_SESSION["respuestas"] = $respuestas;
@@ -54,12 +59,23 @@ class PreguntaController
     public function terminarPartida(){
         $respuestaCorrecta = $this -> model -> verificarRespuestaCorrecta($_POST["idPregunta"], $_POST['idRespuesta']);
         $this -> model-> guardarPartida($_SESSION["id"], $_POST["idPregunta"], $respuestaCorrecta);
+        $partidasTotalesUsuario = $this -> model -> partidasTotalesPorUsuario($_SESSION["id"]);
+        $partidasTotalesPregunta = $this -> model -> partidasTotalesPorPregunta($_POST["idPregunta"]);
+          if($partidasTotalesUsuario[0]['partidasTotales'] == 10){
+            $this -> model -> nivelarUsuario($_SESSION["id"]);
+        }
+        if($partidasTotalesPregunta[0] >= 10){
+            $this -> model -> nivelarPregunta($_POST["idPregunta"]);
+        }
         $_SESSION["pregunta"] = null;
         $_SESSION["respuestas"] = null;
         if($respuestaCorrecta){
+            $this -> model -> marcarHitEnLaPregunta($_POST["idPregunta"]);
+            $this -> model -> marcarEntregaEnLaPregunta($_POST["idPregunta"]);
             header("Location: /preguntados/partida");
             exit();
         }else{
+            $this -> model -> marcarEntregaEnLaPregunta($_POST["idPregunta"]);
             header("Location: /usuario/lobby");
         }
     }

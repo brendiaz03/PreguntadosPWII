@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PreguntaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/config/datos.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/PreguntaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/PartidaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/PreguntaModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/PartidaModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/lobby.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobby.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/partida.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partida.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/resultado.mustache" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,6 +128,8 @@
       <workItem from="1718057235839" duration="1586000" />
       <workItem from="1718066164205" duration="698000" />
       <workItem from="1718120084667" duration="5928000" />
+      <workItem from="1718154781313" duration="4571000" />
+      <workItem from="1718162723539" duration="1410000" />
     </task>
     <servers />
   </component>
