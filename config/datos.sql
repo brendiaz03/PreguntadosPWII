@@ -37,30 +37,30 @@ CREATE TABLE respuesta(
       pregunta INTEGER,
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );
-CREATE TABLE partida(
-                        id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                        idUsuario INTEGER,
-                        fechaRealizado DATETIME,
-                        FOREIGN KEY (idUsuario) REFERENCES usuario(id)
-);
-
-CREATE TABLE partida_pregunta(
-                                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
-                                 idPartida INTEGER,
-                                 idPregunta INTEGER,
-                                 correcta BOOLEAN,
-                                 FOREIGN KEY (idPartida) REFERENCES partida(id),
-                                 FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
-);
 # CREATE TABLE partida(
-#     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-#     idPregunta INTEGER,
-#     idUsuario INTEGER,
-#     correcta BOOLEAN,
-#     fechaRealizado DATETIME,
-#     FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
-#     FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+#                         id INTEGER PRIMARY KEY AUTO_INCREMENT,
+#                         idUsuario INTEGER,
+#                         fechaRealizado DATETIME,
+#                         FOREIGN KEY (idUsuario) REFERENCES usuario(id)
 # );
+#
+# CREATE TABLE partida_pregunta(
+#                                  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+#                                  idPartida INTEGER,
+#                                  idPregunta INTEGER,
+#                                  correcta BOOLEAN,
+#                                  FOREIGN KEY (idPartida) REFERENCES partida(id),
+#                                  FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
+# );
+CREATE TABLE partida(
+    id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idPregunta INTEGER,
+    idUsuario INTEGER,
+    correcta BOOLEAN,
+    fechaRealizado DATETIME,
+    FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
+    FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+);
 
 -- Preguntas con dificultad baja
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
