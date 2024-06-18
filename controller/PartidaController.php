@@ -69,18 +69,6 @@ class PartidaController
         }
     }
 
-    public function vistaAgregarPregunta()
-    {
-        $this->presenter->render("view/agregarPreguntaView.mustache");
-    }
-
-    public function vistaListaPregunta()
-    {
-        $pregunta = $this->model->getPreguntasEditor();
-        $this->presenter->render("view/listaPregunta.mustache", ['pregunta' => $pregunta]);
-    }
-
-
 }
 
 ?>
