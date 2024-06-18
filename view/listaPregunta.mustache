@@ -19,7 +19,7 @@
             <th>Pregunta</th>
             <th>Estado</th>
             <th>Nivel</th>
-
+            <th>Modificar</th>
         </tr>
         </thead>
         <tbody>
@@ -30,11 +30,13 @@
                 <td>
                     <form method="post" action="/admin/setEstadoPregunta">
                         <input name="idPregunta" value="{{id}}" type="hidden">
-                        <button style="color: #bf91ed; background: none" type="submit">{{estado}}</button>
+                        <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">{{estado}}</button>
                     </form>
                 </td>
                 <td><a href="#">{{nivel}}</a></td>
-
+                <td>
+                    <a style="color: #fff; background: #bf91ed; padding: .3rem" href="/admin/vistaeditarpregunta?id={{id}}">Editar</a>
+                </td>
             </tr>
         {{/preguntas}}
 
