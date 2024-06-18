@@ -49,6 +49,16 @@ class AdminController
         }
     }
 
+    public function eliminarPregunta(){
+        if($_POST['idPregunta']){
+            $idPregunta = $_POST['idPregunta'];
+
+            $this -> model -> eliminarPregunta($idPregunta);
+            $preguntas = $this->model->getPreguntasEditor();
+            $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+        }
+    }
+
     public function setEstadoPregunta(){
         $idPregunta = $_POST['idPregunta'];
         $this -> model -> cambiarEstadoPregunta($idPregunta);

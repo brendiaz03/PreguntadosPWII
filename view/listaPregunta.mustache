@@ -17,9 +17,10 @@
         <tr>
             <th>Categoria</th>
             <th>Pregunta</th>
-            <th>Estado</th>
             <th>Nivel</th>
+            <th>Estado</th>
             <th>Modificar</th>
+            <th>Eliminar</th>
         </tr>
         </thead>
         <tbody>
@@ -27,15 +28,21 @@
             <tr>
                 <td><a href="#">{{categoria}}</a></td>
                 <td><a href="#">{{pregunta}}</a></td>
+                <td><a href="#">{{nivel}}</a></td>
                 <td>
                     <form method="post" action="/admin/setEstadoPregunta">
                         <input name="idPregunta" value="{{id}}" type="hidden">
                         <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">{{estado}}</button>
                     </form>
                 </td>
-                <td><a href="#">{{nivel}}</a></td>
                 <td>
                     <a style="color: #fff; background: #bf91ed; padding: .3rem" href="/admin/vistaeditarpregunta?id={{id}}">Editar</a>
+                </td>
+                <td>
+                    <form method="post" action="/admin/eliminarPregunta">
+                        <input name="idPregunta" value="{{id}}" type="hidden">
+                        <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">Eliminar</button>
+                    </form>
                 </td>
             </tr>
         {{/preguntas}}

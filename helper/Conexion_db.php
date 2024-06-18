@@ -36,4 +36,8 @@ class Database
         mysqli_close($this -> conn);
     }
 
+    public function rollback() {
+        mysqli_rollback($this->conn);
+    }
+
 }
