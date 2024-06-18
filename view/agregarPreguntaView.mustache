@@ -14,22 +14,28 @@
     <main>
         <div class="cont-form">
             <h2>Agregar Pregunta</h2>
-            <form action="">
-                <select name="" id="">
+            <form method="POST" action="/admin/agregarPregunta">
+                <select name="categoria" id="" required>
                     <option disabled selected>Selecciona una categoria</option>
-                    <option value="">Historia</option>
-                    <option value="">Geografia</option>
-                    <option value="">Ciencia</option>
-                    <option value="">Arte</option>
-                    <option value="">Entretenimiento</option>
+                    <option value="Historia">Historia</option>
+                    <option value="Geografia">Geografia</option>
+                    <option value="Ciencia">Ciencia</option>
+                    <option value="Arte">Arte</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
                 </select><br>
 
-                <br> <input type="text" name="" id="" placeholder="Ingresar Pregunta">
-                <br> <input type="text" name="" id="" placeholder="Ingresar opcion correcta">
-                <br><input type="text" name="" id="" placeholder="Ingresar opcion 2">
-                <br> <input type="text" name="" id="" placeholder="Ingresar opcion 3">
-                <br> <input type="text" name="" id="" placeholder="Ingresar opcion 4">
+                <br> <input type="text" name="pregunta" id="" placeholder="Ingresar Pregunta" required>
+                <br> <input type="text" name="correcta" id="" placeholder="Ingresar opcion correcta" required>
+                <br><input type="text" name="opcion2" id="" placeholder="Ingresar opcion 2" required>
+                <br> <input type="text" name="opcion3" id="" placeholder="Ingresar opcion 3" required>
+                <br> <input type="text" name="opcion4" id="" placeholder="Ingresar opcion 4" required>
                 <br> <button>Guardar</button>
+                {{#error}}
+                    <p style="color: red">{{error}}</p>
+                {{/error}}
+                {{#success}}
+                    <p style="color: green">{{success}}</p>
+                {{/success}}
                 <br><a href="../usuario/lobby">volver</a>
             </form>
         </div>

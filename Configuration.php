@@ -1,6 +1,8 @@
 <?php
     include_once("controller/PartidaController.php");
     include_once("model/PartidaModel.php");
+    include_once("controller/AdminController.php");
+    include_once("model/AdminModel.php");
     include_once ("controller/UsuarioController.php");
     include_once ("model/UsuarioModel.php");
     include_once("helper/Conexion_db.php");
@@ -19,6 +21,15 @@
         private static function getUsuarioModel()
         {
             return new UsuarioModel(self::getDatabase());
+        }
+        public static function getAdminController()
+        {
+            return new AdminController(self::getAdminModel(), self::getPresenter());
+
+        }
+        private static function getAdminModel()
+        {
+            return new AdminModel(self::getDatabase());
         }
         public static function getPartidaController()
         {

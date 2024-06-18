@@ -132,11 +132,6 @@ class PartidaModel
         $this->database->execute($sql);
     }
 
-    public function getPreguntasEditor()
-    {
-        $sql = "SELECT * FROM pregunta";
-        return $this->database->query($sql);
-    }
 
 }
 
