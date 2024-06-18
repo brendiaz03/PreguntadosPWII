@@ -202,7 +202,7 @@ class UsuarioController
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);
         }
-        if ($usuario['tipoUsuario'] == 'Editor') {
+        if ($usuario['tipoUsuario'] == 'Admin') {
             $textoNav = "Perfil editor";
             $this->presenter->render("view/lobbyEditor.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
