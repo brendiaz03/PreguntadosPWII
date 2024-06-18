@@ -23,15 +23,20 @@
         </tr>
         </thead>
         <tbody>
-        {{#pregunta}}
+        {{#preguntas}}
             <tr>
                 <td><a href="#">{{categoria}}</a></td>
                 <td><a href="#">{{pregunta}}</a></td>
-                <td><a href="#">{{estado}}</a></td>
+                <td>
+                    <form method="post" action="/admin/setEstadoPregunta">
+                        <input name="idPregunta" value="{{id}}" type="hidden">
+                        <button type="submit">{{estado}}</button>
+                    </form>
+                </td>
                 <td><a href="#">{{nivel}}</a></td>
 
             </tr>
-        {{/pregunta}}
+        {{/preguntas}}
 
         </tbody>
     </table>

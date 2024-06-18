@@ -18,6 +18,17 @@
             $this -> database -> execute($insertRespuestas);
         }
 
+        public function cambiarEstadoPregunta($idPregunta){
+            $query = "SELECT estado FROM pregunta WHERE id = '$idPregunta' LIMIT 1";
+            $result = $this->database->query($query);
+
+            if($result[0]['estado'] == 'Inactiva'){
+                $this -> database -> execute("UPDATE pregunta SET estado = 'Activa' WHERE id = '$idPregunta'");
+            }else {
+                $this -> database -> execute("UPDATE pregunta SET estado = 'Inactiva' WHERE id = '$idPregunta'");
+            }
+        }
+
         public function getPreguntasEditor()
         {
             $sql = "SELECT * FROM pregunta";
