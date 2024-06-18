@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
+    <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="/public/css/ranking.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<main class="ranking-container">
+    <h2 class="ranking">Preguntas</h2>
+
+    <table class="table">
+        <thead class="">
+        <tr>
+            <th>Categoria</th>
+            <th>Pregunta</th>
+            <th>Estado</th>
+            <th>Nivel</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {{#pregunta}}
+            <tr>
+                <td><a href="#">{{categoria}}</a></td>
+                <td><a href="#">{{pregunta}}</a></td>
+                <td><a href="#">{{estado}}</a></td>
+                <td><a href="#">{{nivel}}</a></td>
+
+            </tr>
+        {{/pregunta}}
+
+        </tbody>
+    </table>
+    <br><a href="../usuario/lobby">volver</a>
+    </div>
+</main>
+</body>
+</html>

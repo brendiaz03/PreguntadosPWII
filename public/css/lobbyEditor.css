@@ -1,0 +1,40 @@
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+
+}
+
+h1 {
+    color: #673ab7;
+}
+
+h2 {
+    color: #555;
+}
+
+.d-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.d-grid a {
+    background-color: #d3a4f7;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.d-grid a:hover {
+    background-color: #c390ee;
+}

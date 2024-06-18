@@ -1,113 +1,123 @@
 <?php
-    require 'libs/PHPMailer/src/Exception.php';
-    require 'libs/PHPMailer/src/PHPMailer.php';
-    require 'libs/PHPMailer/src/SMTP.php';
-    require 'config/config.php';
+require 'libs/PHPMailer/src/Exception.php';
+require 'libs/PHPMailer/src/PHPMailer.php';
+require 'libs/PHPMailer/src/SMTP.php';
+require 'config/config.php';
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
-    class UsuarioController{
-        private $model;
-        private $presenter;
+class UsuarioController
+{
+    private $model;
+    private $presenter;
 
-        public function __construct($model, $presenter)
-        {
-            $this->model = $model;
-            $this->presenter = $presenter;
+    public function __construct($model, $presenter)
+    {
+        $this->model = $model;
+        $this->presenter = $presenter;
+    }
+
+    public function login()
+    {
+        $nombreUsuario = $_POST['nombreUsuario'];
+        $password = $_POST['password'];
+
+        $resultado = $this->model->logearse($nombreUsuario, $password);
+
+
+        if ($resultado['success']) {
+            $this->lobby();
+        } else {
+            $this->presenter->render("view/home.mustache", ['error' => true, 'message' => $resultado['message']]);
         }
+    }
 
-        public function login(){
-            $nombreUsuario = $_POST['nombreUsuario'];
-            $password = $_POST['password'];
+    public function logout()
+    {
+        $this->model->logout();
+        header("location:/");
+        exit();
+    }
 
-            $resultado = $this->model->logearse($nombreUsuario, $password);
+    public function vistaRegistro()
+    {
+        $this->presenter->render("view/registro.mustache");
+    }
 
-            if ($resultado['success']) {
-                $this->lobby();
+    public function vistaLogin()
+    {
+        $this->presenter->render("view/home.mustache");
+    }
+
+    public function registro()
+    {
+        if ($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null && $_POST["sexo"]
+            != null && $_POST["pais"] != null && $_POST["ciudad"] != null && $_POST["mail"] != null && $_POST["password"]
+            != null && $_POST["nombreUsuario"] != null && $_POST["tipoUsuario"] != null && $_FILES['foto'] != null
+        ) {
+            $nombre = $_POST["nombreCompleto"];
+            $nacimiento = $_POST["anioNacimiento"];
+            $sexo = $_POST["sexo"];
+            $pais = $_POST["pais"];
+            $ciudad = $_POST["ciudad"];
+            $mail = $_POST["mail"];
+            $password = $_POST["password"];
+            $nombreUsuario = $_POST["nombreUsuario"];
+            $tipoUsuario = $_POST["tipoUsuario"];
+            $fotoTmp = $_FILES['foto']['tmp_name'];
+
+            $usuarioExistente = $this->model->buscarUsuario($nombreUsuario, $mail);
+            if ($usuarioExistente == null) {
+                $hashUsuario = md5($nombreUsuario . time());
+                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hashUsuario);
+                $this->enviarConfirmacionDeCuenta($mail, $hashUsuario);
             } else {
-                $this -> presenter -> render("view/home.mustache", ['error' => true, 'message' => $resultado['message']]);
+                $this->presenter->render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
             }
+        } else {
+            $this->presenter->render("view/registro.mustache", ['error' => true, 'message' => 'Debe completar todos los campos del formulario para poder continuar.']);
         }
+    }
 
-        public function logout(){
-            $this -> model -> logout();
-            header("location:/");
-            exit();
-        }
+    private function enviarConfirmacionDeCuenta($email, $hash)
+    {
+        $mail = new PHPMailer(true);
 
-        public function vistaRegistro(){
-            $this -> presenter -> render("view/registro.mustache");
-        }
+        try {
+            // Configuraciones del servidor SMTP
+            $mail->isSMTP();
+            $mail->Host = SMTP_HOST;
+            $mail->SMTPAuth = true;
+            $mail->Username = SMTP_USER;
+            $mail->Password = SMTP_PASS;
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = SMTP_PORT;
 
-        public function vistaLogin(){
-            $this -> presenter -> render("view/home.mustache");
-        }
-        public function registro(){
-            if($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null&& $_POST["sexo"]
-                != null&& $_POST["pais"] != null&& $_POST["ciudad"] != null&& $_POST["mail"] != null&& $_POST["password"]
-                != null&& $_POST["nombreUsuario"] !=null && $_POST["tipoUsuario"] != null && $_FILES['foto'] != null
-            ){
-                $nombre = $_POST["nombreCompleto"];
-                $nacimiento = $_POST["anioNacimiento"];
-                $sexo = $_POST["sexo"];
-                $pais = $_POST["pais"];
-                $ciudad = $_POST["ciudad"];
-                $mail = $_POST["mail"];
-                $password = $_POST["password"];
-                $nombreUsuario = $_POST["nombreUsuario"];
-                $tipoUsuario = $_POST["tipoUsuario"];
-                $fotoTmp = $_FILES['foto']['tmp_name'];
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
 
-                $usuarioExistente = $this -> model -> buscarUsuario($nombreUsuario, $mail);
-                if($usuarioExistente == null){
-                    $hashUsuario = md5($nombreUsuario . time());
-                    $this -> model -> registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hashUsuario);
-                    $this -> enviarConfirmacionDeCuenta($mail, $hashUsuario);
-                }else {
-                    $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
-                }
-            }else {
-                $this -> presenter -> render("view/registro.mustache", ['error' => true, 'message' => 'Debe completar todos los campos del formulario para poder continuar.']);
-            }
-        }
-        private function enviarConfirmacionDeCuenta($email, $hash) {
-            $mail = new PHPMailer(true);
+            // Remitente y destinatario
+            $mail->setFrom(FROM_EMAIL, FROM_NAME);
+            $mail->addAddress($email);
 
-            try {
-                // Configuraciones del servidor SMTP
-                $mail->isSMTP();
-                $mail->Host       = SMTP_HOST;
-                $mail->SMTPAuth   = true;
-                $mail->Username   = SMTP_USER;
-                $mail->Password   = SMTP_PASS;
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port       = SMTP_PORT;
+            // Contenido del correo
+            $mail->isHTML(true);
+            $mail->Subject = 'Confirma tu cuenta';
 
-                $mail->SMTPOptions = array(
-                    'ssl' => array(
-                        'verify_peer' => false,
-                        'verify_peer_name' => false,
-                        'allow_self_signed' => true
-                    )
-                );
-
-                // Remitente y destinatario
-                $mail->setFrom(FROM_EMAIL, FROM_NAME);
-                $mail->addAddress($email);
-
-                // Contenido del correo
-                $mail->isHTML(true);
-                $mail->Subject = 'Confirma tu cuenta';
-
-                $mail -> Body = "
+            $mail->Body = "
                                 Haz click en el siguiente enlace para confirmar tu cuenta: 
                                 <form method='post' action='http://localhost/usuario/confirmarcuenta'>
                                     <input name='hash' value='$hash' type='hidden'>
                                     <button type='submit'>Confirmar cuenta</button>
                                 </form>
                             ";
-                $mail -> AltBody = "
+            $mail->AltBody = "
                                 Haz click en el siguiente enlace para confirmar tu cuenta: 
                                 <form method='post' action='http://localhost/usuario/confirmarcuenta'>
                                     <input name='hash' value='$hash' type='hidden'>
@@ -115,84 +125,103 @@
                                 </form>
                             ";
 
-                $mail->send();
-                echo "<p style='padding: 1rem; font-size: 1.3rem'>Hemos enviado un correo a su direccion de email para confirmar su cuenta.</p>";
-            } catch (Exception $e) {
-                echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
-            }
+            $mail->send();
+            echo "<p style='padding: 1rem; font-size: 1.3rem'>Hemos enviado un correo a su direccion de email para confirmar su cuenta.</p>";
+        } catch (Exception $e) {
+            echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
         }
+    }
 
-        public function confirmarCuenta(){
-            if(isset($_POST['hash'])){
-                $usuarioHash = $_POST['hash'];
-                $confirmacion = $this -> model -> confirmacionCuenta($usuarioHash);
+    public function confirmarCuenta()
+    {
+        if (isset($_POST['hash'])) {
+            $usuarioHash = $_POST['hash'];
+            $confirmacion = $this->model->confirmacionCuenta($usuarioHash);
 
-                if($confirmacion){
-                    $this -> presenter -> render("view/confirmarcuenta.mustache");
-                }else {
-                    echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
-                }
-            }else {
+            if ($confirmacion) {
+                $this->presenter->render("view/confirmarcuenta.mustache");
+            } else {
                 echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
             }
+        } else {
+            echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
         }
-
-        public function perfil(){
-            $textoNav = "PERFIL";
-            $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
-            $usuario = $this -> model -> getUsuarioById($idUsuario);
-            $nombreUsuario = $usuario['nombreUsuario'];
-            $nombreCompleto = $usuario['nombreCompleto'];
-            $anioNacimiento = $usuario['anioNacimiento'];
-            $mail = $usuario['mail'];
-            $foto = $usuario['foto'];
-            $puntaje = $usuario['puntaje'];
-
-
-            include_once('libs/qr/phpqrcode/qrlib.php');
-
-            // Función para generar el código QR y guardarlo como una imagen
-            function generateAndSaveQR($data) {
-                $filename = 'public/imagenes/'. 'qr'. '.png'; // Generar un nombre de archivo único
-                QRcode::png($data, $filename, QR_ECLEVEL_L, 8); // Generar el código QR y guardarlo en el archivo
-                return $filename; // Devolver el nombre del archivo
-            }
-
-            // Datos para el código QR
-            $qrData = "http://localhost/usuario/perfil/".$usuario['id'];
-
-            // Generar el código QR y obtener el nombre del archivo
-            $qrImagen = generateAndSaveQR($qrData);
-
-            // Ahora, $qrImageFilename contiene el nombre del archivo donde se guarda el código QR como una imagen
-
-
-            $this -> presenter -> render(
-                "view/perfil.mustache",
-                ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                    "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado"=>true, "foto" => $foto , "qrImagen" => $qrImagen
-                ]
-            );
-        }
-
-        public function lobby(){
-            $usuario = $this -> model -> getUsuarioById($_SESSION["id"]);
-            $textoNav = "PREGUNTADOS";
-            $this -> presenter -> render("view/lobby.mustache", ["textoNav" => $textoNav,
-            "nombreCompleto"=> $usuario['nombreCompleto'],
-                "puntaje"=>$usuario['puntaje'],
-                "nivel"=>$usuario['nivel'],
-                "id"=>$usuario['id'],
-                "foto" => $usuario['foto'],
-                "logeado"=>true]);
-        }
-
-        public function ranking(){
-            $textoNav = "RANKING";
-            $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
-            $usuario = $this -> model -> getUsuarioById($idUsuario);
-            $jugadores = $this -> model -> getJugadoresConPuntajeYPartidasJugadas();
-            $this -> presenter -> render("view/ranking.mustache", ["textoNav" => $textoNav,"logeado"=>true,"jugadores"=>$jugadores, "foto" => $usuario['foto']]);
-        }
-
     }
+
+    public function perfil()
+    {
+        $textoNav = "PERFIL";
+        $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
+        $usuario = $this->model->getUsuarioById($idUsuario);
+        $nombreUsuario = $usuario['nombreUsuario'];
+        $nombreCompleto = $usuario['nombreCompleto'];
+        $anioNacimiento = $usuario['anioNacimiento'];
+        $mail = $usuario['mail'];
+        $foto = $usuario['foto'];
+        $puntaje = $usuario['puntaje'];
+
+
+        include_once('libs/qr/phpqrcode/qrlib.php');
+
+        // Función para generar el código QR y guardarlo como una imagen
+        function generateAndSaveQR($data)
+        {
+            $filename = 'public/imagenes/' . 'qr' . '.png'; // Generar un nombre de archivo único
+            QRcode::png($data, $filename, QR_ECLEVEL_L, 8); // Generar el código QR y guardarlo en el archivo
+            return $filename; // Devolver el nombre del archivo
+        }
+
+        // Datos para el código QR
+        $qrData = "http://localhost/usuario/perfil/" . $usuario['id'];
+
+        // Generar el código QR y obtener el nombre del archivo
+        $qrImagen = generateAndSaveQR($qrData);
+
+        // Ahora, $qrImageFilename contiene el nombre del archivo donde se guarda el código QR como una imagen
+
+
+        $this->presenter->render(
+            "view/perfil.mustache",
+            ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
+                "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado" => true, "foto" => $foto, "qrImagen" => $qrImagen
+            ]
+        );
+    }
+
+    public function lobby()
+    {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "PREGUNTADOS";
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $this->presenter->render("view/lobby.mustache", ["textoNav" => $textoNav,
+                "nombreCompleto" => $usuario['nombreCompleto'],
+                "puntaje" => $usuario['puntaje'],
+                "nivel" => $usuario['nivel'],
+                "id" => $usuario['id'],
+                "foto" => $usuario['foto'],
+                "tipoUsuario" => $usuario['tipoUsuario'],
+                "logeado" => true]);
+        }
+        if ($usuario['tipoUsuario'] == 'Editor') {
+            $textoNav = "Perfil editor";
+            $this->presenter->render("view/lobbyEditor.mustache", ["textoNav" => $textoNav,
+                "nombreCompleto" => $usuario['nombreCompleto'],
+                "puntaje" => $usuario['puntaje'],
+                "nivel" => $usuario['nivel'],
+                "id" => $usuario['id'],
+                "foto" => $usuario['foto'],
+                "tipoUsuario" => $usuario['tipoUsuario'],
+                "logeado" => true]);
+        }
+    }
+
+    public function ranking()
+    {
+        $textoNav = "RANKING";
+        $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
+        $usuario = $this->model->getUsuarioById($idUsuario);
+        $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
+        $this->presenter->render("view/ranking.mustache", ["textoNav" => $textoNav, "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+    }
+
+}
