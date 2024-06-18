@@ -37,6 +37,23 @@
             }
         }
 
+        public function eliminarPregunta($idPregunta){
+            try {
+                $selectPregunta = "SELECT 1 FROM pregunta WHERE id = '$idPregunta' LIMIT 1";
+                $pregunta = $this -> database -> query($selectPregunta);
+
+                if(count($pregunta) == 1){
+                    $deleteRespuestas = "DELETE FROM respuesta WHERE pregunta = '$idPregunta'";
+                    $this -> database -> execute($deleteRespuestas);
+
+                    $deletePregunta = "DELETE FROM pregunta WHERE id = '$idPregunta'";
+                    $this -> database -> execute($deletePregunta);
+                }
+            } catch (Exception $e) {
+                $this->database->rollback();
+            }
+        }
+
         public function cambiarEstadoPregunta($idPregunta){
             $query = "SELECT estado FROM pregunta WHERE id = '$idPregunta' LIMIT 1";
             $result = $this->database->query($query);
