@@ -32,7 +32,7 @@ class AdminController
     public function setEstadoPregunta(){
         $idPregunta = $_POST['idPregunta'];
         $this -> model -> cambiarEstadoPregunta($idPregunta);
-        
+
         $preguntas = $this->model->getPreguntasEditor();
         $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
     }
