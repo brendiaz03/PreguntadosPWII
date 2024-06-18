@@ -87,5 +87,16 @@ class AdminController
         $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
     }
 
+    public function vistaPreguntasSugeridas()
+    {
+        $preguntas = $this->model->getPreguntasEditorSugeridas();
+        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+    }
+    public function vistaPreguntasReportadas()
+    {
+        $preguntas = $this->model->getPreguntasEditorReportadas();
+        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+    }
+
 
 }

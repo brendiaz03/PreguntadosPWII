@@ -64,8 +64,8 @@ CREATE TABLE partida(
 
 -- Preguntas con dificultad baja
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
-VALUES ('Historia', '¿En qué año fue la independencia de Argentina?', 'Activa', 'Facil',0 , 0, NOW()),
-       ('Geografía', '¿Cuál es la capital de Francia?', 'Activa', 'Facil',0 , 0, NOW()),
+VALUES ('Historia', '¿En qué año fue la independencia de Argentina?', 'Reportada', 'Facil',0 , 0, NOW()),
+       ('Geografía', '¿Cuál es la capital de Francia?', 'Sugerida', 'Facil',0 , 0, NOW()),
        ('Ciencia', '¿Cuál es el símbolo químico del agua?', 'Activa', 'Facil',0 , 0, NOW()),
        ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Facil',0 , 0, NOW()),
        ('Entretenimiento', '¿En qué película aparece el personaje de Harry Potter?', 'Activa', 'Facil',0 , 0, NOW());

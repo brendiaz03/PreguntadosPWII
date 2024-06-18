@@ -86,5 +86,17 @@
             $sql = "SELECT * FROM pregunta";
             return $this->database->query($sql);
         }
+
+        public function getPreguntasEditorSugeridas()
+        {
+            $sql = "SELECT * FROM pregunta where estado ='Sugerida'";
+            return $this->database->query($sql);
+        }
+        public function getPreguntasEditorReportadas()
+        {
+            $sql = "SELECT * FROM pregunta where estado ='Reportada'";
+            return $this->database->query($sql);
+        }
+
     }
 ?>
