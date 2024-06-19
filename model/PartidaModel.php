@@ -28,12 +28,18 @@ class PartidaModel
         $sql = "SELECT * FROM pregunta AS p WHERE  (p.nivel = '$nivel' OR p.nivel IS NULL) AND p.id NOT IN (
                             SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario)
                         LIMIT 1";
-        return $this->database->query($sql);
+        $result = $this->database->query($sql);
+
+        if (empty($result) || isset($result)) {
+            $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = '$nivel' ORDER BY RAND() LIMIT 1";
+            return $this->database->query($sqlRandom);
+        }
+        return $result;
     }
 
     public function verificarRespuestaCorrecta($idPregunta, $idRespuesta)
     {
-        $sql = "SELECT correcta FROM respuesta WHERE idrespuesta = '$idRespuesta' AND pregunta = '$idPregunta'";
+        $sql = "SELECT correcta FROM respuesta WHERE id = '$idRespuesta' AND pregunta = '$idPregunta'";
         $result = $this->database->query($sql);
         if ($result[0]['correcta'] == 1) {
             return 1;
@@ -132,6 +138,10 @@ class PartidaModel
         $this->database->execute($sql);
     }
 
+    public function reportarPreguntaPorId($idPregunta){
+        $sql = "UPDATE pregunta SET estado = 'Reportada' WHERE id = '$idPregunta'";
+        $this->database->execute($sql);
+    }
 
 }
 

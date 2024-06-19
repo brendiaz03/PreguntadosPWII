@@ -32,10 +32,39 @@
 
         // Llamamos la función una vez al cargar la página para que se actualice inmediatamente
         actualizarTiempo();
+
+        // Función para mostrar el popup
+        function showPopup(event) {
+            event.preventDefault();
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        // Función para cerrar el popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Función para confirmar el reporte
+        function confirmReport() {
+            // Aquí puedes añadir la lógica para reportar la pregunta, como una llamada AJAX
+            document.getElementById("reportar").submit();
+            alert('Pregunta reportada.');
+            closePopup();
+        }
     </script>
 </head>
 <body>
 <main>
+    <!-- Popup HTML -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content">
+            <h2>¿Seguro desea reportar esta pregunta?</h2>
+            <div class="popup-buttons">
+                <button id="confirmar-btn" onclick="confirmReport()">Sí</button>
+                <button id="cancelar-btn" onclick="closePopup()">No</button>
+            </div>
+        </div>
+    </div>
     <div class="cont-partida">
         <p>Tiempo transcurrido: <span id="tiempoTranscurrido"></span></p>
         <form id="formulario" method="post" action="/pregunta/terminarpartida">
@@ -46,11 +75,17 @@
             {{/pregunta}}
             {{#respuestas}}
                 <div>
-                    <input type="radio" id="respuestaCorrecta" name="idRespuesta" value="{{idrespuesta}}">
+                    <input type="radio" id="respuestaCorrecta" name="idRespuesta" value="{{id}}">
                     <label for="respuestaCorrecta">{{respuesta}}</label>
                 </div>
             {{/respuestas}}
             <button type="submit">Enviar respuesta</button>
+        </form>
+        <form id="reportar" method="post" action="/pregunta/reportarPregunta">
+            {{#pregunta}}
+                <a href="#" onclick="showPopup(event)">Reportar pregunta</a>
+                <input value='{{id}}' type="number" hidden='hidden' name='idPregunta'>
+            {{/pregunta}}
         </form>
     </div>
 

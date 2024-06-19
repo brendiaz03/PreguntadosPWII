@@ -23,7 +23,7 @@ CREATE TABLE pregunta(
      id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
      categoria VARCHAR(50),
      pregunta VARCHAR(200),
-     estado VARCHAR(50), -- activa, reportada, sugerida
+     estado VARCHAR(50), -- activa, inactiva , reportada, sugerida
      nivel VARCHAR(50),
      veces_entregada int,
      hits int,
@@ -37,156 +37,267 @@ CREATE TABLE respuesta(
       pregunta INTEGER,
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );
-# CREATE TABLE partida(
-#                         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-#                         idUsuario INTEGER,
-#                         fechaRealizado DATETIME,
-#                         FOREIGN KEY (idUsuario) REFERENCES usuario(id)
-# );
-#
-# CREATE TABLE partida_pregunta(
-#                                  id INTEGER PRIMARY KEY AUTO_INCREMENT,
-#                                  idPartida INTEGER,
-#                                  idPregunta INTEGER,
-#                                  correcta BOOLEAN,
-#                                  FOREIGN KEY (idPartida) REFERENCES partida(id),
-#                                  FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
-# );
 CREATE TABLE partida(
     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
     idPregunta INTEGER,
     idUsuario INTEGER,
     correcta BOOLEAN,
+    ronda int,
     fechaRealizado DATETIME,
     FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
     FOREIGN KEY(idUsuario) REFERENCES usuario(id)
 );
 
--- Preguntas con dificultad baja
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
-VALUES ('Historia', '¿En qué año fue la independencia de Argentina?', 'Reportada', 'Facil',0 , 0, NOW()),
-       ('Geografía', '¿Cuál es la capital de Francia?', 'Sugerida', 'Facil',0 , 0, NOW()),
-       ('Ciencia', '¿Cuál es el símbolo químico del agua?', 'Activa', 'Facil',0 , 0, NOW()),
-       ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Facil',0 , 0, NOW()),
-       ('Entretenimiento', '¿En qué película aparece el personaje de Harry Potter?', 'Activa', 'Facil',0 , 0, NOW());
-
--- Respuestas para las preguntas con dificultad baja
-INSERT INTO respuesta (respuesta, correcta, pregunta)
-VALUES ('1816', true, 1),
-       ('1810', false, 1),
-       ('1820', false, 1),
-       ('París', true, 2),
-       ('Londres', false, 2),
-       ('Madrid', false, 2),
-       ('H2O', true, 3),
-       ('CO2', false, 3),
-       ('NaCl', false, 3),
-       ('Leonardo da Vinci', true, 4),
-       ('Vincent van Gogh', false, 4),
-       ('Pablo Picasso', false, 4),
-       ('La piedra filosofal', true, 5),
-       ('El prisionero de Azkaban', false, 5),
-       ('El cáliz de fuego', false, 5);
-
--- Preguntas con dificultad media
+VALUES
+    ('Matemáticas', '¿Cuál es el valor de π?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Geografía', '¿Cuál es la capital de Francia?', 'Activa', 'Facil', 0, 0, NOW()),
+    ('Ciencia', '¿Qué planeta es conocido como el Planeta Rojo?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Historia', '¿Quién fue el primer presidente de los Estados Unidos?', 'Activa', 'Dificil', 0, 0, NOW());
+-- Preguntas de Matemáticas
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
-VALUES ('Historia', '¿En qué año comenzó la Segunda Guerra Mundial?', 'Activa', 'Intermedio',0 , 0, NOW()),
-       ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Intermedio',0 , 0, NOW()),
-       ('Ciencia', '¿Qué planeta es conocido como "el planeta rojo"?', 'Activa', 'Intermedio',0 , 0, NOW()),
-       ('Arte', '¿Quién escribió la obra "Romeo y Julieta"?', 'Activa', 'Intermedio',0 , 0, NOW()),
-       ('Entretenimiento', '¿Cuál es el nombre del actor que interpretó a Batman en "El caballero de la noche"?', 'Activa', 'Intermedio',0 , 0, NOW()),
-       ('Entretenimiento', '¿Cuál es el nombre del hijo mayor de la familia simpson?', 'Activa', null,0 , 0, NOW()),
-        ('Ciencia', '¿Cuál es el simbolo del Litio en la tabla periodica?', 'Activa', null,0 , 0, NOW()),
-        ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Intermedio', NOW()),
-        ('Arte', '¿En qué país nació el pintor Vincent van Gogh?', 'Activa', 'Intermedio', NOW()),
-        ('Ciencia', '¿Cuál es el elemento químico más abundante en el universo?', 'Activa', 'Intermedio',0 , 0, NOW()),
-        ('Ciencia', '¿Qué teoría explica el origen del universo?', 'Activa', 'Intermedio', NOW()),
-        ('Entretenimiento', '¿Quién es el creador de la serie animada "Los Simpson"?', 'Activa', 'Intermedio',0 , 0, NOW()),
-        ('Entretenimiento', '¿En qué año se estrenó la primera película de "Harry Potter"?', 'Activa', 'Intermedio',0 , 0, NOW()),
-        ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Intermedio',0 , 0, NOW()),
-        ('Geografía', '¿Cuál es la capital de Australia?', 'Activa', 'Intermedio',0 , 0, NOW()),
-        ('Arte', '¿Quién esculpió la estatua de David?', 'Activa', 'Intermedio',0 , 0, NOW()),
-        ('Ciencia', '¿Qué tipo de sangre es conocido como el donante universal?', 'Activa', 'Intermedio',0 , 0, NOW());
+VALUES
+    ('Matemáticas', '¿Cuánto es 2 + 2?', 'Activa', 'Facil', 0, 0, NOW()),
+    ('Matemáticas', '¿Cuál es el resultado de 3 * 4?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Matemáticas', '¿Cuánto es la raíz cuadrada de 16?', 'Activa', 'Dificil', 0, 0, NOW());
 
--- Respuestas para las preguntas con dificultad media
-INSERT INTO respuesta (respuesta, correcta, pregunta)
-VALUES ('1939', true, 6),
-       ('1941', false, 6),
-       ('1935', false, 6),
-       ('Amazonas', true, 7),
-       ('Nilo', false, 7),
-       ('Mississippi', false, 7),
-       ('Marte', true, 8),
-       ('Venus', false, 8),
-       ('Mercurio', false, 8),
-       ('William Shakespeare', true, 9),
-       ('Miguel de Cervantes', false, 9),
-       ('John Milton', false, 9),
-       ('Christian Bale', true, 10),
-       ('Robert Downey Jr.', false, 10),
-       ('Hugh Jackman', false, 10);
-        ('Leonardo da Vinci', 1, 25),
-        ('Pablo Picasso', 0, 25),
-        ('Vincent van Gogh', 0, 25),
-        ('Países Bajos', 1, 26),
-        ('Francia', 0, 26),
-        ('España', 0, 26),
-        ('Hidrógeno', 1, 27),
-        ('Oxígeno', 0, 27),
-        ('Carbono', 0, 27),
-        ('Big Bang', 1, 28),
-        ('Teoría de la Relatividad', 0, 28),
-        ('Evolución', 0, 28),
-        ('Matt Groening', 1, 29),
-        ('Seth MacFarlane', 0, 29),
-        ('Trey Parker', 0, 29),
-        ('2001', 1, 30),
-        ('2005', 0, 30),
-        ('1997', 0, 30),
-        ('Nilo', 1, 31),
-        ('Amazonas', 0, 31),
-        ('Yangtsé', 0, 31),
-        ('Canberra', 1, 32),
-        ('Sydney', 0, 32),
-        ('Melbourne', 0, 32),
-        ('Miguel Ángel', 1, 33),
-        ('Leonardo da Vinci', 0, 33),
-        ('Donatello', 0, 33),
-        ('O negativo', 1, 34),
-        ('A positivo', 0, 34),
-        ('B negativo', 0, 34);
-
--- Preguntas con dificultad alta
+-- Preguntas de Geografía
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
-VALUES ('Historia', '¿Quién fue el primer presidente de Estados Unidos?', 'Activa', 'Dificil', 0 , 0, NOW()),
-       ('Geografía', '¿En qué país se encuentra el desierto del Sahara?', 'Activa', 'Dificil',0 , 0, NOW()),
-       ('Ciencia', '¿Cuál es la velocidad de la luz en el vacío?', 'Activa', 'Dificil',0 , 0, NOW()),
-       ('Arte', '¿En qué período artístico se desarrolló el Renacimiento?', 'Activa', 'Dificil',0 , 0, NOW()),
-       ('Entretenimiento', '¿Cuál es el título de la primera película de la saga "Star Wars"?', 'Activa', 'Dificil',0 , 0, NOW());
+VALUES
+    ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Facil', 0, 0, NOW()),
+    ('Geografía', '¿En qué continente se encuentra Australia?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Geografía', '¿Cuál es la capital de Japón?', 'Activa', 'Dificil', 0, 0, NOW());
 
--- Respuestas para las preguntas con dificultad alta
-INSERT INTO respuesta (respuesta, correcta, pregunta)
-VALUES ('George Washington', true, 11),
-       ('Thomas Jefferson', false, 11),
-       ('Abraham Lincoln', false, 11),
-       ('Marruecos', true, 12),
-       ('Argelia', false, 12),
-       ('Egipto', false, 12),
-       ('299,792,458 metros por segundo', true, 13),
-       ('199,792,458 metros por segundo', false, 13),
-       ('399,792,458 metros por segundo', false, 13),
-       ('Renacimiento', true, 14),
-       ('Barroco', false, 14),
-       ('Románico', false, 14),
-       ('Una nueva esperanza', true, 15),
-       ('El imperio contraataca', false, 15),
-       ('El retorno del Jedi', false, 15);
+-- Preguntas de Ciencia
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Ciencia', '¿Cuál es el elemento más abundante en la Tierra?', 'Activa', 'Facil', 0, 0, NOW()),
+    ('Ciencia', '¿Quién descubrió la penicilina?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Ciencia', '¿Cuál es la velocidad de la luz en el vacío?', 'Activa', 'Dificil', 0, 0, NOW());
 
--- otras respuestas
+-- Preguntas de Historia
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Historia', '¿En qué año llegó Cristóbal Colón a América?', 'Activa', 'Facil', 0, 0, NOW()),
+    ('Historia', '¿Quién fue el emperador romano que construyó el Coliseo?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Historia', '¿Qué tratado puso fin a la Primera Guerra Mundial?', 'Activa', 'Dificil', 0, 0, NOW());
+
+-- Preguntas de Cultura General
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Cultura General', '¿Quién escribió la novela "Cien años de soledad"?', 'Activa', 'Facil', 0, 0, NOW()),
+    ('Cultura General', '¿Qué instrumento tocaba Ludwig van Beethoven?', 'Activa', 'Intermedio', 0, 0, NOW()),
+    ('Cultura General', '¿En qué país se originó el sushi?', 'Activa', 'Dificil', 0, 0, NOW());
 INSERT INTO respuesta (respuesta, correcta, pregunta)
-VALUES ('Nelson', false, 16),
-VALUES ('Bart', true, 16),
-VALUES ('Milhouse', false, 16),
-VALUES ('Li', true, 17),
-VALUES ('Ag', false, 17),
-VALUES ('Ti', false, 17);
+VALUES
+    ('3.14', true, 1),
+    ('2.71', false, 1),
+    ('1.62', false, 1),
+    ('3.41', false, 1);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('París', true, 2),
+    ('Londres', false, 2),
+    ('Madrid', false, 2),
+    ('Berlín', false, 2);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Marte', true, 3),
+    ('Júpiter', false, 3),
+    ('Saturno', false, 3),
+    ('Venus', false, 3);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('George Washington', true, 4),
+    ('Thomas Jefferson', false, 4),
+    ('Abraham Lincoln', false, 4),
+    ('John Adams', false, 4);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('4', true, 5),
+    ('3', false, 5),
+    ('5', false, 5),
+    ('6', false, 5);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('12', true, 6),
+    ('8', false, 6),
+    ('16', false, 6),
+    ('6', false, 6);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('4', true, 7),
+    ('3', false, 7),
+    ('5', false, 7),
+    ('6', false, 7);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Amazonas', true, 8),
+    ('Nilo', false, 8),
+    ('Misisipi', false, 8),
+    ('Yangtsé', false, 8);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Oceanía', true, 9),
+    ('Europa', false, 9),
+    ('América', false, 9),
+    ('Asia', false, 9);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Tokio', true, 10),
+    ('Pekín', false, 10),
+    ('Seúl', false, 10),
+    ('Bangkok', false, 10);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Oxígeno', true, 11),
+    ('Carbono', false, 11),
+    ('Hidrógeno', false, 11),
+    ('Nitrógeno', false, 11);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Alexander Fleming', true, 12),
+    ('Albert Einstein', false, 12),
+    ('Marie Curie', false, 12),
+    ('Isaac Newton', false, 12);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('299,792,458 metros por segundo', true, 13),
+    ('300,000,000 metros por segundo', false, 13),
+    ('200,000,000 metros por segundo', false, 13),
+    ('400,000,000 metros por segundo', false, 13);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('1492', true, 14),
+    ('1501', false, 14),
+    ('1510', false, 14),
+    ('1485', false, 14);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Vespasiano', true, 15),
+    ('Nerón', false, 15),
+    ('Augusto', false, 15),
+    ('Trajano', false, 15);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Tratado de Versalles', true, 16),
+    ('Tratado de París', false, 16),
+    ('Tratado de Londres', false, 16),
+    ('Tratado de Viena', false, 16);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Gabriel García Márquez', true, 17),
+    ('Pablo Neruda', false, 17),
+    ('Jorge Luis Borges', false, 17),
+    ('Mario Vargas Llosa', false, 17);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Piano', true, 18),
+    ('Violín', false, 18),
+    ('Flauta', false, 18),
+    ('Guitarra', false, 18);
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Japón', true, 19),
+    ('China', false, 19),
+    ('Corea del Sur', false, 19),
+    ('Tailandia', false, 19);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Ciencia', '¿Cuál es la unidad de medida de la temperatura?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Grado Celsius', true, 20),
+    ('Grado Fahrenheit', false, 20),
+    ('Kelvin', false, 20),
+    ('Grado Réaumur', false, 20);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Geografía', '¿Cuál es el río más largo del mundo?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Río Amazonas', true, 21),
+    ('Río Nilo', false, 21),
+    ('Río Yangtsé', false, 21),
+    ('Río Misisipi-Misuri', false, 21);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Arte', '¿Quién pintó la Mona Lisa?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Leonardo da Vinci', true, 22),
+    ('Pablo Picasso', false, 22),
+    ('Vincent van Gogh', false, 22),
+    ('Michelangelo Buonarroti', false, 22);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Deportes', '¿En qué deporte se utiliza una raqueta?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Tenis', true, 23),
+    ('Fútbol', false, 23),
+    ('Baloncesto', false, 23),
+    ('Golf', false, 23);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Ciencia', '¿Qué elemento químico tiene el símbolo H?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Hidrógeno', true, 24),
+    ('Helio', false, 24),
+    ('Hierro', false, 24),
+    ('Plata', false, 24);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Cultura General', '¿Cuál es el país más grande del mundo por territorio?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Rusia', true, 25),
+    ('Canadá', false, 25),
+    ('China', false, 25),
+    ('Estados Unidos', false, 25);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Historia', '¿En qué año se firmó la Declaración de Independencia de los Estados Unidos?', 'Activa', 'Dificil', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('1776', true, 26),
+    ('1789', false, 26),
+    ('1812', false, 26),
+    ('1865', false, 26);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Geografía', '¿En qué continente se encuentra el desierto del Sahara?', 'Activa', 'Facil', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('África', true, 27),
+    ('Asia', false, 27),
+    ('América del Sur', false, 27),
+    ('Australia', false, 27);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Arte', '¿Quién escribió la obra "Don Quijote de la Mancha"?', 'Activa', 'Facil', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Miguel de Cervantes', true, 28),
+    ('William Shakespeare', false, 28),
+    ('Gabriel García Márquez', false, 28),
+    ('Pablo Neruda', false, 28);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Deportes', '¿En qué deporte se utiliza un octógono como forma del área de competición?', 'Activa', 'Dificil', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Artes marciales mixtas (MMA)', true, 29),
+    ('Boxeo', false, 29),
+    ('Fútbol americano', false, 29),
+    ('Tenis de mesa', false, 29);
+INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
+VALUES
+    ('Ciencia', '¿Cuál es el hueso más largo del cuerpo humano?', 'Activa', 'Intermedio', 0, 0, NOW());
+INSERT INTO respuesta (respuesta, correcta, pregunta)
+VALUES
+    ('Fémur', true, 30),
+    ('Húmero', false, 30),
+    ('Tibia', false, 30),
+    ('Fíbula', false, 30);
