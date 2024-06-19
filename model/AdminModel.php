@@ -22,14 +22,14 @@
             $updatePregunta = "UPDATE pregunta SET `categoria` = '$categoria', `pregunta` = '$pregunta', `fechaRealizado` = NOW() WHERE `id` = '$idPregunta'";
             $this -> database -> execute($updatePregunta);
 
-            $selectRespuestas = "SELECT idrespuesta FROM respuesta WHERE pregunta = '$idPregunta'";
+            $selectRespuestas = "SELECT id FROM respuesta WHERE pregunta = '$idPregunta'";
             $respuestas = $this -> database -> query($selectRespuestas);
-            $respuestaIds = array_column($respuestas, 'idrespuesta');
+            $respuestaIds = array_column($respuestas, 'id');
             $updateRespuestas = [
-                "UPDATE respuesta SET `respuesta` = '$rtaCorrecta', `correcta` = 1 WHERE `idrespuesta` = '{$respuestaIds[0]}'",
-                "UPDATE respuesta SET `respuesta` = '$opcion2', `correcta` = 0 WHERE `idrespuesta` = '{$respuestaIds[1]}'",
-                "UPDATE respuesta SET `respuesta` = '$opcion3', `correcta` = 0 WHERE `idrespuesta` = '{$respuestaIds[2]}'",
-                "UPDATE respuesta SET `respuesta` = '$opcion4', `correcta` = 0 WHERE `idrespuesta` = '{$respuestaIds[3]}'"
+                "UPDATE respuesta SET `respuesta` = '$rtaCorrecta', `correcta` = 1 WHERE `id` = '{$respuestaIds[0]}'",
+                "UPDATE respuesta SET `respuesta` = '$opcion2', `correcta` = 0 WHERE `id` = '{$respuestaIds[1]}'",
+                "UPDATE respuesta SET `respuesta` = '$opcion3', `correcta` = 0 WHERE `id` = '{$respuestaIds[2]}'",
+                "UPDATE respuesta SET `respuesta` = '$opcion4', `correcta` = 0 WHERE `id` = '{$respuestaIds[3]}'"
             ];
 
             foreach ($updateRespuestas as $updateQuery) {

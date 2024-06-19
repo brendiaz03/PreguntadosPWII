@@ -40,8 +40,8 @@
             $imagen_nombre = "$nombreUsuario.jpg";
             move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
             return $this -> database -> execute(
-                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0', '0', '$hash')");
+                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`, `nivel`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0', '0', '$hash', 'Intermedio')");
         }
 
         public function confirmacionCuenta($hashUsuario){
