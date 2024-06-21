@@ -1,8 +1,8 @@
 <?php
     include_once("controller/PartidaController.php");
     include_once("model/PartidaModel.php");
-    include_once("controller/AdminController.php");
-    include_once("model/AdminModel.php");
+    include_once("controller/EditorController.php");
+    include_once("model/PreguntaModel.php");
     include_once ("controller/UsuarioController.php");
     include_once ("model/UsuarioModel.php");
     include_once("helper/Conexion_db.php");
@@ -22,14 +22,14 @@
         {
             return new UsuarioModel(self::getDatabase());
         }
-        public static function getAdminController()
+        public static function getEditorController()
         {
-            return new AdminController(self::getAdminModel(), self::getPresenter());
+            return new EditorController(self::getPreguntaModel(), self::getPresenter());
 
         }
-        private static function getAdminModel()
+        private static function getPreguntaModel()
         {
-            return new AdminModel(self::getDatabase());
+            return new PreguntaModel(self::getDatabase());
         }
         public static function getPartidaController()
         {
