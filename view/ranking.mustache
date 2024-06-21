@@ -15,10 +15,9 @@
         <table class="table">
             <thead class="">
             <tr>
-                <th>Nombre Completo</th>
+                <th>Nombre De Usuario</th>
                 <th>Partidas Totales</th>
-                <th>Partidas Ganadas</th>
-                <th>Partidas Perdidas</th>
+                <th>Mejor Partida</th>
                 <th>Puntaje Total</th>
                 <th>Ver perfil</th>
             </tr>
@@ -26,11 +25,10 @@
             <tbody>
             {{#jugadores}}
                 <tr>
-                    <td><a href="/usuario/perfil/id={{id}}">{{nombreUsuario}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{nombreCompleto}}</a></td>
                     <td><a href="/usuario/perfil/id={{id}}">{{totalPartidas}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}">{{partidasCorrectas}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}">{{partidasIncorrectas}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}">{{puntaje}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{mejorPartida}}</a></td>
+                    <td><a href="/usuario/perfil/id={{id}}">{{puntajeTotal}}</a></td>
                     <td><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/icono-perfil.png" alt="Ver perfil" width="30px"></a></td>
                 </tr>
             {{/jugadores}}

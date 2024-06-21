@@ -14,11 +14,7 @@
     <div class="lobby-content">
         <h1 class="lobby-nombre">Hola! {{nombreCompleto}}</h1>
         <p class="lobby-puntos">Puntaje total: {{puntaje}}</p>
-        <form method="post" action="/pregunta/partida">
-            <input value='{{id}}' hidden='hidden' name='id'>
-            <input value='{{nivel}}' hidden='hidden' name='nivel'>
-            <button class="lobby-jugar-btn" type="submit">Jugar Partida</button>
-        </form>
+            <a class="lobby-jugar-btn" href="/pregunta/iniciarPartida">Jugar Partida</a>
         <a class="lobby-ranking-btn" href="/usuario/ranking/">RANKING</a>
     </div>
 </main>
