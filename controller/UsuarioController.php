@@ -220,4 +220,10 @@ class UsuarioController
         $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
     }
 
+    public function vistaSugerirPregunta()
+    {
+        $this->presenter->render("view/sugerirPreguntaView.mustache");
+    }
+
+
 }
