@@ -40,8 +40,8 @@
             $imagen_nombre = "$nombreUsuario.jpg";
             move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
             return $this -> database -> execute(
-                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`, `nivel`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0', '0', '$hash', 'Intermedio')");
+                    "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0', '0', '$hash')");
         }
 
         public function confirmacionCuenta($hashUsuario){
@@ -65,19 +65,43 @@
 
         public function getJugadoresConPuntajeYPartidasJugadas(){
             $sql = "SELECT
-                u.nombreUsuario, u.puntaje, u.id,
-                COUNT(p.id) AS totalPartidas,
-                SUM(CASE WHEN p.correcta = 1 THEN 1 ELSE 0 END) AS partidasCorrectas,
-                SUM(CASE WHEN p.correcta = 0 THEN 1 ELSE 0 END) AS partidasIncorrectas
+            u.nombreUsuario AS nombreCompleto,
+            u.puntaje AS puntajeTotal,
+            COALESCE(partidas.totalPartidas, 0) AS totalPartidas,
+            COALESCE(mejorPartida.correctas, 0) AS mejorPartida
+        FROM
+            usuario u
+        LEFT JOIN (
+            SELECT
+                p.idUsuario,
+                COUNT(p.id) AS totalPartidas
             FROM
-                usuario u
-            LEFT JOIN
-                partida p ON u.id = p.idUsuario
+                partida p
             GROUP BY
-                u.id
-            ORDER BY
-                u.puntaje DESC"; // Ordenar por cantidad total de partidas
-
+                p.idUsuario
+        ) AS partidas ON u.id = partidas.idUsuario
+        LEFT JOIN (
+            SELECT
+                sub.idUsuario,
+                sub.correctas
+            FROM (
+                SELECT
+                    p.idUsuario,
+                    pp.idPartida,
+                    SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) AS correctas,
+                    p.fechaRealizado,
+                    ROW_NUMBER() OVER (PARTITION BY p.idUsuario ORDER BY SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) DESC, p.fechaRealizado DESC) AS rn
+                FROM
+                    partida_pregunta pp
+                JOIN
+                    partida p ON pp.idPartida = p.id
+                GROUP BY
+                    p.idUsuario, pp.idPartida, p.fechaRealizado
+            ) sub
+            WHERE sub.rn = 1
+        ) AS mejorPartida ON u.id = mejorPartida.idUsuario
+        ORDER BY
+            u.puntaje DESC";
             return $this->database->query($sql);
         }
 

@@ -196,8 +196,6 @@ class UsuarioController
             $this->presenter->render("view/lobby.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "puntaje" => $usuario['puntaje'],
-                "nivel" => $usuario['nivel'],
-                "id" => $usuario['id'],
                 "foto" => $usuario['foto'],
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);
@@ -217,11 +215,9 @@ class UsuarioController
 
     public function ranking()
     {
-        $textoNav = "RANKING";
-        $idUsuario = isset($_GET["id"]) ? $_GET["id"] : $_SESSION["id"];
-        $usuario = $this->model->getUsuarioById($idUsuario);
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
-        $this->presenter->render("view/ranking.mustache", ["textoNav" => $textoNav, "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
     }
 
 }

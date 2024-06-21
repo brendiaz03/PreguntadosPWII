@@ -21,52 +21,35 @@ class PartidaController
         $this->presenter->render("view/registro.mustache");
     }
 
+    public function iniciarPartida(){
+        $_SESSION["pregunta"] = null;
+        $_SESSION["respuestas"] = null;
+        $_SESSION["tiempoInicio"]=null;
+        $_SESSION["idPartida"] =  $this->model->getIdPartida($_SESSION['id']);
+        header("Location: /preguntados/partida");
+    }
     public function partida()
     {
         $tiempoInicio = microtime(true);
-        $textoNav = "PARTIDA";
         if (!isset($_SESSION["pregunta"]) || $_SESSION["pregunta"] === null || !isset($_SESSION["respuestas"]) || $_SESSION["respuestas"] === null) {
-            $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-
-            if ($usuario['nivel'] != null) {
-                $pregunta = $this->model->getPreguntaByNivel($usuario['id'], $usuario['nivel']);
-            } else {
-                $pregunta = $this->model->getPreguntas($usuario['id']);
-            }
+            $pregunta = $this->model->getPreguntaParaUsuario($_SESSION["id"]);
             $respuestas = $this->model->getRespuestasByPregunta($pregunta[0]['id']);
             $_SESSION["pregunta"] = $pregunta[0];
             $_SESSION["respuestas"] = $respuestas;
             $_SESSION["tiempoInicio"] = $tiempoInicio;
         }
-        $this->presenter->render("view/partida.mustache", ["textoNav" => $textoNav, "pregunta" => $_SESSION["pregunta"], "respuestas" => $_SESSION["respuestas"], "logeado" => true, "tiempoInicio" => $tiempoInicio]);
+        $this->presenter->render("view/partida.mustache", ["textoNav" => "PARTIDA", "pregunta" => $_SESSION["pregunta"], "respuestas" => $_SESSION["respuestas"], "logeado" => true, "tiempoInicio" =>$_SESSION["tiempoInicio"]]);
     }
 
     public function terminarPartida()
     {
-        if (empty($_POST["idPregunta"])) {
-            $respuestaCorrecta = 0;
-        } else {
-            $idPregunta = $_POST["idPregunta"];
-            $idRespuesta = $_POST["idRespuesta"];
-            $respuestaCorrecta = $this->model->verificarRespuestaCorrecta( $idPregunta ,$idRespuesta );
-        }
-        $this->model->guardarPartida($_SESSION["id"], $idPregunta, $respuestaCorrecta);
-        $partidasTotalesUsuario = $this->model->partidasTotalesPorUsuario($_SESSION["id"]);
-        $partidasTotalesPregunta = $this->model->partidasTotalesPorPregunta($idPregunta);
-        if ($partidasTotalesUsuario[0]['partidasTotales'] == 10) {
-            $this->model->nivelarUsuario($_SESSION["id"]);
-        }
-        if ($partidasTotalesPregunta[0] >= 10) {
-            $this->model->nivelarPregunta($idPregunta);
-        }
+        $correcta = $this->model->guardarPreguntaDePartida($_SESSION["id"], $_SESSION["idPartida"] , $_SESSION["pregunta"]['id'], $_POST["idRespuesta"]);
         $_SESSION["pregunta"] = null;
         $_SESSION["respuestas"] = null;
-        if ($respuestaCorrecta) {
-            $this->model->marcarHitEnLaPregunta($idPregunta);
-            $this->model->marcarEntregaEnLaPregunta($idPregunta);
+        $_SESSION["tiempoInicio"]=null;
+        if ($correcta) {
             header("Location: /preguntados/partida");
         } else {
-            $this->model->marcarEntregaEnLaPregunta($_SESSION["pregunta"]['id']);
             header("Location: /usuario/lobby");
         }
     }

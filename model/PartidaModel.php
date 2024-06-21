@@ -9,32 +9,96 @@ class PartidaModel
         $this->database = $database;
     }
 
+    public function iniciarPartidaConUsuario($idUsuario){
+        $fecha_actual = date('Y-m-d H:i:s');
+        $this->database->execute("INSERT INTO partida (idUsuario, fechaRealizado) VALUES ('$idUsuario', '$fecha_actual');");
+    }
+
+    public function getIdPartida($idUsuario){
+        $this->iniciarPartidaConUsuario($idUsuario);
+        $sql = "SELECT id FROM partida ORDER BY id DESC LIMIT 1;";
+        $resultado= $this->database->query($sql);
+        return $resultado[0]['id'];
+    }
+
     public function getRespuestasByPregunta($preguntaID)
     {
         $sql = "SELECT * FROM respuesta AS r WHERE r.pregunta = '$preguntaID' ORDER BY RAND()";
         return $this->database->query($sql);
     }
 
-    public function getPreguntas($idUsuario)
+    public function getPreguntaSinNivel($idUsuario)
     {
-        $sql = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = 'Intermedio' AND id NOT IN (
-                            SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario) 
-                            LIMIT 1";
+        $sql = "SELECT * FROM pregunta AS p
+WHERE estado = 'Activa'
+AND p.id NOT IN (
+    SELECT pp.idPregunta 
+    FROM partida_pregunta AS pp
+    JOIN partida AS pa ON pp.idPartida = pa.id
+    WHERE pa.idUsuario = '$idUsuario'
+)
+LIMIT 1";
+        $result= $this->database->query($sql);
+        return $result;
+    }
+
+    public function getPreguntaConNivel($idUsuario, $nivel)
+    {
+        $sql = "SELECT * FROM pregunta AS p
+            WHERE p.nivel = '$nivel' and estado = 'Activa'
+            AND p.id NOT IN (
+                SELECT pp.idPregunta 
+                FROM partida_pregunta AS pp
+                JOIN partida AS pa ON pp.idPartida = pa.id
+                WHERE pa.idUsuario = '$idUsuario'
+            )
+            LIMIT 1";
         return $this->database->query($sql);
     }
 
-    public function getPreguntaByNivel($idUsuario, $nivel)
+    public function getPreguntaParaUsuario($idUsuario)
     {
-        $sql = "SELECT * FROM pregunta AS p WHERE  (p.nivel = '$nivel' OR p.nivel IS NULL) AND p.id NOT IN (
-                            SELECT idPregunta FROM partida WHERE idUsuario = $idUsuario)
-                        LIMIT 1";
-        $result = $this->database->query($sql);
-
-        if (empty($result) || isset($result)) {
-            $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = '$nivel' ORDER BY RAND() LIMIT 1";
-            return $this->database->query($sqlRandom);
-        }
+        $usuario = $this->getUsuarioById($idUsuario);
+        $nivel = $usuario['nivel'];
+        if($usuario['nivel'] !== null) {
+            $result = $this->getPreguntaConNivel($idUsuario, $nivel);
+            if (empty($result) || isset($result)) {
+                $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = '$nivel' ORDER BY RAND() LIMIT 1";
+                return $this->database->query($sqlRandom);
+            }
+        }else{
+        $result = $this->getPreguntaSinNivel($idUsuario);
+            if (empty($result) || isset($result)) {
+                $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' ORDER BY RAND() LIMIT 1";
+                return $this->database->query($sqlRandom);
+            }
+    }
         return $result;
+    }
+
+    public function guardarPreguntaDePartida($idUsuario, $idPartida,$idPregunta, $idRespuesta)
+    {
+        $this->marcarEntregaEnLaPregunta($idPregunta);
+        if (empty($idRespuesta)) {
+            $correcta = 0;
+        } else {
+            $correcta = $this->verificarRespuestaCorrecta($idPregunta ,$idRespuesta);
+        }
+        if ($correcta) {
+            $this->sumarPuntajeAUsuario($idUsuario);
+            $this->marcarHitEnLaPregunta($idPregunta);
+        }
+        $fecha_actual = date('Y-m-d H:i:s');
+        $this->database->execute("INSERT INTO partida_pregunta (idPartida, idPregunta, fechaRealizado, correcta) VALUES ('$idPartida', '$idPregunta', '$fecha_actual', '$correcta')");
+        $partidasTotalesPregunta = $this->partidasTotalesPorPregunta($idPregunta);
+        if ($partidasTotalesPregunta >= 10) {
+            $this->nivelarPregunta($idPregunta);
+        }
+        $preguntasTotales = $this->partidasTotalesPorUsuario($idUsuario);
+        if ($preguntasTotales == 10) {
+            $this->nivelarUsuario($idUsuario);
+        }
+        return $correcta;
     }
 
     public function verificarRespuestaCorrecta($idPregunta, $idRespuesta)
@@ -53,15 +117,6 @@ class PartidaModel
         return $this->database->execute("UPDATE Usuario SET puntaje = puntaje + 1 WHERE id = '$idUsuario'");
     }
 
-    public function guardarPartida($idUsuario, $idPregunta, $respondioBien)
-    {
-        if ($respondioBien) {
-            $this->sumarPuntajeAUsuario($idUsuario);
-        }
-        $fecha_actual = date('Y-m-d H:i:s');
-        return $this->database->execute("INSERT INTO partida (idPregunta, idUsuario, fechaRealizado, correcta) VALUES ('$idPregunta', '$idUsuario', '$fecha_actual', '$respondioBien')");
-    }
-
     public function getUsuarioById($idUsuario)
     {
         $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
@@ -71,8 +126,12 @@ class PartidaModel
 
     public function nivelarUsuario($idUsuario)
     {
-        $sql = "SELECT SUM(CASE WHEN correcta = 1 THEN 1 ELSE 0 END) AS correctas
-                    FROM partida WHERE idUsuario = '$idUsuario' ORDER BY id ASC LIMIT 10";
+        $sql = " SELECT SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) AS correctas
+        FROM partida p
+        INNER JOIN partida_pregunta pp ON p.id = pp.idPartida
+        WHERE p.idUsuario = '$idUsuario'
+        ORDER BY p.id DESC
+        LIMIT 10";
 
         $result = $this->database->query($sql);
         if (count($result) > 0) {
@@ -93,7 +152,7 @@ class PartidaModel
     public function nivelarPregunta($idPregunta)
     {
         $porcentajeHits = $this->obtenerPorcentajeDeHits($idPregunta);
-        $porcentajeFinal = $porcentajeHits[0]['porcentajeHits'];
+        $porcentajeFinal = $porcentajeHits;
         $nivel = 'Dificil';
 
         if ($porcentajeFinal > '66.6') {
@@ -108,22 +167,39 @@ class PartidaModel
 
     private function obtenerPorcentajeDeHits($idPregunta)
     {
-        $sql = "SELECT (hits / veces_entregada) * 100 AS porcentajeHits FROM pregunta 
-                            WHERE id = '$idPregunta' AND veces_entregada >= '10'";
+        $sql = "
+        SELECT 
+            CASE 
+                WHEN veces_entregada IS NULL OR veces_entregada < 10 THEN NULL
+                ELSE (COALESCE(hits, 0) / veces_entregada) * 100 
+            END AS porcentajeHits 
+        FROM pregunta 
+        WHERE id = '$idPregunta'
+    ";
 
-        return $this->database->query($sql);
+        $result = $this->database->query($sql);
+        if (count($result) > 0) {
+            return $result[0]['porcentajeHits'];
+        } else {
+            return 0;
+        }
     }
 
     public function partidasTotalesPorUsuario($idUsuario)
     {
-        $sql = "SELECT COUNT(*) AS partidasTotales FROM partida WHERE idUsuario = '$idUsuario'";
-        return $this->database->query($sql);
+        $sql = " SELECT COUNT(*) AS preguntasTotales
+        FROM partida_pregunta pp
+        JOIN partida p ON pp.idPartida = p.id
+        WHERE p.idUsuario = '$idUsuario'";
+        $result= $this->database->query($sql);
+        return $result[0]['preguntasTotales'];
     }
 
     public function partidasTotalesPorPregunta($idPregunta)
     {
         $sql = "SELECT veces_entregada FROM pregunta WHERE id = '$idPregunta'";
-        return $this->database->query($sql);
+        $result= $this->database->query($sql);
+        return $result[0]['veces_entregada'];
     }
 
     public function marcarHitEnLaPregunta($idPregunta)
