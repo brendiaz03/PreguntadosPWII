@@ -30,16 +30,16 @@
                 <td><a href="#">{{pregunta}}</a></td>
                 <td><a href="#">{{nivel}}</a></td>
                 <td>
-                    <form method="post" action="/admin/setEstadoPregunta">
+                    <form method="post" action="/editor/setEstadoPregunta">
                         <input name="idPregunta" value="{{id}}" type="hidden">
                         <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">{{estado}}</button>
                     </form>
                 </td>
                 <td>
-                    <a style="color: #fff; background: #bf91ed; padding: .3rem" href="/admin/vistaeditarpregunta?id={{id}}">Editar</a>
+                    <a style="color: #fff; background: #bf91ed; padding: .3rem" href="/editor/vistaeditarpregunta?id={{id}}">Editar</a>
                 </td>
                 <td>
-                    <form method="post" action="/admin/eliminarPregunta">
+                    <form method="post" action="/editor/eliminarPregunta">
                         <input name="idPregunta" value="{{id}}" type="hidden">
                         <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">Eliminar</button>
                     </form>

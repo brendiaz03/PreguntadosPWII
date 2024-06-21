@@ -1,5 +1,5 @@
 <?php
-    class AdminModel
+    class PreguntaModel
     {
 
         private $database;

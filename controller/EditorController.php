@@ -1,5 +1,5 @@
 <?php
-class AdminController
+class EditorController
 {
     private $model;
     private $presenter;
