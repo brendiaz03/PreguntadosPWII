@@ -37,15 +37,6 @@ CREATE TABLE respuesta(
       pregunta INTEGER,
       FOREIGN KEY(pregunta) REFERENCES pregunta(id)
 );
-# CREATE TABLE partida(
-#     id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
-#     idPregunta INTEGER,
-#     idUsuario INTEGER,
-#     correcta BOOLEAN,
-#     fechaRealizado DATETIME,
-#     FOREIGN KEY(idPregunta) REFERENCES pregunta(id),
-#     FOREIGN KEY(idUsuario) REFERENCES usuario(id)
-# );
 CREATE TABLE partida(
                         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
                         idUsuario INTEGER,
@@ -62,6 +53,21 @@ CREATE TABLE partida_pregunta (
                                   FOREIGN KEY (idPartida) REFERENCES partida(id),
                                   FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
 );
+CREATE TABLE categoria_color (
+                                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                                 categoria VARCHAR(50) NOT NULL,
+                                 color VARCHAR(50) NOT NULL
+);
+INSERT INTO categoria_color (categoria, color) VALUES
+                                                   ('Ciencia', '#04D960'),
+                                                   ('Matemáticas', '#C848D9'),
+                                                   ('Cultura General', '#F20505'),
+                                                   ('Geografía', '#0088EE'),
+                                                   ('Historia', '#F2D027'),
+                                                   ('Deportes', '#F27405'),
+                                                   ('Arte', '#34E7F8');
+
+
 
 INSERT INTO pregunta (categoria, pregunta, estado, nivel, veces_entregada, hits, fechaRealizado)
 VALUES

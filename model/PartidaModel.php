@@ -214,6 +214,12 @@ LIMIT 1";
         $this->database->execute($sql);
     }
 
+    public function colorDeCategoria($categoria){
+        $sql = "SELECT color FROM categoria_color WHERE categoria = '$categoria'";
+        $result= $this->database->query($sql);
+        return $result[0]['color'];
+    }
+
     public function reportarPreguntaPorId($idPregunta){
         $sql = "UPDATE pregunta SET estado = 'Reportada' WHERE id = '$idPregunta'";
         $this->database->execute($sql);
