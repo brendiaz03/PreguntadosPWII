@@ -73,6 +73,7 @@ class UsuarioModel
         $sql = "SELECT
             u.nombreUsuario AS nombreCompleto,
             u.puntaje AS puntajeTotal,
+            u.id AS id,
             COALESCE(partidas.totalPartidas, 0) AS totalPartidas,
             COALESCE(mejorPartida.correctas, 0) AS mejorPartida
         FROM
