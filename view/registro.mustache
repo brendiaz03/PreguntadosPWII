@@ -29,16 +29,35 @@
                 draggable: true,
             });
 
-            google.maps.event.addListener(map, "click", function (event) {
+            google.maps.event.addListener(map, 'click', function(event) {
                 var lat = event.latLng.lat();
                 var lng = event.latLng.lng();
 
                 marker.setPosition(new google.maps.LatLng(lat, lng));
 
-                document.getElementById("lat").value = lat;
-                document.getElementById("lng").value = lng;
+                document.getElementById('lat').value = lat;
+                document.getElementById('lng').value = lng;
+
+                fetch(`https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=c2638da7257a403184f9a73d58e8f8e6`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.results.length > 0) {
+                                var location = data.results[0].components;
+                                var ciudad = location.city || location.town || location.village || '';
+                                var pais = location.country || '';
+
+                                document.getElementById('ciudad').value = ciudad;
+                                document.getElementById('pais').value = pais;
+                            } else {
+                                console.log('No results found');
+                            }
+                        })
+                        .catch(error => {
+                            console.log('Error fetching data: ' + error);
+                        });
             });
         }
+
     </script>
 </head>
 <body onload="initMap()">
