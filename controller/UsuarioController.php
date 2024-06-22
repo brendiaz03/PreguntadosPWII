@@ -54,11 +54,15 @@ class UsuarioController
     {
         if ($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null && $_POST["sexo"]
             != null && $_POST["pais"] != null && $_POST["ciudad"] != null && $_POST["mail"] != null && $_POST["password"]
-            != null && $_POST["nombreUsuario"] != null && $_POST["tipoUsuario"] != null && $_FILES['foto'] != null
-        ) {
+            != null && $_POST["nombreUsuario"] != null && $_POST["tipoUsuario"] != null
+            && $_POST["lat"] != null && $_POST["lng"] != null && $_FILES['foto'] != null) {
+
+
             $nombre = $_POST["nombreCompleto"];
             $nacimiento = $_POST["anioNacimiento"];
             $sexo = $_POST["sexo"];
+            $latitud = $_POST["lat"];
+            $longitud = $_POST["lng"];
             $pais = $_POST["pais"];
             $ciudad = $_POST["ciudad"];
             $mail = $_POST["mail"];
@@ -67,10 +71,11 @@ class UsuarioController
             $tipoUsuario = $_POST["tipoUsuario"];
             $fotoTmp = $_FILES['foto']['tmp_name'];
 
+
             $usuarioExistente = $this->model->buscarUsuario($nombreUsuario, $mail);
             if ($usuarioExistente == null) {
                 $hashUsuario = md5($nombreUsuario . time());
-                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hashUsuario);
+                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hashUsuario, $latitud, $longitud);
                 $this->enviarConfirmacionDeCuenta($mail, $hashUsuario);
             } else {
                 $this->presenter->render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
@@ -156,9 +161,13 @@ class UsuarioController
         $nombreUsuario = $usuario['nombreUsuario'];
         $nombreCompleto = $usuario['nombreCompleto'];
         $anioNacimiento = $usuario['anioNacimiento'];
+        $longitud = $usuario['longitud'];
+        $latitud = $usuario['latitud'];
         $mail = $usuario['mail'];
         $foto = $usuario['foto'];
         $puntaje = $usuario['puntaje'];
+        $pais = $usuario['pais'];
+        $ciudad = $usuario['ciudad'];
 
 
         include_once('libs/qr/phpqrcode/qrlib.php');
@@ -183,9 +192,9 @@ class UsuarioController
         $this->presenter->render(
             "view/perfil.mustache",
             ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado" => true, "foto" => $foto, "qrImagen" => $qrImagen
-            ]
-        );
+                "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado" => true, "foto" => $foto
+                , "qrImagen" => $qrImagen, "latitud" => $latitud, "longitud" => $longitud,
+                "pais" => $pais, "ciudad" => $ciudad]);
     }
 
     public function lobby()
