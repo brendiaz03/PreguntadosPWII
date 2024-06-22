@@ -9,20 +9,50 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/styles.css">
     <link rel="stylesheet" href="/public/css/perfil.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiq3xISXSZYgkd9GDAOdajy4NK2d3L7dY"></script>
+    <script>
+        function initMap() {
+            // Replace the placeholders with the actual data values
+            var latitud = parseFloat("{{latitud}}");
+            var longitud = parseFloat("{{longitud}}");
+
+            var mapOptions = {
+                center: new google.maps.LatLng(latitud, longitud),
+                zoom: 12,
+                panControl: false,
+                zoomControl: true,
+                scaleControl: false,
+                mapTypeControl: false,
+                streetViewControl: true,
+                overviewMapControl: true,
+                rotateControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(latitud, longitud),
+                map: map,
+                draggable: false,
+            });
+        }
+    </script>
 </head>
+<body onload="initMap()">
 <main>
-    <body>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
                 <div class="profile-container">
                     <h1>Usuario: {{nombreUsuario}}</h1>
-                    <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto}}"
-                         alt="Foto de perfil">
+                    <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto}}" alt="Foto de perfil">
                     <div class="user-data">
                         <div>
                             <p>Nombre completo: {{nombreCompleto}}</p>
                             <p>Año de nacimiento: {{anioNacimiento}}</p>
+                            <p>Pais: {{pais}}</p>
+                            <p>Ciudad: {{ciudad}}</p>
                             <p>Correo electrónico: {{mail}}</p>
                         </div>
                     </div>
@@ -30,30 +60,24 @@
                         <p>PARTIDAS TOTALES: {{totalPartidas}} </p>
                         <p class="score">PUNTAJE: {{puntaje}}</p>
                     </div>
-
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="user-data">
                     <div class="map-container">
-                        <div class="map">
-                            <iframe width="400" height="200"
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52520.454475369486!2d-58.4388462241145!3d-34.64135604146497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccadb57fd1e5f%3A0xcc737c4eb0a8614b!2sPlaza%20de%20Mayo!5e0!3m2!1ses!2sar!4v1717982192270!5m2!1ses!2sar"
-                                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <div id="map" style="width: 400px; height: 200px;"></div>
                     </div>
                 </div>
                 <div class="user-data">
                     <div class="qr-code-container">
                         <div class="qr-code" style="width: 150px; border-radius: 10px">
-                          <img class="qr-code-img" src="/{{qrImagen}} "style="width: 140px; border-radius: 10px">
+                            <img class="qr-code-img" src="/{{qrImagen}}" style="width: 140px; border-radius: 10px">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    </body>
 </main>
+</body>
 </html>
