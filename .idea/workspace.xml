@@ -5,349 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="inicio2 de pdf y graficos&#10;solo se agrego la lib y el codigo de ejemplo">
-      <change afterPath="$PROJECT_DIR$/helper/Jugadores.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Preguntados.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Preguntados.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/helper/Partida.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/view/partidasEstadistica.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Configuration.php" beforeDir="false" afterPath="$PROJECT_DIR$/Configuration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/datos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/config/datos.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/Conexion_db.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Conexion_db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/CONTRIBUTING.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/LICENSE.LGPL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/VERSION" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/autoload.inc.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/Cpdf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Courier-Bold.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Courier-BoldOblique.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Courier-Oblique.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Courier.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans-Bold.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans-BoldOblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans-BoldOblique.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans-Oblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans-Oblique.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSans.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono-Bold.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono-BoldOblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono-BoldOblique.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono-Oblique.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono-Oblique.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSansMono.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif-Bold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif-Bold.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif-BoldItalic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif-BoldItalic.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif-Italic.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif-Italic.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/DejaVuSerif.ufm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Helvetica-Bold.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Helvetica-BoldOblique.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Helvetica-Oblique.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Helvetica.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Symbol.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Times-Bold.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Times-BoldItalic.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Times-Italic.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/Times-Roman.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/ZapfDingbats.afm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/dompdf_font_family_cache.dist.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/fonts/mustRead.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/html5lib/Data.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/html5lib/InputStream.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/html5lib/Parser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/html5lib/Tokenizer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/html5lib/TreeBuilder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/html5lib/named-character-references.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/CHANGELOG.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/Doxyfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/AtRuleBlockList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/CSSBlockList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/CSSList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/Document.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/CSSList/KeyFrame.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Comment/Comment.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Comment/Commentable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/OutputFormat.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parser.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/OutputException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/ParserState.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/SourceException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Parsing/UnexpectedTokenException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/AtRule.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/CSSNamespace.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/Charset.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/Import.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Property/Selector.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Renderable.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Rule/Rule.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/RuleSet/AtRuleSet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/RuleSet/DeclarationBlock.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/RuleSet/RuleSet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Settings.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/CSSFunction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/CSSString.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/CalcFunction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/CalcRuleValueList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/Color.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/LineName.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/PrimitiveValue.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/RuleValueList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/Size.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/URL.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/Value.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/lib/Sabberworm/CSS/Value/ValueList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/CSSList/AtRuleBlockListTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/CSSList/DocumentTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/OutputFormatTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/ParserTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/RuleSet/DeclarationBlockTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/Sabberworm/CSS/RuleSet/LenientParsingTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-calc-no-space-around-minus.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-charset-after-rule.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-charset-in-block.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-empty-grid-linename.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-empty.css" beforeDir="false" afterPath="$PROJECT_DIR$/view/jugadores.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-end-token-2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-end-token.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-fault-tolerance.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/-tobedone.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/1readme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/2readme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/atrules.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/calc-nested.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/calc.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/case-insensitivity.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/colortest.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/comments.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/create-shorthands.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/docuwiki.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/empty-grid-linename.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/expand-shorthands.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/functions.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/grid-linename.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/hex-alpha.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/ie-hacks.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/ie.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/important.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/inner-color.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/line-numbers.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/missing-property-value.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/ms-filter.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/namespaces.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/nested.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/slashed.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/specificity.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/trailing-whitespace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/unicode-range.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/unicode.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/unmatched_braces.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/unopened-close-brackets.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/url.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/values.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/webkit.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/files/whitespace.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-css-parser/tests/quickdump.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/bower.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/adobe-standard-encoding.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1250.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1251.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1252.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1253.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1254.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1255.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1257.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp1258.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/cp874.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-1.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-11.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-15.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-16.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-2.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-4.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-5.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-7.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/iso-8859-9.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/koi8-r.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/maps/koi8-u.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/phpunit.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/sample-fonts/IntelClear-Light.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/sample-fonts/NotoSansShavian-Regular.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/AdobeFontMetrics.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Autoloader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/BinaryStream.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/EOT/File.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/EOT/Header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/EncodingMap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Exception/FontNotFoundException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Font.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Glyph/Outline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Glyph/OutlineComponent.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Glyph/OutlineComposite.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Glyph/OutlineSimple.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/OpenType/File.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/OpenType/TableDirectoryEntry.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/DirectoryEntry.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/cmap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/glyf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/head.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/hhea.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/hmtx.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/kern.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/loca.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/maxp.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/name.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/nameRecord.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/os2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/Table/Type/post.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/TrueType/Collection.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/TrueType/File.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/TrueType/Header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/TrueType/TableDirectoryEntry.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/WOFF/File.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/WOFF/Header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/src/FontLib/WOFF/TableDirectoryEntry.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-font-lib/tests/FontLib/FontTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/COPYING" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/COPYING.GPL" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/phpunit.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/DefaultStyle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Document.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Gradient/Stop.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Style.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Surface/CPdf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfaceCpdf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfaceGmagick.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfaceInterface.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Surface/SurfacePDFLib.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/AbstractTag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Anchor.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Circle.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/ClipPath.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Ellipse.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Group.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Line.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/LinearGradient.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Path.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Polygon.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Polyline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/RadialGradient.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Rect.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Shape.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Stop.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/StyleTag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/Text.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/Svg/Tag/UseTag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/src/autoload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/php-svg-lib/tests/Svg/StyleTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/res/broken_image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/res/broken_image.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/lib/res/html.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/phpcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/phpunit.xml.dist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Adapter/CPDF.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Adapter/GD.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Adapter/PDFLib.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Autoloader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Canvas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/CanvasFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Cellmap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Css/AttributeTranslator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Css/Color.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Css/Style.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Css/Stylesheet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Dompdf.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Exception.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Exception/ImageException.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FontMetrics.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame/Factory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame/FrameList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame/FrameListIterator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame/FrameTree.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame/FrameTreeIterator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Frame/FrameTreeList.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/AbstractFrameDecorator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/Block.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/Inline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/ListBullet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/ListBulletImage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/NullFrameDecorator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/Page.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/Table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/TableCell.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/TableRow.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/TableRowGroup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameDecorator/Text.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/AbstractFrameReflower.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/Block.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/Inline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/ListBullet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/NullFrameReflower.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/Page.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/Table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/TableCell.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/TableRow.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/TableRowGroup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/FrameReflower/Text.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Helpers.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Image/Cache.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/JavascriptEmbedder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/LineBox.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Options.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/PhpEvaluator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/Absolute.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/AbstractPositioner.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/Block.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/Fixed.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/Inline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/ListBullet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/NullPositioner.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/TableCell.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Positioner/TableRow.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/AbstractRenderer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/Block.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/Image.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/Inline.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/ListBullet.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/TableCell.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/TableRowGroup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/dompdf/src/Renderer/Text.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper/Jugadores.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Jugador.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/lobbyEditor.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/lobbyEditor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/imagenes/qr.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/imagenes/qr.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/jugadores.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/lobbyAdmin.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobbyAdmin.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/lobbyEditor.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobbyEditor.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -393,29 +58,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;PHP Script.PartidaModel.php.executor&quot;: &quot;Debug&quot;,
-    &quot;PHP Script.PreguntaController.php.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;rama__bren&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/view&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "PHP Script.PartidaModel.php.executor": "Debug",
+    "PHP Script.PreguntaController.php.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "rama__bren",
+    "last_opened_file_path": "C:/xampp/htdocs/Preguntados/view",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Preguntados\view" />
       <recent name="C:\xampp\htdocs\view" />
       <recent name="C:\xampp\htdocs\libs" />
-      <recent name="C:\xampp\htdocs\Preguntados\view" />
       <recent name="C:\xampp\htdocs\Preguntados\public\imagenes\usuarios" />
       <recent name="C:\xampp\htdocs\Preguntados\public\imagenes" />
     </key>

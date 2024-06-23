@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partidas</title>
+    <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<main>
+    <div>
+        <h1>Listado de Partidas</h1>
+        <p>Total de partidas {{totalPartidas}}</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Id Usuario</th>
+                <th>Puntaje</th>
+                <th>Fecha</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#partidas}}
+                <tr>
+                    <td>{{idUsuario}}</td>
+                    <td>{{puntaje}}</td>
+                    <td>{{fechaRealizado}}</td>
+                </tr>
+            {{/partidas}}
+            </tbody>
+        </table>
+        <form method="post", action="/admin/reporteDePartidas">
+            <button type="submit">Reporte PDF</button>
+        </form>
+    </div>
+</main>
+</body>
+</html>
