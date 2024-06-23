@@ -4,6 +4,13 @@ require 'libs/PHPMailer/src/PHPMailer.php';
 require 'libs/PHPMailer/src/SMTP.php';
 require 'config/config.php';
 
+
+require 'libs/dompdf/autoload.inc.php';
+require('./jpgraph/src/jpgraph.php');
+require('./jpgraph/src/jpgraph_line.php');
+use Dompdf\Dompdf;
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -233,6 +240,23 @@ class UsuarioController
     {
         $this->presenter->render("view/sugerirPreguntaView.mustache");
     }
+
+
+    public function PDF()
+    {
+
+// instantiate and use the dompdf class
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml('hello world');       //aca van los graficos
+
+// (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+// Render the HTML as PDF
+        $dompdf->render();
+
+// Output the generated PDF to Browser
+        $dompdf->stream("document.pdf" , ['Attachment' => 0]);    }
 
 
 }
