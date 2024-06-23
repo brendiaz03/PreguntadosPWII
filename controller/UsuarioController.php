@@ -4,6 +4,8 @@ require 'libs/PHPMailer/src/PHPMailer.php';
 require 'libs/PHPMailer/src/SMTP.php';
 require 'config/config.php';
 
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -220,6 +222,15 @@ class UsuarioController
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);
         }
+        if ($usuario['tipoUsuario'] == 'Admin') {
+            $textoNav = "Perfil Admin";
+            $this->presenter->render("view/lobbyAdmin.mustache", ["textoNav" => $textoNav,
+                "nombreCompleto" => $usuario['nombreCompleto'],
+                "foto" => $usuario['foto'],
+                "tipoUsuario" => $usuario['tipoUsuario'],
+                "logeado" => true]);
+        }
+
     }
 
     public function ranking()
@@ -233,6 +244,9 @@ class UsuarioController
     {
         $this->presenter->render("view/sugerirPreguntaView.mustache");
     }
+
+
+
 
 
 }
