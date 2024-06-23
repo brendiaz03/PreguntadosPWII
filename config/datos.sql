@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `categoria_color` (
-  `id` int(11) NOT NULL,
+                                   `id` int(11) NOT NULL PRIMARY KEY,
   `categoria` varchar(50) NOT NULL,
   `color` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -53,7 +53,7 @@ INSERT INTO `categoria_color` (`id`, `categoria`, `color`) VALUES
 --
 
 CREATE TABLE `partida` (
-  `id` int(11) NOT NULL,
+                           `id` int(11) NOT NULL PRIMARY KEY,
   `idUsuario` int(11) DEFAULT NULL,
   `fechaRealizado` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -77,7 +77,7 @@ INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
 --
 
 CREATE TABLE `partida_pregunta` (
-  `id` int(11) NOT NULL,
+                                    `id` int(11) NOT NULL PRIMARY KEY,
   `idPartida` int(11) DEFAULT NULL,
   `idPregunta` int(11) DEFAULT NULL,
   `correcta` tinyint(1) DEFAULT NULL,
@@ -116,7 +116,7 @@ INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fe
 --
 
 CREATE TABLE `pregunta` (
-  `id` int(11) NOT NULL,
+                            `id` int(11) NOT NULL PRIMARY KEY,
   `categoria` varchar(50) DEFAULT NULL,
   `pregunta` varchar(200) DEFAULT NULL,
   `estado` varchar(50) DEFAULT NULL,
@@ -172,7 +172,7 @@ INSERT INTO `pregunta` (`id`, `categoria`, `pregunta`, `estado`, `nivel`, `veces
 --
 
 CREATE TABLE `respuesta` (
-  `id` int(11) NOT NULL,
+                             `id` int(11) NOT NULL PRIMARY KEY,
   `respuesta` varchar(200) DEFAULT NULL,
   `correcta` tinyint(1) DEFAULT NULL,
   `pregunta` int(11) DEFAULT NULL
@@ -323,7 +323,7 @@ INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 --
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+                           `id` int(11) NOT NULL PRIMARY KEY,
   `nombreCompleto` varchar(50) DEFAULT NULL,
   `anioNacimiento` int(11) DEFAULT NULL,
   `sexo` varchar(20) DEFAULT NULL,
@@ -341,7 +341,7 @@ CREATE TABLE `usuario` (
   `hash` varchar(250) DEFAULT NULL,
   `latitud` decimal(9,6) DEFAULT NULL,
   `longitud` decimal(9,6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+);
 
 --
 -- Volcado de datos para la tabla `usuario`

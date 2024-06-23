@@ -10,7 +10,19 @@ class AdminModel
     }
 
     public function getAllJugadores(){
-        $sql = "SELECT * FROM usuario WHERE rol = 'Jugador'";
+        $sql = "SELECT 
+        u.*,
+        COUNT(pp.idPregunta) AS cantidadPreguntas
+    FROM 
+        usuario u
+    LEFT JOIN 
+        partida p ON u.id = p.idUsuario
+    LEFT JOIN 
+        partida_pregunta pp ON p.id = pp.idPartida
+    WHERE 
+        u.tipoUsuario = 'Jugador'
+    GROUP BY 
+        u.id";
         return $this->database->query($sql);
     }
     public function getAllPartidas(){
@@ -34,7 +46,7 @@ class AdminModel
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND rol = $rol";
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND tipoUsuario = $rol";
         }
 
         $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuario $whereClause GROUP BY pais";
@@ -48,7 +60,7 @@ class AdminModel
 
     public function getUsuariosPorPais($rol)
     {
-        $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuario WHERE rol = $rol GROUP BY pais";
+        $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuario WHERE tipoUsuario = $rol GROUP BY pais";
 
         $query = $this->database->query($consulta);
 
@@ -62,8 +74,8 @@ class AdminModel
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND rol = $rol";
-            $whereClause .= " AND idRol = $rol";
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND tipoUsuario = $rol";
+            $whereClause .= " AND tipoUsuario = $rol";
         }
 
         $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuario $whereClause GROUP BY sexo";
@@ -77,7 +89,7 @@ class AdminModel
 
     public function getUsuariosPorSexoYRol($rol)
     {
-        $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuario WHERE rol = $rol GROUP BY sexo";
+        $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuario WHERE tipoUsuario = $rol GROUP BY sexo";
 
         $query = $this->database->query($consulta);
 
@@ -91,7 +103,7 @@ class AdminModel
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND rol = $rol";
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND tipoUsuario = $rol";
         }
 
         $consulta = "SELECT CASE WHEN YEAR(CURDATE()) - anioNacimiento < 18 THEN 'Menores'
@@ -111,7 +123,7 @@ class AdminModel
         $consulta = "SELECT CASE WHEN YEAR(CURDATE()) - anioNacimiento < 18 THEN 'Menores'
         WHEN YEAR(CURDATE()) - anioNacimiento BETWEEN 18 AND 60 THEN 'Mayores' 
         WHEN YEAR(CURDATE()) - anioNacimiento > 60 THEN 'Jubilados'
-        END AS Grupo, COUNT(*) AS Cantidad FROM usuario WHERE rol = $rol GROUP BY Grupo";
+        END AS Grupo, COUNT(*) AS Cantidad FROM usuario WHERE tipoUsuario = $rol GROUP BY Grupo";
 
         $query = $this->database->query($consulta);
 
@@ -166,8 +178,8 @@ class AdminModel
         $consulta = "SELECT * FROM usuario $whereClause";
         return $this->database->print($consulta);
     }
-    public function imprimirTodosLosUsuariosParaPDF(){
-        $sql = "SELECT * FROM usuario WHERE rol = 'Jugador'";
+    public function imprimirTodosLosJugadoresParaPDF(){
+        $sql = "SELECT * FROM usuario WHERE tipoUsuario = 'Jugador'";
         $result = $this->database->print($sql);
         return $result;
     }
