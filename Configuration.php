@@ -9,6 +9,8 @@
     include_once ("helper/Presenter.php");
     include_once ("helper/MustachePresenter.php");
     include_once ("helper/Router.php");
+    include_once("controller/AdminController.php");
+    include_once("model/AdminModel.php");
 
     include_once('vendor/mustache/src/Mustache/Autoloader.php');
     class Configuration
