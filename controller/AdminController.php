@@ -23,18 +23,18 @@ class AdminController
             }
         }
 
-        $this->presenter->render("view/jugadores.mustache", ['totalUsuarios' => $totalUsuarios, 'jugadores' => $jugadores,]);
+        $this->presenter->render("view/jugadoresEstadistica.mustache", ['totalUsuarios' => $totalUsuarios, 'jugadores' => $jugadores,]);
     }
 
     public function reporteDeJugadores()
     {
-        require("helper/Jugadores.php");
+        require("helper/Jugador.php");
 
-        $pdf = new Jugadores("L");
+        $pdf = new Jugador("L");
         $pdf->AddPage();
         $pdf->AliasNbPages();
         $pdf->SetTitle("Usuarios registrados");
-        $tablaUsuarios = $this->model->imprimirTodosLosJugadoresParaPDF();
+        $tablaUsuarios = $this->model->imprimirTodosLosJugadores();
 
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
@@ -51,6 +51,47 @@ class AdminController
         }
 
         $pdf->Output('JugadoresTotales.pdf', 'I');
+    }
+
+    public function traerPartidas()
+    {
+        $partidas = $this->model->getAllPartidas();
+
+        $totalPartidas = count($partidas);
+
+        $this->presenter->render("view/partidasEstadistica.mustache", ['partidas' => $partidas,
+            'totalPartidas' => $totalPartidas]);
+    }
+
+    public function reporteDePartidas()
+    {
+        require("helper/Partida.php");
+
+        $pdf = new Partida();
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+
+        $pdf->SetTitle("Partida totales");
+        $tablaPartidas = $this->model->imprimirTodasLasPartidas();
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+
+        //Centrar tabla
+        $anchoTotalTabla = 25 + 25 + 45 + 70;
+        $margenIzquierdo = ($pdf->GetPageWidth() - $anchoTotalTabla) / 2;
+
+        foreach ($tablaPartidas as $fila) {
+            $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->SetX($margenIzquierdo);
+            $pdf->Cell(25, 10, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(25, 10, ($fila["idUsuario"]), 1, 0, 'C', 0);
+            $pdf->Cell(45, 10, ($fila["puntaje"]), 1, 0, 'C', 0);
+            $pdf->Cell(70, 10, ($fila["fechaRealizado"]), 1, 0, 'C', 0);
+            if ($pdf->GetY() > 250) {
+                $pdf->AddPage();
+            }
+        }
+        $pdf->Output('PartidasTotales.pdf', 'I');
     }
 
 }

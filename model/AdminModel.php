@@ -26,7 +26,10 @@ class AdminModel
         return $this->database->query($sql);
     }
     public function getAllPartidas(){
-        $sql = "SELECT * FROM partida";
+        $sql = "SELECT p.id, p.idUsuario, p.fechaRealizado, COUNT(pp.correcta) AS puntaje
+            FROM partida p
+            LEFT JOIN partida_pregunta pp ON p.id = pp.idPartida AND pp.correcta = 1
+            GROUP BY p.id";
         return $this->database->query($sql);
     }
     public function getNombrePorId($idUsuario){
@@ -178,10 +181,18 @@ class AdminModel
         $consulta = "SELECT * FROM usuario $whereClause";
         return $this->database->print($consulta);
     }
-    public function imprimirTodosLosJugadoresParaPDF(){
+    public function imprimirTodosLosJugadores(){
         $sql = "SELECT * FROM usuario WHERE tipoUsuario = 'Jugador'";
         $result = $this->database->print($sql);
         return $result;
+    }
+
+    public function imprimirTodasLasPartidas(){
+        $query = "SELECT p.id, p.idUsuario, p.fechaRealizado, COUNT(pp.correcta) AS puntaje
+            FROM partida p
+            LEFT JOIN partida_pregunta pp ON p.id = pp.idPartida AND pp.correcta = 1
+            GROUP BY p.id";
+        return $this->database->print($query);
     }
 
     private function convertirArrayAJSON($array, $cabecera) {

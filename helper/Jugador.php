@@ -2,7 +2,7 @@
 
 require('libs/fpdf/fpdf.php');
 
-class Jugadores extends fpdf
+class Jugador extends fpdf
 {
     // Cabecera de página
     function Header()
