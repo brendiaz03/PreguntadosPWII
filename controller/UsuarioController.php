@@ -5,11 +5,6 @@ require 'libs/PHPMailer/src/SMTP.php';
 require 'config/config.php';
 
 
-require 'libs/dompdf/autoload.inc.php';
-require('./jpgraph/src/jpgraph.php');
-require('./jpgraph/src/jpgraph_line.php');
-use Dompdf\Dompdf;
-
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -227,6 +222,18 @@ class UsuarioController
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);
         }
+        if ($usuario['tipoUsuario'] == 'Admin') {
+            $textoNav = "Perfil Admin";
+            $this->presenter->render("view/lobbyAdmin.mustache", ["textoNav" => $textoNav,
+                "nombreCompleto" => $usuario['nombreCompleto'],
+                "puntaje" => $usuario['puntaje'],
+                "nivel" => $usuario['nivel'],
+                "id" => $usuario['id'],
+                "foto" => $usuario['foto'],
+                "tipoUsuario" => $usuario['tipoUsuario'],
+                "logeado" => true]);
+        }
+
     }
 
     public function ranking()

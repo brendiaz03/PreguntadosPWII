@@ -1,8 +1,10 @@
 <?php
-require 'libs/dompdf/autoload.inc.php';
-require('./jpgraph/src/jpgraph.php');
-require('./jpgraph/src/jpgraph_line.php');
+require_once ('libs/dompdf/autoload.inc.php');
+require_once('libs/jpgraph/src/jpgraph.php');
+require_once('libs/jpgraph/src/jpgraph_line.php');
 use Dompdf\Dompdf;
+
+
 class AdminController
 {
     private $model;
@@ -14,7 +16,7 @@ class AdminController
         $this->presenter = $presenter;
     }
 
-    public function PDF()
+    public function pdf()
     {
 
 // instantiate and use the dompdf class
@@ -28,6 +30,10 @@ class AdminController
         $dompdf->render();
 
 // Output the generated PDF to Browser
-        $dompdf->stream("document.pdf" , ['Attachment' => 0]);    }
+        $dompdf->stream("document.pdf" , ['Attachment' => 0]);
+
+
+    }
+
 
 }
