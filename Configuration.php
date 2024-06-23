@@ -5,6 +5,8 @@
     include_once("model/PreguntaModel.php");
     include_once ("controller/UsuarioController.php");
     include_once ("model/UsuarioModel.php");
+    include_once ("controller/AdminController.php");
+    include_once ("model/AdminModel.php");
     include_once("helper/Conexion_db.php");
     include_once ("helper/Presenter.php");
     include_once ("helper/MustachePresenter.php");

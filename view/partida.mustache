@@ -67,7 +67,7 @@
     </div>
     <div class="cont-partida" style="background-color: {{ color }};">
         <p>Tiempo transcurrido: <span id="tiempoTranscurrido"></span></p>
-        <form id="formulario" method="post" action="/pregunta/terminarpartida">
+        <form id="formulario" method="post" action="/prtida/terminarpartida">
             {{#pregunta}}
                 <h1>{{categoria}}</h1>
                 <h4>{{pregunta}}</h4>
@@ -81,7 +81,7 @@
             {{/respuestas}}
             <button type="submit">Enviar respuesta</button>
         </form>
-        <form id="reportar" method="post" action="/pregunta/reportarPregunta">
+        <form id="reportar" method="post" action="/partida/reportarPregunta">
             {{#pregunta}}
                 <a href="#" onclick="showPopup(event)">Reportar pregunta</a>
                 <input value='{{id}}' type="number" hidden='hidden' name='idPregunta'>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadores</title>
+    <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<main>
+    <div>
+        <h1>Listado de Usuarios</h1>
+        <p>Total de usuarios {{totalUsuarios}}</p>
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Nombre de Usuario</th>
+                <th>Email</th>
+                <th>Porcentaje de Aciertos</th>
+                <th>Nivel</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#jugadores}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{nombreUsuario}}</td>
+                    <td>{{mail}}</td>
+                    <td> {{porcentaje}} %</td>
+                    <td>{{nivel}}</td>
+                </tr>
+            {{/jugadores}}
+            </tbody>
+        </table>
+    </div>
+    <form method="post", action="/admin/reporteDeJugadores">
+        <button type="submit">Reporte PDF</button>
+    </form>
+    </div>
+</main>
+</body>
+</html>
