@@ -13,6 +13,15 @@
     include_once('vendor/mustache/src/Mustache/Autoloader.php');
     class Configuration
     {
+        public static function getAdminController()
+        {
+            return new AdminController(self::getAdminModel(), self::getPresenter());
+
+        }
+        private static function getAdminModel()
+        {
+            return new AdminModel(self::getDatabase());
+        }
         public static function getUsuarioController()
         {
             return new UsuarioController(self::getUsuarioModel(), self::getPresenter());
