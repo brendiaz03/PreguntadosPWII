@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jugadores</title>
     <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="/public/css/ranking.css"> <!-- Si tienes estilos personalizados -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<main>
+<main class="ranking-container">
     <div>
         <h1>Listado de Usuarios</h1>
         <p>Total de usuarios {{totalUsuarios}}</p>
-        <table>
+        <table class="table">
             <thead>
             <tr>
                 <th>Nombre</th>
@@ -35,9 +36,13 @@
             </tbody>
         </table>
     </div>
+
+    <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
+        <a  class="btn btn-primary " href="../usuario/lobby">volver</a>
     <form method="post", action="/admin/reporteDeJugadores">
-        <button type="submit">Reporte PDF</button>
+        <button class="btn btn-danger" type="submit">Reporte PDF</button>
     </form>
+    </div>
     </div>
 </main>
 </body>
