@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilazos">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/partidasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partidasEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" afterDir="false" />
-    </list>
+    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilazos" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
