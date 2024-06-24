@@ -173,6 +173,8 @@ class AdminController
 
     public function traerUsuariosNuevos()
     {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
 
         $fechaDesde = null;
         $fechaHasta = null;
@@ -184,7 +186,7 @@ class AdminController
 
         $usuarios = $this->model->getUsuariosNuevos($fechaDesde, $fechaHasta);
 
-        $this->presenter->render("view/usuariosEstadistica.mustache", ['usuarios' => $usuarios]);
+        $this->presenter->render("view/usuariosEstadistica.mustache", ['usuarios' => $usuarios,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function reporteUsuarios(){
