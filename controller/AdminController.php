@@ -94,4 +94,37 @@ class AdminController
         $pdf->Output('PartidasTotales.pdf', 'I');
     }
 
+    public function traerPreguntas()
+    {
+        $preguntas = $this->model->getAllPreguntas();
+
+        $this->presenter->render("view/preguntasEstadistica.mustache", ['preguntasDelJuego' => $preguntas]);
+    }
+
+    public function reporteDePreguntas()
+    {
+        require("helper/Pregunta.php");
+
+        $pdf = new Pregunta("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+
+        $tablaPreguntas = $this->model->imprimirTodasLasPreguntas();
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+        $pdf->SetTitle("Preguntas Totales");
+
+        foreach ($tablaPreguntas as $fila) {
+            $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->Cell(10, 10, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(240, 10, utf8_decode(($fila["pregunta"])), 1, 0, 'C', 0);
+            $pdf->Cell(30, 10, ($fila["nivel"]), 1, 0, 'C', 0);
+
+            if ($pdf->GetY() > 150) {
+                $pdf->AddPage();
+            }
+        }
+        $pdf->Output('PreguntasTotales.pdf', 'I');
+    }
+
 }

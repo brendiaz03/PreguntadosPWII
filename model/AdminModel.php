@@ -195,6 +195,12 @@ class AdminModel
         return $this->database->print($query);
     }
 
+    public function imprimirTodasLasPreguntas(){
+        $query = "SELECT * FROM pregunta";
+        $result = $this->database->print($query);
+        return $result;
+    }
+
     private function convertirArrayAJSON($array, $cabecera) {
         $result = [];
         $result[] = $cabecera;
