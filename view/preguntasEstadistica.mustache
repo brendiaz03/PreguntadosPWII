@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Preguntas Totales</title>
+    <title>Preguntas</title>
     <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
     <link rel="stylesheet" href="/public/css/ranking.css"> <!-- Si tienes estilos personalizados -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -11,10 +11,18 @@
 <body>
 <main class="ranking-container">
     <div>
-        <h1>Listado De Preguntas</h1>
+        <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado de preguntas</h1>
+
+        <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
+            <form method="post", action="/admin/reporteDePreguntas">
+                <button class="btn btn-danger" type="submit">Reporte PDF</button>
+            </form>
+
+        </div>
         <table class="table">
             <thead>
             <tr>
+                <th>PreguntaId</th>
                 <th>Pregunta</th>
 
             </tr>
@@ -22,6 +30,7 @@
             <tbody>
             {{#preguntasDelJuego}}
                 <tr>
+                    <td>{{id}}</td>
                     <td>{{pregunta}}</td>
 
                 </tr>
@@ -29,12 +38,6 @@
             </tbody>
         </table>
 
-        <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
-            <a  class="btn btn-primary " href="../usuario/lobby">volver</a>
-        <form method="post", action="/admin/reporteDePreguntas">
-            <button class="btn btn-danger" type="submit">Reporte PDF</button>
-        </form>
-    </div>
     </div>
 
 </main>

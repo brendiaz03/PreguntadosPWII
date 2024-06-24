@@ -226,6 +226,7 @@ class UsuarioController
             $textoNav = "Panel Administrador";
             $this->presenter->render("view/lobbyAdmin.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
+                "id" => $usuario['id'],
                 "foto" => $usuario['foto'],
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partidas</title>
     <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="/public/css/ranking.css"> <!-- Si tienes estilos personalizados -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
     <script>
         function guardarFecha(event) {
             event.preventDefault(); // Prevenir el comportamiento por defecto del submit
@@ -56,18 +59,38 @@
 <body>
 <main>
     <div>
-        <h1>Listado de Usuarios</h1>
-        <form onsubmit="guardarFecha(event)" method="post">
-            <p>Filtrar por fecha de creado:</p>
-            <label for="Desde">Desde:</label>
-            <input type="date" name="Desde" id="Desde" required>
-            <label for="Hasta">Hasta:</label>
-            <input type="date" name="Hasta" id="Hasta" required>
-            <button type="submit">
-                Filtrar
-            </button>
+        <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado de preguntas</h1>
+
+        <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
+            <form method="post", action="/admin/reporteUsuarios" onsubmit="copiarFechasAForm(event)">
+                <button class="btn btn-danger" type="submit">Reporte PDF</button>
+                <input type="hidden" name="fechaDesdeValue" id="fechaDesdeValue" >
+                <input type="hidden" name="fechaHastaValue" id="fechaHastaValue" >
+            </form>
+        </div>
+        </div>
+
+            <h2 class="d-flex flex-row align-self-center d-flex justify-content-around ">Filtrar por fecha de creado:</h2>
+    <div class="d-flex justify-content-around align-items-center my-3">
+        <div class="d-flex flex-row align-items-center mx-2">
+
+        <label for="Desde" class="mr-2">Desde:</label>
+            <input type="date" name="Desde" id="Desde" class="form-control" required>
+
+            <label for="Hasta" class="mr-2">Hasta:</label>
+            <input type="date" name="Hasta" id="Hasta" class="form-control" required>
+        </div>
+    </div>
+
+
+        </div>
+    <div class="d-flex flex-row align-self-center d-flex justify-content-around " >
+    <button class="btn btn-primary  " type="submit">
+        Filtrar
+    </button>
+    </div>
         </form>
-        <table>
+        <table class="table">
             <thead>
             <tr>
                 <th>Nombre Completo</th>
@@ -89,12 +112,7 @@
             {{/usuarios}}
             </tbody>
         </table>
-        <form method="post", action="/admin/reporteUsuarios" onsubmit="copiarFechasAForm(event)">
-            <button type="submit">Reporte PDF</button>
-            <input type="hidden" name="fechaDesdeValue" id="fechaDesdeValue" >
-            <input type="hidden" name="fechaHastaValue" id="fechaHastaValue" >
-        </form>
-    </div>
+
 </main>
 </body>
 </html>
