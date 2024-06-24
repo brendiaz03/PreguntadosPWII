@@ -212,8 +212,10 @@ class AdminController
             $pdf->Cell(100, 10, ($fila["mail"]), 1, 0, 'C', 0);
             $pdf->Cell(30, 10, ($fila["nivel"]), 1, 0, 'C', 0);
             $pdf->Cell(30, 10, ($fila["tipoUsuario"]), 1, 0, 'C', 0);
+
+
         }
-        $pdf->Output('UsuariosNuevos.pdf', 'D');
+        $pdf->Output('UsuariosNuevos.pdf', 'I');
 
     }
 

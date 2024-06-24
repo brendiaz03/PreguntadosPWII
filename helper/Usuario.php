@@ -21,7 +21,6 @@ class Usuario extends fpdf
         $this->SetTextColor(255,255,255);
         $this->SetDrawColor(209, 209, 209);
         $this->SetFont('Arial', 'B', 11);
-        $this->SetX(38.5);
         $this->Cell(50,10, utf8_decode('Nombre'), 1, 0, 'C', 1);
         $this->Cell(40, 10, utf8_decode('Nombre de Usuario'), 1, 0, 'C', 1);
         $this->Cell(100, 10, utf8_decode('Email'), 1, 0, 'C', 1);

@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="Merge remote-tracking branch 'origin/main'">
+    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilazos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/lobbyAdmin.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobbyAdmin.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Usuario.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719197930163</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="estilazos">
+      <option name="closed" value="true" />
+      <created>1719201049478</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719201049478</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -288,7 +291,8 @@
     <MESSAGE value="estilitos" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;view/preguntasEnJuegoEstadistica.mustache&#10;#&#9;view/preguntasEstadistica.mustache" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/main'" />
+    <MESSAGE value="estilazos" />
+    <option name="LAST_COMMIT_MESSAGE" value="estilazos" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
