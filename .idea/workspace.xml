@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilazos">
+    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="GRAFICOS ANDANDO CON FILTRO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/graficoPreguntas.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/graficoPreguntas.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/lobbyAdmin.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobbyAdmin.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719201049478</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="GRAFICOS ANDANDO CON FILTRO">
+      <option name="closed" value="true" />
+      <created>1719250719013</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1719250719013</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,7 +299,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;view/preguntasEnJuegoEstadistica.mustache&#10;#&#9;view/preguntasEstadistica.mustache" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="estilazos" />
-    <option name="LAST_COMMIT_MESSAGE" value="estilazos" />
+    <MESSAGE value="GRAFICOS ANDANDO CON FILTRO" />
+    <option name="LAST_COMMIT_MESSAGE" value="GRAFICOS ANDANDO CON FILTRO" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

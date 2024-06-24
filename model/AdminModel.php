@@ -117,7 +117,7 @@ class AdminModel
         $whereClause = '';
 
         if (!empty($fechaDesde) && !empty($fechaHasta)) {
-            $whereClause = "and WHERE u.fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+            $whereClause = "and u.fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
         }
 
         $consulta = "SELECT 
