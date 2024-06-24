@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partidas</title>
+    <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function guardarFecha(event) {
+            event.preventDefault(); // Prevenir el comportamiento por defecto del submit
+            let fechaDesdeValue = document.getElementById("Desde").value;
+            let fechaHastaValue = document.getElementById("Hasta").value;
+
+            localStorage.setItem("fechaDesdeValue", fechaDesdeValue);
+            localStorage.setItem("fechaHastaValue", fechaHastaValue);
+            console.log(fechaDesdeValue, fechaHastaValue);
+
+            // Luego puedes enviar el formulario si es necesario
+            event.target.submit();
+        }
+
+        function actualizarCamposFecha() {
+            document.getElementById("Desde").value = localStorage.getItem("fechaDesdeValue") || '';
+            document.getElementById("Hasta").value = localStorage.getItem("fechaHastaValue") || '';
+            if (!fechaDesdeValue || !fechaHastaValue) {
+                let fechaActual = new Date();
+                let fechaDesde = new Date(fechaActual);
+                fechaDesde.setDate(fechaActual.getDate() - 2);
+                let fechaHasta = new Date(fechaActual);
+
+                fechaDesdeValue = fechaDesde.toISOString().split('T')[0];
+                fechaHastaValue = fechaHasta.toISOString().split('T')[0];
+
+                localStorage.setItem("fechaDesdeValue", fechaDesdeValue);
+                localStorage.setItem("fechaHastaValue", fechaHastaValue);
+            }
+
+            document.getElementById("Desde").value = fechaDesdeValue;
+            document.getElementById("Hasta").value = fechaHastaValue;
+        }
+
+        function copiarFechasAForm(event) {
+            document.getElementById("fechaDesdeValue").value = localStorage.getItem("fechaDesdeValue");
+            document.getElementById("fechaHastaValue").value = localStorage.getItem("fechaHastaValue");
+        }
+
+        function borrarLocalStorage() {
+            localStorage.removeItem("fechaDesdeValue");
+            localStorage.removeItem("fechaHastaValue");
+        }
+
+        window.addEventListener('load', actualizarCamposFecha);
+    </script>
+</head>
+<body>
+<main>
+    <div>
+        <h1>Listado de Usuarios</h1>
+        <form onsubmit="guardarFecha(event)" method="post">
+            <p>Filtrar por fecha de creado:</p>
+            <label for="Desde">Desde:</label>
+            <input type="date" name="Desde" id="Desde" required>
+            <label for="Hasta">Hasta:</label>
+            <input type="date" name="Hasta" id="Hasta" required>
+            <button type="submit">
+                Filtrar
+            </button>
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre Completo</th>
+                <th>Nombre de Usuario</th>
+                <th>Email</th>
+                <th>Nivel</th>
+                <th>Fecha Registro</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#usuarios}}
+                <tr>
+                    <td>{{nombreCompleto}}</td>
+                    <td>{{nombreUsuario}}</td>
+                    <td>{{mail}}</td>
+                    <td>{{nivel}}</td>
+                    <td>{{fechaRegistro}}</td>
+                </tr>
+            {{/usuarios}}
+            </tbody>
+        </table>
+        <form method="post", action="/admin/reporteUsuarios" onsubmit="copiarFechasAForm(event)">
+            <button type="submit">Reporte PDF</button>
+            <input type="hidden" name="fechaDesdeValue" id="fechaDesdeValue" >
+            <input type="hidden" name="fechaHastaValue" id="fechaHastaValue" >
+        </form>
+    </div>
+</main>
+</body>
+</html>

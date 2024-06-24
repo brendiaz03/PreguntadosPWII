@@ -34,12 +34,12 @@ class AdminController
         $pdf->AddPage();
         $pdf->AliasNbPages();
         $pdf->SetTitle("Usuarios registrados");
-        $tablaUsuarios = $this->model->imprimirTodosLosJugadores();
+        $tabla = $this->model->imprimirTodosLosJugadores();
 
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
-        foreach ($tablaUsuarios as $fila) {
+        foreach ($tabla as $fila) {
             $pdf->Cell(25, 25, ($fila["id"]), 1, 0, 'C', 0);
             $pdf->Cell(45, 25, ($fila["nombreUsuario"]), 1, 0, 'C', 0);
             $pdf->Cell(60, 25, ($fila["mail"]), 1, 0, 'C', 0);
@@ -72,7 +72,7 @@ class AdminController
         $pdf->AliasNbPages();
 
         $pdf->SetTitle("Partida totales");
-        $tablaPartidas = $this->model->imprimirTodasLasPartidas();
+        $tabla = $this->model->imprimirTodasLasPartidas();
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
@@ -80,7 +80,7 @@ class AdminController
         $anchoTotalTabla = 25 + 25 + 45 + 70;
         $margenIzquierdo = ($pdf->GetPageWidth() - $anchoTotalTabla) / 2;
 
-        foreach ($tablaPartidas as $fila) {
+        foreach ($tabla as $fila) {
             $pdf->Ln(); // Salto de línea después de cada fila
             $pdf->SetX($margenIzquierdo);
             $pdf->Cell(25, 10, ($fila["id"]), 1, 0, 'C', 0);
@@ -109,12 +109,12 @@ class AdminController
         $pdf->AddPage();
         $pdf->AliasNbPages();
 
-        $tablaPreguntas = $this->model->imprimirTodasLasPreguntas();
+        $tabla = $this->model->imprimirTodasLasPreguntas();
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
         $pdf->SetTitle("Preguntas Totales");
 
-        foreach ($tablaPreguntas as $fila) {
+        foreach ($tabla as $fila) {
             $pdf->Ln(); // Salto de línea después de cada fila
             $pdf->Cell(10, 10, ($fila["id"]), 1, 0, 'C', 0);
             $pdf->Cell(240, 10, utf8_decode(($fila["pregunta"])), 1, 0, 'C', 0);
@@ -142,11 +142,11 @@ class AdminController
         $pdf->AddPage();
         $pdf->AliasNbPages();
         $pdf->SetTitle("Preguntas Totales En Juego");
-        $tablaPreguntas = $this->model->imprimirTodasLasPreguntasActivas();
+        $tabla = $this->model->imprimirTodasLasPreguntasActivas();
         $pdf->SetFont('Arial', '', 12);
         $pdf->SetDrawColor(163, 163, 163);
 
-        foreach ($tablaPreguntas as $fila) {
+        foreach ($tabla as $fila) {
             $pdf->Ln(); // Salto de línea después de cada fila
             $pdf->Cell(10, 10, ($fila["id"]), 1, 0, 'C', 0);
             $pdf->Cell(240, 10, utf8_decode(($fila["pregunta"])), 1, 0, 'C', 0);
@@ -158,4 +158,49 @@ class AdminController
         }
         $pdf->Output('PreguntasTotalesEnJuego.pdf', 'I');
     }
+
+    public function traerUsuariosNuevos()
+    {
+
+        $fechaDesde = null;
+        $fechaHasta = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['Desde']) ? $_POST['Desde'] : null;
+            $fechaHasta = isset($_POST['Hasta']) ? $_POST['Hasta'] : null;
+        }
+
+        $usuarios = $this->model->getUsuariosNuevos($fechaDesde, $fechaHasta);
+
+        $this->presenter->render("view/usuariosEstadistica.mustache", ['usuarios' => $usuarios]);
+    }
+
+    public function reporteUsuarios(){
+        require("helper/Usuario.php");
+
+        $pdf = new Usuario("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+        $pdf->SetTitle("Usuarios nuevos");
+        $fechaDesde = $_POST["fechaDesdeValue"];
+        $fechaHasta = $_POST["fechaHastaValue"];
+
+        $tabla = $this->model->imprimirUsuariosNuevos($fechaDesde, $fechaHasta);
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+
+
+        foreach ($tabla as $fila) {
+            $pdf->Ln();
+            $pdf->Cell(50, 10, utf8_decode(($fila["nombreCompleto"])), 1, 0, 'C', 0);
+            $pdf->Cell(40, 10, ($fila["nombreUsuario"]), 1, 0, 'C', 0);
+            $pdf->Cell(100, 10, ($fila["mail"]), 1, 0, 'C', 0);
+            $pdf->Cell(30, 10, ($fila["nivel"]), 1, 0, 'C', 0);
+            $pdf->Cell(30, 10, ($fila["tipoUsuario"]), 1, 0, 'C', 0);
+        }
+        $pdf->Output('UsuariosNuevos.pdf', 'D');
+
+    }
+
 }

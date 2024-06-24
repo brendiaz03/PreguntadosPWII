@@ -163,20 +163,20 @@ class AdminModel
         if (!empty($fechaDesde && !empty($fechaHasta))) {
             $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
         } else {
-            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 10 DAY)";
+            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
         }
         $consulta = "SELECT * FROM usuario $whereClause";
         return $this->database->query($consulta);
     }
 
 
-    public function getUsuariosNuevosPDF($fechaDesde = null, $fechaHasta= null){
+    public function imprimirUsuariosNuevos($fechaDesde = null, $fechaHasta= null){
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
             $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
         } else {
-            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 10 DAY)";
+            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
         }
         $consulta = "SELECT * FROM usuario $whereClause";
         return $this->database->print($consulta);
