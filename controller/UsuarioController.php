@@ -212,7 +212,7 @@ class UsuarioController
                 "logeado" => true]);
         }
         if ($usuario['tipoUsuario'] == 'Editor') {
-            $textoNav = "Perfil editor";
+            $textoNav = "Panel Administrador";
             $this->presenter->render("view/lobbyEditor.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "puntaje" => $usuario['puntaje'],
@@ -223,7 +223,7 @@ class UsuarioController
                 "logeado" => true]);
         }
         if ($usuario['tipoUsuario'] == 'Admin') {
-            $textoNav = "Perfil Admin";
+            $textoNav = "Panel Administrador";
             $this->presenter->render("view/lobbyAdmin.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "id" => $usuario['id'],

@@ -45,6 +45,105 @@ class AdminModel
         return $this->database->query($sql);
     }
 
+    public function getUsuariosNuevos($fechaDesde = null, $fechaHasta = null){
+        $whereClause = '';
+
+        if (!empty($fechaDesde && !empty($fechaHasta))) {
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+        } else {
+            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
+        }
+        $consulta = "SELECT * FROM usuario $whereClause";
+        return $this->database->query($consulta);
+    }
+
+
+    public function imprimirUsuariosNuevos($fechaDesde = null, $fechaHasta= null){
+        $whereClause = '';
+
+        if (!empty($fechaDesde && !empty($fechaHasta))) {
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+        } else {
+            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
+        }
+        $consulta = "SELECT * FROM usuario $whereClause";
+        return $this->database->print($consulta);
+    }
+    public function imprimirTodosLosJugadores(){
+        $sql = "SELECT * FROM usuario WHERE tipoUsuario = 'Jugador'";
+        $result = $this->database->print($sql);
+        return $result;
+    }
+
+    public function imprimirTodasLasPartidas(){
+        $query = "SELECT p.id, p.idUsuario, p.fechaRealizado, COUNT(pp.correcta) AS puntaje
+            FROM partida p
+            LEFT JOIN partida_pregunta pp ON p.id = pp.idPartida AND pp.correcta = 1
+            GROUP BY p.id";
+        return $this->database->print($query);
+    }
+
+    public function imprimirTodasLasPreguntas(){
+        $query = "SELECT * FROM pregunta";
+        $result = $this->database->print($query);
+        return $result;
+    }
+
+    public function imprimirTodasLasPreguntasActivas(){
+        $query = "SELECT * FROM pregunta Where estado = 'Activa'";
+        $result = $this->database->print($query);
+        return $result;
+    }
+
+    private function convertirArrayAJSONPorcentajeRespuesta($queryResult, $cabecera) {
+        $result = [];
+        $result[] = $cabecera;
+
+        if (is_array($queryResult)) {
+            foreach ($queryResult as $row) {
+                $result[] = [$row['nombre'], (float) $row['porcentajeRespuestasCorrectas']];
+            }
+        } else {
+            foreach ($queryResult->result_array() as $row) {
+                $result[] = [$row['nombre'], (float) $row['porcentajeRespuestasCorrectas']];
+            }
+        }
+
+        return json_encode($result);
+    }
+
+    public function getRespuestasCorrectasPorUsuario($fechaDesde = null, $fechaHasta = null)
+    {
+        $whereClause = '';
+
+        if (!empty($fechaDesde) && !empty($fechaHasta)) {
+            $whereClause = "and WHERE u.fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+        }
+
+        $consulta = "SELECT 
+        u.nombreCompleto AS nombre, 
+        CASE 
+            WHEN COUNT(pp.idPregunta) = 0 THEN 0 
+            ELSE (SUM(pp.correcta) / COUNT(pp.idPregunta)) * 100 
+        END AS porcentajeRespuestasCorrectas
+    FROM 
+        usuario u
+    LEFT JOIN 
+        partida p ON u.id = p.idUsuario
+    LEFT JOIN 
+        partida_pregunta pp ON p.id = pp.idPartida
+        where u.tipoUsuario = 'Jugador'
+        $whereClause
+    GROUP BY 
+        u.nombreCompleto";
+
+        $query = $this->database->query($consulta);
+
+        $cabecera = ['nombre', 'porcentajeRespuestasCorrectas'];
+
+        return $this->convertirArrayAJSONPorcentajeRespuesta($query, $cabecera);
+    }
+
     public function getUsuariosPorPaisFiltradoPorFecha($fechaDesde = null, $fechaHasta = null,$rol){
         $whereClause = '';
 
@@ -134,95 +233,4 @@ class AdminModel
 
         return $this->convertirArrayAJSON($query, $cabecera);
     }
-
-//    public function getRespuestasCorrectasPorUsuario($fechaDesde = null, $fechaHasta = null, $rol)
-//    {
-//        $whereClause = '';
-//
-//        if (!empty($fechaDesde && !empty($fechaHasta))) {
-//            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND rol = $rol";
-//        } else {
-//            // Si no se proporciona una fecha, solo aplicar el filtro de idRol
-//            $whereClause = "WHERE rol = $rol";
-//        }
-//
-//        $consulta = "SELECT nombre, (SUM(cantRespuestasCorrectas) / SUM(cantRespuestas)) * 100 AS porcentajeRespuestasCorrectas FROM usuario $whereClause GROUP BY nombre";
-//
-//        $query = $this->database->query($consulta);
-//
-//        $cabecera = ['nombre', 'porcentajeRespuestasCorrectas'];
-//
-//        return $this->convertirArrayAJSON($query, $cabecera);
-//    }
-
-
-
-    public function getUsuariosNuevos($fechaDesde = null, $fechaHasta = null){
-        $whereClause = '';
-
-        if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
-        } else {
-            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
-        }
-        $consulta = "SELECT * FROM usuario $whereClause";
-        return $this->database->query($consulta);
-    }
-
-
-    public function imprimirUsuariosNuevos($fechaDesde = null, $fechaHasta= null){
-        $whereClause = '';
-
-        if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
-        } else {
-            $whereClause = "WHERE fechaRegistro >= DATE_SUB(CURDATE(), INTERVAL 2 DAY)";
-        }
-        $consulta = "SELECT * FROM usuario $whereClause";
-        return $this->database->print($consulta);
-    }
-    public function imprimirTodosLosJugadores(){
-        $sql = "SELECT * FROM usuario WHERE tipoUsuario = 'Jugador'";
-        $result = $this->database->print($sql);
-        return $result;
-    }
-
-    public function imprimirTodasLasPartidas(){
-        $query = "SELECT p.id, p.idUsuario, p.fechaRealizado, COUNT(pp.correcta) AS puntaje
-            FROM partida p
-            LEFT JOIN partida_pregunta pp ON p.id = pp.idPartida AND pp.correcta = 1
-            GROUP BY p.id";
-        return $this->database->print($query);
-    }
-
-    public function imprimirTodasLasPreguntas(){
-        $query = "SELECT * FROM pregunta";
-        $result = $this->database->print($query);
-        return $result;
-    }
-
-    public function imprimirTodasLasPreguntasActivas(){
-        $query = "SELECT * FROM pregunta Where estado = 'Activa'";
-        $result = $this->database->print($query);
-        return $result;
-    }
-
-    private function convertirArrayAJSON($array, $cabecera) {
-        $result = [];
-        $result[] = $cabecera;
-
-        foreach ($array as $element) {
-            $result[] = [$element[0], (int)$element[1]];
-        }
-
-        return json_encode($result);
-    }
-
-    public function getUsuarioById($idUsuario)
-    {
-        $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
-        $result = $this->database->query($sql);
-        return $result[0];
-    }
-
 }

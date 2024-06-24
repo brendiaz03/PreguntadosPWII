@@ -73,7 +73,7 @@ LIMIT 1";
                 return $this->database->query($sqlRandom);
             }
     }
-        return $result;
+        return $result[0];
     }
 
     public function guardarPreguntaDePartida($idUsuario, $idPartida,$idPregunta, $idRespuesta)
