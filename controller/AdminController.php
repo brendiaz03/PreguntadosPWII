@@ -127,4 +127,35 @@ class AdminController
         $pdf->Output('PreguntasTotales.pdf', 'I');
     }
 
+    public function traerPreguntasEnElJuego()
+    {
+        $preguntasAct = $this->model->getAllPreguntasActivas();
+
+        $this->presenter->render("view/preguntasEnJuegoEstadistica.mustache", ['preguntasActivas' => $preguntasAct]);
+    }
+
+    public function reportePreguntasActivas()
+    {
+        require('helper/Pregunta.php');
+
+        $pdf = new Pregunta("L");
+        $pdf->AddPage();
+        $pdf->AliasNbPages();
+        $pdf->SetTitle("Preguntas Totales En Juego");
+        $tablaPreguntas = $this->model->imprimirTodasLasPreguntasActivas();
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->SetDrawColor(163, 163, 163);
+
+        foreach ($tablaPreguntas as $fila) {
+            $pdf->Ln(); // Salto de línea después de cada fila
+            $pdf->Cell(10, 10, ($fila["id"]), 1, 0, 'C', 0);
+            $pdf->Cell(240, 10, utf8_decode(($fila["pregunta"])), 1, 0, 'C', 0);
+            $pdf->Cell(30, 10, ($fila["nivel"]), 1, 0, 'C', 0);
+
+            if ($pdf->GetY() > 150) {
+                $pdf->AddPage();
+            }
+        }
+        $pdf->Output('PreguntasTotalesEnJuego.pdf', 'I');
+    }
 }

@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="inicio2 de pdf y graficos&#10;solo se agrego la lib y el codigo de ejemplo">
+      <change afterPath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/lobbyAdmin.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/lobbyAdmin.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
