@@ -1,66 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2024 a las 02:29:35
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `preguntados`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoria_color`
---
-
-CREATE TABLE `categoria_color` (
-                                   `id` int(11) NOT NULL PRIMARY KEY,
-  `categoria` varchar(50) NOT NULL,
-  `color` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `categoria_color`
---
-
-INSERT INTO `categoria_color` (`id`, `categoria`, `color`) VALUES
-(1, 'Ciencia', '#04D960'),
-(2, 'Matemáticas', '#C848D9'),
-(3, 'Cultura General', '#F20505'),
-(4, 'Geografía', '#0088EE'),
-(5, 'Historia', '#F2D027'),
-(6, 'Deportes', '#F27405'),
-(7, 'Arte', '#34E7F8');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `partida`
---
-
-CREATE TABLE `partida` (
-                           `id` int(11) NOT NULL PRIMARY KEY,
-  `idUsuario` int(11) DEFAULT NULL,
-  `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `partida`
---
 
 INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
 (1, 1, '2024-06-21 23:17:09'),
@@ -70,23 +7,6 @@ INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
 (5, 1, '2024-06-21 23:23:35'),
 (6, 1, '2024-06-21 23:27:15');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `partida_pregunta`
---
-
-CREATE TABLE `partida_pregunta` (
-                                    `id` int(11) NOT NULL PRIMARY KEY,
-  `idPartida` int(11) DEFAULT NULL,
-  `idPregunta` int(11) DEFAULT NULL,
-  `correcta` tinyint(1) DEFAULT NULL,
-  `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `partida_pregunta`
---
 
 INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fechaRealizado`) VALUES
 (1, 1, 2, 1, '2024-06-21 23:17:22'),
@@ -108,27 +28,6 @@ INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fe
 (17, 2, 10, 1, '2024-06-21 23:18:53'),
 (18, 2, 13, 1, '2024-06-21 23:19:00'),
 (19, 2, 29, 1, '2024-06-21 23:19:05');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pregunta`
---
-
-CREATE TABLE `pregunta` (
-                            `id` int(11) NOT NULL PRIMARY KEY,
-  `categoria` varchar(50) DEFAULT NULL,
-  `pregunta` varchar(200) DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `nivel` varchar(50) DEFAULT NULL,
-  `veces_entregada` int(11) DEFAULT NULL,
-  `hits` int(11) DEFAULT NULL,
-  `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `pregunta`
---
 
 INSERT INTO `pregunta` (`id`, `categoria`, `pregunta`, `estado`, `nivel`, `veces_entregada`, `hits`, `fechaRealizado`) VALUES
 (1, 'Matemáticas', '¿Cuál es el valor de π?', 'Activa', 'Intermedio', 0, 0, '2024-06-21 18:10:23'),
@@ -208,23 +107,6 @@ INSERT INTO `pregunta` (`id`, `categoria`, `pregunta`, `estado`, `nivel`, `veces
 (78, 'Ciencia', '¿Cuál es el metal más abundante en la corteza terrestre?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
 (79, 'Geografía', '¿Cuál es el país más poblado del mundo?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
 (80, 'Historia', '¿Quién fue el primer presidente de México?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `respuesta`
---
-
-CREATE TABLE `respuesta` (
-                             `id` int(11) NOT NULL PRIMARY KEY,
-  `respuesta` varchar(200) DEFAULT NULL,
-  `correcta` tinyint(1) DEFAULT NULL,
-  `pregunta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `respuesta`
---
 
 INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 (1, '3.14', 1, 1),
@@ -536,151 +418,192 @@ INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 (319, 'Porfirio Díaz', 0, 80),
 (320, 'Emiliano Zapata', 0, 80);
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `usuario`
---
+INSERT INTO `usuario` (`nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
+( 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
+('editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', 'Editor', NULL, 0, 1, '', NULL, NULL),
+ ('Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', 'Admin', NULL, 0, 1, '', NULL, NULL),
+('PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
+
+
 
 CREATE TABLE `usuario` (
                            `id` int(11) NOT NULL PRIMARY KEY,
-  `nombreCompleto` varchar(50) DEFAULT NULL,
-  `anioNacimiento` int(11) DEFAULT NULL,
-  `sexo` varchar(20) DEFAULT NULL,
-  `pais` varchar(30) DEFAULT NULL,
-  `ciudad` varchar(30) DEFAULT NULL,
-  `mail` varchar(30) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
-  `nombreUsuario` varchar(30) DEFAULT NULL,
-  `fechaRegistro` datetime DEFAULT NULL,
-      `tipoUsuario` varchar(20) DEFAULT NULL,
-  `nivel` varchar(50) DEFAULT NULL,
-  `puntaje` int(11) DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT NULL,
-  `hash` varchar(250) DEFAULT NULL,
-  `latitud` decimal(9,6) DEFAULT NULL,
-  `longitud` decimal(9,6) DEFAULT NULL
+                           `nombreCompleto` varchar(50) DEFAULT NULL,
+                           `anioNacimiento` int(11) DEFAULT NULL,
+                           `sexo` varchar(20) DEFAULT NULL,
+                           `pais` varchar(30) DEFAULT NULL,
+                           `ciudad` varchar(30) DEFAULT NULL,
+                           `mail` varchar(30) DEFAULT NULL,
+                           `foto` varchar(100) DEFAULT NULL,
+                           `password` varchar(30) DEFAULT NULL,
+                           `nombreUsuario` varchar(30) DEFAULT NULL,
+                           `fechaRegistro` datetime DEFAULT NULL,
+                           `tipoUsuario` varchar(20) DEFAULT NULL,
+                           `nivel` varchar(50) DEFAULT NULL,
+                           `puntaje` int(11) DEFAULT NULL,
+                           `activo` tinyint(1) DEFAULT NULL,
+                           `hash` varchar(250) DEFAULT NULL,
+                           `latitud` decimal(9,6) DEFAULT NULL,
+                           `longitud` decimal(9,6) DEFAULT NULL
 );
 
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
-(1, 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
-(2, 'editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', 'Editor', NULL, 0, 1, '', NULL, NULL),
-(3, 'Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', 'Admin', NULL, 0, 1, '', NULL, NULL),
-(7, 'PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `categoria_color`
---
-ALTER TABLE `categoria_color`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `partida`
---
-ALTER TABLE `partida`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idUsuario` (`idUsuario`);
-
---
--- Indices de la tabla `partida_pregunta`
---
-ALTER TABLE `partida_pregunta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idPartida` (`idPartida`),
-  ADD KEY `idPregunta` (`idPregunta`);
-
---
--- Indices de la tabla `pregunta`
---
-ALTER TABLE `pregunta`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `respuesta`
---
-ALTER TABLE `respuesta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pregunta` (`pregunta`);
-
---
--- Indices de la tabla `usuario`
---
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
+ALTER TABLE `usuario`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT de la tabla `categoria_color`
---
+
+
+
+CREATE TABLE `categoria_color` (
+                                   `id` int(11) NOT NULL PRIMARY KEY,
+                                   `categoria` varchar(50) NOT NULL,
+                                   `color` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+INSERT INTO `categoria_color` (`id`, `categoria`, `color`) VALUES
+                                                               (1, 'Ciencia', '#04D960'),
+                                                               (2, 'Matemáticas', '#C848D9'),
+                                                               (3, 'Cultura General', '#F20505'),
+                                                               (4, 'Geografía', '#0088EE'),
+                                                               (5, 'Historia', '#F2D027'),
+                                                               (6, 'Deportes', '#F27405'),
+                                                               (7, 'Arte', '#34E7F8');
+
+
 ALTER TABLE `categoria_color`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- AUTO_INCREMENT de la tabla `partida`
---
-ALTER TABLE `partida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `categoria_color`
+    ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT de la tabla `partida_pregunta`
---
-ALTER TABLE `partida_pregunta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
---
--- AUTO_INCREMENT de la tabla `pregunta`
---
-ALTER TABLE `pregunta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
---
--- AUTO_INCREMENT de la tabla `respuesta`
---
-ALTER TABLE `respuesta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+CREATE TABLE `partida` (
+                           `id` int(11) NOT NULL PRIMARY KEY,
+                           `idUsuario` int(11) DEFAULT NULL,
+                           `fechaRealizado` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `partida`
---
 ALTER TABLE `partida`
   ADD CONSTRAINT `partida_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`);
 
---
--- Filtros para la tabla `partida_pregunta`
---
-ALTER TABLE `partida_pregunta`
-  ADD CONSTRAINT `partida_pregunta_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partida` (`id`),
-  ADD CONSTRAINT `partida_pregunta_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`id`);
+ALTER TABLE `partida`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
---
--- Filtros para la tabla `respuesta`
---
+ALTER TABLE `partida`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `idUsuario` (`idUsuario`);
+
+
+CREATE TABLE `partida_pregunta` (
+                                    `id` int(11) NOT NULL PRIMARY KEY,
+                                    `idPartida` int(11) DEFAULT NULL,
+                                    `idPregunta` int(11) DEFAULT NULL,
+                                    `correcta` tinyint(1) DEFAULT NULL,
+                                    `fechaRealizado` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+ALTER TABLE `partida_pregunta`
+    ADD CONSTRAINT `partida_pregunta_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partida` (`id`),
+    ADD CONSTRAINT `partida_pregunta_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`id`);
+
+ALTER TABLE `partida_pregunta`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `partida_pregunta`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `idPartida` (`idPartida`),
+    ADD KEY `idPregunta` (`idPregunta`);
+
+
+CREATE TABLE `pregunta` (
+                            `id` int(11) NOT NULL PRIMARY KEY,
+                            `categoria` varchar(50) DEFAULT NULL,
+                            `pregunta` varchar(200) DEFAULT NULL,
+                            `estado` varchar(50) DEFAULT NULL,
+                            `nivel` varchar(50) DEFAULT NULL,
+                            `veces_entregada` int(11) DEFAULT NULL,
+                            `hits` int(11) DEFAULT NULL,
+                            `fechaRealizado` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+ALTER TABLE `pregunta`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+
+
+ALTER TABLE `pregunta`
+    ADD PRIMARY KEY (`id`);
+
+
+
+CREATE TABLE `respuesta` (
+                             `id` int(11) NOT NULL PRIMARY KEY,
+                             `respuesta` varchar(200) DEFAULT NULL,
+                             `correcta` tinyint(1) DEFAULT NULL,
+                             `pregunta` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 ALTER TABLE `respuesta`
   ADD CONSTRAINT `respuesta_ibfk_1` FOREIGN KEY (`pregunta`) REFERENCES `pregunta` (`id`);
 COMMIT;
+ALTER TABLE `respuesta`
+    ADD PRIMARY KEY (`id`),
+    ADD KEY `pregunta` (`pregunta`);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `respuesta`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+# dgijdlgkdjg slos quiweubfre
+CREATE TABLE pregunta(
+                         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                         categoria VARCHAR(50),
+                         pregunta VARCHAR(200),
+                         estado VARCHAR(50), -- activa, inactiva , reportada, sugerida
+                         nivel VARCHAR(50),
+                         veces_entregada int,
+                         hits int,
+                         fechaRealizado datetime
+);
+
+CREATE TABLE respuesta(
+                          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                          respuesta VARCHAR(200),
+                          correcta bool,
+                          pregunta INTEGER,
+                          FOREIGN KEY(pregunta) REFERENCES pregunta(id)
+);
+CREATE TABLE partida(
+                        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                        idUsuario INTEGER,
+                        fechaRealizado DATETIME,
+                        FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+);
+
+CREATE TABLE partida_pregunta (
+                                  id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                                  idPartida INTEGER,
+                                  idPregunta INTEGER,
+                                  correcta BOOLEAN,
+                                  fechaRealizado DATETIME,
+                                  FOREIGN KEY (idPartida) REFERENCES partida(id),
+                                  FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
+);
+CREATE TABLE categoria_color (
+                                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                                 categoria VARCHAR(50) NOT NULL,
+                                 color VARCHAR(50) NOT NULL
+);
+INSERT INTO categoria_color (categoria, color) VALUES
+                                                   ('Ciencia', '#04D960'),
+                                                   ('Matemáticas', '#C848D9'),
+                                                   ('Cultura General', '#F20505'),
+                                                   ('Geografía', '#0088EE'),
+                                                   ('Historia', '#F2D027'),
+                                                   ('Deportes', '#F27405'),
+                                                   ('Arte', '#34E7F8');
+
+
