@@ -45,13 +45,14 @@ class PartidaController
 
     public function terminarPartida()
     {
-        $correcta = $this->model->guardarPreguntaDePartida($_SESSION["id"], $_SESSION["idPartida"] , $_SESSION["pregunta"]['id'], $_POST["idRespuesta"]);
+        $correcta = $this->model->guardarPreguntaDePartida($_SESSION["id"], $_SESSION["idPartida"] , $_POST["idPregunta"], $_POST["idRespuesta"]);
         $_SESSION["pregunta"] = null;
         $_SESSION["respuestas"] = null;
         $_SESSION["tiempoInicio"]=null;
         if ($correcta) {
             header("Location: /preguntados/partida");
         } else {
+            $_SESSION["idPartida"] = null;
             header("Location: /usuario/lobby");
         }
     }

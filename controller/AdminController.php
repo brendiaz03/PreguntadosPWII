@@ -203,4 +203,38 @@ class AdminController
 
     }
 
+    public function traerPreguntasRespondidasPorUsuario()
+    {
+
+        $fechaDesde = null;
+        $fechaHasta = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['Desde']) ? $_POST['Desde'] : null;
+            $fechaHasta = isset($_POST['Hasta']) ? $_POST['Hasta'] : null;
+        }
+
+        $respuestasPorUsuario = $this->model->getRespuestasCorrectasPorUsuario($fechaDesde, $fechaHasta);
+
+       $this->presenter->render("view/graficoPreguntas.mustache", ['respuestasPorUsuario' =>  $respuestasPorUsuario]);
+    }
+
+    public function grafico()
+    {
+        require('helper/Grafico.php');
+        $pdf = new Grafico();
+        $pdf->AliasNbPages();
+        $pdf->AddPage();
+        $tituloPDF = $_POST['tituloPDF'];
+        $titulo = $_POST['titulo'];
+        $pdf->SetTitle($tituloPDF);
+        $pdf->SetFont('Arial', 'B', 15);
+        $pdf->Cell(190, 30, $titulo, 0, 1, 'C', 0);
+
+        $grafico = $_POST['graficoImagen'];
+
+        $pdf->image($grafico, 0, 50, 200, 0, 'png');
+        $pdf->Output();
+    }
+
 }

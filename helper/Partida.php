@@ -20,8 +20,8 @@ class Partida extends fpdf
         $this->SetDrawColor(209, 209, 209);
         $this->SetFont('Arial', 'B', 11);
         $this->SetX(22.5);
-        $this->Cell(25,10, utf8_decode('Id partida'), 1 ,0 ,'C', 1);
-        $this->Cell(25,10, utf8_decode('Usuario ID'), 1, 0, 'C', 1);
+        $this->Cell(25,10, utf8_decode('ID partida'), 1 ,0 ,'C', 1);
+        $this->Cell(25,10, utf8_decode('ID usuario'), 1, 0, 'C', 1);
         $this->Cell(45, 10, utf8_decode('Puntaje'), 1, 0, 'C', 1);
         $this->Cell(70, 10, utf8_decode('Fecha y Hora'), 1, 0, 'C', 1);
     }
