@@ -221,7 +221,8 @@ class AdminController
 
     public function traerPreguntasRespondidasPorUsuario()
     {
-
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
         $fechaDesde = null;
         $fechaHasta = null;
 
@@ -232,7 +233,7 @@ class AdminController
 
         $respuestasPorUsuario = $this->model->getRespuestasCorrectasPorUsuario($fechaDesde, $fechaHasta);
 
-       $this->presenter->render("view/graficoPreguntas.mustache", ['respuestasPorUsuario' =>  $respuestasPorUsuario]);
+       $this->presenter->render("view/graficoPreguntas.mustache", ['respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function grafico()

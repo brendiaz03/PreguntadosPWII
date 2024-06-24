@@ -7,12 +7,8 @@
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilazos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/partidasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partidasEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/graficoPreguntas.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/graficoPreguntas.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "rama__bren",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/xampp/htdocs/Preguntados/view",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
