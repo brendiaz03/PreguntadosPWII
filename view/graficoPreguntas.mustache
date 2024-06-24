@@ -17,7 +17,7 @@
             var data = google.visualization.arrayToDataTable(respuestasPorUsuario);
 
             var options = {
-                title: 'Respuestas Correctas Por Jugador',
+                title: '{{titulo}}',
                 pieHole: 0.4,
             };
 
@@ -33,7 +33,7 @@
         <div>
 
 
-                <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Grafico De Preguntas Correctas Por Usuario</h1>
+                <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Grafico De {{titulo}}</h1>
 
                 <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
                         <form method="post" action="/admin/grafico">
