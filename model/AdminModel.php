@@ -40,8 +40,8 @@ class AdminModel
         $sql = "SELECT * FROM pregunta";
         return $this->database->query($sql);
     }
-    public function getPreguntasSugeridas(){
-        $sql = "SELECT * FROM pregunta Where estado = 'Sugerida'";
+    public function getAllPreguntasActivas(){
+        $sql = "SELECT * FROM pregunta Where estado = 'Activa'";
         return $this->database->query($sql);
     }
 
@@ -197,6 +197,12 @@ class AdminModel
 
     public function imprimirTodasLasPreguntas(){
         $query = "SELECT * FROM pregunta";
+        $result = $this->database->print($query);
+        return $result;
+    }
+
+    public function imprimirTodasLasPreguntasActivas(){
+        $query = "SELECT * FROM pregunta Where estado = 'Activa'";
         $result = $this->database->print($query);
         return $result;
     }
