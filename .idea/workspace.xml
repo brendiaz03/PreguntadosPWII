@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="estilazos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/helper/Usuario.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/db.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/db.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/AdminModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/model/AdminModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/jugadoresEstadistica.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/partidasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/partidasEstadistica.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEnJuegoEstadistica.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/preguntasEstadistica.mustache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/usuariosEstadistica.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,24 +58,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;PHP Script.PartidaModel.php.executor&quot;: &quot;Debug&quot;,
-    &quot;PHP Script.PreguntaController.php.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/Preguntados/view&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "PHP Script.PartidaModel.php.executor": "Debug",
+    "PHP Script.PreguntaController.php.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "rama__bren",
+    "last_opened_file_path": "C:/xampp/htdocs/Preguntados/view",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Preguntados\view" />

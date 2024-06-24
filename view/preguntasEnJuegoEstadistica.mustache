@@ -10,7 +10,7 @@
 </head>
 <body>
 <main class="ranking-container">
-    <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado de preguntas En Juego</h1>
+    <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado De Preguntas En Juego</h1>
 
     <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
         <form method="post", action="/admin/reportePreguntasActivas">
@@ -21,7 +21,6 @@
     <table class="table">
             <thead>
             <tr>
-                <th>PreguntaId</th>
                 <th>Pregunta</th>
 
             </tr>
@@ -29,7 +28,6 @@
             <tbody>
             {{#preguntasActivas}}
                 <tr>
-                    <td>{{id}}</td>
                     <td>{{pregunta}}</td>
                 </tr>
             {{/preguntasActivas}}
