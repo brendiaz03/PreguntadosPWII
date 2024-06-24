@@ -11,7 +11,14 @@
 <body>
 <main class="ranking-container">
     <div>
-        <h1>Listado de preguntas</h1>
+        <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado de preguntas</h1>
+
+        <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
+            <form method="post", action="/admin/reporteDePartidas">
+                <button class="btn btn-danger" type="submit">Reporte PDF</button>
+            </form>
+
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -31,12 +38,6 @@
             </tbody>
         </table>
 
-        <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
-            <a  class="btn btn-primary " href="../usuario/lobby">volver</a>
-        <form method="post", action="/admin/reporteDePreguntas">
-            <button class="btn btn-danger" type="submit">Reporte PDF</button>
-        </form>
-    </div>
     </div>
 
 </main>

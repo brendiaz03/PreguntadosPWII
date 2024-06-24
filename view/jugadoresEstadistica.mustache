@@ -11,8 +11,16 @@
 <body>
 <main class="ranking-container">
     <div>
-        <h1>Listado de Usuarios</h1>
-        <p>Total de usuarios {{totalUsuarios}}</p>
+
+        <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado de Usuarios</h1>
+        <h2 class="d-flex flex-row align-self-center d-flex justify-content-around ">Total de usuarios {{totalUsuarios}}</h2>
+
+        <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
+            <form method="post", action="/admin/reporteDePartidas">
+                <button class="btn btn-danger" type="submit">Reporte PDF</button>
+            </form>
+
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -37,12 +45,6 @@
         </table>
     </div>
 
-    <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
-        <a  class="btn btn-primary " href="../usuario/lobby">volver</a>
-    <form method="post", action="/admin/reporteDeJugadores">
-        <button class="btn btn-danger" type="submit">Reporte PDF</button>
-    </form>
-    </div>
     </div>
 </main>
 </body>

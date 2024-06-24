@@ -4,14 +4,19 @@ class AdminController
     private $model;
     private $presenter;
 
+    private $textoNav = "Home";
+
     public function __construct($model, $presenter)
     {
         $this->model = $model;
         $this->presenter = $presenter;
+
     }
 
     public function traerJugadores()
     {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
         $jugadores = $this->model->getAllJugadores();
         $totalUsuarios = count($jugadores);
 
@@ -23,12 +28,13 @@ class AdminController
             }
         }
 
-        $this->presenter->render("view/jugadoresEstadistica.mustache", ['totalUsuarios' => $totalUsuarios, 'jugadores' => $jugadores,]);
+        $this->presenter->render("view/jugadoresEstadistica.mustache", ['totalUsuarios' => $totalUsuarios, 'jugadores' => $jugadores,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function reporteDeJugadores()
     {
         require("helper/Jugador.php");
+
 
         $pdf = new Jugador("L");
         $pdf->AddPage();
@@ -56,11 +62,13 @@ class AdminController
     public function traerPartidas()
     {
         $partidas = $this->model->getAllPartidas();
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
 
         $totalPartidas = count($partidas);
 
         $this->presenter->render("view/partidasEstadistica.mustache", ['partidas' => $partidas,
-            'totalPartidas' => $totalPartidas]);
+            'totalPartidas' => $totalPartidas,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function reporteDePartidas()
@@ -97,8 +105,10 @@ class AdminController
     public function traerPreguntas()
     {
         $preguntas = $this->model->getAllPreguntas();
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
 
-        $this->presenter->render("view/preguntasEstadistica.mustache", ['preguntasDelJuego' => $preguntas]);
+        $this->presenter->render("view/preguntasEstadistica.mustache", ['preguntasDelJuego' => $preguntas, "logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function reporteDePreguntas()
@@ -130,8 +140,10 @@ class AdminController
     public function traerPreguntasEnElJuego()
     {
         $preguntasAct = $this->model->getAllPreguntasActivas();
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
 
-        $this->presenter->render("view/preguntasEnJuegoEstadistica.mustache", ['preguntasActivas' => $preguntasAct]);
+        $this->presenter->render("view/preguntasEnJuegoEstadistica.mustache", ['preguntasActivas' => $preguntasAct,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function reportePreguntasActivas()

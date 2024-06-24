@@ -217,4 +217,12 @@ class AdminModel
 
         return json_encode($result);
     }
+
+    public function getUsuarioById($idUsuario)
+    {
+        $sql = "SELECT * FROM usuario WHERE id = '$idUsuario' LIMIT 1";
+        $result = $this->database->query($sql);
+        return $result[0];
+    }
+
 }
