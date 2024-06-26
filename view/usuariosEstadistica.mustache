@@ -103,7 +103,12 @@
                     <td>{{nombreCompleto}}</td>
                     <td>{{nombreUsuario}}</td>
                     <td>{{mail}}</td>
-                    <td>{{nivel}}</td>
+                    {{#nivel}}
+                        <td>{{nivel}}</td>
+                    {{/nivel}}
+                    {{^nivel}}
+                        <td>No nivelado</td>
+                    {{/nivel}}
                     <td>{{fechaRegistro}}</td>
                 </tr>
             {{/usuarios}}

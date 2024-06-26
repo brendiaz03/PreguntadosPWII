@@ -419,16 +419,16 @@ INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 (320, 'Emiliano Zapata', 0, 80);
 
 
-INSERT INTO `usuario` (`nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
-( 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
-('editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', 'Editor', NULL, 0, 1, '', NULL, NULL),
- ('Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', 'Admin', NULL, 0, 1, '', NULL, NULL),
-('PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
+INSERT INTO `usuario` (`nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `fechaRegistro`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
+( 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', NOW(), 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
+('editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', NOW(), 'Editor', NULL, 0, 1, '', NULL, NULL),
+ ('Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', NOW(), 'Admin', NULL, 0, 1, '', NULL, NULL),
+('PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', NOW(), 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
 
 
 
 CREATE TABLE `usuario` (
-                           `id` int(11) NOT NULL PRIMARY KEY,
+                           `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
                            `nombreCompleto` varchar(50) DEFAULT NULL,
                            `anioNacimiento` int(11) DEFAULT NULL,
                            `sexo` varchar(20) DEFAULT NULL,
@@ -448,116 +448,6 @@ CREATE TABLE `usuario` (
                            `longitud` decimal(9,6) DEFAULT NULL
 );
 
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `usuario`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
-
-
-
-CREATE TABLE `categoria_color` (
-                                   `id` int(11) NOT NULL PRIMARY KEY,
-                                   `categoria` varchar(50) NOT NULL,
-                                   `color` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-INSERT INTO `categoria_color` (`id`, `categoria`, `color`) VALUES
-                                                               (1, 'Ciencia', '#04D960'),
-                                                               (2, 'Matemáticas', '#C848D9'),
-                                                               (3, 'Cultura General', '#F20505'),
-                                                               (4, 'Geografía', '#0088EE'),
-                                                               (5, 'Historia', '#F2D027'),
-                                                               (6, 'Deportes', '#F27405'),
-                                                               (7, 'Arte', '#34E7F8');
-
-
-ALTER TABLE `categoria_color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
-ALTER TABLE `categoria_color`
-    ADD PRIMARY KEY (`id`);
-
-
-
-CREATE TABLE `partida` (
-                           `id` int(11) NOT NULL PRIMARY KEY,
-                           `idUsuario` int(11) DEFAULT NULL,
-                           `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-ALTER TABLE `partida`
-  ADD CONSTRAINT `partida_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`);
-
-ALTER TABLE `partida`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
-ALTER TABLE `partida`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `idUsuario` (`idUsuario`);
-
-
-CREATE TABLE `partida_pregunta` (
-                                    `id` int(11) NOT NULL PRIMARY KEY,
-                                    `idPartida` int(11) DEFAULT NULL,
-                                    `idPregunta` int(11) DEFAULT NULL,
-                                    `correcta` tinyint(1) DEFAULT NULL,
-                                    `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-ALTER TABLE `partida_pregunta`
-    ADD CONSTRAINT `partida_pregunta_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partida` (`id`),
-    ADD CONSTRAINT `partida_pregunta_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`id`);
-
-ALTER TABLE `partida_pregunta`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-ALTER TABLE `partida_pregunta`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `idPartida` (`idPartida`),
-    ADD KEY `idPregunta` (`idPregunta`);
-
-
-CREATE TABLE `pregunta` (
-                            `id` int(11) NOT NULL PRIMARY KEY,
-                            `categoria` varchar(50) DEFAULT NULL,
-                            `pregunta` varchar(200) DEFAULT NULL,
-                            `estado` varchar(50) DEFAULT NULL,
-                            `nivel` varchar(50) DEFAULT NULL,
-                            `veces_entregada` int(11) DEFAULT NULL,
-                            `hits` int(11) DEFAULT NULL,
-                            `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-
-ALTER TABLE `pregunta`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
-
-
-ALTER TABLE `pregunta`
-    ADD PRIMARY KEY (`id`);
-
-
-
-CREATE TABLE `respuesta` (
-                             `id` int(11) NOT NULL PRIMARY KEY,
-                             `respuesta` varchar(200) DEFAULT NULL,
-                             `correcta` tinyint(1) DEFAULT NULL,
-                             `pregunta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-ALTER TABLE `respuesta`
-  ADD CONSTRAINT `respuesta_ibfk_1` FOREIGN KEY (`pregunta`) REFERENCES `pregunta` (`id`);
-COMMIT;
-ALTER TABLE `respuesta`
-    ADD PRIMARY KEY (`id`),
-    ADD KEY `pregunta` (`pregunta`);
-
-ALTER TABLE `respuesta`
-    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
-# dgijdlgkdjg slos quiweubfre
 CREATE TABLE pregunta(
                          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
                          categoria VARCHAR(50),
