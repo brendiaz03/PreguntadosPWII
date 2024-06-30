@@ -221,7 +221,8 @@ class AdminController
 
     public function traerPreguntasRespondidasPorUsuario()
     {
-
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
         $fechaDesde = null;
         $fechaHasta = null;
 
@@ -232,7 +233,59 @@ class AdminController
 
         $respuestasPorUsuario = $this->model->getRespuestasCorrectasPorUsuario($fechaDesde, $fechaHasta);
 
-       $this->presenter->render("view/graficoPreguntas.mustache", ['respuestasPorUsuario' =>  $respuestasPorUsuario]);
+       $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Respuestas Correctas por Usuario",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+    }
+
+
+    public function traerUsuariosPorPais()
+    {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
+        $fechaDesde = null;
+        $fechaHasta = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['Desde']) ? $_POST['Desde'] : null;
+            $fechaHasta = isset($_POST['Hasta']) ? $_POST['Hasta'] : null;
+        }
+
+        $respuestasPorUsuario = $this->model->getUsuariosPorPaisFiltradoPorFecha($fechaDesde, $fechaHasta);
+
+        $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Usuarios por pais",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+    }
+
+    public function traerUsuariosPorSexo()
+    {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
+        $fechaDesde = null;
+        $fechaHasta = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['Desde']) ? $_POST['Desde'] : null;
+            $fechaHasta = isset($_POST['Hasta']) ? $_POST['Hasta'] : null;
+        }
+
+        $respuestasPorUsuario = $this->model->getUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde, $fechaHasta);
+
+        $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Usuarios por sexo",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+    }
+
+    public function traerUsuariosPorEdad()
+    {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "Home";
+        $fechaDesde = null;
+        $fechaHasta = null;
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $fechaDesde = isset($_POST['Desde']) ? $_POST['Desde'] : null;
+            $fechaHasta = isset($_POST['Hasta']) ? $_POST['Hasta'] : null;
+        }
+
+        $respuestasPorUsuario = $this->model->getUsuariosPorEdadFiltradoPorFecha($fechaDesde, $fechaHasta);
+
+        $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Usuarios por Edad",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
 
     public function grafico()

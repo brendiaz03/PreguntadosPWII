@@ -46,7 +46,12 @@
             <div class="col-md-6">
                 <div class="profile-container">
                     <h1>Usuario: {{nombreUsuario}}</h1>
-                    <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto}}" alt="Foto de perfil">
+                    {{#foto}}
+                        <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto}}" alt="Foto de perfil">
+                    {{/foto}}
+                    {{^foto}}
+                        <img class="profile-picture" src="../../public/imagenes/profile-user.png" alt="Foto de perfil">
+                    {{/foto}}
                     <div class="user-data">
                         <div>
                             <p>Nombre completo: {{nombreCompleto}}</p>

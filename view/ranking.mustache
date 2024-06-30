@@ -29,7 +29,12 @@
                     <td><a href="/usuario/perfil/id={{id}}">{{totalPartidas}}</a></td>
                     <td><a href="/usuario/perfil/id={{id}}">{{mejorPartida}}</a></td>
                     <td><a href="/usuario/perfil/id={{id}}">{{puntajeTotal}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/icono-perfil.png" alt="Ver perfil" width="30px"></a></td>
+                    {{#foto}}
+                        <td style="background: #c38ed7"><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/usuarios/{{foto}}" alt="Ver perfil" width="30px"></a></td>
+                    {{/foto}}
+                    {{^foto}}
+                        <td style="background: #c38ed7"><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/profile-user.png" alt="Ver perfil" width="30px"></a></td>
+                    {{/foto}}
                 </tr>
             {{/jugadores}}
             </tbody>

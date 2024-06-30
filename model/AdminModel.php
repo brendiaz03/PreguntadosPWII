@@ -117,7 +117,7 @@ class AdminModel
         $whereClause = '';
 
         if (!empty($fechaDesde) && !empty($fechaHasta)) {
-            $whereClause = "and WHERE u.fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+            $whereClause = "and u.fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
         }
 
         $consulta = "SELECT 
@@ -144,11 +144,11 @@ class AdminModel
         return $this->convertirArrayAJSONPorcentajeRespuesta($query, $cabecera);
     }
 
-    public function getUsuariosPorPaisFiltradoPorFecha($fechaDesde = null, $fechaHasta = null,$rol){
+    public function getUsuariosPorPaisFiltradoPorFecha($fechaDesde = null, $fechaHasta = null){
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND tipoUsuario = $rol";
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' ";
         }
 
         $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuario $whereClause GROUP BY pais";
@@ -157,27 +157,43 @@ class AdminModel
 
         $cabecera = ['Pais', 'Cantidad'];
 
-        return $this->convertirArrayAJSON($query, $cabecera);
+        return $this->convertirArrayAJSONPorPais($query, $cabecera);
     }
 
-    public function getUsuariosPorPais($rol)
+    public function getUsuariosPorPais()
     {
-        $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuario WHERE tipoUsuario = $rol GROUP BY pais";
+        $consulta = "SELECT pais, COUNT(*) AS cantidad FROM usuario  GROUP BY pais";
 
         $query = $this->database->query($consulta);
 
         $cabecera = ['Pais', 'Cantidad'];
 
-        return $this->convertirArrayAJSON($query, $cabecera);
+        return $this->convertirArrayAJSONPorPais($query, $cabecera);
+    }
+    private function convertirArrayAJSONPorPais($queryResult, $cabecera) {
+        $result = [];
+        $result[] = $cabecera;
+
+        if (is_array($queryResult)) {
+            foreach ($queryResult as $row) {
+                $result[] = [$row['pais'], (float) $row['cantidad']];
+            }
+        } else {
+            foreach ($queryResult->result_array() as $row) {
+                $result[] = [$row['pais'], (float) $row['cantidad']];
+            }
+        }
+
+        return json_encode($result);
     }
 
-    public function getUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde = null, $fechaHasta = null, $rol)
+    public function getUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde = null, $fechaHasta = null)
     {
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND tipoUsuario = $rol";
-            $whereClause .= " AND tipoUsuario = $rol";
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
+            $whereClause .= "";
         }
 
         $consulta = "SELECT sexo, COUNT(*) AS cantidad FROM usuario $whereClause GROUP BY sexo";
@@ -186,7 +202,7 @@ class AdminModel
 
         $cabecera = ['Sexo', 'Cantidad'];
 
-        return $this->convertirArrayAJSON($query, $cabecera);
+        return $this->convertirArrayAJSONPorSexo($query, $cabecera);
     }
 
     public function getUsuariosPorSexoYRol($rol)
@@ -200,12 +216,29 @@ class AdminModel
         return $this->convertirArrayAJSON($query, $cabecera);
     }
 
-    public function getUsuariosPorEdadFiltradoPorFecha($fechaDesde = null, $fechaHasta = null, $rol)
+    private function convertirArrayAJSONPorSexo($queryResult, $cabecera) {
+        $result = [];
+        $result[] = $cabecera;
+
+        if (is_array($queryResult)) {
+            foreach ($queryResult as $row) {
+                $result[] = [$row['sexo'], (float) $row['cantidad']];
+            }
+        } else {
+            foreach ($queryResult->result_array() as $row) {
+                $result[] = [$row['sexo'], (float) $row['cantidad']];
+            }
+        }
+
+        return json_encode($result);
+    }
+
+    public function getUsuariosPorEdadFiltradoPorFecha($fechaDesde = null, $fechaHasta = null)
     {
         $whereClause = '';
 
         if (!empty($fechaDesde && !empty($fechaHasta))) {
-            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta' AND tipoUsuario = $rol";
+            $whereClause = "WHERE fechaRegistro BETWEEN '$fechaDesde' AND '$fechaHasta'";
         }
 
         $consulta = "SELECT CASE WHEN YEAR(CURDATE()) - anioNacimiento < 18 THEN 'Menores'
@@ -217,21 +250,38 @@ class AdminModel
 
         $cabecera = ['Grupo', 'Cantidad'];
 
-        return $this->convertirArrayAJSON($query, $cabecera);
+        return $this->convertirArrayAJSONPorEdad($query, $cabecera);
     }
 
-    public function getUsuariosPorEdad($rol)
+    public function getUsuariosPorEdad()
     {
         $consulta = "SELECT CASE WHEN YEAR(CURDATE()) - anioNacimiento < 18 THEN 'Menores'
         WHEN YEAR(CURDATE()) - anioNacimiento BETWEEN 18 AND 60 THEN 'Mayores' 
         WHEN YEAR(CURDATE()) - anioNacimiento > 60 THEN 'Jubilados'
-        END AS Grupo, COUNT(*) AS Cantidad FROM usuario WHERE tipoUsuario = $rol GROUP BY Grupo";
+        END AS Grupo, COUNT(*) AS Cantidad FROM usuario GROUP BY Grupo";
 
         $query = $this->database->query($consulta);
 
         $cabecera = ['Grupo', 'Cantidad'];
 
-        return $this->convertirArrayAJSON($query, $cabecera);
+        return $this->convertirArrayAJSONPorEdad($query, $cabecera);
+    }
+
+    private function convertirArrayAJSONPorEdad($queryResult, $cabecera) {
+        $result = [];
+        $result[] = $cabecera;
+
+        if (is_array($queryResult)) {
+            foreach ($queryResult as $row) {
+                $result[] = [$row['Grupo'], (float) $row['Cantidad']];
+            }
+        } else {
+            foreach ($queryResult->result_array() as $row) {
+                $result[] = [$row['Grupo'], (float) $row['Cantidad']];
+            }
+        }
+
+        return json_encode($result);
     }
 
     public function getUsuarioById($idUsuario)

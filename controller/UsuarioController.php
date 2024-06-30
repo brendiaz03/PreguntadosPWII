@@ -57,7 +57,7 @@ class UsuarioController
         if ($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null && $_POST["sexo"]
             != null && $_POST["pais"] != null && $_POST["ciudad"] != null && $_POST["mail"] != null && $_POST["password"]
             != null && $_POST["nombreUsuario"] != null && $_POST["tipoUsuario"] != null
-            && $_POST["lat"] != null && $_POST["lng"] != null && $_FILES['foto'] != null) {
+            && $_POST["lat"] != null && $_POST["lng"] != null) {
 
 
             $nombre = $_POST["nombreCompleto"];
@@ -238,7 +238,7 @@ class UsuarioController
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
-        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores]);
     }
 
     public function vistaSugerirPregunta()

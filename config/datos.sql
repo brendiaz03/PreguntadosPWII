@@ -1,66 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 22-06-2024 a las 02:29:35
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `preguntados`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `categoria_color`
---
-
-CREATE TABLE `categoria_color` (
-                                   `id` int(11) NOT NULL PRIMARY KEY,
-  `categoria` varchar(50) NOT NULL,
-  `color` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `categoria_color`
---
-
-INSERT INTO `categoria_color` (`id`, `categoria`, `color`) VALUES
-(1, 'Ciencia', '#04D960'),
-(2, 'Matemáticas', '#C848D9'),
-(3, 'Cultura General', '#F20505'),
-(4, 'Geografía', '#0088EE'),
-(5, 'Historia', '#F2D027'),
-(6, 'Deportes', '#F27405'),
-(7, 'Arte', '#34E7F8');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `partida`
---
-
-CREATE TABLE `partida` (
-                           `id` int(11) NOT NULL PRIMARY KEY,
-  `idUsuario` int(11) DEFAULT NULL,
-  `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `partida`
---
 
 INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
 (1, 1, '2024-06-21 23:17:09'),
@@ -70,23 +7,6 @@ INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
 (5, 1, '2024-06-21 23:23:35'),
 (6, 1, '2024-06-21 23:27:15');
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `partida_pregunta`
---
-
-CREATE TABLE `partida_pregunta` (
-                                    `id` int(11) NOT NULL PRIMARY KEY,
-  `idPartida` int(11) DEFAULT NULL,
-  `idPregunta` int(11) DEFAULT NULL,
-  `correcta` tinyint(1) DEFAULT NULL,
-  `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `partida_pregunta`
---
 
 INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fechaRealizado`) VALUES
 (1, 1, 2, 1, '2024-06-21 23:17:22'),
@@ -108,27 +28,6 @@ INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fe
 (17, 2, 10, 1, '2024-06-21 23:18:53'),
 (18, 2, 13, 1, '2024-06-21 23:19:00'),
 (19, 2, 29, 1, '2024-06-21 23:19:05');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `pregunta`
---
-
-CREATE TABLE `pregunta` (
-                            `id` int(11) NOT NULL PRIMARY KEY,
-  `categoria` varchar(50) DEFAULT NULL,
-  `pregunta` varchar(200) DEFAULT NULL,
-  `estado` varchar(50) DEFAULT NULL,
-  `nivel` varchar(50) DEFAULT NULL,
-  `veces_entregada` int(11) DEFAULT NULL,
-  `hits` int(11) DEFAULT NULL,
-  `fechaRealizado` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `pregunta`
---
 
 INSERT INTO `pregunta` (`id`, `categoria`, `pregunta`, `estado`, `nivel`, `veces_entregada`, `hits`, `fechaRealizado`) VALUES
 (1, 'Matemáticas', '¿Cuál es el valor de π?', 'Activa', 'Intermedio', 0, 0, '2024-06-21 18:10:23'),
@@ -163,24 +62,51 @@ INSERT INTO `pregunta` (`id`, `categoria`, `pregunta`, `estado`, `nivel`, `veces
 (30, 'Ciencia', '¿Cuál es el hueso más largo del cuerpo humano?', 'Activa', 'Intermedio', 0, 0, '2024-06-21 18:10:24'),
 (33, 'Historia', 'De que color era el caballo blanco de san martin?', 'Inactiva', 'Dificil', 0, 0, '2024-06-21 18:51:36'),
 (35, 'Historia', 'Hola?', 'Sugerida', 'Dificil', 0, 0, '2024-06-21 19:00:04'),
-(36, 'Geografia', 'asdasd', 'Sugerida', 'Dificil', 0, 0, '2024-06-21 19:23:31');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `respuesta`
---
-
-CREATE TABLE `respuesta` (
-                             `id` int(11) NOT NULL PRIMARY KEY,
-  `respuesta` varchar(200) DEFAULT NULL,
-  `correcta` tinyint(1) DEFAULT NULL,
-  `pregunta` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `respuesta`
---
+(36, 'Geografia', 'asdasd', 'Sugerida', 'Dificil', 0, 0, '2024-06-21 19:23:31'),
+(37, 'Arte', '¿Quién pintó la obra \"La noche estrellada\"?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(38, 'Ciencia', '¿Cuál es el elemento químico con el símbolo Na?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(39, 'Geografía', '¿Cuál es la capital de Canadá?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(40, 'Historia', '¿En qué año comenzó la Segunda Guerra Mundial?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(41, 'Cultura General', '¿Quién escribió la novela \"El principito\"?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(42, 'Deportes', '¿En qué deporte se utiliza un balón de rugby?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(43, 'Ciencia', '¿Cuál es la fórmula química del agua?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(44, 'Geografía', '¿En qué país se encuentra el Taj Mahal?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(45, 'Historia', '¿Qué reina de Inglaterra gobernó por más de 63 años?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(46, 'Cultura General', '¿Qué instrumento musical tiene teclas blancas y negras?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(47, 'Arte', '¿Quién es el autor de la obra \"El grito\"?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(48, 'Ciencia', '¿Cuál es el planeta más grande del sistema solar?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(49, 'Geografía', '¿Cuál es la montaña más alta del mundo?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(50, 'Historia', '¿En qué año terminó la Segunda Guerra Mundial?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(51, 'Cultura General', '¿Quién fue el primer hombre en pisar la luna?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(52, 'Deportes', '¿En qué deporte se utiliza una red y una pelota?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(53, 'Ciencia', '¿Cuál es el metal más ligero?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(54, 'Geografía', '¿En qué país se encuentra el volcán Kilimanjaro?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(55, 'Historia', '¿Quién fue el último emperador de Rusia?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(56, 'Cultura General', '¿Quién escribió la obra \"Hamlet\"?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(57, 'Arte', '¿Quién pintó \"Las meninas\"?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(58, 'Ciencia', '¿Cuál es el elemento químico con el símbolo Fe?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(59, 'Geografía', '¿Cuál es el país más pequeño del mundo?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(60, 'Historia', '¿En qué año comenzó la Primera Guerra Mundial?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(61, 'Cultura General', '¿Quién fue el inventor de la bombilla eléctrica?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(62, 'Deportes', '¿En qué deporte se utiliza una pista y un balón?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(63, 'Ciencia', '¿Cuál es el único metal líquido a temperatura ambiente?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(64, 'Geografía', '¿En qué país se encuentra el lago Titicaca?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(65, 'Historia', '¿Quién fue el primer presidente de Estados Unidos que fue negro?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(66, 'Cultura General', '¿Quién escribió la novela \"1984\"?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(67, 'Arte', '¿Quién pintó \"Guernica\"?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(68, 'Ciencia', '¿Cuál es el único planeta del sistema solar que gira de lado?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(69, 'Geografía', '¿En qué país se encuentra el monte Everest?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(70, 'Historia', '¿En qué año se firmó la Declaración Universal de los Derechos Humanos?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(71, 'Cultura General', '¿Quién es el autor de la obra \"Romeo y Julieta\"?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(72, 'Deportes', '¿En qué deporte se utiliza un guante de béisbol?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(73, 'Ciencia', '¿Cuál es el nombre del ácido presente en el vinagre?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(74, 'Geografía', '¿Cuál es el río más largo de África?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(75, 'Historia', '¿En qué año se firmó la Constitución de los Estados Unidos?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(76, 'Cultura General', '¿Quién fue el director de la película \"El Padrino\"?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00'),
+(77, 'Arte', '¿Quién pintó \"El nacimiento de Venus\"?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(78, 'Ciencia', '¿Cuál es el metal más abundante en la corteza terrestre?', 'Activa', 'Dificil', 0, 0, '2024-06-24 12:00:00'),
+(79, 'Geografía', '¿Cuál es el país más poblado del mundo?', 'Activa', 'Intermedio', 0, 0, '2024-06-24 12:00:00'),
+(80, 'Historia', '¿Quién fue el primer presidente de México?', 'Activa', 'Facil', 0, 0, '2024-06-24 12:00:00');
 
 INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 (1, '3.14', 1, 1),
@@ -314,153 +240,260 @@ INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 (141, '1', 1, 36),
 (142, '2', 0, 36),
 (143, '3', 0, 36),
-(144, '4', 0, 36);
+(144, '4', 0, 36),
+(145, 'Vincent van Gogh', 1, 37),
+(146, 'Pablo Picasso', 0, 37),
+(147, 'Leonardo da Vinci', 0, 37),
+(148, 'Claude Monet', 0, 37),
+(149, 'Sodio', 1, 38),
+(150, 'Calcio', 0, 38),
+(151, 'Potasio', 0, 38),
+(152, 'Hierro', 0, 38),
+(153, 'Ottawa', 1, 39),
+(154, 'Toronto', 0, 39),
+(155, 'Montreal', 0, 39),
+(156, 'Vancouver', 0, 39),
+(157, '1939', 1, 40),
+(158, '1941', 0, 40),
+(159, '1945', 0, 40),
+(160, '1947', 0, 40),
+(161, 'Antoine de Saint-Exupéry', 1, 41),
+(162, 'Franz Kafka', 0, 41),
+(163, 'Jorge Luis Borges', 0, 41),
+(164, 'Gabriel García Márquez', 0, 41),
+(165, 'Rugby', 1, 42),
+(166, 'Tenis', 0, 42),
+(167, 'Golf', 0, 42),
+(168, 'Cricket', 0, 42),
+(169, 'H2O', 1, 43),
+(170, 'CO2', 0, 43),
+(171, 'NaCl', 0, 43),
+(172, 'CH4', 0, 43),
+(173, 'India', 1, 44),
+(174, 'China', 0, 44),
+(175, 'Japón', 0, 44),
+(176, 'Indonesia', 0, 44),
+(177, 'Victoria', 1, 45),
+(178, 'Isabel I', 0, 45),
+(179, 'Ana Bolena', 0, 45),
+(180, 'María Estuardo', 0, 45),
+(181, 'Piano', 1, 46),
+(182, 'Saxofón', 0, 46),
+(183, 'Trompeta', 0, 46),
+(184, 'Batería', 0, 46),
+(185, 'Edvard Munch', 1, 47),
+(186, 'Henri Matisse', 0, 47),
+(187, 'Pablo Picasso', 0, 47),
+(188, 'Salvador Dalí', 0, 47),
+(189, 'Júpiter', 1, 48),
+(190, 'Saturno', 0, 48),
+(191, 'Neptuno', 0, 48),
+(192, 'Urano', 0, 48),
+(193, 'Himalaya', 1, 49),
+(194, 'Andes', 0, 49),
+(195, 'Alpes', 0, 49),
+(196, 'Rockies', 0, 49),
+(197, '1945', 1, 50),
+(198, '1943', 0, 50),
+(199, '1941', 0, 50),
+(200, '1939', 0, 50),
+(201, 'Neil Armstrong', 1, 51),
+(202, 'Buzz Aldrin', 0, 51),
+(203, 'Yuri Gagarin', 0, 51),
+(204, 'Alan Shepard', 0, 51),
+(205, 'Bádminton', 1, 52),
+(206, 'Voleibol', 0, 52),
+(207, 'Hockey sobre hielo', 0, 52),
+(208, 'Balonmano', 0, 52),
+(209, 'Aluminio', 1, 53),
+(210, 'Oro', 0, 53),
+(211, 'Plata', 0, 53),
+(212, 'Cobre', 0, 53),
+(213, 'Tanzania', 1, 54),
+(214, 'Sudáfrica', 0, 54),
+(215, 'Etiopía', 0, 54),
+(216, 'Kenia', 0, 54),
+(217, 'Nicolás II', 1, 55),
+(218, 'Pedro I', 0, 55),
+(219, 'Alejandro I', 0, 55),
+(220, 'Iván IV', 0, 55),
+(221, 'William Shakespeare', 1, 56),
+(222, 'Miguel de Cervantes', 0, 56),
+(223, 'Homero', 0, 56),
+(224, 'Jorge Luis Borges', 0, 56),
+(225, 'Diego Velázquez', 1, 57),
+(226, 'Francisco de Goya', 0, 57),
+(227, 'El Greco', 0, 57),
+(228, 'Pablo Picasso', 0, 57),
+(229, 'Hierro', 1, 58),
+(230, 'Oro', 0, 58),
+(231, 'Plata', 0, 58),
+(232, 'Cobre', 0, 58),
+(233, 'Ciudad del Vaticano', 1, 59),
+(234, 'Mónaco', 0, 59),
+(235, 'San Marino', 0, 59),
+(236, 'Tuvalu', 0, 59),
+(237, '1914', 1, 60),
+(238, '1915', 0, 60),
+(239, '1917', 0, 60),
+(240, '1918', 0, 60),
+(241, 'Thomas Edison', 1, 61),
+(242, 'Nikola Tesla', 0, 61),
+(243, 'Alexander Graham Bell', 0, 61),
+(244, 'James Watt', 0, 61),
+(245, 'Baloncesto', 1, 62),
+(246, 'Voleibol', 0, 62),
+(247, 'Rugby', 0, 62),
+(248, 'Hockey sobre césped', 0, 62),
+(249, 'Mercurio', 1, 63),
+(250, 'Plomo', 0, 63),
+(251, 'Estaño', 0, 63),
+(252, 'Aluminio', 0, 63),
+(253, 'Tanzania', 1, 64),
+(254, 'Sudáfrica', 0, 64),
+(255, 'Etiopía', 0, 64),
+(256, 'Kenia', 0, 64),
+(257, '1776', 1, 65),
+(258, '1810', 0, 65),
+(259, '1821', 0, 65),
+(260, '1848', 0, 65),
+(261, 'George Orwell', 1, 66),
+(262, 'Aldous Huxley', 0, 66),
+(263, 'Ray Bradbury', 0, 66),
+(264, 'Jules Verne', 0, 66),
+(265, 'Pablo Picasso', 1, 67),
+(266, 'Salvador Dalí', 0, 67),
+(267, 'Henri Matisse', 0, 67),
+(268, 'Francisco de Goya', 0, 67),
+(269, 'Urano', 1, 68),
+(270, 'Neptuno', 0, 68),
+(271, 'Saturno', 0, 68),
+(272, 'Júpiter', 0, 68),
+(273, 'Nepal', 1, 69),
+(274, 'China', 0, 69),
+(275, 'India', 0, 69),
+(276, 'Bután', 0, 69),
+(277, '1948', 1, 70),
+(278, '1950', 0, 70),
+(279, '1952', 0, 70),
+(280, '1955', 0, 70),
+(281, 'William Shakespeare', 1, 71),
+(282, 'Miguel de Cervantes', 0, 71),
+(283, 'Homero', 0, 71),
+(284, 'Jorge Luis Borges', 0, 71),
+(285, 'Béisbol', 1, 72),
+(286, 'Hockey sobre hierba', 0, 72),
+(287, 'Baloncesto', 0, 72),
+(288, 'Fútbol', 0, 72),
+(289, 'Ácido acético', 1, 73),
+(290, 'Ácido sulfúrico', 0, 73),
+(291, 'Ácido clorhídrico', 0, 73),
+(292, 'Ácido nítrico', 0, 73),
+(293, 'Nilo', 1, 74),
+(294, 'Congo', 0, 74),
+(295, 'Zambeze', 0, 74),
+(296, 'Níger', 0, 74),
+(297, '1787', 1, 75),
+(298, '1776', 0, 75),
+(299, '1789', 0, 75),
+(300, '1791', 0, 75),
+(301, 'Francis Ford Coppola', 1, 76),
+(302, 'Martin Scorsese', 0, 76),
+(303, 'Quentin Tarantino', 0, 76),
+(304, 'Steven Spielberg', 0, 76),
+(305, 'Sandro Botticelli', 1, 77),
+(306, 'Leonardo da Vinci', 0, 77),
+(307, 'Rafael', 0, 77),
+(308, 'Michelangelo', 0, 77),
+(309, 'Aluminio', 1, 78),
+(310, 'Hierro', 0, 78),
+(311, 'Calcio', 0, 78),
+(312, 'Cobre', 0, 78),
+(313, 'China', 1, 79),
+(314, 'India', 0, 79),
+(315, 'Estados Unidos', 0, 79),
+(316, 'Indonesia', 0, 79),
+(317, 'Guadalupe Victoria', 1, 80),
+(318, 'Benito Juárez', 0, 80),
+(319, 'Porfirio Díaz', 0, 80),
+(320, 'Emiliano Zapata', 0, 80);
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `usuario`
---
+INSERT INTO `usuario` (`nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `fechaRegistro`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
+( 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', NOW(), 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
+('editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', NOW(), 'Editor', NULL, 0, 1, '', NULL, NULL),
+ ('Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', NOW(), 'Admin', NULL, 0, 1, '', NULL, NULL),
+('PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', NOW(), 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
+
+
 
 CREATE TABLE `usuario` (
-                           `id` int(11) NOT NULL PRIMARY KEY,
-  `nombreCompleto` varchar(50) DEFAULT NULL,
-  `anioNacimiento` int(11) DEFAULT NULL,
-  `sexo` varchar(20) DEFAULT NULL,
-  `pais` varchar(30) DEFAULT NULL,
-  `ciudad` varchar(30) DEFAULT NULL,
-  `mail` varchar(30) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
-  `nombreUsuario` varchar(30) DEFAULT NULL,
-  `fechaRegistro` datetime DEFAULT NULL,
-      `tipoUsuario` varchar(20) DEFAULT NULL,
-  `nivel` varchar(50) DEFAULT NULL,
-  `puntaje` int(11) DEFAULT NULL,
-  `activo` tinyint(1) DEFAULT NULL,
-  `hash` varchar(250) DEFAULT NULL,
-  `latitud` decimal(9,6) DEFAULT NULL,
-  `longitud` decimal(9,6) DEFAULT NULL
+                           `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                           `nombreCompleto` varchar(50) DEFAULT NULL,
+                           `anioNacimiento` int(11) DEFAULT NULL,
+                           `sexo` varchar(20) DEFAULT NULL,
+                           `pais` varchar(30) DEFAULT NULL,
+                           `ciudad` varchar(30) DEFAULT NULL,
+                           `mail` varchar(30) DEFAULT NULL,
+                           `foto` varchar(100) DEFAULT NULL,
+                           `password` varchar(30) DEFAULT NULL,
+                           `nombreUsuario` varchar(30) DEFAULT NULL,
+                           `fechaRegistro` datetime DEFAULT NULL,
+                           `tipoUsuario` varchar(20) DEFAULT NULL,
+                           `nivel` varchar(50) DEFAULT NULL,
+                           `puntaje` int(11) DEFAULT NULL,
+                           `activo` tinyint(1) DEFAULT NULL,
+                           `hash` varchar(250) DEFAULT NULL,
+                           `latitud` decimal(9,6) DEFAULT NULL,
+                           `longitud` decimal(9,6) DEFAULT NULL
 );
 
---
--- Volcado de datos para la tabla `usuario`
---
+CREATE TABLE pregunta(
+                         id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                         categoria VARCHAR(50),
+                         pregunta VARCHAR(200),
+                         estado VARCHAR(50), -- activa, inactiva , reportada, sugerida
+                         nivel VARCHAR(50),
+                         veces_entregada int,
+                         hits int,
+                         fechaRealizado datetime
+);
 
-INSERT INTO `usuario` (`id`, `nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
-(1, 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
-(2, 'editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', 'Editor', NULL, 0, 1, '', NULL, NULL),
-(3, 'Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', 'Admin', NULL, 0, 1, '', NULL, NULL),
-(7, 'PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
+CREATE TABLE respuesta(
+                          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                          respuesta VARCHAR(200),
+                          correcta bool,
+                          pregunta INTEGER,
+                          FOREIGN KEY(pregunta) REFERENCES pregunta(id)
+);
+CREATE TABLE partida(
+                        id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                        idUsuario INTEGER,
+                        fechaRealizado DATETIME,
+                        FOREIGN KEY(idUsuario) REFERENCES usuario(id)
+);
 
---
--- Índices para tablas volcadas
---
+CREATE TABLE partida_pregunta (
+                                  id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                                  idPartida INTEGER,
+                                  idPregunta INTEGER,
+                                  correcta BOOLEAN,
+                                  fechaRealizado DATETIME,
+                                  FOREIGN KEY (idPartida) REFERENCES partida(id),
+                                  FOREIGN KEY (idPregunta) REFERENCES pregunta(id)
+);
+CREATE TABLE categoria_color (
+                                 id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                                 categoria VARCHAR(50) NOT NULL,
+                                 color VARCHAR(50) NOT NULL
+);
+INSERT INTO categoria_color (categoria, color) VALUES
+                                                   ('Ciencia', '#04D960'),
+                                                   ('Matemáticas', '#C848D9'),
+                                                   ('Cultura General', '#F20505'),
+                                                   ('Geografía', '#0088EE'),
+                                                   ('Historia', '#F2D027'),
+                                                   ('Deportes', '#F27405'),
+                                                   ('Arte', '#34E7F8');
 
---
--- Indices de la tabla `categoria_color`
---
-ALTER TABLE `categoria_color`
-  ADD PRIMARY KEY (`id`);
 
---
--- Indices de la tabla `partida`
---
-ALTER TABLE `partida`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idUsuario` (`idUsuario`);
-
---
--- Indices de la tabla `partida_pregunta`
---
-ALTER TABLE `partida_pregunta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idPartida` (`idPartida`),
-  ADD KEY `idPregunta` (`idPregunta`);
-
---
--- Indices de la tabla `pregunta`
---
-ALTER TABLE `pregunta`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `respuesta`
---
-ALTER TABLE `respuesta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pregunta` (`pregunta`);
-
---
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `categoria_color`
---
-ALTER TABLE `categoria_color`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT de la tabla `partida`
---
-ALTER TABLE `partida`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT de la tabla `partida_pregunta`
---
-ALTER TABLE `partida_pregunta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT de la tabla `pregunta`
---
-ALTER TABLE `pregunta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
---
--- AUTO_INCREMENT de la tabla `respuesta`
---
-ALTER TABLE `respuesta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `partida`
---
-ALTER TABLE `partida`
-  ADD CONSTRAINT `partida_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`id`);
-
---
--- Filtros para la tabla `partida_pregunta`
---
-ALTER TABLE `partida_pregunta`
-  ADD CONSTRAINT `partida_pregunta_ibfk_1` FOREIGN KEY (`idPartida`) REFERENCES `partida` (`id`),
-  ADD CONSTRAINT `partida_pregunta_ibfk_2` FOREIGN KEY (`idPregunta`) REFERENCES `pregunta` (`id`);
-
---
--- Filtros para la tabla `respuesta`
---
-ALTER TABLE `respuesta`
-  ADD CONSTRAINT `respuesta_ibfk_1` FOREIGN KEY (`pregunta`) REFERENCES `pregunta` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

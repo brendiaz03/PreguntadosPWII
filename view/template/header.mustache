@@ -23,7 +23,12 @@
             <div class="navUsuario">
                 <div>
                     <a href="/usuario/perfil/">
-                        <img src="../../public/imagenes/usuarios/{{foto}}" width="30" height="30" alt="usuario foto">
+                        {{#foto}}
+                            <img src="../../public/imagenes/usuarios/{{foto}}" width="30" height="30" alt="usuario foto">
+                        {{/foto}}
+                        {{^foto}}
+                            <img src="../../public/imagenes/profile-user.png" width="30" height="30" alt="usuario foto">
+                        {{/foto}}
                     </a>
                 </div>
 

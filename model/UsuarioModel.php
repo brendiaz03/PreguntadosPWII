@@ -40,12 +40,17 @@ class UsuarioModel
 
     public function registro($nombreCompleto, $anioNacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hash, $latitud, $longitud)
     {
-        $carpeta = "public/imagenes/usuarios/";
-        $imagen_nombre = "$nombreUsuario.jpg";
-        move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
+        if($fotoTmp){
+            $carpeta = "public/imagenes/usuarios/";
+            $imagen_nombre = "$nombreUsuario.jpg";
+            move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
+            return $this->database->execute(
+                "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `fechaRegistro`, `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario', NOW(),'$tipoUsuario','$imagen_nombre','0', '0', '$hash', '$latitud', '$longitud')");
+        }
         return $this->database->execute(
-            "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','$imagen_nombre','0', '0', '$hash', '$latitud', '$longitud')");
+            "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','0', '0', '$hash', '$latitud', '$longitud')");
     }
 
     public function confirmacionCuenta($hashUsuario)
@@ -71,44 +76,46 @@ class UsuarioModel
     public function getJugadoresConPuntajeYPartidasJugadas()
     {
         $sql = "SELECT
-            u.nombreUsuario AS nombreCompleto,
-            u.puntaje AS puntajeTotal,
-            u.id AS id,
-            COALESCE(partidas.totalPartidas, 0) AS totalPartidas,
-            COALESCE(mejorPartida.correctas, 0) AS mejorPartida
+        u.nombreUsuario AS nombreCompleto,
+        u.puntaje AS puntajeTotal,
+        u.id AS id,
+        u.foto AS foto,  -- Agregar el campo 'foto'
+        COALESCE(partidas.totalPartidas, 0) AS totalPartidas,
+        COALESCE(mejorPartida.correctas, 0) AS mejorPartida
+    FROM
+        usuario u
+    LEFT JOIN (
+        SELECT
+            p.idUsuario,
+            COUNT(p.id) AS totalPartidas
         FROM
-            usuario u
-        LEFT JOIN (
+            partida p
+        GROUP BY
+            p.idUsuario
+    ) AS partidas ON u.id = partidas.idUsuario
+    LEFT JOIN (
+        SELECT
+            sub.idUsuario,
+            sub.correctas
+        FROM (
             SELECT
                 p.idUsuario,
-                COUNT(p.id) AS totalPartidas
+                pp.idPartida,
+                SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) AS correctas,
+                p.fechaRealizado,
+                ROW_NUMBER() OVER (PARTITION BY p.idUsuario ORDER BY SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) DESC, p.fechaRealizado DESC) AS rn
             FROM
-                partida p
+                partida_pregunta pp
+            JOIN
+                partida p ON pp.idPartida = p.id
             GROUP BY
-                p.idUsuario
-        ) AS partidas ON u.id = partidas.idUsuario
-        LEFT JOIN (
-            SELECT
-                sub.idUsuario,
-                sub.correctas
-            FROM (
-                SELECT
-                    p.idUsuario,
-                    pp.idPartida,
-                    SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) AS correctas,
-                    p.fechaRealizado,
-                    ROW_NUMBER() OVER (PARTITION BY p.idUsuario ORDER BY SUM(CASE WHEN pp.correcta = 1 THEN 1 ELSE 0 END) DESC, p.fechaRealizado DESC) AS rn
-                FROM
-                    partida_pregunta pp
-                JOIN
-                    partida p ON pp.idPartida = p.id
-                GROUP BY
-                    p.idUsuario, pp.idPartida, p.fechaRealizado
-            ) sub
-            WHERE sub.rn = 1
-        ) AS mejorPartida ON u.id = mejorPartida.idUsuario
-        ORDER BY
-            u.puntaje DESC";
+                p.idUsuario, pp.idPartida, p.fechaRealizado
+        ) sub
+        WHERE sub.rn = 1
+    ) AS mejorPartida ON u.id = mejorPartida.idUsuario
+    ORDER BY
+        u.puntaje DESC";
+
         return $this->database->query($sql);
     }
 
