@@ -13,6 +13,7 @@ class EditorController
 
     public function agregarPregunta()
     {
+        $textoNav = "SUGERIR PREGUNTA";
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         if ($_POST["categoria"] != null && $_POST["pregunta"] != null &&
             $_POST["correcta"] != null && $_POST["opcion2"] != null &&
@@ -32,9 +33,9 @@ class EditorController
                 $this->model->agregarPregunta($categoria, $pregunta, $correcta, $opcion2, $opcion3, $opcion4, 'Sugerida',$dificultad);
             }
 
-            $this->presenter->render("view/agregarPreguntaView.mustache", ["success" => "La pregunta se ha agregado correctamente!"]);
+            $this->presenter->render("view/agregarPreguntaView.mustache", ["success" => "¡La pregunta se ha agregado correctamente!", 'logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
         } else {
-            $this->presenter->render("view/agregarPreguntaView.mustache", ["error" => "Error! Todos los campos deben completarse"]);
+            $this->presenter->render("view/agregarPreguntaView.mustache", ["error" => "¡Error! Todos los campos deben completarse", 'logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
         }
     }
 
@@ -81,7 +82,7 @@ class EditorController
 
     public function vistaAgregarPregunta()
     {
-        $this->presenter->render("view/agregarPreguntaView.mustache");
+        $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true]);
     }
 
     public function vistaEditarPregunta()

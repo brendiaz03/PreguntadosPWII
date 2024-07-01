@@ -7,13 +7,27 @@
     <link rel="stylesheet" href="/public/css/styles.css"> <!-- Si tienes estilos personalizados -->
     <link rel="stylesheet" href="/public/css/ranking.css"> <!-- Si tienes estilos personalizados -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const rows = document.querySelectorAll('.table tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('click', () => {
+                    const link = row.querySelector('a');
+                    if (link) {
+                        window.location.href = link.getAttribute('href');
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <main class="ranking-container">
-    <h2 class="ranking">Ranking</h2>
+    <div class="container">
+        <h2 class="ranking">RANKING</h2>
 
         <table class="table">
-            <thead class="">
+            <thead>
             <tr>
                 <th>Nombre De Usuario</th>
                 <th>Partidas Totales</th>
@@ -25,16 +39,11 @@
             <tbody>
             {{#jugadores}}
                 <tr>
-                    <td><a href="/usuario/perfil/id={{id}}">{{nombreCompleto}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}">{{totalPartidas}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}">{{mejorPartida}}</a></td>
-                    <td><a href="/usuario/perfil/id={{id}}">{{puntajeTotal}}</a></td>
-                    {{#foto}}
-                        <td style="background: #c38ed7"><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/usuarios/{{foto}}" alt="Ver perfil" width="30px"></a></td>
-                    {{/foto}}
-                    {{^foto}}
-                        <td style="background: #c38ed7"><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/profile-user.png" alt="Ver perfil" width="30px"></a></td>
-                    {{/foto}}
+                    <td>{{nombreCompleto}}</td>
+                    <td>{{totalPartidas}}</td>
+                    <td>{{mejorPartida}}</td>
+                    <td>{{puntajeTotal}}</td>
+                    <td><a href="/usuario/perfil/id={{id}}"><img src="/public/imagenes/see.png" alt="Ver perfil" width="30px"></a></td>
                 </tr>
             {{/jugadores}}
             </tbody>

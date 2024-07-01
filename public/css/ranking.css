@@ -1,51 +1,24 @@
-/* ranking.css */
-
-/* Estilos generales */
-body {
-    background-color: #f8f9fa; /* Color de fondo */
-}
-
-.ranking-container {
-    padding: 20px;
-}
-
 .container {
-    background-color: #ffffff; /* Color de fondo del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    width: 80%;
 }
-
 .ranking {
-    color: #bf91ed; /* Color del título */
-    justify-content: center;
+    text-align: center;
+    margin: 1rem 0 0.8rem 0;
+}
+.table{
     text-align: center;
 }
-
-.table {
-    margin-top: 50px;
-    text-align: center;
-
-}
-
 .table thead th {
-    background-color: #bf91ed; /* Color de fondo del encabezado */
-    color: #ffffff; /* Color del texto del encabezado */
-}
-
-
-
-/* Estilos para el contenedor principal del ranking */
-.ranking-container {
-    padding: 50px;
-    background-color: #f8f9fa; /* Color de fondo del contenedor */
-    border-radius: 100px;
-    min-height: 100vh; /* Asegura que el contenedor tenga al menos el 100% de la altura de la ventana */
+    background-color: #f5f5f5; /* Color de fondo del encabezado */
+    color: rgba(0, 0, 0, 0.85); /* Color del texto del encabezado */
 }
 .table a {
-    color: #bf91ed; /* Cambia el color del enlace a azul (#007bff), puedes cambiarlo por cualquier color que desees */
+    color: #814fb0; /* Cambia el color del enlace a azul (#007bff), puedes cambiarlo por cualquier color que desees */
     text-decoration: none; /* Elimina el subrayado predeterminado */
 }
-
+.table tr {
+    cursor: pointer;
+}
 .table a:hover {
     color: #bf91ed; /* Cambia el color del enlace al pasar el cursor por encima */
 }

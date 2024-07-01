@@ -24,6 +24,7 @@
 }
 
 .lobby-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +32,6 @@
     row-gap: 1rem;
     padding: 2rem;
     color: #fff;
-    z-index: 1000;
 }
 
 .lobby-nombre {
@@ -56,6 +56,9 @@
 
 .lobby-jugar-btn {
     background-color: #a34bf0;
+    font-size: 18px;
+    padding: 1% 2% 1% 2%;
+    border-radius: 50px;
 }
 
 .lobby-jugar-btn:hover {
@@ -64,6 +67,9 @@
 
 .lobby-ranking-btn {
     background-color: #5d04a4;
+    font-size: 18px;
+    padding: 1% 2% 1% 2%;
+    border-radius: 50px;
 }
 
 .lobby-ranking-btn:hover {

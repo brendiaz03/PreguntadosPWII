@@ -7,16 +7,64 @@
     <title>Document</title>
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="stylesheet" href="../public/css/agregaPregunta.css">
+    <script>
+        // Función para mostrar el popup con el mensaje
+        function showPopup(message) {
+            document.getElementById('popup-message').innerText = message;
+            document.getElementById('popup').style.display = 'flex';
+        }
 
+        // Función para cerrar el popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Función para manejar el envío del formulario
+        function submitForm(event) {
+            event.preventDefault(); // Prevenir el envío normal del formulario
+
+            // Obtener el formulario y crear un objeto FormData para enviarlo vía AJAX
+            const form = document.getElementById('preguntaForm');
+            const formData = new FormData(form);
+
+            // Realizar la petición AJAX (aquí puedes usar fetch o XMLHttpRequest)
+            fetch(form.action, {
+                method: form.method,
+                body: formData
+            })
+                    .then(response => response.json()) // Parsear la respuesta como JSON
+                    .then(data => {
+                        // Verificar si hay un mensaje de éxito o error y mostrarlo en el popup
+                        if (data.success) {
+                            showPopup(data.success);
+                        } else if (data.error) {
+                            showPopup(data.error);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al enviar formulario:', error);
+                        showPopup('Error al enviar formulario. Por favor, inténtalo de nuevo.');
+                    });
+        }
+    </script>
 </head>
 
 <body>
 <main>
+    <!-- Popup HTML -->
+    <div class="popup-overlay" id="popup">
+        <div class="popup-content" id="popup-content">
+            <h2 id="popup-message"></h2>
+            <div class="popup-buttons">
+                <button id="close-popup-btn" onclick="closePopup()">Cerrar</button>
+            </div>
+        </div>
+    </div>
     <div class="cont-form">
-        <h2>Agregar Pregunta</h2>
+        <h2>SUGERIR PREGUNTA</h2>
         <form method="POST" action="/editor/agregarPregunta">
             <select name="categoria" id="" required>
-                <option disabled selected>Selecciona una categoria</option>
+                <option disabled selected>Seleccionar una categoria</option>
                 <option value="Ciencia">Ciencia</option>
                 <option value="Matemáticas">Matemáticas</option>
                 <option value="Cultura General">Cultura General</option>
@@ -24,30 +72,29 @@
                 <option value="Historia">Historia</option>
                 <option value="Deportes">Deportes</option>
                 <option value="Arte">Arte</option>
-            </select><br>
+            </select>
 
-            <br> <input type="text" name="pregunta" id="" placeholder="Ingresar Pregunta" required>
-            <br> <input type="text" name="correcta" id="" placeholder="Ingresar opcion correcta" required>
-            <br><input type="text" name="opcion2" id="" placeholder="Ingresar opcion 2" required>
-            <br> <input type="text" name="opcion3" id="" placeholder="Ingresar opcion 3" required>
-            <br> <input type="text" name="opcion4" id="" placeholder="Ingresar opcion 4" required>
+            <input type="text" name="pregunta" id="" placeholder="Ingresar Pregunta" required>
+            <input type="text" name="correcta" id="" placeholder="Ingresar opcion correcta" required>
+            <input type="text" name="opcion2" id="" placeholder="Ingresar opcion 2" required>
+            <input type="text" name="opcion3" id="" placeholder="Ingresar opcion 3" required>
+            <input type="text" name="opcion4" id="" placeholder="Ingresar opcion 4" required>
 
             <select name="dificultad" id="" required>
                 <option disabled selected>Selecciona una dificultad</option>
                 <option value="Facil">Facil</option>
                 <option value="Intermedio">Intermedio</option>
                 <option value="Dificil">Dificil</option>
-            </select><br>
+            </select>
 
-            <br>
-            <button type="submit">Guardar</button>
-            {{#error}}
-                <p style="color: red">{{error}}</p>
-            {{/error}}
-            {{#success}}
-                <p style="color: green">{{success}}</p>
-            {{/success}}
-            <br><a href="/../usuario/lobby">volver</a>
+            <button type="submit">GUARDAR</button>
+<!--            {{#error}}-->
+<!--                <p style="color: red">{{error}}</p>-->
+<!--            {{/error}}-->
+<!--            {{#success}}-->
+<!--                <p style="color: green">{{success}}</p>-->
+<!--            {{/success}}-->
+            <a href="/../usuario/lobby">VOLVER</a>
         </form>
     </div>
 </main>
