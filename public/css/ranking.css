@@ -22,3 +22,7 @@
 .table a:hover {
     color: #bf91ed; /* Cambia el color del enlace al pasar el cursor por encima */
 }
+
+#noButton{
+    background-color: white;
+}

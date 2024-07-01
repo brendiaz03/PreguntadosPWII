@@ -10,38 +10,39 @@
 </head>
 <body>
 <main class="ranking-container">
-    <h2 class="ranking">Preguntas</h2>
+    <div class="container">
+    <h2 class="ranking">PREGUNTAS</h2>
 
     <table class="table">
         <thead class="">
         <tr>
-            <th>Categoria</th>
-            <th>Pregunta</th>
-            <th>Nivel</th>
-            <th>Estado</th>
-            <th>Modificar</th>
-            <th>Eliminar</th>
+            <th>CATEGORIA</th>
+            <th>PREGUNTA</th>
+            <th>NIVEL</th>
+            <th>ACTIVAR/INACTIVAR</th>
+            <th>MODIFICAR</th>
+            <th>ELIMINAR</th>
         </tr>
         </thead>
         <tbody>
         {{#preguntas}}
             <tr>
-                <td><a href="#">{{categoria}}</a></td>
-                <td><a href="#">{{pregunta}}</a></td>
-                <td><a href="#">{{nivel}}</a></td>
+                <td>{{categoria}}</td>
+                <td>{{pregunta}}</td>
+                <td>{{nivel}}</td>
                 <td>
                     <form method="post" action="/editor/setEstadoPregunta">
                         <input name="idPregunta" value="{{id}}" type="hidden">
-                        <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">{{estado}}</button>
+                        <button style="color: #fff; background: #bf91ed; padding: .3rem; border-radius: 50px;width: 80px;" type="submit">{{estado}}</button>
                     </form>
                 </td>
                 <td>
-                    <a style="color: #fff; background: #bf91ed; padding: .3rem" href="/editor/vistaeditarpregunta?id={{id}}">Editar</a>
+                    <a href="/editor/vistaeditarpregunta?id={{id}}"><img src="../public/imagenes/editing.png"  width="30px"/></a>
                 </td>
                 <td>
                     <form method="post" action="/editor/eliminarPregunta">
                         <input name="idPregunta" value="{{id}}" type="hidden">
-                        <button style="color: #fff; background: #bf91ed; padding: .3rem" type="submit">Eliminar</button>
+                        <button id="noButton" type="submit"><img src="../public/imagenes/delete.png"  width="30px"/></button>
                     </form>
                 </td>
             </tr>
@@ -49,7 +50,6 @@
 
         </tbody>
     </table>
-    <br><a href="../usuario/lobby">volver</a>
     </div>
 </main>
 </body>

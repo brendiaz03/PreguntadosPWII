@@ -207,7 +207,7 @@ class UsuarioController
     public function lobby()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "PREGUNTADOS";
+        $textoNav = "PANEL JUGADOR";
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/lobby.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
@@ -217,7 +217,7 @@ class UsuarioController
                 "logeado" => true]);
         }
         if ($usuario['tipoUsuario'] == 'Editor') {
-            $textoNav = "Panel Administrador";
+            $textoNav = "PANEL EDITOR";
             $this->presenter->render("view/lobbyEditor.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "puntaje" => $usuario['puntaje'],
@@ -228,7 +228,7 @@ class UsuarioController
                 "logeado" => true]);
         }
         if ($usuario['tipoUsuario'] == 'Admin') {
-            $textoNav = "Panel Administrador";
+            $textoNav = "PANEL ADMIN";
             $this->presenter->render("view/lobbyAdmin.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "id" => $usuario['id'],
