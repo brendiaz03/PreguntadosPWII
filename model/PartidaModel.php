@@ -62,13 +62,13 @@ LIMIT 1";
         $nivel = $usuario['nivel'];
         if($usuario['nivel'] !== null) {
             $result = $this->getPreguntaConNivel($idUsuario, $nivel);
-            if ($result == null) {
+            if (empty($result)) {
                 $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = '$nivel' ORDER BY RAND() LIMIT 1";
                 return $this->database->query($sqlRandom);
             }
         }else{
             $result = $this->getPreguntaSinNivel($idUsuario);
-            if ($result == null) {
+            if (empty($result)) {
                 $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' ORDER BY RAND() LIMIT 1";
                 return $this->database->query($sqlRandom);
             }
