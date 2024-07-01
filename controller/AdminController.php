@@ -4,7 +4,7 @@ class AdminController
     private $model;
     private $presenter;
 
-    private $textoNav = "Home";
+    private $textoNav = "";
 
     public function __construct($model, $presenter)
     {
@@ -16,7 +16,7 @@ class AdminController
     public function traerJugadores()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA JUGADORES";
         $jugadores = $this->model->getAllJugadores();
         $totalUsuarios = count($jugadores);
 
@@ -63,7 +63,7 @@ class AdminController
     {
         $partidas = $this->model->getAllPartidas();
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA PARTIDAS";
 
         $totalPartidas = count($partidas);
 
@@ -106,7 +106,7 @@ class AdminController
     {
         $preguntas = $this->model->getAllPreguntas();
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA PREGUNTAS";
 
         $this->presenter->render("view/preguntasEstadistica.mustache", ['preguntasDelJuego' => $preguntas, "logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
@@ -141,7 +141,7 @@ class AdminController
     {
         $preguntasAct = $this->model->getAllPreguntasActivas();
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA PREGUNTAS EN JUEGO";
 
         $this->presenter->render("view/preguntasEnJuegoEstadistica.mustache", ['preguntasActivas' => $preguntasAct,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
     }
@@ -174,7 +174,7 @@ class AdminController
     public function traerUsuariosNuevos()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA USUARIOS";
 
         $fechaDesde = null;
         $fechaHasta = null;
@@ -222,7 +222,7 @@ class AdminController
     public function traerPreguntasRespondidasPorUsuario()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA PREGUNTAS POR USUARIO";
         $fechaDesde = null;
         $fechaHasta = null;
 
@@ -240,7 +240,7 @@ class AdminController
     public function traerUsuariosPorPais()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA USUARIOS POR PAIS";
         $fechaDesde = null;
         $fechaHasta = null;
 
@@ -257,7 +257,7 @@ class AdminController
     public function traerUsuariosPorSexo()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA USUARIO POR SEXO";
         $fechaDesde = null;
         $fechaHasta = null;
 
@@ -274,7 +274,7 @@ class AdminController
     public function traerUsuariosPorEdad()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
-        $textoNav = "Home";
+        $textoNav = "ESTADISTICA USUARIO POR EDAD";
         $fechaDesde = null;
         $fechaHasta = null;
 

@@ -12,12 +12,12 @@
 <main class="ranking-container">
 
 
-    <div >
-        <h1 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado De Partidas</h1>
-        <h2 class="d-flex flex-row align-self-center d-flex justify-content-around ">Total De partidas: {{totalPartidas}}</h2>
+    <div class="container">
+        <h3 class="d-flex flex-row align-self-center d-flex justify-content-around ">Listado De Partidas</h3>
+        <h4 class="d-flex flex-row align-self-center d-flex justify-content-around ">Total De partidas: {{totalPartidas}}</h4>
 
         <div class="d-flex flex-row align-self-center d-flex justify-content-around " style="margin: 10px" >
-            <form method="post", action="/admin/reporteDePartidas">
+            <form method="post" action="/admin/reporteDePartidas">
                 <button class="btn btn-danger" type="submit">Reporte PDF</button>
             </form>
 

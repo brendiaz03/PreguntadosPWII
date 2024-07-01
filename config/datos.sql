@@ -1,33 +1,10 @@
 
-INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
-(1, 1, '2024-06-21 23:17:09'),
-(2, 1, '2024-06-21 23:18:13'),
-(3, 1, '2024-06-21 23:20:45'),
-(4, 1, '2024-06-21 23:22:11'),
-(5, 1, '2024-06-21 23:23:35'),
-(6, 1, '2024-06-21 23:27:15');
+INSERT INTO `usuario` (`nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `fechaRegistro`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
+       ( 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', NOW(), 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
+       ('editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', NOW(), 'Editor', NULL, 0, 1, '', NULL, NULL),
+       ('Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', NOW(), 'Admin', NULL, 0, 1, '', NULL, NULL),
+       ('PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', NOW(), 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
 
-
-INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fechaRealizado`) VALUES
-(1, 1, 2, 1, '2024-06-21 23:17:22'),
-(2, 1, 28, 1, '2024-06-21 23:17:29'),
-(3, 1, 8, 1, '2024-06-21 23:17:36'),
-(4, 1, 8, 1, '2024-06-21 23:17:41'),
-(5, 1, 2, 1, '2024-06-21 23:17:45'),
-(6, 1, 11, 0, '2024-06-21 23:18:00'),
-(7, 2, 27, 1, '2024-06-21 23:18:18'),
-(8, 2, 27, 1, '2024-06-21 23:18:21'),
-(9, 2, 5, 1, '2024-06-21 23:18:24'),
-(10, 2, 27, 1, '2024-06-21 23:18:27'),
-(11, 2, 26, 1, '2024-06-21 23:18:31'),
-(12, 2, 26, 1, '2024-06-21 23:18:34'),
-(13, 2, 19, 1, '2024-06-21 23:18:39'),
-(14, 2, 16, 1, '2024-06-21 23:18:43'),
-(15, 2, 16, 1, '2024-06-21 23:18:47'),
-(16, 2, 4, 1, '2024-06-21 23:18:50'),
-(17, 2, 10, 1, '2024-06-21 23:18:53'),
-(18, 2, 13, 1, '2024-06-21 23:19:00'),
-(19, 2, 29, 1, '2024-06-21 23:19:05');
 
 INSERT INTO `pregunta` (`id`, `categoria`, `pregunta`, `estado`, `nivel`, `veces_entregada`, `hits`, `fechaRealizado`) VALUES
 (1, 'Matemáticas', '¿Cuál es el valor de π?', 'Activa', 'Intermedio', 0, 0, '2024-06-21 18:10:23'),
@@ -418,14 +395,35 @@ INSERT INTO `respuesta` (`id`, `respuesta`, `correcta`, `pregunta`) VALUES
 (319, 'Porfirio Díaz', 0, 80),
 (320, 'Emiliano Zapata', 0, 80);
 
+INSERT INTO `partida` (`id`, `idUsuario`, `fechaRealizado`) VALUES
+                                                                (1, 1, '2024-06-21 23:17:09'),
+                                                                (2, 1, '2024-06-21 23:18:13'),
+                                                                (3, 1, '2024-06-21 23:20:45'),
+                                                                (4, 1, '2024-06-21 23:22:11'),
+                                                                (5, 1, '2024-06-21 23:23:35'),
+                                                                (6, 1, '2024-06-21 23:27:15');
 
-INSERT INTO `usuario` (`nombreCompleto`, `anioNacimiento`, `sexo`, `pais`, `ciudad`, `mail`, `foto`, `password`, `nombreUsuario`, `fechaRegistro`, `tipoUsuario`, `nivel`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) VALUES
-( 'Agustin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasd@gmail.com', 'agustin123.jpg', '123', 'agustin123', NOW(), 'Jugador', 'Dificil', 18, 1, '', -34.683380, -58.591535),
-('editor', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'editor@tamosprobando.com', 'editor.jpg', '123', 'editor', NOW(), 'Editor', NULL, 0, 1, '', NULL, NULL),
- ('Admin', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'admin@tamosprobando.com', 'admin.jpg', '123', 'admin', NOW(), 'Admin', NULL, 0, 1, '', NULL, NULL),
-('PruebaMapa2', 2024, 'Masculino', 'Argentina', 'Buenos Aires', 'asdasadvvvvvcsd@gmail.com', 'pruebamapa2.jpg', '123', 'pruebamapa2', NOW(), 'Jugador', NULL, 0, 1, '', -34.619172, -58.374387);
 
-
+INSERT INTO `partida_pregunta` (`id`, `idPartida`, `idPregunta`, `correcta`, `fechaRealizado`) VALUES
+               (1, 1, 2, 1, '2024-06-21 23:17:22'),
+               (2, 1, 28, 1, '2024-06-21 23:17:29'),
+               (3, 1, 8, 1, '2024-06-21 23:17:36'),
+               (4, 1, 8, 1, '2024-06-21 23:17:41'),
+               (5, 1, 2, 1, '2024-06-21 23:17:45'),
+               (6, 1, 11, 0, '2024-06-21 23:18:00'),
+               (7, 2, 27, 1, '2024-06-21 23:18:18'),
+               (8, 2, 27, 1, '2024-06-21 23:18:21'),
+               (9, 2, 5, 1, '2024-06-21 23:18:24'),
+               (10, 2, 27, 1, '2024-06-21 23:18:27'),
+               (11, 2, 26, 1, '2024-06-21 23:18:31'),
+               (12, 2, 26, 1, '2024-06-21 23:18:34'),
+               (13, 2, 19, 1, '2024-06-21 23:18:39'),
+               (14, 2, 16, 1, '2024-06-21 23:18:43'),
+               (15, 2, 16, 1, '2024-06-21 23:18:47'),
+               (16, 2, 4, 1, '2024-06-21 23:18:50'),
+               (17, 2, 10, 1, '2024-06-21 23:18:53'),
+               (18, 2, 13, 1, '2024-06-21 23:19:00'),
+               (19, 2, 29, 1, '2024-06-21 23:19:05');
 
 CREATE TABLE `usuario` (
                            `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
