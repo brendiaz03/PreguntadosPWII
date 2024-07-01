@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="sql">
-      <change beforePath="$PROJECT_DIR$/view/ranking.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/ranking.mustache" afterDir="false" />
-    </list>
+    <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="sql" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,7 +143,7 @@
       <workItem from="1719254947811" duration="990000" />
       <workItem from="1719267381812" duration="3436000" />
       <workItem from="1719424743393" duration="236000" />
-      <workItem from="1719774755171" duration="25430000" />
+      <workItem from="1719774755171" duration="25608000" />
     </task>
     <task id="LOCAL-00001" summary="codigo comentado del mapa con ciudad y pais">
       <option name="closed" value="true" />
