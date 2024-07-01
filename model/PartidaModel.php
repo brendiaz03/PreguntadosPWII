@@ -95,7 +95,7 @@ LIMIT 1";
             $this->nivelarPregunta($idPregunta);
         }
         $partidasTotalesUsuario = $this->partidasTotalesPorUsuario($idUsuario);
-        if ($partidasTotalesUsuario == 10) {
+        if ($partidasTotalesUsuario >= 10) {
             $this->nivelarUsuario($idUsuario);
         }
         return $correcta;
