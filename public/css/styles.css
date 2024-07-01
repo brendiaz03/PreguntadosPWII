@@ -32,6 +32,7 @@ footer {
 footer p{
     margin: 0rem;
     padding: 0rem 0rem 0.2rem 0rem;
+    font-size: 0.80rem;
 }
 
 
@@ -43,6 +44,7 @@ footer div div {
 footer h2 {
     color: rgb(255, 255, 255);
     margin-bottom: 5px;
+    font-size: 1.5rem;
 }
 
 footer p {
@@ -55,7 +57,7 @@ nav{
     display: flex;
     align-items: center;
     justify-content:space-between;
-    padding: 0 1.5rem;
+    padding: 3px 2rem;
 }
 .navLogo{
     display: flex;
@@ -65,14 +67,27 @@ nav{
 .textoNav{
     margin: 0rem;
     padding: 1rem 1rem 1rem 0rem;
+    color:white ;
+    text-decoration: none;
 }
 .navUsuario{
     display: flex;
     flex-direction: row;
     justify-content:center;
     align-items: center;
+    column-gap: .5rem;
+}
+.con-foto{
+    width:30px;
+    height:30px;
 }
 nav a img{
     border-radius: 50px;
-    margin-right: 40px;
+    width:100%;
+    height:100%;
+}
+.aNav a,
+.aNav a i {
+    color: white;
+
 }

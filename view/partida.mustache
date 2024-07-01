@@ -5,32 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../public/css/partida.css">
     <script>
-        var tiempoInicio = {{ tiempoInicio }} * 1000; // Convertir a milisegundos
-        var tiempoLimite = tiempoInicio + 15000; // 15 segundos en milisegundos
+        <!--var tiempoInicio = {{ tiempoInicio }} * 1000; // Convertir a milisegundos-->
+        <!--var tiempoLimite = tiempoInicio + 15000; // 15 segundos en milisegundos-->
 
-        // Función para actualizar el tiempo restante
-        function actualizarTiempo() {
-            var tiempoActual = Date.now(); // Tiempo actual en milisegundos
-            var tiempoRestante = tiempoLimite - tiempoActual; // Calcular el tiempo restante en milisegundos
+        <!--// Función para actualizar el tiempo restante-->
+        <!--function actualizarTiempo() {-->
+        <!--    var tiempoActual = Date.now(); // Tiempo actual en milisegundos-->
+        <!--    var tiempoRestante = tiempoLimite - tiempoActual; // Calcular el tiempo restante en milisegundos-->
 
-            // Convertir milisegundos a segundos y redondear
-            var segundosRestantes = Math.ceil(tiempoRestante / 1000);
+        <!--    // Convertir milisegundos a segundos y redondear-->
+        <!--    var segundosRestantes = Math.ceil(tiempoRestante / 1000);-->
 
-            // Mostrar el tiempo restante donde lo necesites en tu HTML
-            document.getElementById("tiempoTranscurrido").innerText = segundosRestantes + " segundos";
+        <!--    // Mostrar el tiempo restante donde lo necesites en tu HTML-->
+        <!--    document.getElementById("tiempoTranscurrido").innerText = segundosRestantes + " segundos";-->
 
-            // Verificar si han pasado 15 segundos
-            if (segundosRestantes <= 0) {
-                // Si han pasado 15 segundos, enviar el formulario
-                document.getElementById("formulario").submit();
-            }
-        }
+        <!--    // Verificar si han pasado 15 segundos-->
+        <!--    if (segundosRestantes <= 0) {-->
+        <!--        // Si han pasado 15 segundos, enviar el formulario-->
+        <!--        document.getElementById("formulario").submit();-->
+        <!--    }-->
+        <!--}-->
 
-        // Llamar a la función actualizarTiempo cada segundo
-        setInterval(actualizarTiempo, 1000);
+        <!--// Llamar a la función actualizarTiempo cada segundo-->
+        <!--setInterval(actualizarTiempo, 1000);-->
 
-        // Llamamos a la función una vez al cargar la página para que se actualice inmediatamente
-        actualizarTiempo();
+        <!--// Llamamos a la función una vez al cargar la página para que se actualice inmediatamente-->
+        <!--actualizarTiempo();-->
 
         // Función para mostrar el popup
         function showPopup(event) {
@@ -59,8 +59,8 @@
         <div class="popup-content">
             <h2>¿Seguro desea reportar esta pregunta?</h2>
             <div class="popup-buttons">
-                <button id="confirmar-btn" onclick="confirmReport()">Sí</button>
-                <button id="cancelar-btn" onclick="closePopup()">No</button>
+                <button onclick="confirmReport()">ACEPTAR</button>
+                <button id="cancelar-btn" onclick="closePopup()">CANCELAR</button>
             </div>
         </div>
     </div>
@@ -78,11 +78,11 @@
                     <label for="respuestaCorrecta">{{respuesta}}</label>
                 </div>
             {{/respuestas}}
-            <button type="submit">Enviar respuesta</button>
+            <button type="submit">ENVIAR RESPUESTA</button>
         </form>
         <form id="reportar" method="post" action="/partida/reportarPregunta">
             {{#pregunta}}
-                <a href="#" onclick="showPopup(event)">Reportar pregunta</a>
+                <a href="#" onclick="showPopup(event)">REPORTAR PREGUNTA</a>
                 <input value='{{id}}' type="number" hidden='hidden' name='idPregunta'>
             {{/pregunta}}
         </form>

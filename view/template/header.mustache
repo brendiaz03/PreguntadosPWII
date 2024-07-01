@@ -17,17 +17,19 @@
     <header>
         <nav>
             <div class="navLogo">
-                <img src="../../public/imagenes/logo-preguntados.png" width="30" height="30" alt="logo">
-                <a href="/usuario/lobby"><p class="textoNav" style="color: #6a04bb"> {{textoNav}}</p></a>
+                <div class="con-foto">
+                    <a href="/usuario/lobby"><img src="../../public/imagenes/logo-preguntados.png"></a>
+                </div>
+                <a href="/usuario/lobby"><p class="textoNav"> {{textoNav}}</p></a>
             </div>
             <div class="navUsuario">
-                <div>
+                <div class="con-foto">
                     <a href="/usuario/perfil/">
                         {{#foto}}
-                            <img src="../../public/imagenes/usuarios/{{foto}}" width="30" height="30" alt="usuario foto">
+                            <img src="../../public/imagenes/usuarios/{{foto}}" alt="user">
                         {{/foto}}
                         {{^foto}}
-                            <img src="../../public/imagenes/profile-user.png" width="30" height="30" alt="usuario foto">
+                            <img src="../../public/imagenes/profile-user.png" alt="user">
                         {{/foto}}
                     </a>
                 </div>

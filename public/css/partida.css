@@ -1,25 +1,23 @@
 main {
-    margin-top: 10px;
     height: auto;
-    min-height: 90vh;
+    display: flex;
+    justify-content: center;
 }
 .cont-partida {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*background-color: #b499ec;*/
-    border-radius: 10px;
-    width: 400px;
-    margin: 0 auto;
+    border-radius: 50px;
+    width: 450px;
+    margin: 2%;
     padding: 40px;
 }
-
-
+.cont-partida p{
+    color: white;
+}
 .cont-partida h1 {
     margin: 0;
     padding: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     color: white;
     width: 100%;
     text-align: center;
@@ -38,9 +36,9 @@ main {
     display: flex;
     align-items: center;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 50px;
     margin: 5px 0;
-    padding: 10px;
+    padding: 15px;
     width: 100%;
     cursor: pointer;
     gap: .5rem;
@@ -51,21 +49,36 @@ main {
     flex-direction: column;
     align-items: center;
 }
-
-.cont-partida button {
+button {
     background-color: #8e7cc3;
     color: white;
     border: none;
-    border-radius: 20px;
+    font-weight: bold;
+    border-radius: 50px;
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
-    margin-top: 20px;
-    transition: .3s;
+    margin: 20px 0px 20px 0px;
+    transition: 0.3s;
+    width: 100%;
 }
-
 .cont-partida button:hover {
     background-color: #63507d;
+}
+.cont-partida a{
+    color: #ffffff;
+    border: none;
+    text-decoration: white;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 100%;
+}
+.cont-partida a:hover {
+    background-color: #ff8b8b;
+    color: #ffffff;
 }
 /* Estilos para el popup */
 .popup-overlay {
@@ -87,16 +100,18 @@ main {
     background: #fff;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    border-radius: 30px;
     text-align: center;
 }
 
 .popup-content h2 {
-    margin-top: 0;
+    margin-top: 20px;
+    font-size: 1rem;
 }
 
 .popup-buttons {
     margin-top: 20px;
+    display: flex;
 }
 
 .popup-buttons button {

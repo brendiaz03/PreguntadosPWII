@@ -167,10 +167,15 @@ class UsuarioController
         $latitud = $usuario['latitud'];
         $mail = $usuario['mail'];
         $foto = $usuario['foto'];
+        $foto1 = $usuario['foto'];
         $puntaje = $usuario['puntaje'];
         $pais = $usuario['pais'];
         $ciudad = $usuario['ciudad'];
-
+        if (isset($_GET["id"])) {
+            $usuarioLogeado = $this->model->getUsuarioById($_SESSION["id"]);
+            $foto = null;
+            $foto = $usuarioLogeado['foto'];
+        }
 
         include_once('libs/qr/phpqrcode/qrlib.php');
 
@@ -196,7 +201,7 @@ class UsuarioController
             ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
                 "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado" => true, "foto" => $foto
                 , "qrImagen" => $qrImagen, "latitud" => $latitud, "longitud" => $longitud,
-                "pais" => $pais, "ciudad" => $ciudad]);
+                "pais" => $pais, "ciudad" => $ciudad, "foto1" => $foto1]);
     }
 
     public function lobby()
@@ -238,12 +243,14 @@ class UsuarioController
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
-        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores]);
+        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores,"foto" => $usuario['foto']]);
     }
 
     public function vistaSugerirPregunta()
     {
-        $this->presenter->render("view/sugerirPreguntaView.mustache");
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "SUGERIR PREGUNTA";
+        $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
     }
 
 

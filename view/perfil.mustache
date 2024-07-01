@@ -45,20 +45,20 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="profile-container">
-                    <h1>Usuario: {{nombreUsuario}}</h1>
-                    {{#foto}}
-                        <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto}}" alt="Foto de perfil">
-                    {{/foto}}
-                    {{^foto}}
+                    <h1>USUARIO: {{nombreUsuario}}</h1>
+                    {{#foto1}}
+                        <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto1}}" alt="Foto de perfil">
+                    {{/foto1}}
+                    {{^foto1}}
                         <img class="profile-picture" src="../../public/imagenes/profile-user.png" alt="Foto de perfil">
-                    {{/foto}}
+                    {{/foto1}}
                     <div class="user-data">
                         <div>
-                            <p>Nombre completo: {{nombreCompleto}}</p>
-                            <p>Año de nacimiento: {{anioNacimiento}}</p>
-                            <p>Pais: {{pais}}</p>
-                            <p>Ciudad: {{ciudad}}</p>
-                            <p>Correo electrónico: {{mail}}</p>
+                            <p>NOMBRE COMPLETO: {{nombreCompleto}}</p>
+                            <p>AÑO DE NACIMIENTO: {{anioNacimiento}}</p>
+                            <p>PAÍS: {{pais}}</p>
+                            <p>CIUDAD: {{ciudad}}</p>
+                            <p>EMAIL: {{mail}}</p>
                         </div>
                     </div>
                     <div class="user-stats">
@@ -69,15 +69,13 @@
             </div>
             <div class="col-md-6">
                 <div class="user-data">
-                    <div class="map-container">
-                        <div id="map" style="width: 400px; height: 200px;"></div>
-                    </div>
-                </div>
-                <div class="user-data">
                     <div class="qr-code-container">
-                        <div class="qr-code" style="width: 150px; border-radius: 10px">
-                            <img class="qr-code-img" src="/{{qrImagen}}" style="width: 140px; border-radius: 10px">
+                        <div class="qr-code">
+                            <img class="qr-code-img" src="/{{qrImagen}}">
                         </div>
+                    </div>
+                    <div class="map-container">
+                        <div id="map"></div>
                     </div>
                 </div>
             </div>
