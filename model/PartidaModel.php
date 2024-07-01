@@ -67,7 +67,7 @@ LIMIT 1";
                 return $this->database->query($sqlRandom);
             }
         }else{
-        $result = $this->getPreguntaSinNivel($idUsuario);
+            $result = $this->getPreguntaSinNivel($idUsuario);
             if (empty($result) || isset($result)) {
                 $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' ORDER BY RAND() LIMIT 1";
                 return $this->database->query($sqlRandom);
