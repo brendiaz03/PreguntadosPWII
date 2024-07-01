@@ -62,18 +62,18 @@ LIMIT 1";
         $nivel = $usuario['nivel'];
         if($usuario['nivel'] !== null) {
             $result = $this->getPreguntaConNivel($idUsuario, $nivel);
-            if (empty($result) || isset($result)) {
+            if (!$result) {
                 $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' AND nivel = '$nivel' ORDER BY RAND() LIMIT 1";
                 return $this->database->query($sqlRandom);
             }
         }else{
             $result = $this->getPreguntaSinNivel($idUsuario);
-            if (empty($result) || isset($result)) {
+            if (!$result) {
                 $sqlRandom = "SELECT * FROM pregunta WHERE estado = 'Activa' ORDER BY RAND() LIMIT 1";
                 return $this->database->query($sqlRandom);
             }
     }
-        return $result[0];
+        return $result;
     }
 
     public function guardarPreguntaDePartida($idUsuario, $idPartida,$idPregunta, $idRespuesta)
