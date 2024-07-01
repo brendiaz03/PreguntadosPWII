@@ -66,18 +66,19 @@ class EditorController
             $idPregunta = $_POST['idPregunta'];
 
             $this->model->eliminarPregunta($idPregunta);
-            $preguntas = $this->model->getPreguntasEditor();
-            $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+            header("Location: /usuario/lobby");
         }
     }
 
     public function setEstadoPregunta()
     {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "PREGUNTAS";
         $idPregunta = $_POST['idPregunta'];
         $this->model->cambiarEstadoPregunta($idPregunta);
 
         $preguntas = $this->model->getPreguntasEditor();
-        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
     }
 
     public function vistaAgregarPregunta()
@@ -96,20 +97,26 @@ class EditorController
 
     public function vistaListaPregunta()
     {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "PREGUNTAS";
         $preguntas = $this->model->getPreguntasEditor();
-        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
     }
 
     public function vistaPreguntasSugeridas()
     {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "PREGUNTAS SUGERIDAS";
         $preguntas = $this->model->getPreguntasEditorSugeridas();
-        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
     }
 
     public function vistaPreguntasReportadas()
     {
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "PREGUNTAS SUGERIDAS";
         $preguntas = $this->model->getPreguntasEditorReportadas();
-        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas]);
+        $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
     }
 
 

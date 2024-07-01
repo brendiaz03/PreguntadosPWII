@@ -7,7 +7,15 @@
     <title>Editar Pregunta</title>
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="stylesheet" href="../public/css/agregaPregunta.css">
-
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const categoria = "{{pregunta.categoria}}";
+            if (categoria) {
+                const select = document.getElementById('categoria');
+                select.value = categoria;
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -16,7 +24,7 @@
         <h2>Editar Pregunta</h2>
         <form method="POST" action="/editor/editarPregunta">
             <input type="hidden" name="id" value="{{pregunta.id}}">
-            <select name="categoria" id="" required>
+            <select name="categoria" id="categoria" required>
                 <option disabled selected>Selecciona una categoria</option>
                 <option value="Ciencia">Ciencia</option>
                 <option value="Matemáticas">Matemáticas</option>
@@ -25,21 +33,21 @@
                 <option value="Historia">Historia</option>
                 <option value="Deportes">Deportes</option>
                 <option value="Arte">Arte</option>
-            </select><br>
+            </select>
 
-            <br> <input type="text" name="pregunta" id="" value="{{pregunta.pregunta}}" placeholder="Ingresar Pregunta" required>
-            <br> <input type="text" name="correcta" id="" value="{{correcta}}" placeholder="Ingresar opcion correcta" required>
-            <br><input type="text" name="opcion2" id="" value="{{opcion2}}" placeholder="Ingresar opcion 2" required>
-            <br> <input type="text" name="opcion3" id="" value="{{opcion3}}" placeholder="Ingresar opcion 3" required>
-            <br> <input type="text" name="opcion4" id="" value="{{opcion4}}" placeholder="Ingresar opcion 4" required>
-            <br> <button type="submit">Guardar</button>
+            <input type="text" name="pregunta" id="" value="{{pregunta.pregunta}}" placeholder="Ingresar Pregunta" required>
+            <input type="text" name="correcta" id="" value="{{correcta}}" placeholder="Ingresar opcion correcta" required>
+           <input type="text" name="opcion2" id="" value="{{opcion2}}" placeholder="Ingresar opcion 2" required>
+            <input type="text" name="opcion3" id="" value="{{opcion3}}" placeholder="Ingresar opcion 3" required>
+            <input type="text" name="opcion4" id="" value="{{opcion4}}" placeholder="Ingresar opcion 4" required>
+           <button type="submit">GUARDAR</button>
             {{#error}}
                 <p style="color: red">{{error}}</p>
             {{/error}}
             {{#success}}
                 <p style="color: green">{{success}}</p>
             {{/success}}
-            <br><a href="../usuario/lobby">volver</a>
+            <br><a href="/editor/vistaListaPregunta">VOLVER</a>
         </form>
     </div>
 </main>
