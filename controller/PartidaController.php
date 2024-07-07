@@ -22,11 +22,16 @@ class PartidaController
     }
 
     public function iniciarPartida(){
-        $_SESSION["pregunta"] = null;
-        $_SESSION["respuestas"] = null;
-        $_SESSION["tiempoInicio"]=null;
-        $_SESSION["idPartida"] =  $this->model->getIdPartida($_SESSION['id']);
-        header("Location: /preguntados/partida");
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $_SESSION["pregunta"] = null;
+            $_SESSION["respuestas"] = null;
+            $_SESSION["tiempoInicio"]=null;
+            $_SESSION["idPartida"] =  $this->model->getIdPartida($_SESSION['id']);
+            header("Location: /preguntados/partida");
+        }
+
+        header("location:/");
     }
     public function partida()
     {
