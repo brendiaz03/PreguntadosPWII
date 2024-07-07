@@ -73,7 +73,7 @@ class UsuarioController
             $usuarioExistente = $this->model->buscarUsuario($nombreUsuario, $mail);
             if ($usuarioExistente == null) {
                 $hashUsuario = md5($nombreUsuario . time());
-                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hashUsuario, $latitud, $longitud);
+                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $fotoTmp, $hashUsuario, $latitud, $longitud);
                 $this->enviarConfirmacionDeCuenta($mail, $hashUsuario);
             } else {
                 $this->presenter->render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
