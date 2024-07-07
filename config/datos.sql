@@ -434,7 +434,7 @@ CREATE TABLE `usuario` (
                            `ciudad` varchar(30) DEFAULT NULL,
                            `mail` varchar(30) DEFAULT NULL,
                            `foto` varchar(100) DEFAULT NULL,
-                           `password` varchar(30) DEFAULT NULL,
+                           `password` varchar(255) DEFAULT NULL,
                            `nombreUsuario` varchar(30) DEFAULT NULL,
                            `fechaRegistro` datetime DEFAULT NULL,
                            `tipoUsuario` varchar(20) DEFAULT NULL,
@@ -445,6 +445,9 @@ CREATE TABLE `usuario` (
                            `latitud` decimal(9,6) DEFAULT NULL,
                            `longitud` decimal(9,6) DEFAULT NULL
 );
+ALTER TABLE usuario
+    MODIFY COLUMN password VARCHAR(255) NOT NULL;
+/* si no quieren volver a crear la bd, usen esta consulta para que funcione el hash de la passs */
 
 CREATE TABLE pregunta(
                          id INTEGER PRIMARY KEY NOT NULL AUTO_INCREMENT,
