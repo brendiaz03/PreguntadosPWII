@@ -55,9 +55,7 @@ class UsuarioController
     {
         if ($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null && $_POST["sexo"]
             != null && $_POST["pais"] != null && $_POST["ciudad"] != null && $_POST["mail"] != null && $_POST["password"]
-            != null && $_POST["nombreUsuario"] != null && $_POST["tipoUsuario"] != null
-            && $_POST["lat"] != null && $_POST["lng"] != null) {
-
+            != null && $_POST["nombreUsuario"] != null && $_POST["lat"] != null && $_POST["lng"] != null) {
 
             $nombre = $_POST["nombreCompleto"];
             $nacimiento = $_POST["anioNacimiento"];
@@ -69,7 +67,6 @@ class UsuarioController
             $mail = $_POST["mail"];
             $password = $_POST["password"];
             $nombreUsuario = $_POST["nombreUsuario"];
-            $tipoUsuario = $_POST["tipoUsuario"];
             $fotoTmp = $_FILES['foto']['tmp_name'];
 
 

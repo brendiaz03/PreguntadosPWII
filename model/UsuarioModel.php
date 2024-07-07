@@ -38,7 +38,7 @@ class UsuarioModel
         return $this->database->query($usuarioExistenteSQL);
     }
 
-    public function registro($nombreCompleto, $anioNacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hash, $latitud, $longitud)
+    public function registro($nombreCompleto, $anioNacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $fotoTmp, $hash, $latitud, $longitud)
     {
         $hashPass = password_hash($password, PASSWORD_BCRYPT);
         if($fotoTmp){
@@ -48,11 +48,11 @@ class UsuarioModel
 
             return $this->database->execute(
                 "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `fechaRegistro`, `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$hashPass','$nombreUsuario', NOW(),'$tipoUsuario','$imagen_nombre','0', '0', '$hash', '$latitud', '$longitud')");
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$hashPass','$nombreUsuario', NOW(),'Jugador','$imagen_nombre','0', '0', '$hash', '$latitud', '$longitud')");
         }
         return $this->database->execute(
             "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$hashPass','$nombreUsuario','$tipoUsuario','0', '0', '$hash', '$latitud', '$longitud')");
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$hashPass','$nombreUsuario','Jugador','0', '0', '$hash', '$latitud', '$longitud')");
     }
 
     public function confirmacionCuenta($hashUsuario)
