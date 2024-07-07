@@ -252,14 +252,20 @@ class UsuarioController
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
-        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        }
+        header("location:/");
     }
 
     public function vistaSugerirPregunta()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $textoNav = "SUGERIR PREGUNTA";
-        $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        }
+        header("location:/");
     }
 
 

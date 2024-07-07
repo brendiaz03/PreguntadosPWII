@@ -30,17 +30,24 @@ class PartidaController
     }
     public function partida()
     {
-        $tiempoInicio = microtime(true);
-        if (!isset($_SESSION["pregunta"]) || $_SESSION["pregunta"] === null || !isset($_SESSION["respuestas"]) || $_SESSION["respuestas"] === null) {
-            $pregunta = $this->model->getPreguntaParaUsuario($_SESSION["id"]);
-            $respuestas = $this->model->getRespuestasByPregunta($pregunta[0]['id']);
-            $color = $this->model->colorDeCategoria($pregunta[0]['categoria']);
-            $_SESSION["pregunta"] = $pregunta[0];
-            $_SESSION["respuestas"] = $respuestas;
-            $_SESSION["tiempoInicio"] = $tiempoInicio;
-            $_SESSION["color"] = $color;
+        $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $tiempoInicio = microtime(true);
+            if (!isset($_SESSION["pregunta"]) || $_SESSION["pregunta"] === null || !isset($_SESSION["respuestas"]) || $_SESSION["respuestas"] === null) {
+                $pregunta = $this->model->getPreguntaParaUsuario($_SESSION["id"]);
+                $respuestas = $this->model->getRespuestasByPregunta($pregunta[0]['id']);
+                $color = $this->model->colorDeCategoria($pregunta[0]['categoria']);
+                $_SESSION["pregunta"] = $pregunta[0];
+                $_SESSION["respuestas"] = $respuestas;
+                $_SESSION["tiempoInicio"] = $tiempoInicio;
+                $_SESSION["color"] = $color;
+            }
+            $this->presenter->render("view/partida.mustache", ["textoNav" => "PARTIDA", "pregunta" => $_SESSION["pregunta"], "respuestas" => $_SESSION["respuestas"],
+                "logeado" => true, "tiempoInicio" =>$_SESSION["tiempoInicio"], "color" => $_SESSION["color"]]);
         }
-        $this->presenter->render("view/partida.mustache", ["textoNav" => "PARTIDA", "pregunta" => $_SESSION["pregunta"], "respuestas" => $_SESSION["respuestas"], "logeado" => true, "tiempoInicio" =>$_SESSION["tiempoInicio"], "color" => $_SESSION["color"]]);
+
+        header("location:/");
+
     }
 
     public function terminarPartida()
