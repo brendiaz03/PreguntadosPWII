@@ -60,7 +60,7 @@ class UsuarioModel
         $query = "SELECT 1 FROM usuario WHERE hash = '$hashUsuario' LIMIT 1";
         $result = $this->database->query($query);
         if (count($result) == 1) {
-            $queryConfirmacion = "UPDATE usuario SET activo = TRUE, hash = NULL WHERE hash = '$hashUsuario'";
+            $queryConfirmacion = "UPDATE usuario SET activo = 1, hash = NULL WHERE hash = '$hashUsuario'";
             $this->database->execute($queryConfirmacion);
             return true;
         }
