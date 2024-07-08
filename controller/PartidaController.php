@@ -29,9 +29,9 @@ class PartidaController
             $_SESSION["tiempoInicio"]=null;
             $_SESSION["idPartida"] =  $this->model->getIdPartida($_SESSION['id']);
             header("Location: /preguntados/partida");
+        }else{
+            header("location:/");
         }
-
-        header("location:/");
     }
     public function partida()
     {
@@ -49,9 +49,9 @@ class PartidaController
             }
             $this->presenter->render("view/partida.mustache", ["textoNav" => "PARTIDA", "pregunta" => $_SESSION["pregunta"], "respuestas" => $_SESSION["respuestas"],
                 "logeado" => true, "tiempoInicio" =>$_SESSION["tiempoInicio"], "color" => $_SESSION["color"]]);
+        }else{
+            header("location:/");
         }
-
-        header("location:/");
 
     }
 
