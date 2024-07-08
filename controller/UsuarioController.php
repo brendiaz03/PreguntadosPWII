@@ -141,8 +141,8 @@ class UsuarioController
 
     public function confirmarCuenta()
     {
-        if (isset($_POST['hash'])) {
-            $usuarioHash = $_POST['hash'];
+        if (isset($_GET['hash'])) {
+            $usuarioHash = $_GET ['hash'];
             $confirmacion = $this->model->confirmacionCuenta($usuarioHash);
 
             if ($confirmacion) {
@@ -171,13 +171,13 @@ class UsuarioController
         $puntaje = $usuario['puntaje'];
         $pais = $usuario['pais'];
         $ciudad = $usuario['ciudad'];
+
         if (isset($_GET["id"])) {
             $usuarioLogeado = $this->model->getUsuarioById($_SESSION["id"]);
-            $foto = null;
             $foto = $usuarioLogeado['foto'];
         }
 
-        include_once('libs/qr/phpqrcode/qrlib.php');
+        include_once("libs/qr/phpqrcode/qrlib.php");
 
         // Función para generar el código QR y guardarlo como una imagen
         function generateAndSaveQR($data)
@@ -188,7 +188,7 @@ class UsuarioController
         }
 
         // Datos para el código QR
-        $qrData = "http://localhost/usuario/perfil/" . $usuario['id'];
+        $qrData = "http://localhost/usuario/perfil/id=" . $idUsuario;
 
         // Generar el código QR y obtener el nombre del archivo
         $qrImagen = generateAndSaveQR($qrData);
