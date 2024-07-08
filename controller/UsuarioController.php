@@ -129,16 +129,16 @@ class UsuarioController
                             ";
 
             $mail->send();
-            $this->presenter->render("view/correoConfirmacionExitoso.mustache");
+            echo "<p style='padding: 1rem; font-size: 1.3rem'>Hemos enviado un correo a su direccion de email para confirmar su cuenta.</p>";
         } catch (Exception $e) {
-            $this->presenter->render("view/errorphpmailer.mustache");
+            echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
         }
     }
 
     public function confirmarCuenta()
     {
-        if (isset($_POST['hash'])) {
-            $usuarioHash = $_POST['hash'];
+        if (isset($_GET['hash'])) {
+            $usuarioHash = $_GET ['hash'];
             $confirmacion = $this->model->confirmacionCuenta($usuarioHash);
 
             if ($confirmacion) {
@@ -169,11 +169,10 @@ class UsuarioController
         $ciudad = $usuario['ciudad'];
         if (isset($_GET["id"])) {
             $usuarioLogeado = $this->model->getUsuarioById($_SESSION["id"]);
-            $foto = null;
             $foto = $usuarioLogeado['foto'];
         }
 
-        include_once('libs/qr/phpqrcode/qrlib.php');
+        include_once("libs/qr/phpqrcode/qrlib.php");
 
 
         function generateQRBase64($data) //genera el qr en vivo en vez de guardarlo localmente
@@ -186,7 +185,7 @@ class UsuarioController
         }
 
         // Datos para el código QR
-        $qrData = "http://localhost/usuario/perfil/" . $usuario['id'];
+        $qrData = "http://localhost/usuario/perfil/id=" . $idUsuario;
 
         // Generar el código QR y obtener la imagen en base64
         $qrImagen = generateQRBase64($qrData);
@@ -218,12 +217,16 @@ class UsuarioController
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $textoNav = "PANEL JUGADOR";
         if ($usuario['tipoUsuario'] == 'Jugador') {
+            if (isset($_SESSION["idPartida"])){
+                header("location:/partida/terminarpartida");
+            }
             $this->presenter->render("view/lobby.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "puntaje" => $usuario['puntaje'],
                 "foto" => $usuario['foto'],
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);
+
         }
         if ($usuario['tipoUsuario'] == 'Editor') {
             $textoNav = "PANEL EDITOR";
@@ -254,10 +257,9 @@ class UsuarioController
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
-        } else {
+        }else{
             header("location:/");
         }
-
     }
 
     public function vistaSugerirPregunta()
@@ -266,8 +268,9 @@ class UsuarioController
         $textoNav = "SUGERIR PREGUNTA";
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        }else{
+            header("location:/");
         }
-
     }
 
 

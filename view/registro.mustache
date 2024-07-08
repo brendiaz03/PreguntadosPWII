@@ -30,7 +30,7 @@
                 draggable: true,
             });
 
-            google.maps.event.addListener(map, 'click', function (event) {
+            google.maps.event.addListener(map, 'click', function(event) {
                 var lat = event.latLng.lat();
                 var lng = event.latLng.lng();
 
@@ -141,12 +141,12 @@
 
                         <div class="mb-2">
                             <label for="pais" class="form-label">País:</label>
-                            <input type="text" class="form-control" id="pais" name="pais" required disabled>
+                            <input type="text" class="form-control" id="pais" name="pais" required readonly>
                         </div>
 
                         <div class="mb-2">
                             <label for="ciudad" class="form-label">Ciudad:</label>
-                            <input type="text" class="form-control" id="ciudad" name="ciudad" required disabled>
+                            <input type="text" class="form-control" id="ciudad" name="ciudad" required readonly>
                         </div>
 
                         <div class="mb-2">
