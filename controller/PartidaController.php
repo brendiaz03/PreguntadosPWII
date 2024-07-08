@@ -57,7 +57,7 @@ class PartidaController
 
     public function terminarPartida()
     {
-        if(!isset($_POST["pregunta"]) || $_POST["pregunta"] === null){
+        if(!isset($_POST["idRespuesta"]) || $_POST["idRespuesta"] === null){
             $correcta = $this->model->guardarPreguntaDePartida($_SESSION["id"], $_SESSION["idPartida"], $_SESSION["pregunta"]['id'], null);
             $_SESSION["pregunta"] = null;
             $_SESSION["respuestas"] = null;

@@ -217,7 +217,7 @@ class UsuarioController
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $textoNav = "PANEL JUGADOR";
         if ($usuario['tipoUsuario'] == 'Jugador') {
-            if (isset($_SESSION["idPartida"]) || $_SESSION["idPartida"] !== null) {
+            if (isset($_SESSION["idPartida"])){
                 header("location:/partida/terminarpartida");
             }
             $this->presenter->render("view/lobby.mustache", ["textoNav" => $textoNav,
@@ -226,6 +226,7 @@ class UsuarioController
                 "foto" => $usuario['foto'],
                 "tipoUsuario" => $usuario['tipoUsuario'],
                 "logeado" => true]);
+
         }
         if ($usuario['tipoUsuario'] == 'Editor') {
             $textoNav = "PANEL EDITOR";
