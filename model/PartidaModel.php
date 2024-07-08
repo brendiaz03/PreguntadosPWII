@@ -78,7 +78,6 @@ LIMIT 1";
 
     public function guardarPreguntaDePartida($idUsuario, $idPartida,$idPregunta, $idRespuesta)
     {
-        
         $this->marcarEntregaEnLaPregunta($idPregunta);
         if (empty($idRespuesta)) {
             $correcta = 0;

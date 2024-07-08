@@ -218,6 +218,9 @@ class UsuarioController
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $textoNav = "PANEL JUGADOR";
         if ($usuario['tipoUsuario'] == 'Jugador') {
+            if (isset($_SESSION["idPartida"]) || $_SESSION["idPartida"] !== null) {
+                header("location:/partida/terminarpartida");
+            }
             $this->presenter->render("view/lobby.mustache", ["textoNav" => $textoNav,
                 "nombreCompleto" => $usuario['nombreCompleto'],
                 "puntaje" => $usuario['puntaje'],
@@ -254,8 +257,9 @@ class UsuarioController
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        }else{
+            header("location:/");
         }
-        header("location:/");
     }
 
     public function vistaSugerirPregunta()
@@ -264,8 +268,9 @@ class UsuarioController
         $textoNav = "SUGERIR PREGUNTA";
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        }else{
+            header("location:/");
         }
-        header("location:/");
     }
 
 
