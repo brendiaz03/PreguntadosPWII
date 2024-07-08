@@ -5,7 +5,6 @@ require 'libs/PHPMailer/src/SMTP.php';
 require 'config/config.php';
 
 
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -56,9 +55,7 @@ class UsuarioController
     {
         if ($_POST["nombreCompleto"] != null && $_POST["anioNacimiento"] != null && $_POST["sexo"]
             != null && $_POST["pais"] != null && $_POST["ciudad"] != null && $_POST["mail"] != null && $_POST["password"]
-            != null && $_POST["nombreUsuario"] != null && $_POST["tipoUsuario"] != null
-            && $_POST["lat"] != null && $_POST["lng"] != null) {
-
+            != null && $_POST["nombreUsuario"] != null && $_POST["lat"] != null && $_POST["lng"] != null) {
 
             $nombre = $_POST["nombreCompleto"];
             $nacimiento = $_POST["anioNacimiento"];
@@ -70,14 +67,13 @@ class UsuarioController
             $mail = $_POST["mail"];
             $password = $_POST["password"];
             $nombreUsuario = $_POST["nombreUsuario"];
-            $tipoUsuario = $_POST["tipoUsuario"];
             $fotoTmp = $_FILES['foto']['tmp_name'];
 
 
             $usuarioExistente = $this->model->buscarUsuario($nombreUsuario, $mail);
             if ($usuarioExistente == null) {
                 $hashUsuario = md5($nombreUsuario . time());
-                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hashUsuario, $latitud, $longitud);
+                $this->model->registro($nombre, $nacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $fotoTmp, $hashUsuario, $latitud, $longitud);
                 $this->enviarConfirmacionDeCuenta($mail, $hashUsuario);
             } else {
                 $this->presenter->render("view/registro.mustache", ['error' => true, 'message' => 'El nombre de usuario y/o email pertenece a un usuario existente.']);
@@ -179,30 +175,43 @@ class UsuarioController
 
         include_once("libs/qr/phpqrcode/qrlib.php");
 
-        // Función para generar el código QR y guardarlo como una imagen
-        function generateAndSaveQR($data)
+
+        function generateQRBase64($data) //genera el qr en vivo en vez de guardarlo localmente
         {
-            $filename = 'public/imagenes/' . 'qr' . '.png'; // Generar un nombre de archivo único
-            QRcode::png($data, $filename, QR_ECLEVEL_L, 8); // Generar el código QR y guardarlo en el archivo
-            return $filename; // Devolver el nombre del archivo
+            ob_start();
+            QRcode::png($data, null, QR_ECLEVEL_L, 8);
+            $imageString = base64_encode(ob_get_contents());
+            ob_end_clean();
+            return 'data:image/png;base64,' . $imageString;
         }
 
         // Datos para el código QR
         $qrData = "http://localhost/usuario/perfil/id=" . $idUsuario;
 
-        // Generar el código QR y obtener el nombre del archivo
-        $qrImagen = generateAndSaveQR($qrData);
-
-        // Ahora, $qrImageFilename contiene el nombre del archivo donde se guarda el código QR como una imagen
-
+        // Generar el código QR y obtener la imagen en base64
+        $qrImagen = generateQRBase64($qrData);
 
         $this->presenter->render(
             "view/perfil.mustache",
-            ["textoNav" => $textoNav, "nombreCompleto" => $nombreCompleto, "nombreUsuario" => $nombreUsuario,
-                "anioNacimiento" => $anioNacimiento, "mail" => $mail, "puntaje" => $puntaje, "logeado" => true, "foto" => $foto
-                , "qrImagen" => $qrImagen, "latitud" => $latitud, "longitud" => $longitud,
-                "pais" => $pais, "ciudad" => $ciudad, "foto1" => $foto1]);
+            [
+                "textoNav" => $textoNav,
+                "nombreCompleto" => $nombreCompleto,
+                "nombreUsuario" => $nombreUsuario,
+                "anioNacimiento" => $anioNacimiento,
+                "mail" => $mail,
+                "puntaje" => $puntaje,
+                "logeado" => true,
+                "foto" => $foto,
+                "qrImagen" => $qrImagen,
+                "latitud" => $latitud,
+                "longitud" => $longitud,
+                "pais" => $pais,
+                "ciudad" => $ciudad,
+                "foto1" => $foto1
+            ]
+        );
     }
+
 
     public function lobby()
     {
@@ -243,18 +252,21 @@ class UsuarioController
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
-        $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores,"foto" => $usuario['foto']]);
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        }
+        header("location:/");
     }
 
     public function vistaSugerirPregunta()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         $textoNav = "SUGERIR PREGUNTA";
-        $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        if ($usuario['tipoUsuario'] == 'Jugador') {
+            $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        }
+        header("location:/");
     }
-
-
-
 
 
 }
