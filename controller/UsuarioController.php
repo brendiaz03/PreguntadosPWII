@@ -129,20 +129,20 @@ class UsuarioController
                             ";
 
             $mail->send();
-            echo "<p style='padding: 1rem; font-size: 1.3rem'>Hemos enviado un correo a su direccion de email para confirmar su cuenta.</p>";
+            $this->presenter->render("view/confirmarcuenta.mustache");
         } catch (Exception $e) {
-            echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
+            $this->presenter->render("view/errorphpmailer.mustache");
         }
     }
 
     public function confirmarCuenta()
     {
-        if (isset($_GET['hash'])) {
-            $usuarioHash = $_GET ['hash'];
+        if (isset($_POST['hash'])) {
+            $usuarioHash = $_POST ['hash'];
             $confirmacion = $this->model->confirmacionCuenta($usuarioHash);
 
             if ($confirmacion) {
-                $this->presenter->render("view/confirmarcuenta.mustache");
+                $this->presenter->render("view/correoConfirmacionExitoso.mustache");
             } else {
                 $this->presenter->render("view/correoConfirmacionFallido.mustache");
             }
