@@ -12,10 +12,10 @@ class UsuarioModel
 
     public function logearse($nombreUsuario, $password)
     {
-        $sql = "SELECT * FROM usuario WHERE nombreUsuario = '$nombreUsuario' AND password = '$password' LIMIT 1";
+        $sql = "SELECT * FROM usuario WHERE nombreUsuario = '$nombreUsuario' LIMIT 1";
         $result = $this->database->query($sql);
 
-        if (count($result) > 0) {
+        if (count($result) > 0 && password_verify($password, $result[0]['password'])) {
             $_SESSION["id"] = $result[0]['id'];
             if ($result[0]['activo'] == 1) {
                 return ['success' => true, 'message' => 'Inicio de sesión exitoso'];
@@ -38,19 +38,21 @@ class UsuarioModel
         return $this->database->query($usuarioExistenteSQL);
     }
 
-    public function registro($nombreCompleto, $anioNacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $tipoUsuario, $fotoTmp, $hash, $latitud, $longitud)
+    public function registro($nombreCompleto, $anioNacimiento, $sexo, $pais, $ciudad, $mail, $password, $nombreUsuario, $fotoTmp, $hash, $latitud, $longitud)
     {
+        $hashPass = password_hash($password, PASSWORD_BCRYPT);
         if($fotoTmp){
             $carpeta = "public/imagenes/usuarios/";
             $imagen_nombre = "$nombreUsuario.jpg";
             move_uploaded_file($fotoTmp, $carpeta . $imagen_nombre);
+
             return $this->database->execute(
                 "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `fechaRegistro`, `tipoUsuario` ,`foto`, `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario', NOW(),'$tipoUsuario','$imagen_nombre','0', '0', '$hash', '$latitud', '$longitud')");
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$hashPass','$nombreUsuario', NOW(),'Jugador','$imagen_nombre','0', '0', '$hash', '$latitud', '$longitud')");
         }
         return $this->database->execute(
             "INSERT INTO `Usuario`(`nombreCompleto`, `anioNacimiento`, `sexo`, `pais` , `ciudad` , `mail` , `password` , `nombreUsuario` , `tipoUsuario` , `puntaje`, `activo`, `hash`, `latitud`, `longitud`) 
-                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$password','$nombreUsuario','$tipoUsuario','0', '0', '$hash', '$latitud', '$longitud')");
+                        VALUES ('$nombreCompleto', '$anioNacimiento', '$sexo', '$pais','$ciudad','$mail','$hashPass','$nombreUsuario','Jugador','0', '0', '$hash', '$latitud', '$longitud')");
     }
 
     public function confirmacionCuenta($hashUsuario)

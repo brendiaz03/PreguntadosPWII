@@ -47,7 +47,8 @@
                 <div class="profile-container">
                     <h1>USUARIO: {{nombreUsuario}}</h1>
                     {{#foto1}}
-                        <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto1}}" alt="Foto de perfil">
+                        <img class="profile-picture" src="../../public/imagenes/usuarios/{{foto1}}"
+                             alt="Foto de perfil">
                     {{/foto1}}
                     {{^foto1}}
                         <img class="profile-picture" src="../../public/imagenes/profile-user.png" alt="Foto de perfil">
@@ -71,7 +72,8 @@
                 <div class="user-data">
                     <div class="qr-code-container">
                         <div class="qr-code">
-                            <img class="qr-code-img" src="/{{qrImagen}}">
+                            <img src="{{qrImagen}}" alt="Código QR del Perfil">
+
                         </div>
                     </div>
                     <div class="map-container">
