@@ -27,10 +27,10 @@ class EditorController
             $opcion4 = $_POST["opcion4"];
             $dificultad = $_POST["dificultad"];
             if ($usuario['tipoUsuario'] == 'Editor') {
-                $this->model->agregarPregunta($categoria, $pregunta, $correcta, $opcion2, $opcion3, $opcion4, 'Inactiva',$dificultad);
+                $this->model->agregarPregunta($categoria, $pregunta, $correcta, $opcion2, $opcion3, $opcion4, 'Inactiva', $dificultad);
             }
             if ($usuario['tipoUsuario'] == 'Jugador') {
-                $this->model->agregarPregunta($categoria, $pregunta, $correcta, $opcion2, $opcion3, $opcion4, 'Sugerida',$dificultad);
+                $this->model->agregarPregunta($categoria, $pregunta, $correcta, $opcion2, $opcion3, $opcion4, 'Sugerida', $dificultad);
             }
 
             $this->presenter->render("view/agregarPreguntaView.mustache", ["success" => "¡La pregunta se ha agregado correctamente!", 'logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
@@ -84,13 +84,14 @@ class EditorController
     public function vistaAgregarPregunta()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
+        $textoNav = "AGREGAR PREGUNTA";
 
         if ($usuario['tipoUsuario'] == 'Editor') {
-            $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true]);
+            $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav]);
+        } else {
+            header("location:/");
         }
-
-        header("location:/");
-     }
+    }
 
     public function vistaEditarPregunta()
     {
@@ -102,8 +103,9 @@ class EditorController
                 $datosPregunta = $this->model->obtenerPreguntaConRespuestas($idPregunta);
                 $this->presenter->render("view/editarPreguntaView.mustache", $datosPregunta);
             }
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
     public function vistaListaPregunta()
@@ -113,9 +115,10 @@ class EditorController
         if ($usuario['tipoUsuario'] == 'Editor') {
             $preguntas = $this->model->getPreguntasEditor();
             $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
+        } else {
+            header("location:/");
         }
-        header("location:/");
-      }
+    }
 
     public function vistaPreguntasSugeridas()
     {
@@ -124,9 +127,10 @@ class EditorController
         if ($usuario['tipoUsuario'] == 'Editor') {
             $preguntas = $this->model->getPreguntasEditorSugeridas();
             $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
+        } else {
+            header("location:/");
         }
 
-        header("location:/");
     }
 
     public function vistaPreguntasReportadas()
@@ -136,9 +140,9 @@ class EditorController
             $textoNav = "PREGUNTAS SUGERIDAS";
             $preguntas = $this->model->getPreguntasEditorReportadas();
             $this->presenter->render("view/listaPregunta.mustache", ['preguntas' => $preguntas, 'logeado' => true, "foto" => $usuario['foto'], "textoNav" => $textoNav]);
+        } else {
+            header("location:/");
         }
-
-        header("location:/");
     }
 
 

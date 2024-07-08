@@ -21,18 +21,20 @@ class PartidaController
         $this->presenter->render("view/registro.mustache");
     }
 
-    public function iniciarPartida(){
+    public function iniciarPartida()
+    {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $_SESSION["pregunta"] = null;
             $_SESSION["respuestas"] = null;
-            $_SESSION["tiempoInicio"]=null;
-            $_SESSION["idPartida"] =  $this->model->getIdPartida($_SESSION['id']);
+            $_SESSION["tiempoInicio"] = null;
+            $_SESSION["idPartida"] = $this->model->getIdPartida($_SESSION['id']);
             header("Location: /preguntados/partida");
-        }else{
+        } else {
             header("location:/");
         }
     }
+
     public function partida()
     {
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
@@ -48,29 +50,30 @@ class PartidaController
                 $_SESSION["color"] = $color;
             }
             $this->presenter->render("view/partida.mustache", ["textoNav" => "PARTIDA", "pregunta" => $_SESSION["pregunta"], "respuestas" => $_SESSION["respuestas"],
-                "logeado" => true, "tiempoInicio" =>$_SESSION["tiempoInicio"], "color" => $_SESSION["color"]]);
-        }else{
-            header("location:/");
+                "logeado" => true, "tiempoInicio" => $_SESSION["tiempoInicio"], "color" => $_SESSION["color"]]);
         }
+
 
     }
 
     public function terminarPartida()
     {
-        $correcta = $this->model->guardarPreguntaDePartida($_SESSION["id"], $_SESSION["idPartida"] , $_POST["idPregunta"], $_POST["idRespuesta"]);
+        $correcta = $this->model->guardarPreguntaDePartida($_SESSION["id"], $_SESSION["idPartida"], $_POST["idPregunta"], $_POST["idRespuesta"]);
         $_SESSION["pregunta"] = null;
         $_SESSION["respuestas"] = null;
-        $_SESSION["tiempoInicio"]=null;
+        $_SESSION["tiempoInicio"] = null;
         if ($correcta) {
             header("Location: /preguntados/partida");
         } else {
             $_SESSION["idPartida"] = null;
-            header("Location: /usuario/lobby");
+            header("location:/usuario/lobby");
+
         }
     }
 
-    public function reportarPregunta(){
-        $this->model-> reportarPreguntaPorId($_POST["idPregunta"]);
+    public function reportarPregunta()
+    {
+        $this->model->reportarPreguntaPorId($_POST["idPregunta"]);
         $_SESSION["pregunta"] = null;
         $_SESSION["respuestas"] = null;
         header("Location: /usuario/lobby");

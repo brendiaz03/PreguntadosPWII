@@ -129,9 +129,9 @@ class UsuarioController
                             ";
 
             $mail->send();
-            echo "<p style='padding: 1rem; font-size: 1.3rem'>Hemos enviado un correo a su direccion de email para confirmar su cuenta.</p>";
+            $this->presenter->render("view/correoConfirmacionExitoso.mustache");
         } catch (Exception $e) {
-            echo "El mensaje no pudo ser enviado. Error de PHPMailer: {$mail->ErrorInfo}";
+            $this->presenter->render("view/errorphpmailer.mustache");
         }
     }
 
@@ -144,10 +144,10 @@ class UsuarioController
             if ($confirmacion) {
                 $this->presenter->render("view/confirmarcuenta.mustache");
             } else {
-                echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
+                $this->presenter->render("view/correoConfirmacionFallido.mustache");
             }
         } else {
-            echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
+            $this->presenter->render("view/correoConfirmacionFallido.mustache");
         }
     }
 
@@ -254,8 +254,10 @@ class UsuarioController
         $jugadores = $this->model->getJugadoresConPuntajeYPartidasJugadas();
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/ranking.mustache", ["textoNav" => "RANKING", "logeado" => true, "jugadores" => $jugadores, "foto" => $usuario['foto']]);
+        } else {
+            header("location:/");
         }
-        header("location:/");
+
     }
 
     public function vistaSugerirPregunta()
@@ -265,7 +267,7 @@ class UsuarioController
         if ($usuario['tipoUsuario'] == 'Jugador') {
             $this->presenter->render("view/agregarPreguntaView.mustache", ['logeado' => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
         }
-        header("location:/");
+
     }
 
 
