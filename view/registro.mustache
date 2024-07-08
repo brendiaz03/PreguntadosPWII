@@ -29,7 +29,7 @@
                 draggable: true,
             });
 
-            google.maps.event.addListener(map, 'click', function(event) {
+            google.maps.event.addListener(map, 'click', function (event) {
                 var lat = event.latLng.lat();
                 var lng = event.latLng.lng();
 
@@ -59,6 +59,20 @@
         }
 
     </script>
+
+    <style>
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
+
+
 </head>
 <body onload="initMap()">
 <main style="padding-bottom: 2rem">
@@ -77,11 +91,14 @@
                             <input type="text" class="form-control" id="nombreCompleto" name="nombreCompleto" required>
                         </div>
 
-                        <div class="mb-2">
-                            <label for="anioNacimiento" class="form-label">Año de Nacimiento:</label>
-                            <input type="number" class="form-control" id="anioNacimiento" name="anioNacimiento"
-                                   required>
+                        <div class="form-container">
+                            <div class="mb-2">
+                                <label for="anioNacimiento" class="form-label">Año de Nacimiento:</label>
+                                <input type="number" class="form-control" id="anioNacimiento" name="anioNacimiento"
+                                       min="1900" max="2024" maxlength="4" required>
+                            </div>
                         </div>
+
 
                         <div class="mb-2">
                             <label for="sexo" class="form-label">Sexo:</label>
