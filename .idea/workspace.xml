@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="44946e5e-c76c-45b9-b3bf-9a48274e51f9" name="Changes" comment="sql">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/registro.mustache" beforeDir="false" afterPath="$PROJECT_DIR$/view/registro.mustache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +149,7 @@
       <workItem from="1719866636026" duration="2113000" />
       <workItem from="1720219623400" duration="453000" />
       <workItem from="1720415230155" duration="2581000" />
-      <workItem from="1720450117606" duration="8027000" />
+      <workItem from="1720450117606" duration="8494000" />
     </task>
     <task id="LOCAL-00001" summary="codigo comentado del mapa con ciudad y pais">
       <option name="closed" value="true" />
