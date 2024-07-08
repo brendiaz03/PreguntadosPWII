@@ -144,10 +144,10 @@ class UsuarioController
             if ($confirmacion) {
                 $this->presenter->render("view/confirmarcuenta.mustache");
             } else {
-                echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
+                $this->presenter->render("view/correoConfirmacionFallido.mustache");
             }
         } else {
-            echo "Su cuenta no ha podido ser confirmada correctamente. Intentelo nuevamente.";
+            $this->presenter->render("view/correoConfirmacionFallido.mustache");
         }
     }
 
@@ -167,7 +167,6 @@ class UsuarioController
         $puntaje = $usuario['puntaje'];
         $pais = $usuario['pais'];
         $ciudad = $usuario['ciudad'];
-
         if (isset($_GET["id"])) {
             $usuarioLogeado = $this->model->getUsuarioById($_SESSION["id"]);
             $foto = $usuarioLogeado['foto'];

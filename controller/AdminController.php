@@ -1,4 +1,5 @@
 <?php
+
 class AdminController
 {
     private $model;
@@ -29,10 +30,10 @@ class AdminController
                 }
             }
 
-            $this->presenter->render("view/jugadoresEstadistica.mustache", ['totalUsuarios' => $totalUsuarios, 'jugadores' => $jugadores,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/jugadoresEstadistica.mustache", ['totalUsuarios' => $totalUsuarios, 'jugadores' => $jugadores, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        } else {
+            header("location:/");
         }
-
-        header("location:/");
     }
 
     public function reporteDeJugadores()
@@ -61,9 +62,9 @@ class AdminController
             }
 
             $pdf->Output('JugadoresTotales.pdf', 'I');
+        } else {
+            header("location:/");
         }
-
-        header("location:/");
     }
 
     public function traerPartidas()
@@ -76,11 +77,12 @@ class AdminController
             $totalPartidas = count($partidas);
 
             $this->presenter->render("view/partidasEstadistica.mustache", ['partidas' => $partidas,
-                'totalPartidas' => $totalPartidas,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+                'totalPartidas' => $totalPartidas, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
 
+        } else {
+            header("location:/");
         }
 
-        header("location:/");
     }
 
     public function reporteDePartidas()
@@ -113,8 +115,9 @@ class AdminController
                 }
             }
             $pdf->Output('PartidasTotales.pdf', 'I');
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
     public function traerPreguntas()
@@ -123,10 +126,10 @@ class AdminController
         if ($usuario['tipoUsuario'] == 'Admin') {
             $preguntas = $this->model->getAllPreguntas();
             $textoNav = "ESTADISTICA PREGUNTAS";
-            $this->presenter->render("view/preguntasEstadistica.mustache", ['preguntasDelJuego' => $preguntas, "logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/preguntasEstadistica.mustache", ['preguntasDelJuego' => $preguntas, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        } else {
+            header("location:/");
         }
-
-        header("location:/");
     }
 
     public function reporteDePreguntas()
@@ -162,10 +165,10 @@ class AdminController
             $preguntasAct = $this->model->getAllPreguntasActivas();
             $textoNav = "ESTADISTICA PREGUNTAS EN JUEGO";
 
-            $this->presenter->render("view/preguntasEnJuegoEstadistica.mustache", ['preguntasActivas' => $preguntasAct,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/preguntasEnJuegoEstadistica.mustache", ['preguntasActivas' => $preguntasAct, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        } else {
+            header("location:/");
         }
-
-        header("location:/");
     }
 
     public function reportePreguntasActivas()
@@ -192,8 +195,9 @@ class AdminController
                 }
             }
             $pdf->Output('PreguntasTotalesEnJuego.pdf', 'I');
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
     public function traerUsuariosNuevos()
@@ -212,12 +216,14 @@ class AdminController
 
             $usuarios = $this->model->getUsuariosNuevos($fechaDesde, $fechaHasta);
 
-            $this->presenter->render("view/usuariosEstadistica.mustache", ['usuarios' => $usuarios,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/usuariosEstadistica.mustache", ['usuarios' => $usuarios, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
-    public function reporteUsuarios(){
+    public function reporteUsuarios()
+    {
         require("helper/Usuario.php");
         $usuario = $this->model->getUsuarioById($_SESSION["id"]);
         if ($usuario['tipoUsuario'] == 'Admin') {
@@ -246,7 +252,6 @@ class AdminController
             }
             $pdf->Output('UsuariosNuevos.pdf', 'I');
         }
-        header("location:/");
     }
 
     public function traerPreguntasRespondidasPorUsuario()
@@ -264,10 +269,11 @@ class AdminController
 
             $respuestasPorUsuario = $this->model->getRespuestasCorrectasPorUsuario($fechaDesde, $fechaHasta);
 
-            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Respuestas Correctas por Usuario",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo" => "Respuestas Correctas por Usuario", 'respuestasPorUsuario' => $respuestasPorUsuario, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
 
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
 
@@ -286,10 +292,11 @@ class AdminController
 
             $respuestasPorUsuario = $this->model->getUsuariosPorPaisFiltradoPorFecha($fechaDesde, $fechaHasta);
 
-            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Usuarios por pais",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo" => "Usuarios por pais", 'respuestasPorUsuario' => $respuestasPorUsuario, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
 
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
     public function traerUsuariosPorSexo()
@@ -307,10 +314,12 @@ class AdminController
 
             $respuestasPorUsuario = $this->model->getUsuariosPorSexoFiltradoPorFechaYRol($fechaDesde, $fechaHasta);
 
-            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Usuarios por sexo",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo" => "Usuarios por sexo", 'respuestasPorUsuario' => $respuestasPorUsuario, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
 
+        } else {
+            header("location:/");
         }
-        header("location:/");
+
     }
 
     public function traerUsuariosPorEdad()
@@ -328,9 +337,10 @@ class AdminController
 
             $respuestasPorUsuario = $this->model->getUsuariosPorEdadFiltradoPorFecha($fechaDesde, $fechaHasta);
 
-            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo"=> "Usuarios por Edad",'respuestasPorUsuario' =>  $respuestasPorUsuario,"logeado" => true,"textoNav" => $textoNav,"foto" => $usuario['foto']]);
+            $this->presenter->render("view/graficoPreguntas.mustache", ["titulo" => "Usuarios por Edad", 'respuestasPorUsuario' => $respuestasPorUsuario, "logeado" => true, "textoNav" => $textoNav, "foto" => $usuario['foto']]);
+        } else {
+            header("location:/");
         }
-        header("location:/");
     }
 
     public function grafico()
